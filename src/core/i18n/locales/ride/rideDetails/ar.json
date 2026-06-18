@@ -1,0 +1,22 @@
+{
+  "time": "الوقت",
+  "estimated" : "السعر المقدر",
+  "filters": "الفلاتر",
+  
+  "acceptAnimals": "السماح بالحيوانات", 
+  "bigLuggage": "حقائب كبيرة",
+  "childSeat": "كرسي طفل",
+  
+  "payment":{
+    "cash": "نقدا",
+    "wallet": "المحفظة"
+  },
+
+  "selectVehicle": "اختر المركبة",
+  
+  "economy": "اقتصادي",
+  "comfort": "راحة",
+  "luxury": "فخامة",
+  "xl": "XL"
+
+}

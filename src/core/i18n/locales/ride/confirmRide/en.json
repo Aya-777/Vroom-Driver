@@ -1,0 +1,20 @@
+{
+  "confirmRide": "Confirm ride",
+
+  "time": "Time",
+  "totalPrice" : "Total price",
+  "selectedCar": "Selected car",
+  "payment": "Payment",
+
+  
+  "cash": "Cash",
+  "wallet": "Wallet",
+
+  
+  "economy": "Economy",
+  "comfort": "Comfort",
+  "luxury": "Luxury",
+  "xl": "XL",
+
+  "findaDriver": "Find a driver"
+}

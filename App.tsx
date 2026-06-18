@@ -11,8 +11,30 @@ import {
   SafeAreaProvider,
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
+import { LanguageService } from './src/core/i18n/services/LanguageService';
+import './src/core/i18n';
+import { useEffect, useState } from 'react';
+
 
 function App() {
+  const [isReady, setIsReady] =
+  useState(false);
+
+  useEffect(() => {
+  const initialize = async () => {
+    try {
+      await LanguageService.initializeLanguage();
+    } catch (error) {
+      console.error("Failed to initialize i18n:", error);
+      // Optional: Fallback to a default language manually
+    } finally {
+      setIsReady(true);
+    }
+  };
+
+  initialize();
+}, []);
+
   const isDarkMode = useColorScheme() === 'dark';
 
   return (
