@@ -1,0 +1,15 @@
+{
+  "whereTo": "Where to?",
+  "forYou": "For you",
+  "recentDestinations": "Recent Destinations",
+  "seeAll": "See all",
+  
+  "services": {
+    "package": "Package",
+    "rent": "Rent",
+    "reserve": "Reserve"
+  },
+  
+  "office": "Office"
+  
+}

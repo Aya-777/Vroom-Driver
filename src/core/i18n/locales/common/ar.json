@@ -1,0 +1,29 @@
+{
+  "save": "حفظ",
+  "cancel": "إلغاء",
+  "continue": "متابعة",
+  "back": "العودة",
+  "confirm": "تأكيد",
+  "next": "التالي",
+  "submit" : "إرسال",
+  "maybeLater": "ربما لاحقاً",
+  
+  "now": "الآن",
+  "later": "لاحقاً",
+  "schedule": "احجز",
+
+  "savedPlaces": "الاماكن المحفوظة",
+
+  "ride": "رحلة",
+
+  "pickupRequired" : "عنوان الانطلاق مطلوب",
+  "destinationRequired" : "عنوان الوجهة مطلوب",
+  "sameInputs": "الوجهة لا يمكن ان تكون منطبقة على الانطلاق",
+
+  
+  "phoneNumberStart": "رقم الهاتف يجب ان يبدأ ب09",
+  "passwordLength": "كلمة السر يجب ان تكون على الاقل 8 حروف",
+  "usernameLength": "الاسم يجب ان يكون على الاقل 2 حرف"
+
+
+}

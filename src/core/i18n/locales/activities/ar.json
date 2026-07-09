@@ -1,0 +1,11 @@
+{
+    "noActivities": "لا يوجد نشاطات.",
+    "yourActivity": "نشاطاتك ",
+    "status": {
+        "ongoing": "الجارية",
+        "pending": "قيد الانتظار",
+        "accepted": "المقبولة",
+        "completed": "المكتملة",
+        "cancelled": "الملغاة"
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "noActivities": "No activities found.",
+    "yourActivity": "Your Activity ",
+    "status": {
+        "ongoing": "Ongoing",
+        "pending": "Pending",
+        "accepted": "Accepted",
+        "completed": "Completed",
+        "cancelled": "Cancelled"
+    }
+}

@@ -1,0 +1,26 @@
+{
+  "save": "Save",
+  "cancel": "Cancel",
+  "continue": "Continue",
+  "back": "Back",
+  "confirm": "Confirm",
+  "next": "Next",
+  "submit" : "Submit",
+  "maybeLater": "Maybe later",
+
+  "now": "Now",
+  "later": "Later",
+  "schedule": "Schedule",
+
+  "savedPlaces": "Saved places",
+  
+  "ride": "Ride",
+
+  "pickupRequired" : "Pickup location is required",
+  "destinationRequired" : "Destination location is required",
+  "sameInputs": "Destination cannot be the same as pickup",
+
+  "phoneNumberStart": "Phone number must start with 09",
+  "passwordLength": "Password must be at least 8 characters",
+  "usernameLength": "Username must be at least 2 characters"
+}

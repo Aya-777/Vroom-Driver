@@ -1,0 +1,20 @@
+{
+  "confirmRide": "تأكيد الرحلة",
+
+  "time": "الوقت",
+  "totalPrice" : "السعر الإجمالي",
+  "selectedCar": "السيارة المختارة",
+  "payment": "الدفع",
+
+  
+  "cash": "نقداً",
+  "wallet": "محفظة",
+
+  
+  "economy": "اقتصادي",
+  "comfort": "راحة",
+  "luxury": "فخامة",
+  "xl": "XL",
+
+  "findaDriver": "ابحث عن سائق"
+}
