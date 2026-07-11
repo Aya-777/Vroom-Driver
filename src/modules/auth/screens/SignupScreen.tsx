@@ -9,7 +9,7 @@ import {
 import SignupForm from '../components/signup/SignupForm';
 import SignupFooter from '../components/signup/SignupFooter';
 import { useTheme } from '../../../core/theme/useTheme';
-import { useSignupViewModel } from '../viewmodels/useSignupViewModel';
+import { useActivateAccountViewModel } from '../viewmodels/useActivateAccountViewModel';
 import { createStyles } from '../styles/signup.styles';
 import SignupCard from '../components/signup/SignupCard';
 import LinearBg from '../../../shared/components/LinearBg';
@@ -22,7 +22,7 @@ const SignupScreen = () => {
   const { navigateToLogin } = useAuthActions();
   const navigation = useNavigation<any>();
 
-  const vm = useSignupViewModel((phone) => {
+  const vm = useActivateAccountViewModel((phone) => {
     navigation.navigate('Otp', { phoneNumber: phone });
   });
 

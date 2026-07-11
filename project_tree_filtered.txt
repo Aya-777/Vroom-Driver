@@ -230,11 +230,11 @@ src/
 │   │   ├── utils
 │   │   │   └── SplashPathUtils.ts
 │   │   └── viewmodels
+│   │       ├── useActivateAccountViewModel.ts
 │   │       ├── useForgotPasswordViewModel.ts
 │   │       ├── useLoginViewModel.ts
 │   │       ├── useOtpViewModel.ts
 │   │       ├── useResetPasswordViewModel.ts
-│   │       ├── useSignupViewModel.ts
 │   │       └── useSplashViewModel.ts
 │   ├── constants
 │   ├── home

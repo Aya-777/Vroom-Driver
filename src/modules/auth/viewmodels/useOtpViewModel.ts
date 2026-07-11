@@ -6,7 +6,7 @@ import { useAuthActions } from '../../../core/store/authStore';
 export const useOtpViewModel = (navigation: any, route: any) => {
 
     const phoneNumber = route.params?.phoneNumber || '';
-    const flowType = route.params?.type || 'signup';
+    const flowType = route.params?.type || 'activate_account';
 
     const [code, setCode] = useState<string[]>(new Array(6).fill(''));
     const [activeCodeIndex, setActiveCodeIndex] = useState<number>(0);
@@ -14,9 +14,9 @@ export const useOtpViewModel = (navigation: any, route: any) => {
 
     const inputRefs = useRef<TextInput[]>([]);
 
-    const signupVerifyMutation = useAuthRepository.useVerifyOtp();
+    const activateAccountVerifyMutation = useAuthRepository.useVerifyActivateAccountOtp();
     const forgotVerifyMutation = useAuthRepository.useForgotPasswordVerifyOtp();
-    const resendOtpMutation = useAuthRepository.useResendOtp();
+    const activateAccountResendMutation = useAuthRepository.useResendActivateAccountOtp();
     const forgotResendOtpMutation = useAuthRepository.useForgotPasswordResendOtp();
 
     const { login } = useAuthActions();
@@ -81,7 +81,7 @@ export const useOtpViewModel = (navigation: any, route: any) => {
                 }
             );
         } else {
-            signupVerifyMutation.mutate(
+            activateAccountVerifyMutation.mutate(
                 { phone_number: phoneNumber, otp: fullCode },
                 {
                     onSuccess: (response) => {
@@ -103,7 +103,7 @@ export const useOtpViewModel = (navigation: any, route: any) => {
             if (flowType === 'forgot_password') {
                 response = await forgotResendOtpMutation.mutateAsync({ phone_number: phoneNumber });
             } else {
-                response = await resendOtpMutation.mutateAsync({ phone_number: phoneNumber });
+                response = await activateAccountResendMutation.mutateAsync({ phone_number: phoneNumber });
             }
             setCode(new Array(6).fill(''));
             setActiveCodeIndex(0);
@@ -134,6 +134,7 @@ export const useOtpViewModel = (navigation: any, route: any) => {
             throw { ...err, waitSeconds };
         }
     };
+
     const handleBack = () => {
         navigation.goBack();
     };
@@ -141,7 +142,7 @@ export const useOtpViewModel = (navigation: any, route: any) => {
     return {
         code,
         activeCodeIndex,
-        isLoading: signupVerifyMutation.isPending || forgotVerifyMutation.isPending || resendOtpMutation.isPending,
+        isLoading: activateAccountVerifyMutation.isPending || forgotVerifyMutation.isPending || activateAccountResendMutation.isPending,
         inputRefs,
         maskedPhoneNumber,
         error: uiError,
