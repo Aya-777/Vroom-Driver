@@ -1,13 +1,10 @@
-export interface SignupRequestDTO {
-    first_name: string;
-    last_name: string;
+export interface ActivateAccountRequestDTO {
     phone_number: string;
     password: string;
     confirm_password: string;
-    profile_image?: any;
 }
 
-export interface SignupResponseDTO {
+export interface ActivateAccountResponseDTO {
     message: string;
 }
 

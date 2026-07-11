@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 import Logo from '../shared/logo';
 import LinearBg from '../../../../shared/components/LinearBg';
-import Profile from '../../../../assets/svg/profile/profile.svg';
+// import Profile from '../../../../assets/svg/profile/profile.svg';
 import PhoneNumberIcon from '../../../../assets/svg/contact/call.svg';
 import PasswordIcon from '../../../../assets/svg/common/password.svg';
 import VisibilityOnIcon from '../../../../assets/svg/common/visibilityOn.svg';
@@ -43,7 +43,7 @@ const SignupForm = ({ vm }: any) => {
 
             <View style={styles.middle}>
 
-                <View style={styles.row}>
+                {/* <View style={styles.row}>
                     <Input
                         type="text"
                         placeholder={t('firstName')}
@@ -71,7 +71,7 @@ const SignupForm = ({ vm }: any) => {
                         )}
                         error={vm.lastNameError}
                     />
-                </View>
+                </View> */}
 
                 <Input
                     type="phone"
@@ -131,7 +131,7 @@ const SignupForm = ({ vm }: any) => {
             </View>
 
             <View style={styles.bottom}>
-                <TouchableOpacity onPress={vm.handleSignup} disabled={vm.isLoading}>
+                <TouchableOpacity onPress={vm.handleActivateAccount} disabled={vm.isLoading}>
                     <LinearBg
                         style={styles.button}
                         colors={[colors.textPrimary, colors.surface]}

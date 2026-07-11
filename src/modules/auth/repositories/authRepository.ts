@@ -1,8 +1,8 @@
 import { useMutation } from '@tanstack/react-query';
 import { authApi } from '../services/authApi';
 import {
-  SignupRequestDTO,
-  SignupResponseDTO,
+  ActivateAccountRequestDTO,
+  ActivateAccountResponseDTO,
   VerifyOtpRequestDTO,
   VerifyOtpResponseDTO,
   ResendOtpRequestDTO,
@@ -12,26 +12,25 @@ import {
   ForgotPasswordRequestResponseDTO,
   ForgotPasswordVerifyOtpRequestDTO,
   ForgotPasswordVerifyOtpResponseDTO,
-  ForgetPasswordResendOtpRequestDTO,
   ResetPasswordRequestDTO
 } from '../services/dto/auth.dto';
 
 export const useAuthRepository = {
-  useSignup: () => {
-    return useMutation<SignupResponseDTO, Error, SignupRequestDTO>({
-      mutationFn: authApi.signup,
+  useActivateAccount: () => {
+    return useMutation<ActivateAccountResponseDTO, Error, ActivateAccountRequestDTO>({
+      mutationFn: authApi.activateAccount,
     });
   },
 
-  useVerifyOtp: () => {
+  useVerifyActivateAccountOtp: () => {
     return useMutation<VerifyOtpResponseDTO, Error, VerifyOtpRequestDTO>({
-      mutationFn: authApi.verifyOtp,
+      mutationFn: authApi.verifyActivateAccountOtp,
     });
   },
 
-  useResendOtp: () => {
+  useResendActivateAccountOtp: () => {
     return useMutation<{ message: string }, Error, ResendOtpRequestDTO>({
-      mutationFn: authApi.resendOtp,
+      mutationFn: authApi.resendActivateAccountOtp,
     });
   },
 
@@ -54,16 +53,14 @@ export const useAuthRepository = {
   },
 
   useForgotPasswordResendOtp: () => {
-    return useMutation<{ message: string }, Error, ForgetPasswordResendOtpRequestDTO>({
+    return useMutation<{ message: string }, Error, ResendOtpRequestDTO>({
       mutationFn: authApi.forgotPasswordResendOtp,
     });
   },
 
   useResetPassword: () => {
-    return useMutation<{message: string}, Error, ResetPasswordRequestDTO>({
+    return useMutation<{ message: string }, Error, ResetPasswordRequestDTO>({
       mutationFn: authApi.resetPassword,
     });
   },
-
-  
 };
