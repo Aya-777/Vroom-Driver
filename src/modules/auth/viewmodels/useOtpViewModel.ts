@@ -2,11 +2,11 @@ import { useState, useRef, useEffect } from 'react';
 import { TextInput } from 'react-native';
 import { useAuthRepository } from '../repositories/authRepository';
 import { useAuthActions } from '../../../core/store/authStore';
-import { VerifyOtpResponseDTO } from '../services/dto/auth.dto';
 
 export const useOtpViewModel = (navigation: any, route: any) => {
 
     const phoneNumber = route.params?.phoneNumber || '';
+    const flowType = route.params?.type || 'activate_account';
 
     const [code, setCode] = useState<string[]>(new Array(6).fill(''));
     const [activeCodeIndex, setActiveCodeIndex] = useState<number>(0);
@@ -14,8 +14,11 @@ export const useOtpViewModel = (navigation: any, route: any) => {
 
     const inputRefs = useRef<TextInput[]>([]);
 
-    const verifyOtpMutation = useAuthRepository.useVerifyOtp();
-    const resendOtpMutation = useAuthRepository.useResendOtp();
+    const activateAccountVerifyMutation = useAuthRepository.useVerifyActivateAccountOtp();
+    const forgotVerifyMutation = useAuthRepository.useForgotPasswordVerifyOtp();
+    const activateAccountResendMutation = useAuthRepository.useResendActivateAccountOtp();
+    const forgotResendOtpMutation = useAuthRepository.useForgotPasswordResendOtp();
+
     const { login } = useAuthActions();
 
     const maskedPhoneNumber = phoneNumber
@@ -53,38 +56,83 @@ export const useOtpViewModel = (navigation: any, route: any) => {
         const fullCode = code.join('');
 
         if (fullCode.length < 6) {
-            setUiError('Please enter the complete 6-digit verification code.');
+            setUiError('incompleteCode');
             return;
         }
 
-        verifyOtpMutation.mutate(
-            { phone_number: phoneNumber, otp: fullCode },
-            {
-                onSuccess: (response: VerifyOtpResponseDTO) => {
-                    login(response.data.access);
+        if (flowType === 'forgot_password') {
+            forgotVerifyMutation.mutate(
+                {
+                    phone_number: phoneNumber,
+                    otp: fullCode,
+                    expected_role: 'driver'
                 },
-                onError: (err: any) => {
-                    setUiError(err.response?.data?.message || 'Invalid OTP');
-                },
-            }
-        );
+                {
+                    onSuccess: (response) => {
+                        const resetToken = response.data?.reset_token;
+                        navigation.navigate('ResetPassword', {
+                            phoneNumber,
+                            resetToken
+                        });
+                    },
+                    onError: (err: any) => {
+                        setUiError(err.response?.data?.message || 'invalidOtp');
+                    },
+                }
+            );
+        } else {
+            activateAccountVerifyMutation.mutate(
+                { phone_number: phoneNumber, otp: fullCode },
+                {
+                    onSuccess: (response) => {
+                        login(response.data.access);
+                    },
+                    onError: (err: any) => {
+                        setUiError(err.response?.data?.message || 'Invalid OTP');
+                    },
+                }
+            );
+        }
     };
 
-    const handleResendCode = () => {
+    const handleResendCode = async () => {
         setUiError(null);
-        resendOtpMutation.mutate(
-            { phone_number: phoneNumber },
-            {
-                onSuccess: () => {
-                    setCode(new Array(6).fill(''));
-                    setActiveCodeIndex(0);
-                    inputRefs.current[0]?.focus();
-                },
-                onError: (err: any) => {
-                    setUiError(err.response?.data?.message || 'Try Again Later');
-                },
+
+        try {
+            let response;
+            if (flowType === 'forgot_password') {
+                response = await forgotResendOtpMutation.mutateAsync({ phone_number: phoneNumber });
+            } else {
+                response = await activateAccountResendMutation.mutateAsync({ phone_number: phoneNumber });
             }
-        );
+            setCode(new Array(6).fill(''));
+            setActiveCodeIndex(0);
+            inputRefs.current[0]?.focus();
+            return response;
+
+        } catch (err: any) {
+            const message =
+                err.response?.data?.errors?.phone_number?.[0] ||
+                err.response?.data?.message ||
+                'tryAgain';
+
+            setUiError(message);
+
+            const secondsMatch = message.match(/(\d+)\s*seconds?/i);
+            const hoursMatch = message.match(/(\d+)h/i);
+            const minutesMatch = message.match(/(\d+)m/i);
+
+            let waitSeconds = 0;
+            if (secondsMatch) {
+                waitSeconds = parseInt(secondsMatch[1], 10);
+            } else if (hoursMatch || minutesMatch) {
+                const h = hoursMatch ? parseInt(hoursMatch[1], 10) : 0;
+                const m = minutesMatch ? parseInt(minutesMatch[1], 10) : 0;
+                waitSeconds = h * 3600 + m * 60;
+            }
+
+            throw { ...err, waitSeconds };
+        }
     };
 
     const handleBack = () => {
@@ -94,7 +142,7 @@ export const useOtpViewModel = (navigation: any, route: any) => {
     return {
         code,
         activeCodeIndex,
-        isLoading: verifyOtpMutation.isPending || resendOtpMutation.isPending,
+        isLoading: activateAccountVerifyMutation.isPending || forgotVerifyMutation.isPending || activateAccountResendMutation.isPending,
         inputRefs,
         maskedPhoneNumber,
         error: uiError,

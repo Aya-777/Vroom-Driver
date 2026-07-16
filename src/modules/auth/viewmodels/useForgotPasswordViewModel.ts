@@ -1,30 +1,39 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState } from 'react';
+import { useAuthRepository } from '../repositories/authRepository';
 
 export const useForgotPasswordViewModel = (navigation: any) => {
   const [phoneNumber, setPhoneNumber] = useState('');
-  const [error, setError] = useState<string | undefined>(undefined);
-  const [isLoading, setIsLoading] = useState(false);
+  const [uiError, setUiError] = useState<string | null>(null);
+
+  const requestMutation = useAuthRepository.useForgotPasswordRequest();
 
   const handlePhoneChange = (text: string) => {
     setPhoneNumber(text);
-    if (error) setError(undefined);
+    if (uiError) setUiError(null);
   };
 
-  const handleResetPassword = async () => {
-    if (phoneNumber.length < 10) {
-      setError('Please enter a valid 10-digit phone number');
+  const handleResetPassword = () => {
+    setUiError(null);
+
+    if (!phoneNumber) {
+      setUiError('Please enter your phone number.');
       return;
     }
 
-    setIsLoading(true);
-    try {
-      navigation.navigate('Otp', { phoneNumber: phoneNumber });
-    } catch (err) {
-      setError('Something went wrong. Please try again.');
-    } finally {
-      setIsLoading(false);
-    }
+    requestMutation.mutate(
+      {
+        phone_number: phoneNumber,
+        expected_role: 'driver',
+      },
+      {
+        onSuccess: () => {
+          navigation.navigate('Otp', { phoneNumber: phoneNumber , type: 'forgot_password' });
+        },
+        onError: (err: any) => {
+          setUiError(err.response?.data?.message || err.message || 'Failed to send OTP');
+        },
+      }
+    );
   };
 
   const handleBack = () => {
@@ -33,9 +42,9 @@ export const useForgotPasswordViewModel = (navigation: any) => {
 
   return {
     phoneNumber,
-    error,
-    isLoading,
     handlePhoneChange,
+    error: uiError,
+    isLoading: requestMutation.isPending,
     handleResetPassword,
     handleBack,
   };

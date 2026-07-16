@@ -43,7 +43,3 @@ export default function Header({ title, onBackPress }: HeaderProps) {
   );
 }
 
-/* ---------------- DYNAMIC STYLES ---------------- */
-
-
-// I moved the styles to shared/styles/SubHeader.styles.ts 🫶🏻

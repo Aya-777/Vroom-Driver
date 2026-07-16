@@ -1,7 +1,8 @@
 import { StyleSheet } from 'react-native';
 import { Spacing, Radius, Typography, Shadows } from '../../../core/theme/tokens';
+import { ThemeColors } from '../../../core/theme/theme.types';
 
-export const createStyles = (colors: any) =>
+export const createStyles = (colors: ThemeColors) =>
   StyleSheet.create({
     container: {
       flex: 1,
@@ -31,15 +32,8 @@ export const createStyles = (colors: any) =>
       fontWeight: '600',
     },
     inputContainer: {
-      backgroundColor: colors.backgroundSoft,
-      borderRadius: Radius.full,
-      borderWidth: 2,
-      borderColor: colors.surface,
-      height: 54,
-      justifyContent: 'center',
-      paddingHorizontal: Spacing.md,
-      marginBottom: Spacing.lg,
-      ...Shadows.medium,
+      width: '80%',
+      alignSelf: 'center',
     },
     inputText: {
       color: colors.primary,

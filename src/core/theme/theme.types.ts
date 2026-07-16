@@ -1,12 +1,4 @@
-// export type ThemeMode = 'light' | 'dark';
-
-// export type Theme = {
-//   mode: ThemeMode;
-//   colors: Record<string, string>;
-// };
-// theme.types.ts
 export type ThemeMode = 'light' | 'dark';
-
 export interface ThemeColors {
   background: string;
   backgroundSoft: string;
@@ -21,6 +13,9 @@ export interface ThemeColors {
   primary: string;
   border: string;
   neutral: string;
+
+  error: string;
+  success : string;
 }
 
 export interface AppTheme {

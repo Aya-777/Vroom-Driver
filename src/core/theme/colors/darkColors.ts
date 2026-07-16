@@ -14,4 +14,7 @@ export const darkColors= {
   primary: '#E4D9FF',
 
   border: '#1E2749',
+
+  error : '#b40000',
+  success : '#4eb609',
 };

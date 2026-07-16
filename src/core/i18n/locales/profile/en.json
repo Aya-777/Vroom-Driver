@@ -3,11 +3,9 @@
   "notifications": "Notifications",
   "favoriteDrivers": "Favorite Drivers",
   "safety": "Safety",
-
   "becomeaDriver": "Become a Driver",
   "earnOnYourOwnSchedule": "Earn on your own schedule",
   "learnMore": "Learn more",
-  
   "settings": "Settings",
   "privacyAndSecurity": "Privacy and Security",
   "emergencyContact": "Emergency Contact",
@@ -15,5 +13,6 @@
   "savedLocations": "Saved Locations",
   "aboutUs": "About Us",
   "contactUs": "Contact Us",
-  "logout": "Logout"
+  "logout": "Logout",
+  "welcome": "Wlcome "
 }

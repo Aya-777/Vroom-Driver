@@ -9,7 +9,7 @@ import { AuthStackScreenProps } from '../../../navigation/auth/authTypes';
 import { useTranslation } from 'react-i18next';
 import ResetPasswordForm from '../components/resetPassword/ResetPasswordForm';
 
-export default function ResetPasswordScreen({ navigation }: AuthStackScreenProps<'ResetPassword'>) {
+export default function ResetPasswordScreen({ navigation, route }: AuthStackScreenProps<'ResetPassword'>) {
     const { colors } = useTheme();
     const styles = createStyles(colors);
     const { t } = useTranslation(['auth']);
@@ -23,7 +23,7 @@ export default function ResetPasswordScreen({ navigation }: AuthStackScreenProps
         handleConfirmPasswordChange,
         handleUpdatePassword,
         handleBack,
-    } = useResetPasswordViewModel(navigation);
+    } = useResetPasswordViewModel(navigation , route);
 
     return (
         <LinearBg

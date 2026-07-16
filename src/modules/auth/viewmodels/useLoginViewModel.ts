@@ -1,27 +1,48 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState } from 'react';
 import { useAuthActions } from '../../../core/store/authStore';
+import { useAuthRepository } from '../repositories/authRepository';
 
 export function useLoginViewModel() {
   const { login } = useAuthActions();
-  const [isLoading, setIsLoading] = useState(false);
+  
+  const [phone, setPhone] = useState('');
+  const [password, setPassword] = useState('');
+  const [uiError, setUiError] = useState<string | null>(null);
 
-  const handleLogin = async (name: string, password: string) => {
-    setIsLoading(true);
+  const { mutateAsync: loginMutate, isPending: isLoading } = useAuthRepository.useLogin();
+
+  const handleLogin = async () => {
+    setUiError(null);
+
+    if (!phone || !password) {
+      setUiError('Please fill in all required fields.');
+      return;
+    }
+
     try {
-      const mockToken = "your_received_jwt_token_here";
-
-      login(mockToken);
-
-    } catch (error) {
+      const response = await loginMutate({
+        phone_number: phone, 
+        password: password,     
+        expected_role: 'driver',
+      });
+      
+      const token = response.data.access;
+      login(token);
+    } catch (error: any) {
       console.error("Login failed", error);
-    } finally {
-      setIsLoading(false);
+      setUiError(error.response?.data?.message || error.message );
     }
   };
 
   return {
+    phone,        
+    setPhone,     
+    password,    
+    setPassword,  
     handleLogin,
     isLoading,
+    error: uiError,
+    phoneError: null, 
+    passwordError: null,
   };
 }

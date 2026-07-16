@@ -19,6 +19,7 @@ import { useHomeViewModel } from '../viewmodels/useHomeViewModel';
 import HeaderTopAppBar from '../components/HomeHeader';
 import { useHomeActions } from '../hooks/useHomeActions';
 import { useTranslation } from 'react-i18next';
+import { navigate } from '../../../navigation/rootTypes';
 
 export default function HomeScreen() {
 
@@ -31,14 +32,14 @@ export default function HomeScreen() {
     recentDestinations,
   } = useHomeViewModel();
 
-  const { 
+  const {
     navigateToSelectRide
   } = useHomeActions();
 
   const serviceActions: Record<string, () => void> = {
-  '1': navigateToSelectRide,
-  // '2': navigateToReserve,
-};
+    '1': navigateToSelectRide,
+    // '2': navigateToReserve,
+  };
 
   return (
     <LinearBg
@@ -49,7 +50,10 @@ export default function HomeScreen() {
     >
       <View style={styles.container}>
 
-        <HeaderTopAppBar />
+        <HeaderTopAppBar
+          onNotificationPress={() =>
+            navigate('Notifications')
+          } />
 
         <ScrollView
           contentContainerStyle={styles.scrollContent}
@@ -64,9 +68,9 @@ export default function HomeScreen() {
           <View style={styles.gridContainer}>
             {services.map(service => (
               <ServiceCard
-              key={service.id}
-              onPress={serviceActions[service.id]}
-              {...service}
+                key={service.id}
+                onPress={serviceActions[service.id]}
+                {...service}
               />
             ))}
           </View>

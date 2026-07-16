@@ -1,9 +1,11 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import Input from '../../../../shared/components/Input';
-import Button from '../shared/Button'; 
+import Button from '../shared/Button';
 import { useTranslation } from 'react-i18next';
-
+import PasswordIcon from '../../../../assets/svg/common/password.svg';
+import VisibilityOnIcon from '../../../../assets/svg/common/visibilityOn.svg';
+import VisibilityOffIcon from '../../../../assets/svg/common/visibilityOff.svg';
 
 interface ResetPasswordFormProps {
   styles: any;
@@ -42,8 +44,16 @@ export default function ResetPasswordForm({
         onChangeText={onPasswordChange}
         containerStyle={styles.inputContainer}
         inputStyle={styles.inputText}
-        secureTextEntry={true}
-      />
+        renderLeftIcon={() => (
+          <PasswordIcon width={20} height={20} fill={colors.primary} />
+        )}
+        renderRightIcon={(isPasswordVisible) =>
+          isPasswordVisible ? (
+            <VisibilityOnIcon width={20} height={20} fill={colors.primary} />
+          ) : (
+            <VisibilityOffIcon width={20} height={20} fill={colors.primary} />
+          )
+        } />
 
 
       <Text style={styles.label}>{t('confirmPassword')}</Text>
@@ -56,7 +66,16 @@ export default function ResetPasswordForm({
         error={error ? t(error) : undefined}
         containerStyle={styles.inputContainer}
         inputStyle={styles.inputText}
-        secureTextEntry={true}
+        renderLeftIcon={() => (
+          <PasswordIcon width={20} height={20} fill={colors.primary} />
+        )}
+        renderRightIcon={(isPasswordVisible) =>
+          isPasswordVisible ? (
+            <VisibilityOnIcon width={20} height={20} fill={colors.primary} />
+          ) : (
+            <VisibilityOffIcon width={20} height={20} fill={colors.primary} />
+          )
+        }
       />
 
 

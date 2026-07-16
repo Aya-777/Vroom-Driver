@@ -1,11 +1,16 @@
 import { useState } from 'react';
+import { useAuthRepository } from '../repositories/authRepository';
 
-export const useResetPasswordViewModel = (navigation: any) => {
+export const useResetPasswordViewModel = (navigation: any, route: any) => {
+
+    const phoneNumber = route.params?.phoneNumber || '';
+    const resetToken = route.params?.resetToken || '';
 
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState<string | null>(null);
-    const [isLoading, setIsLoading] = useState(false);
+
+    const resetPasswordMutation = useAuthRepository.useResetPassword();
 
     const handlePasswordChange = (text: string) => {
         setPassword(text);
@@ -21,13 +26,12 @@ export const useResetPasswordViewModel = (navigation: any) => {
         navigation.goBack();
     };
 
-    const handleUpdatePassword = async () => {
+    const handleUpdatePassword = () => {
 
         if (!password || !confirmPassword) {
             setError('pleaseFillAllFields');
             return;
         }
-
 
         if (password !== confirmPassword) {
             setError('passwordsDoNotMatch');
@@ -39,27 +43,33 @@ export const useResetPasswordViewModel = (navigation: any) => {
             return;
         }
 
-        try {
-            setIsLoading(true);
-            setError(null);
-
-            await new Promise<void>((resolve) => {
-                setTimeout(() => resolve(), 1500);
-            });
-            navigation.navigate('HomeScreen');
-
-        } catch (err: any) {
-            setError(err?.message || 'somethingWentWrong');
-        } finally {
-            setIsLoading(false);
-        }
+        resetPasswordMutation.mutate(
+            {
+                phone_number: phoneNumber,
+                expected_role: 'driver',
+                reset_token: resetToken,
+                new_password: password,
+                confirm_password: confirmPassword,
+            },
+            {
+                onSuccess: () => {
+                    navigation.reset({
+                        index: 0,
+                        routes: [{ name: 'Login' }],
+                    });
+                },
+                onError: (err: any) => {
+                    setError(err.response?.data?.message || 'somethingWentWrong');
+                },
+            }
+        );
     };
 
     return {
         password,
         confirmPassword,
         error,
-        isLoading,
+        isLoading: resetPasswordMutation.isPending,
         handlePasswordChange,
         handleConfirmPasswordChange,
         handleUpdatePassword,

@@ -1,0 +1,394 @@
+src/
+├── assets
+│   ├── fonts
+│   │   ├── Lora-Bold.ttf
+│   │   ├── Lora-Regular.ttf
+│   │   └── Lora-SemiBold.ttf
+│   ├── images
+│   │   ├── comfort.png
+│   │   ├── economy.png
+│   │   ├── logo.png
+│   │   ├── logoWithName.png
+│   │   └── xl.png
+│   └── svg
+│       ├── arrows
+│       │   ├── arrow.svg
+│       │   ├── arrowLeft.svg
+│       │   ├── arrowUp.svg
+│       │   └── dropdownArrow.svg
+│       ├── common
+│       │   ├── camera.svg
+│       │   ├── check.svg
+│       │   ├── edit.svg
+│       │   ├── history.svg
+│       │   ├── home.svg
+│       │   ├── info.svg
+│       │   ├── menu.svg
+│       │   ├── myLocation.svg
+│       │   ├── notifications.svg
+│       │   ├── password.svg
+│       │   ├── pin.svg
+│       │   ├── ride.svg
+│       │   ├── schedule.svg
+│       │   ├── search.svg
+│       │   ├── star.svg
+│       │   ├── trash.svg
+│       │   ├── visibilityOff.svg
+│       │   ├── visibilityOn.svg
+│       │   └── work.svg
+│       ├── contact
+│       │   ├── call.svg
+│       │   ├── chat.svg
+│       │   ├── emergencyContact.svg
+│       │   ├── mail.svg
+│       │   └── whatsapp.svg
+│       ├── home
+│       │   ├── ForYouStar.svg
+│       │   └── reserve.svg
+│       ├── payment
+│       │   ├── cash.svg
+│       │   ├── creditcard.svg
+│       │   └── price.svg
+│       ├── profile
+│       │   ├── help.svg
+│       │   ├── logout.svg
+│       │   ├── privacy.svg
+│       │   ├── profile.svg
+│       │   ├── safety.svg
+│       │   └── settings.svg
+│       └── ride
+│           └── filters.svg
+├── core
+│   ├── i18n
+│   │   ├── constants.ts
+│   │   ├── index.ts
+│   │   ├── locales
+│   │   │   ├── activities
+│   │   │   │   ├── ar.json
+│   │   │   │   └── en.json
+│   │   │   ├── auth
+│   │   │   │   ├── ar.json
+│   │   │   │   └── en.json
+│   │   │   ├── common
+│   │   │   │   ├── ar.json
+│   │   │   │   └── en.json
+│   │   │   ├── home
+│   │   │   │   ├── ar.json
+│   │   │   │   └── en.json
+│   │   │   ├── index.ts
+│   │   │   ├── navigation
+│   │   │   │   ├── ar.json
+│   │   │   │   └── en.json
+│   │   │   ├── notifications
+│   │   │   │   ├── ar.json
+│   │   │   │   └── en.json
+│   │   │   ├── profile
+│   │   │   │   ├── ar.json
+│   │   │   │   └── en.json
+│   │   │   └── ride
+│   │   │       ├── confirmRide
+│   │   │       │   ├── ar.json
+│   │   │       │   └── en.json
+│   │   │       ├── driverFound
+│   │   │       │   ├── ar.json
+│   │   │       │   └── en.json
+│   │   │       ├── driverHere
+│   │   │       │   ├── ar.json
+│   │   │       │   └── en.json
+│   │   │       ├── review
+│   │   │       │   ├── ar.json
+│   │   │       │   └── en.json
+│   │   │       ├── rideDetails
+│   │   │       │   ├── ar.json
+│   │   │       │   └── en.json
+│   │   │       └── selectRide
+│   │   │           ├── ar.json
+│   │   │           └── en.json
+│   │   ├── resources.ts
+│   │   ├── services
+│   │   │   └── LanguageService.ts
+│   │   ├── types.ts
+│   │   └── utils
+│   │       └── isRTL.ts
+│   ├── network
+│   │   ├── apiClient.ts
+│   │   └── endpoints.ts
+│   ├── realtime
+│   │   ├── socketClient.ts
+│   │   └── socketManager.ts
+│   ├── storage
+│   │   ├── asyncStorage.adapter.ts
+│   │   ├── index.ts
+│   │   ├── mmkv.adapter.ts
+│   │   ├── secureStorage.adapter.ts
+│   │   ├── storage.adapter.ts
+│   │   ├── storage.keys.ts
+│   │   ├── storage.service.ts
+│   │   └── storage.types.ts
+│   ├── store
+│   │   ├── authStore.ts
+│   │   ├── languageStore.ts
+│   │   └── themeStore.ts
+│   └── theme
+│       ├── ThemeProvider.tsx
+│       ├── colors
+│       │   ├── darkColors.ts
+│       │   ├── index.ts
+│       │   └── lightColors.ts
+│       ├── theme.types.ts
+│       ├── themes.ts
+│       ├── tokens
+│       │   ├── index.ts
+│       │   ├── radius.ts
+│       │   ├── shadows.ts
+│       │   ├── spacing.ts
+│       │   └── typography.ts
+│       └── useTheme.ts
+├── modules
+│   ├── activities
+│   │   ├── components
+│   │   │   ├── ActivityCard
+│   │   │   │   ├── ActivityCard.styles.ts
+│   │   │   │   ├── ActivityCard.tsx
+│   │   │   │   ├── ActivityCard.types.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── ActivityDetailsSheet.tsx
+│   │   │   ├── StatusTabs.tsx
+│   │   │   └── sheet
+│   │   │       ├── ActivityDetailsList.tsx
+│   │   │       ├── ActivityFooterActions.tsx
+│   │   │       ├── DetailRow.tsx
+│   │   │       └── SheetBackground.tsx
+│   │   ├── constants
+│   │   │   └── activitiesData.ts
+│   │   ├── hooks
+│   │   │   └── useActivitiesActions.tsx
+│   │   ├── screens
+│   │   │   └── ActivitiesScreen.tsx
+│   │   ├── styles
+│   │   │   ├── activities.styles.ts
+│   │   │   └── activityDetails.styles.ts
+│   │   ├── types
+│   │   │   └── activities.types.ts
+│   │   └── viewmodels
+│   │       └── useActivitiesViewModel.ts
+│   ├── auth
+│   │   ├── components
+│   │   │   ├── OTP
+│   │   │   │   ├── OtpInputFields.tsx
+│   │   │   │   └── ResendCode.tsx
+│   │   │   ├── login
+│   │   │   │   ├── LoginFooter.tsx
+│   │   │   │   ├── LoginForm.tsx
+│   │   │   │   ├── LoginPin.tsx
+│   │   │   │   └── PinShape.tsx
+│   │   │   ├── resetPassword
+│   │   │   │   └── ResetPasswordForm.tsx
+│   │   │   ├── shared
+│   │   │   │   ├── Button.tsx
+│   │   │   │   └── logo.tsx
+│   │   │   ├── signup
+│   │   │   │   ├── HaveAccount.tsx
+│   │   │   │   ├── PinGlow.tsx
+│   │   │   │   ├── PinShapeSkia.tsx
+│   │   │   │   ├── SignupCard.tsx
+│   │   │   │   ├── SignupFooter.tsx
+│   │   │   │   └── SignupForm.tsx
+│   │   │   └── splash
+│   │   │       ├── SplashLoader.tsx
+│   │   │       ├── SplashLogo.tsx
+│   │   │       ├── SplashRoad.tsx
+│   │   │       └── SplashText.tsx
+│   │   ├── constants
+│   │   ├── hooks
+│   │   │   ├── useAuthActions.ts
+│   │   │   ├── useResendCode.ts
+│   │   │   ├── useSplashAnimation.ts
+│   │   │   └── useSplashLayout.ts
+│   │   ├── repositories
+│   │   │   └── authRepository.ts
+│   │   ├── screens
+│   │   │   ├── ForgotPasswordScreen.tsx
+│   │   │   ├── LoginScreen.tsx
+│   │   │   ├── OtpScreen.tsx
+│   │   │   ├── ResetPasswordScreen.tsx
+│   │   │   ├── SignupScreen.tsx
+│   │   │   └── SplashScreen.tsx
+│   │   ├── services
+│   │   │   ├── authApi.ts
+│   │   │   └── dto
+│   │   │       └── auth.dto.ts
+│   │   ├── store
+│   │   ├── styles
+│   │   │   ├── OtpScreen.styles.ts
+│   │   │   ├── Splash.styles.ts
+│   │   │   ├── forgotPassword.styles.ts
+│   │   │   ├── login.styles.ts
+│   │   │   ├── resetPassword.styles.ts
+│   │   │   └── signup.styles.ts
+│   │   ├── types
+│   │   ├── utils
+│   │   │   └── SplashPathUtils.ts
+│   │   └── viewmodels
+│   │       ├── useActivateAccountViewModel.ts
+│   │       ├── useForgotPasswordViewModel.ts
+│   │       ├── useLoginViewModel.ts
+│   │       ├── useOtpViewModel.ts
+│   │       ├── useResetPasswordViewModel.ts
+│   │       └── useSplashViewModel.ts
+│   ├── constants
+│   ├── home
+│   │   ├── components
+│   │   │   ├── DestinationCard.tsx
+│   │   │   ├── HomeHeader.tsx
+│   │   │   ├── SectionHeader.tsx
+│   │   │   └── ServiceCard.tsx
+│   │   ├── constants
+│   │   │   └── homeData.ts
+│   │   ├── hooks
+│   │   │   └── useHomeActions.ts
+│   │   ├── screens
+│   │   │   └── HomeScreen.tsx
+│   │   ├── styles
+│   │   │   └── home.styles.ts
+│   │   ├── types
+│   │   │   └── home.types.ts
+│   │   └── viewmodels
+│   │       └── useHomeViewModel.ts
+│   ├── notifications
+│   │   ├── components
+│   │   │   └── NotificationCard.tsx
+│   │   ├── constants
+│   │   │   └── notificationsData.ts
+│   │   ├── repositories
+│   │   │   └── notificationRepository.ts
+│   │   ├── screens
+│   │   │   └── NotificationsScreen.tsx
+│   │   ├── services
+│   │   │   ├── dto
+│   │   │   │   └── notification.dto.ts
+│   │   │   └── notificationApi.ts
+│   │   ├── styles
+│   │   │   └── notifications.styles.ts
+│   │   ├── types
+│   │   │   └── notifications.types.ts
+│   │   ├── utils
+│   │   │   └── notificationIcon.tsx
+│   │   └── viewmodels
+│   │       └── useNotificationsViewModel.ts
+│   ├── profile
+│   │   ├── components
+│   │   │   ├── GridCard.tsx
+│   │   │   ├── GridSection.tsx
+│   │   │   ├── ListItem.tsx
+│   │   │   ├── ListSection.tsx
+│   │   │   ├── ProfileCard.tsx
+│   │   │   └── PromoBanner.tsx
+│   │   ├── constants
+│   │   │   └── profileData.ts
+│   │   ├── hooks
+│   │   │   └── useProfileActions.ts
+│   │   ├── screens
+│   │   │   └── ProfileScreen.tsx
+│   │   ├── styles
+│   │   │   └── profile.styles.ts
+│   │   ├── types
+│   │   │   └── profile.types.ts
+│   │   └── viewmodels
+│   │       └── useProfileViewModel.ts
+│   ├── review
+│   │   ├── components
+│   │   │   ├── RatingStars.tsx
+│   │   │   ├── ReviewActions.tsx
+│   │   │   ├── ReviewModal.tsx
+│   │   │   └── StarIcon.tsx
+│   │   ├── constants
+│   │   │   └── review.constants.ts
+│   │   ├── hooks
+│   │   │   └── useReview.ts
+│   │   ├── services
+│   │   │   └── review.service.ts
+│   │   ├── styles
+│   │   │   └── review.styles.ts
+│   │   └── types
+│   │       └── review.types.ts
+│   └── ride
+│       ├── components
+│       │   ├── DriverFoundScreen
+│       │   │   ├── CarDetailsCard.tsx
+│       │   │   ├── CommunicationActions.tsx
+│       │   │   ├── DriverAvatar.tsx
+│       │   │   ├── DriverStatus.tsx
+│       │   │   └── ProgressBar.tsx
+│       │   ├── ExtraDetailsScreen
+│       │   │   ├── RideActionFilters.tsx
+│       │   │   ├── TimePriceBox.tsx
+│       │   │   └── VehicleSelector.tsx
+│       │   ├── RideConfirmationScreen
+│       │   │   └── InfoBox.tsx
+│       │   ├── SelectRideScreen
+│       │   │   └── RideLocationInputs.tsx
+│       │   └── shared
+│       │       └── RideDropdown.tsx
+│       ├── constants
+│       │   ├── driverData.ts
+│       │   ├── vehicleData.ts
+│       │   └── vehicleImages.ts
+│       ├── hooks
+│       │   └── useLocationPermission.ts
+│       ├── screens
+│       │   ├── DriverFoundScreen.tsx
+│       │   ├── ExtraDetailsScreen.tsx
+│       │   ├── RideConfirmationScreen.tsx
+│       │   └── SelectRideScreen.tsx
+│       ├── store
+│       │   └── useRideStore.ts
+│       ├── styles
+│       │   ├── DriverFound.styles.ts
+│       │   ├── confirmRide.styles.ts
+│       │   ├── extraDetails.styles.ts
+│       │   ├── selectRide.styles.ts
+│       │   └── shared.styles.ts
+│       ├── types
+│       │   └── ride.types.ts
+│       ├── utils
+│       │   └── selectRideValidation.ts
+│       └── viewmodels
+│           ├── useConfirmRideViewModel.ts
+│           ├── useDriverHereViewModel.ts
+│           ├── useRideDetailsViewModel.ts
+│           └── useSelectRideViewModel.ts
+├── navigation
+│   ├── RootNavigator.tsx
+│   ├── auth
+│   │   ├── AuthStack.tsx
+│   │   └── authTypes.ts
+│   ├── deepLinkingConfig.ts
+│   ├── main
+│   │   ├── MainTabs.tsx
+│   │   ├── activity
+│   │   │   ├── ActivityStack.tsx
+│   │   │   └── activityTypes.ts
+│   │   ├── home
+│   │   │   ├── HomeStack.tsx
+│   │   │   └── homeTypes.ts
+│   │   ├── mainTypes.ts
+│   │   └── profile
+│   │       ├── ProfileStack.tsx
+│   │       └── profileTypes.ts
+│   └── rootTypes.ts
+├── shared
+│   ├── components
+│   │   ├── ActionButton.tsx
+│   │   ├── Header.tsx
+│   │   ├── Input.tsx
+│   │   ├── LinearBg.tsx
+│   │   ├── SearchBar.tsx
+│   │   ├── SubHeader.tsx
+│   │   └── ride
+│   │       └── BottomSheetCard.tsx
+│   └── styles
+│       ├── SubHeader.styles.ts
+│       └── input.styles.ts
+└── types
+    └── svg.d.ts

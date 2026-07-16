@@ -6,6 +6,7 @@ export type RootStackParamList = {
   Splash: undefined;
   AuthStack: NavigatorScreenParams<AuthStackParamList>;
   MainTabs: NavigatorScreenParams<MainTabsParamList>;
+  Notifications: undefined;
 };
 
 export const navigationRef = createNavigationContainerRef<RootStackParamList>();

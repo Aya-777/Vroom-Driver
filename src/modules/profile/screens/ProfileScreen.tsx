@@ -15,16 +15,18 @@ import LogoutIcon from '../../../assets/svg/profile/logout.svg'
 import LinearBg from '../../../shared/components/LinearBg';
 import { useTranslation } from 'react-i18next';
 import ActionButton from '../../../shared/components/ActionButton';
+import Header from '../../../shared/components/Header';
+import { navigate } from '../../../navigation/rootTypes';
 
 
 export default function ProfileScreen() {
 
-  const { gridItems, listItems} = useProfileViewModel();
+  const { gridItems, listItems } = useProfileViewModel();
   const { logout } = useProfileActions();
-  
+
   const { colors } = useTheme();
   const styles = createStyles(colors);
-  const {t} = useTranslation(['profile','common']);
+  const { t } = useTranslation(['profile', 'common']);
 
   return (
     <LinearBg
@@ -33,6 +35,11 @@ export default function ProfileScreen() {
       end={{ x: 0, y: 1 }}
       style={styles.container}
     >
+      <Header title={t('welcome')}
+        onNotificationPress={() =>
+          navigate('Notifications')}
+      />
+
       <View style={styles.container}>
         <ScrollView
           contentContainerStyle={styles.scrollContent}
@@ -49,7 +56,7 @@ export default function ProfileScreen() {
           <ActionButton
             onPress={logout}
             title={t('logout')}
-            icon={<LogoutIcon fill={'red'}/>}
+            icon={<LogoutIcon fill={colors.error} />}
             style={styles.logoutButton}
             textStyle={styles.logoutText}
           />

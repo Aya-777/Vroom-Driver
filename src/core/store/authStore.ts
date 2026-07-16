@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
-import { storageAdapter } from '../storage/storage.adapter';
+import { storageAdapter } from '../../core/storage/storage.adapter';
 
 interface AuthState {
   isLoggedIn: boolean;

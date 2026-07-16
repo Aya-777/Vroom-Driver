@@ -85,6 +85,7 @@ const createStyles = (colors: any) =>
     header: {
       height: 64,
       paddingHorizontal: Spacing.lg,
+      margin:Spacing.smm,
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',

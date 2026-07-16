@@ -62,13 +62,11 @@ export default function Header({
 const createStyles = (colors: any) =>
   StyleSheet.create({
     container: {
-      paddingTop: Spacing.xl,
-      backgroundColor: colors.surface,
-      ...Shadows.small,
+      marginTop: Spacing.xl,
     },
 
     header: {
-      height: 30,
+      height: 42,
       flexDirection: 'row',
       alignItems: 'stretch',
       paddingHorizontal: Spacing.lg,
@@ -86,9 +84,10 @@ const createStyles = (colors: any) =>
 
     title: {
       flex: 1,
-      textAlign: 'left',
+      textAlign: 'center',
       ...Typography.h2,
       color: colors.textSecondary,
       letterSpacing: 1,
+      paddingHorizontal: Spacing.lg,
     },
   });
