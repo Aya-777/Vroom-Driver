@@ -1,0 +1,11 @@
+{
+  "tripStarted": "Your trip has started!",
+  "preTripSummary": "Pre-trip Summary",
+  "estimated": "Estimated",
+  "baseFare": "Base Fare",
+  "distance": "Distance",
+  "addTip": "Add a tip?",
+  "potentialDelay": "Potential Delay",
+  "subtotal": "Subtotal",
+  "finalPriceDisclaimer": "Final price may vary based on actual route and traffic conditions."
+}

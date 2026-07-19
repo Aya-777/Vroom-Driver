@@ -15,8 +15,12 @@ import {
   confirmRideAr,
   driverFoundEn,
   driverFoundAr,
-  driverHereEn,
-  driverHereAr,
+  takeRideAr,
+  takeRideEn,
+  driverArrivedEn,
+  driverArrivedAr,
+  tripEndedEn,
+  tripEndedAr,
   reviewEn,
   reviewAr,
   commonEn,
@@ -25,8 +29,9 @@ import {
   activitiesAr,
   notificationsEn,
   notificationsAr,
-} from './locales/index'
-
+  sideBarEn,
+  sideBarAr,
+} from './locales/index';
 
 export const resources = {
   en: {
@@ -35,14 +40,17 @@ export const resources = {
     selectRide: selectRideEn,
     rideDetails: rideDetailsEn,
     confirmRide: confirmRideEn,
-    driverHere: driverHereEn,
     driverFound: driverFoundEn,
+    takeRide: takeRideEn,
+    driverArrived: driverArrivedEn,
+    tripEnded: tripEndedEn,
     review: reviewEn,
     navigation: navEn,
     profile: profileEn,
     common: commonEn,
     activities: activitiesEn,
     notifications: notificationsEn,
+    sidebar: sideBarEn,
   },
 
   ar: {
@@ -51,13 +59,16 @@ export const resources = {
     selectRide: selectRideAr,
     rideDetails: rideDetailsAr,
     confirmRide: confirmRideAr,
-    driverHere: driverHereAr,
     driverFound: driverFoundAr,
+    takeRide: takeRideAr,
+    driverArrived: driverArrivedAr,
+    tripEnded: tripEndedAr,
     review: reviewAr,
     navigation: navAr,
     profile: profileAr,
     common: commonAr,
     activities: activitiesAr,
     notifications: notificationsAr,
+    sidebar: sideBarAr,
   },
 };

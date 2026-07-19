@@ -1,0 +1,11 @@
+{
+  "tripEnded": {
+    "title": "انتهت رحلتك!",
+    "subtitle": "شكراً لركوبك معنا",
+    "confirmPayment": "تأكيد الدفع",
+    "payment": {
+      "addTip": "إضافة إكرامية؟",
+      "delay": "التأخير"
+    }
+  }
+}

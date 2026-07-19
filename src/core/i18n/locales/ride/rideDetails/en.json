@@ -2,21 +2,6 @@
   "time": "Time",
   "estimated" : "Estimated",
   "filters": "Filters",
-  
-  "acceptAnimals": "Accept animals", 
-  "bigLuggage": "Big luggage",
-  "childSeat": "Child seat",
-  
-  "payment":{
-    "cash": "Cash",
-    "wallet": "Wallet"
-  },
 
-  "selectVehicle": "Select vehicle",
-  
-  "economy": "Economy",
-  "comfort": "Comfort",
-  "luxury": "Luxury",
-  "xl": "XL"
-
+  "selectVehicle": "Select vehicle"
 }

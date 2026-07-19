@@ -1,0 +1,9 @@
+{
+  "myTrips": "My Trips",
+  "savedPlaces": "Saved Places",
+  "wallet": "Wallet",
+  "settings": "Settings",
+  "help": "Help",
+  "about": "About",
+  "version": "VROOM v{{version}}"
+}

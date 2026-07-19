@@ -1,0 +1,11 @@
+{
+  "tripEnded": {
+    "title": "Your trip has ended!",
+    "subtitle": "Thank you for riding with us",
+    "confirmPayment": "Confirm Payment",
+    "payment": {
+      "addTip": "Add a tip?",
+      "delay": "Delay"
+    }
+  }
+}

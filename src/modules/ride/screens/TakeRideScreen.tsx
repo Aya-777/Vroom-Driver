@@ -14,7 +14,7 @@ import TripEndedModal from '../components/TripEndedModal/TripEndedModal';
 export default function TakeRideScreen() {
   const { colors } = useTheme();
   const styles = createStyles(colors);
-  const { t } = useTranslation(['rideStarted', 'common']);
+  const { t } = useTranslation(['takeRide', 'common']);
 
   const vm = useTakeRideViewModel();
 

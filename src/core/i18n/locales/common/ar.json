@@ -2,28 +2,48 @@
   "save": "حفظ",
   "cancel": "إلغاء",
   "continue": "متابعة",
-  "back": "العودة",
+  "back": "رجوع",
   "confirm": "تأكيد",
   "next": "التالي",
-  "submit" : "إرسال",
+  "submit": "إرسال",
   "maybeLater": "ربما لاحقاً",
-  
+
   "now": "الآن",
   "later": "لاحقاً",
-  "schedule": "احجز",
+  "schedule": "جدولة",
+  "date": "التاريخ",
 
-  "savedPlaces": "الاماكن المحفوظة",
+  "savedPlaces": "الأماكن المحفوظة",
 
+  "trackYourTrip": "تتبع رحلتك",
   "ride": "رحلة",
 
-  "pickupRequired" : "عنوان الانطلاق مطلوب",
-  "destinationRequired" : "عنوان الوجهة مطلوب",
-  "sameInputs": "الوجهة لا يمكن ان تكون منطبقة على الانطلاق",
+  "filters": {
+    "acceptAnimals": "قبول الحيوانات الأليفة",
+    "bigLuggage": "أمتعة كبيرة",
+    "childSeat": "مقعد أطفال",
+    "airConditioner": "مكيف هواء",
+    "noSmoking": "ممنوع التدخين"
+  },
 
-  
-  "phoneNumberStart": "رقم الهاتف يجب ان يبدأ ب09",
-  "passwordLength": "كلمة السر يجب ان تكون على الاقل 8 حروف",
-  "usernameLength": "الاسم يجب ان يكون على الاقل 2 حرف"
+  "carType": {
+    "economy": "اقتصادية",
+    "comfort": "مريحة",
+    "luxury": "فاخرة",
+    "xl": "كبيرة (XL)"
+  },
 
+  "payment": {
+    "estimated" : "السعر المقدر",
+    "cash": "نقداً",
+    "wallet": "المحفظة"
+  },
 
+  "pickupRequired": "موقع الانطلاق مطلوب",
+  "destinationRequired": "موقع الوجهة مطلوب",
+  "sameInputs": "لا يمكن أن تكون الوجهة هي نفسها موقع الانطلاق",
+
+  "phoneNumberStart": "يجب أن يبدأ رقم الهاتف بـ 09",
+  "passwordLength": "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل",
+  "usernameLength": "يجب أن يتكون اسم المستخدم من حرفين على الأقل"
 }

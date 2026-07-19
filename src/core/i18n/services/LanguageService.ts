@@ -11,26 +11,20 @@ export class LanguageService {
   static async changeLanguage(
     language: SupportedLanguage,
   ) {
-    await i18n.changeLanguage(language);
-
     await AsyncStorage.setItem(
       STORAGE_KEY,
       language,
     );
 
-    const isRTL = language === 'ar'; // Adjust based on your Arabic locale code
-    if (I18nManager.isRTL !== isRTL) {
-      I18nManager.allowRTL(isRTL);
-      I18nManager.forceRTL(isRTL);
-      
-      // IMPORTANT: Trigger a restart so the app layout flips
-      if (Platform.OS === 'ios') {
-        NativeModules.DevSettings.reload();
-      } else {
-        // For Android/Production, you may need a custom restart module
-        // or standard RN reload if in development
-        NativeModules.DevSettings.reload(); 
-      }
+    await i18n.changeLanguage(language);
+
+    const shouldBeRTL = language === 'ar';
+
+    if (I18nManager.isRTL !== shouldBeRTL) {
+      I18nManager.allowRTL(shouldBeRTL);
+      I18nManager.forceRTL(shouldBeRTL);
+
+      NativeModules.DevSettings.reload();
     }
   }
 
@@ -61,8 +55,6 @@ export class LanguageService {
       if (I18nManager.isRTL !== isRTL) {
         I18nManager.allowRTL(isRTL);
         I18nManager.forceRTL(isRTL);
-        // Note: If you call this before the app fully mounts, 
-        // you might not need a reload here.
       }
     } catch (error) {
       console.log(

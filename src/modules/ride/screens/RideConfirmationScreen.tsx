@@ -24,6 +24,8 @@ export default function RideConfirmationScreen() {
 
   const snapPoints = useMemo(() => ['30%', '70%'], []);
 
+  console.log(vm.rideData);
+
   return (
     <View style={styles.container}>
       <StatusBar
@@ -65,14 +67,16 @@ export default function RideConfirmationScreen() {
               icon={<CarIcon width={16} height={16} fill={colors.primary} />}
               title={t('selectedCar')}
               value={
-                vm.rideData.vehicleType ? t(vm.rideData.vehicleType) : 'N/A'
+                vm.rideData.vehicleType
+                  ? t(`common:carType.${vm.rideData.vehicleType}`)
+                  : 'N/A'
               }
             />
 
             <InfoBox
               icon={<CashIcon width={16} height={16} fill={colors.primary} />}
               title={t('payment')}
-              value={vm.rideData.payment ? t(vm.rideData.payment) : 'N/A'}
+              value={vm.rideData.payment ? t(`common:payment.${vm.rideData.payment}`) : 'N/A'}
             />
           </View>
 

@@ -11,13 +11,13 @@ export const TripSummaryGrid = () => {
   const styles = createStyles(colors);
   const vm = useTakeRideViewModel();
 
-  const { t } = useTranslation(['rideStarted', 'common']);
+  const { t } = useTranslation(['takeRide', 'common']);
 
   return (
     <View style={styles.gridContainer}>
       {/* Left Column */}
       <View style={styles.column}>
-        {[t('common:estimated'), t('baseFare'), t('distance')].map(label => (
+        {[t('common:estimatedTime'), t('baseFare'), t('distance')].map(label => (
           <View key={label} style={styles.metricCard}>
             <Text style={styles.metricLabel}>{label}</Text>
             <Text style={styles.metricValue}>...</Text>

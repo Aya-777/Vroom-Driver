@@ -1,6 +1,5 @@
 {
-  "trackYourTrip" : "تتبع رحلتك",
   "driverArrived" : "السائق وصل إلى موقعك.",
-  "pin" : "أدخل رمز الPIN .من فضلك",
+  "enterPin" : "أدخل رمز الPIN من فضلك",
   "carDetails" : "تفاصيل السيارة"
 }
