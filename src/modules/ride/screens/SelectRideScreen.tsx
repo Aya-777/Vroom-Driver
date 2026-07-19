@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { View, StatusBar, Alert } from 'react-native';
 import { useTheme } from '../../../core/theme/useTheme';
-import BottomSheetCard from '../../../shared/components/ride/BottomSheetCard';
+import {BaseBottomSheet} from '../../../shared/components/BaseBottomSheet';
 import Header from '../../../shared/components/SubHeader';
 import RideDropdown from '../components/shared/RideDropdown';
 import RideLocationInputs from '../components/SelectRideScreen/RideLocationInputs';
@@ -15,15 +15,16 @@ import StarIcon from '../../../assets/svg/common/star.svg';
 import ArrowRight from '../../../assets/svg/arrows/arrow.svg';
 import { useTranslation } from 'react-i18next';
 
-function showAlert(title: string, msg: string) {
-  Alert.alert(title, msg);
-}
 
 export default function SelectRideScreen() {
   const { colors, mode } = useTheme();
   const styles = createStyles(colors);
   const { t } = useTranslation(['selectRide', 'common']);
-
+  
+  const showAlert = useCallback((title: string, msg: string) => {
+      Alert.alert(title, msg);
+    }, []);
+  
   const {
     isNowDropdownOpen,
     isForMeDropdownOpen,
@@ -61,6 +62,8 @@ export default function SelectRideScreen() {
     }
   };
 
+  const snapPoints = useMemo(() => ['30%', '70%'], []);
+
   return (
     <View style={styles.container}>
       <StatusBar
@@ -71,7 +74,10 @@ export default function SelectRideScreen() {
 
       <Header title={t('common:ride')} onBackPress={handleBackPress} />
 
-      <BottomSheetCard>
+      <BaseBottomSheet
+        isVisible={true}
+        index={1}
+        snapPoints={snapPoints}>
         <View style={styles.dropdownRow}>
           <RideDropdown
             icon={<ScheduleIcon fill={colors.primary} />}
@@ -129,7 +135,7 @@ export default function SelectRideScreen() {
           title={t('common:next')}
           icon={<ArrowRight fill={colors.background} />}
         />
-      </BottomSheetCard>
+      </BaseBottomSheet>
     </View>
   );
 }

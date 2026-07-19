@@ -8,3 +8,7 @@ export type MainTabsParamList = {
   ActivityTab: NavigatorScreenParams<ActivityStackParamList>;
   ProfileTab: NavigatorScreenParams<ProfileStackParamList>;
 };
+
+export type MainDrawerParamList = {
+  MainTabs: NavigatorScreenParams<MainTabsParamList>;
+};

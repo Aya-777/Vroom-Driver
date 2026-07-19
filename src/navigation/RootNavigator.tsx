@@ -4,11 +4,12 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { navigationRef, RootStackParamList } from './rootTypes';
 
 import { useAuthLoggedIn } from '../core/store/authStore';
-import MainTabs from './main/MainTabs';
+import MainDrawer from './main/MainDrawer';
 import AuthStack from './auth/AuthStack';
 import SplashScreen from '../modules/auth/screens/SplashScreen';
 import { deepLinkingConfig } from './deepLinkingConfig';
 import NotificationsScreen from '../modules/notifications/screens/NotificationsScreen';
+import { isRTL } from '../core/i18n/utils/isRTL';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -20,6 +21,7 @@ export default function RootNavigator() {
     <NavigationContainer
       linking={deepLinkingConfig}
       ref={navigationRef}
+      direction = {isRTL() ? 'rtl' : 'ltr'}
     >
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         {!isSplashComplete ? (
@@ -34,8 +36,8 @@ export default function RootNavigator() {
         ) : isLoggedIn ? (
           <Stack.Group>
             <Stack.Screen
-              name="MainTabs"
-              component={MainTabs}
+              name="Main"
+              component={MainDrawer}
             />
             <Stack.Screen
               name="Notifications"

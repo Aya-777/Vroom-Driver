@@ -1,10 +1,10 @@
 import React from 'react';
 import { View } from 'react-native';
 import type { ThemeColors } from '../../../../core/theme/theme.types';
-import type { DriverFoundStyles } from '../../styles/DriverFound.styles';
+import type { createStyles } from '../../styles/driver.styles';
 
 type ProgressBarProps = {
-  styles: DriverFoundStyles;
+  styles: ReturnType<typeof createStyles>;
   colors: ThemeColors;
 };
 

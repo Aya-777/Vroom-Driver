@@ -4,7 +4,7 @@ import { Radius, Shadows, Spacing, Typography } from "../../core/theme/tokens";
 export const createStyles = (colors: any) =>
   StyleSheet.create({
     container: {
-      paddingTop: Platform.OS === 'ios' ? Spacing.xl : (StatusBar.currentHeight || 0) + Spacing.xl,
+      paddingTop: Platform.OS === 'ios' ? Spacing.xs : Spacing.md,
       paddingBottom: Spacing.sm,
       backgroundColor: colors.backgroundSoft,
       ...Shadows.medium,

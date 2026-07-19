@@ -8,6 +8,8 @@ export type HomeStackParamList = {
   ConfirmRide: undefined;
   
   DriverFound: { driverId: string };
+  TakeRide: { driverId: string };
+  DriverArrived: { driverId: string };
 };
 
 export type HomeStackScreenProps<T extends keyof HomeStackParamList> = 

@@ -5,7 +5,7 @@ import { MainTabsParamList } from './main/mainTypes';
 export type RootStackParamList = {
   Splash: undefined;
   AuthStack: NavigatorScreenParams<AuthStackParamList>;
-  MainTabs: NavigatorScreenParams<MainTabsParamList>;
+  Main: NavigatorScreenParams<MainTabsParamList>;
   Notifications: undefined;
 };
 

@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Image } from 'react-native';
-import type { DriverFoundStyles } from '../../styles/DriverFound.styles';
+import type { createStyles } from '../../styles/driver.styles';
 
 type DriverAvatarProps = {
   uri: string;
-  styles: DriverFoundStyles;
+  styles: ReturnType<typeof createStyles>;
 };
 
 export default function DriverAvatar({ uri, styles }: DriverAvatarProps) {

@@ -1,14 +1,14 @@
 import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import type { ThemeColors } from '../../../../core/theme/theme.types';
-import type { DriverFoundStyles } from '../../styles/DriverFound.styles';
+import type { createStyles } from '../../styles/driver.styles';
 
 import PhoneNumberIcon from '../../../../assets/svg/contact/call.svg';
 import MessageIcon from '../../../../assets/svg/contact/chat.svg';
 import WhatsAppIcon from '../../../../assets/svg/contact/whatsapp.svg';
 
 type CommunicationActionsProps = {
-  styles: DriverFoundStyles;
+  styles: ReturnType<typeof createStyles>;
   colors: ThemeColors;
 };
 

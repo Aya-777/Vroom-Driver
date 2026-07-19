@@ -2,13 +2,13 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import type { Driver } from '../../types/ride.types';
 import type { ThemeColors } from '../../../../core/theme/theme.types';
-import type { DriverFoundStyles } from '../../styles/DriverFound.styles';
+import type { createStyles } from '../../styles/driver.styles';
 import CarIcon from '../../../../assets/svg/common/ride.svg';
 import { useTranslation } from 'react-i18next';
 
 type CarDetailsCardProps = {
   driver: Driver;
-  styles: DriverFoundStyles;
+  styles: ReturnType<typeof createStyles>;
   colors: ThemeColors;
 };
 

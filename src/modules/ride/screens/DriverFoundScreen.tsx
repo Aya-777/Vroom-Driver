@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { View, StatusBar } from 'react-native';
 import { useTheme } from '../../../core/theme/useTheme';
-import BottomSheetCard from '../../../shared/components/ride/BottomSheetCard';
+import {BaseBottomSheet} from '../../../shared/components/BaseBottomSheet';
 import Header from '../../../shared/components/SubHeader';
-import { useDriverHereViewModel } from '../viewmodels/useDriverHereViewModel';
-import { createStyles } from '../styles/DriverFound.styles';
+import { useDriverFoundViewModel } from '../viewmodels/useDriverFoundViewModel';
+import { createStyles } from '../styles/driver.styles';
 import DriverStatus from '../components/DriverFoundScreen/DriverStatus';
 import DriverAvatar from '../components/DriverFoundScreen/DriverAvatar';
 import CommunicationActions from '../components/DriverFoundScreen/CommunicationActions';
@@ -17,26 +17,32 @@ export default function DriverFoundScreen() {
   const styles = createStyles(colors);
   const {t} = useTranslation(['driverFound', 'common']);
 
-  const { driver, handleBackPress } = useDriverHereViewModel();
+  const { driver, handleBackPress } = useDriverFoundViewModel();
+
+  const snapPoints = useMemo(() => ['30%', '70%'], []);
 
   return (
     <View style={styles.contentContainer}>
       <StatusBar translucent backgroundColor="transparent" />
-      <Header title={t('trackYourTrip')} onBackPress={handleBackPress} />
+      <Header title={t('common:trackYourTrip')} onBackPress={handleBackPress} />
 
-      <BottomSheetCard>
-        <DriverStatus text={driver.statusMessage} styles={styles} />
+      <BaseBottomSheet
+        isVisible={true}
+        snapPoints={snapPoints}
+        index={1}
+      >
+        <DriverStatus text={t(driver.onTheWayMessage)} styles={styles} />
 
         <DriverAvatar uri={driver.avatar} styles={styles} />
 
-        <DriverStatus text={driver.name} styles={styles} />
+        <DriverStatus text={t(driver.name)} styles={styles} />
 
         <CommunicationActions styles={styles} colors={colors} />
 
         <ProgressBar styles={styles} colors={colors} />
 
         <CarDetailsCard driver={driver} styles={styles} colors={colors} />
-      </BottomSheetCard>
+      </BaseBottomSheet>
     </View>
   );
 }

@@ -30,6 +30,7 @@ export default function HomeScreen() {
   const {
     services,
     recentDestinations,
+    openSidebar,
   } = useHomeViewModel();
 
   const {
@@ -51,6 +52,7 @@ export default function HomeScreen() {
       <View style={styles.container}>
 
         <HeaderTopAppBar
+          onMenuPress={openSidebar}
           onNotificationPress={() =>
             navigate('Notifications')
           } />

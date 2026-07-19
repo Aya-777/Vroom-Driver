@@ -17,4 +17,5 @@ export const darkColors= {
 
   error : '#b40000',
   success : '#4eb609',
+  note: '#FFB800',
 };

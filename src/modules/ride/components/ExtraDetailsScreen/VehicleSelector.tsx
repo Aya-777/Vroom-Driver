@@ -3,6 +3,8 @@ import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { VEHICLE_DATA } from '../../constants/vehicleData';
 import { useTheme } from '../../../../core/theme/useTheme';
 import { createStyles } from '../../styles/extraDetails.styles';
+import { useTranslation } from 'react-i18next';
+
 
 type Props = {
   selected: string;
@@ -12,6 +14,7 @@ type Props = {
 export default function VehicleSelector({ selected, onSelect }: Props) {
   const { colors } = useTheme();
   const styles = createStyles(colors);
+  const {t} = useTranslation(['common']);
 
   return (
     <View style={styles.vehicleRow}>
@@ -27,7 +30,7 @@ export default function VehicleSelector({ selected, onSelect }: Props) {
             <Image source={v.image} style={styles.vehicleImage} />
 
             <Text style={[styles.vehicleText, active && styles.activeVehicleText]}>
-              {v.type_name}
+              {t(`carType.${v.id}`)}
             </Text>
           </TouchableOpacity>
         );

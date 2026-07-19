@@ -1,10 +1,10 @@
 import React from 'react';
 import { Text } from 'react-native';
-import type { DriverFoundStyles } from '../../styles/DriverFound.styles';
+import type { createStyles } from '../../styles/driver.styles';
 
 type DriverStatusProps = {
   text: string;
-  styles: DriverFoundStyles;
+  styles: ReturnType<typeof createStyles>;
 };
 
 export default function DriverStatus({ text, styles }: DriverStatusProps) {

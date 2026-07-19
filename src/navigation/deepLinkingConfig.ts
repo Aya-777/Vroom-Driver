@@ -17,13 +17,14 @@ export const deepLinkingConfig: LinkingOptions<RootStackParamList> = {
         },
       },
       // Protected Routes layout
-      MainTabs: {
+      Main: {
         screens: {
           HomeTab: {
             screens: {
               HomeMain: 'home',
               RideDetails: 'ride/:rideId',    // like: vroomrider://ride/123-abc
               DriverFound: 'tracking/:rideId/:driverId',
+              DriverArrived: 'tracking/:rideId/:driverId/arrived',
             },
           },
           ProfileTab: {

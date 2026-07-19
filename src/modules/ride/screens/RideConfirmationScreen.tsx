@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import { View, StatusBar, TextInput } from 'react-native';
 import { useTheme } from '../../../core/theme/useTheme';
-import BottomSheetCard from '../../../shared/components/ride/BottomSheetCard';
+import { BaseBottomSheet } from '../../../shared/components/BaseBottomSheet';
 import Header from '../../../shared/components/SubHeader';
 import InfoBox from '../components/RideConfirmationScreen/InfoBox';
 import ActionButton from '../../../shared/components/ActionButton';
@@ -22,6 +22,8 @@ export default function RideConfirmationScreen() {
 
   const vm = useConfirmRideViewModel();
 
+  const snapPoints = useMemo(() => ['30%', '70%'], []);
+
   return (
     <View style={styles.container}>
       <StatusBar
@@ -35,59 +37,69 @@ export default function RideConfirmationScreen() {
         onBackPress={vm.handleBackPress}
       />
 
-      <BottomSheetCard>
-        <View style={styles.grid}>
-          <InfoBox
-            icon={<ClockIcon width={16} height={16} fill={colors.primary} />}
-            title={t('time')}
-            value={vm.rideData.timeEstimate || 'N/A'}
-          />
+      <BaseBottomSheet
+        isVisible={true}
+        snapPoints={snapPoints}
+        index={1}
+      >
+          <View style={styles.grid}>
+            <InfoBox
+              icon={<ClockIcon width={16} height={16} fill={colors.primary} />}
+              title={t('time')}
+              value={vm.rideData.timeEstimate || 'N/A'}
+            />
 
-          <InfoBox
-            icon={
-              <EstimatedPriceIcon
-                width={16}
-                height={16}
-                fill={colors.primary}
-              />
-            }
-            title={t('totalPrice')}
-            value={vm.rideData.price || 'N/A'}
-          />
+            <InfoBox
+              icon={
+                <EstimatedPriceIcon
+                  width={16}
+                  height={16}
+                  fill={colors.primary}
+                />
+              }
+              title={t('totalPrice')}
+              value={vm.rideData.price || 'N/A'}
+            />
 
-          <InfoBox
-            icon={<CarIcon width={16} height={16} fill={colors.primary} />}
-            title={t('selectedCar')}
-            value={vm.rideData.vehicleType ? t(vm.rideData.vehicleType) : 'N/A'}
-          />
+            <InfoBox
+              icon={<CarIcon width={16} height={16} fill={colors.primary} />}
+              title={t('selectedCar')}
+              value={
+                vm.rideData.vehicleType ? t(vm.rideData.vehicleType) : 'N/A'
+              }
+            />
 
-          <InfoBox
-            icon={<CashIcon width={16} height={16} fill={colors.primary} />}
-            title={t('payment')}
-            value={vm.rideData.payment ? t(vm.rideData.payment) : 'N/A'}
-          />
-        </View>
-
-        <View style={styles.contactSection}>
-          <View style={styles.contactHeader}>
-            <PhoneNumberIcon width={18} height={18} fill={colors.textPrimary} />
-
-            <TextInput
-              style={styles.input}
-              placeholder="+963 9** *** ***"
-              placeholderTextColor={colors.textMuted}
+            <InfoBox
+              icon={<CashIcon width={16} height={16} fill={colors.primary} />}
+              title={t('payment')}
+              value={vm.rideData.payment ? t(vm.rideData.payment) : 'N/A'}
             />
           </View>
-        </View>
 
-        <ActionButton
-          onPress={() => vm.handleFindDriver()}
-          title={t('findaDriver')}
-          icon={<SearchIcon fill={colors.background} />}
-          textStyle={styles.buttonText}
-          style={styles.button}
-        />
-      </BottomSheetCard>
+          <View style={styles.contactSection}>
+            <View style={styles.contactHeader}>
+              <PhoneNumberIcon
+                width={18}
+                height={18}
+                fill={colors.textPrimary}
+              />
+
+              <TextInput
+                style={styles.input}
+                placeholder="+963 9** *** ***"
+                placeholderTextColor={colors.textMuted}
+              />
+            </View>
+          </View>
+
+          <ActionButton
+            onPress={() => vm.handleFindDriver()}
+            title={t('findaDriver')}
+            icon={<SearchIcon fill={colors.background} />}
+            textStyle={styles.buttonText}
+            style={styles.button}
+          />
+      </BaseBottomSheet>
     </View>
   );
 }

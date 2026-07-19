@@ -4,6 +4,39 @@ import { ThemeColors } from '../../../core/theme/theme.types';
 
 export const createStyles = (colors: ThemeColors) =>
   StyleSheet.create({
+    driverInfoRow: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginVertical: 15,
+    },
+    driverName: {
+      color: colors.textPrimary,
+      ...Typography.h3,
+      marginBottom: 8,
+      marginTop: 10,
+      marginStart: 10,
+    },
+    pinContainer: {
+      alignItems: 'center',
+      marginBottom: 20,
+    },
+    pinCodeBox: {
+      flexDirection: 'row',
+      backgroundColor: colors.surface,
+      paddingHorizontal: 20,
+      paddingVertical: 8,
+      borderRadius: 20,
+      marginTop: 10,
+    },
+    pinSubMessage:{
+      ...Typography.caption,
+      color: colors.textPrimary,
+    },
+    pinDigit: {
+      marginHorizontal: 8,
+      ...Typography.semiBoldBody,
+      color: colors.textSecondary,
+    },
     contentContainer: {
       flex: 1,
       backgroundColor: colors.background,
@@ -12,7 +45,7 @@ export const createStyles = (colors: ThemeColors) =>
     statusText: {
       ...Typography.semiBoldBody,
       textAlign: 'center',
-      marginBottom: Spacing.lg,
+      marginBottom: Spacing.md,
       color: colors.textPrimary,
     },
 
@@ -23,6 +56,7 @@ export const createStyles = (colors: ThemeColors) =>
       overflow: 'hidden',
       alignSelf: 'center',
       marginBottom: Spacing.sm,
+      marginEnd: 20,
       backgroundColor: colors.primary,
       ...Shadows.small,
     },
@@ -112,7 +146,4 @@ export const createStyles = (colors: ThemeColors) =>
       opacity: 0.8,
       color: colors.surface,
     },
-
   });
-
-export type DriverFoundStyles = ReturnType<typeof createStyles>;

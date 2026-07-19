@@ -326,7 +326,7 @@ src/
 │       │   │   └── VehicleSelector.tsx
 │       │   ├── RideConfirmationScreen
 │       │   │   └── InfoBox.tsx
-│       │   ├── SelectRideScreen
+│       │   ├── TakeRideScreen
 │       │   │   └── RideLocationInputs.tsx
 │       │   └── shared
 │       │       └── RideDropdown.tsx
@@ -340,7 +340,7 @@ src/
 │       │   ├── DriverFoundScreen.tsx
 │       │   ├── ExtraDetailsScreen.tsx
 │       │   ├── RideConfirmationScreen.tsx
-│       │   └── SelectRideScreen.tsx
+│       │   └── TakeRideScreen.tsx
 │       ├── store
 │       │   └── useRideStore.ts
 │       ├── styles

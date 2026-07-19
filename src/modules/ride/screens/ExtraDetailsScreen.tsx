@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import { View, StatusBar } from 'react-native';
 import { useTheme } from '../../../core/theme/useTheme';
 import Header from '../../../shared/components/SubHeader';
-import BottomSheetCard from '../../../shared/components/ride/BottomSheetCard';
+import { BaseBottomSheet } from '../../../shared/components/BaseBottomSheet';
 import VehicleSelector from '../components/ExtraDetailsScreen/VehicleSelector';
 import { createStyles } from '../styles/shared.styles';
 import ActionButton from '../../../shared/components/ActionButton';
@@ -18,8 +18,8 @@ export default function ExtraDetailsScreen() {
   const { t } = useTranslation(['rideDetails', 'common']);
 
   const paymentItems = [
-    { key: 'cash', label: t('rideDetails:payment.cash') },
-    { key: 'wallet', label: t('rideDetails:payment.wallet') },
+    { key: 'cash', label: t('common:payment.cash') },
+    { key: 'wallet', label: t('common:payment.wallet') },
   ];
 
   const {
@@ -40,6 +40,8 @@ export default function ExtraDetailsScreen() {
     handleNextPress();
   };
 
+  const snapPoints = useMemo(() => ['30%', '70%'], []);
+
   return (
     <View style={styles.container}>
       <StatusBar
@@ -50,32 +52,36 @@ export default function ExtraDetailsScreen() {
 
       <Header title={t('common:ride')} onBackPress={handleBackPress} />
 
-      <BottomSheetCard>
-        <TimePriceBox time={timeEstimate} price={priceEstimate} />
+      <BaseBottomSheet
+        isVisible={true}
+        snapPoints={snapPoints}
+        index={1}
+      >
+          <TimePriceBox time={timeEstimate} price={priceEstimate} />
 
-        <RideActionFilters
-          selectedValue={t(`rideDetails:payment.${selectedPayment}`)}
-          isOpen={isDropdownOpen}
-          styles={styles}
-          onToggleDropdown={() => setIsDropdownOpen(!isDropdownOpen)}
-          onSelectPayment={item => {
-            setSelectedPayment(item);
-            setIsDropdownOpen(false);
-          }}
-          onFiltersPress={() => console.log('Filters Pressed from Screen')}
-          paymentItems={paymentItems}
-        />
-        <VehicleSelector
-          selected={selectedVehicle}
-          onSelect={setSelectedVehicle}
-        />
+          <RideActionFilters
+            selectedValue={t(`common:payment.${selectedPayment}`)}
+            isOpen={isDropdownOpen}
+            styles={styles}
+            onToggleDropdown={() => setIsDropdownOpen(!isDropdownOpen)}
+            onSelectPayment={item => {
+              setSelectedPayment(item);
+              setIsDropdownOpen(false);
+            }}
+            onFiltersPress={() => console.log('Filters Pressed from Screen')}
+            paymentItems={paymentItems}
+          />
+          <VehicleSelector
+            selected={selectedVehicle}
+            onSelect={setSelectedVehicle}
+          />
 
-        <ActionButton
-          onPress={onNextPress}
-          title={t('common:next')}
-          icon={<ArrowRight fill={colors.background} />}
-        />
-      </BottomSheetCard>
+          <ActionButton
+            onPress={onNextPress}
+            title={t('common:next')}
+            icon={<ArrowRight fill={colors.background} />}
+          />
+      </BaseBottomSheet>
     </View>
   );
 }
