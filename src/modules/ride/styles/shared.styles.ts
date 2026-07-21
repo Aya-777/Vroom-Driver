@@ -110,7 +110,7 @@ export const createStyles = (colors: ThemeColors) =>
 
     actionButton: {
       flexDirection: 'row',
-      width: '50%',
+      width: '100%',
       paddingVertical: 14,
       borderRadius: 25,
       justifyContent: 'center',

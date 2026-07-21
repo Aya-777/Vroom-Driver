@@ -12,15 +12,13 @@ import { WelcomeAndLiveStatus } from '../components/Welcome&LiveStatus';
 import { useHomeActions } from '../hooks/useHomeActions';
 import { useTranslation } from 'react-i18next';
 import { navigate } from '../../../navigation/rootTypes';
-import { Text, Switch } from 'react-native';
 import { DashboardStatsGrid } from '../components/DashboardStatsGrid';
-import History from '../../../assets/svg/common/history.svg';
-import Support from '../../../assets/svg/home/ForYouStar.svg';
 import { ServiceStatusBox } from '../components/ServiceStatusBox';
 import { ImprovementBanner } from '../components/ImprovementBanner';
 import { WeeklyTrendsFlowChart } from '../components/WeeklyTrendsFlowChart';
 import { RideWeeklyStatus } from '../components/RideWeeklyStatus';
 import { RideMonthlyStatus } from '../components/RideMonthlyStatus';
+import { ActionButtons } from '../components/ActionButtons';
 
 export default function HomeScreen() {
   const { colors } = useTheme();
@@ -52,34 +50,28 @@ export default function HomeScreen() {
           <WelcomeAndLiveStatus dashboardData={dashboardData} />
 
           {/* Service Status Toggle Box */}
-          <ServiceStatusBox dashboardData={dashboardData} toggleOnlineStatus={toggleOnlineStatus}/>
+          <ServiceStatusBox
+            dashboardData={dashboardData}
+            toggleOnlineStatus={toggleOnlineStatus}
+          />
 
           {/* Stats Grid */}
           <DashboardStatsGrid stats={dashboardData.stats} />
 
           {/* Improvement Banner */}
-          <ImprovementBanner dashboardData={dashboardData}/>
-          
+          <ImprovementBanner dashboardData={dashboardData} />
+
           {/* Weekly Trends Section */}
-          <WeeklyTrendsFlowChart dashboardData={dashboardData}/>
+          <WeeklyTrendsFlowChart dashboardData={dashboardData} />
 
           {/* Ride Weekly Status Section */}
-          <RideWeeklyStatus dashboardData={dashboardData}/>
+          <RideWeeklyStatus dashboardData={dashboardData} />
 
           {/* Ride Monthly Status Section */}
-          <RideMonthlyStatus dashboardData={dashboardData}/>
+          <RideMonthlyStatus dashboardData={dashboardData} />
 
           {/* Quick Actions (History & Support) */}
-          <View style={styles.actionButtonsRow}>
-            <View style={styles.actionButton}>
-              <History width={18} height={18} color={colors.textPrimary} />
-              <Text style={styles.actionButtonText}>History</Text>
-            </View>
-            <View style={styles.actionButton}>
-              <Support width={18} height={18} color={colors.textPrimary} />
-              <Text style={styles.actionButtonText}>Support</Text>
-            </View>
-          </View>
+          <ActionButtons onHistoryPress={() => {}} onSupportPress={() => {}} />
         </ScrollView>
       </View>
     </LinearBg>

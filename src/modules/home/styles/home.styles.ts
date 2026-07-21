@@ -206,16 +206,11 @@ export const createStyles = (colors: ThemeColors) =>
       justifyContent: 'space-between',
       marginBottom: Spacing.xl,
     },
-    actionButton: {
+    actionButtonContainer: {
       flex: 1,
       flexDirection: 'row',
-      backgroundColor: colors.surface,
-      borderRadius: Radius.sm + 6,
-      paddingVertical: Spacing.smd,
       justifyContent: 'center',
       alignItems: 'center',
-      borderWidth: 1,
-      borderColor: colors.border,
       marginHorizontal: Spacing.xs,
     },
     actionButtonText: {
