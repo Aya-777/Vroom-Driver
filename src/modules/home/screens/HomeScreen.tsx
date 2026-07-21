@@ -17,6 +17,7 @@ import { DashboardStatsGrid } from '../components/DashboardStatsGrid';
 import History from '../../../assets/svg/common/history.svg';
 import Support from '../../../assets/svg/home/ForYouStar.svg';
 import Info from '../../../assets/svg/common/info.svg';
+import { ServiceStatusBox } from '../components/ServiceStatusBox';
 
 export default function HomeScreen() {
   const { colors } = useTheme();
@@ -45,23 +46,11 @@ export default function HomeScreen() {
           showsVerticalScrollIndicator={false}
         >
           {/* Welcome & Live Status */}
-          
           <WelcomeAndLiveStatus dashboardData={dashboardData} />
 
           {/* Service Status Toggle Box */}
-          <View style={styles.statusBox}>
-            <View>
-              <Text style={styles.serviceStatusTitle}>Service Status</Text>
-              <Text style={styles.serviceStatusSubtitle}>Ready for Trips</Text>
-            </View>
-            <Switch
-              value={dashboardData.isOnline}
-              onValueChange={toggleOnlineStatus}
-              trackColor={{ false: '#334155', true: '#38BDF8' }}
-              thumbColor={'#FFFFFF'}
-            />
-          </View>
-
+          <ServiceStatusBox dashboardData={dashboardData} toggleOnlineStatus={toggleOnlineStatus}/>
+          
           {/* Stats Grid */}
           <DashboardStatsGrid stats={dashboardData.stats} />
 
