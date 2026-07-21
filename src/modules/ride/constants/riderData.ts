@@ -1,4 +1,4 @@
-export const driverMock = {
+export const riderMock = {
   id: '1',
   name: 'Alex Driver',
   avatar:

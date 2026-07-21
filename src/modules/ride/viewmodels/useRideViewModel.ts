@@ -5,26 +5,17 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { HomeStackParamList } from '../../../navigation/main/home/homeTypes';
 
 export function useRideViewModel() {
-  const [rideState, setRideState] = useState(RideState.SELECT_RIDE);
+  const [rideState, setRideState] = useState(RideState.TAKE_RIDE);
   const navigation = useNavigation<NativeStackNavigationProp<HomeStackParamList>>();
 
-  const goToExtraDetails = () =>
-    setRideState(RideState.EXTRA_DETAILS);
-
-  const goToRideConfirmation = () =>
-    setRideState(RideState.CONFIRM_RIDE);
-
-  const goToDriverFound = () =>
-    setRideState(RideState.DRIVER_FOUND);
-
-  const goToDriverArrived = () =>
-    setRideState(RideState.DRIVER_ARRIVED);
+  const goToTripAccepted = () =>
+    setRideState(RideState.TRIP_STARTED);
 
   const goToTripStarted = () =>
     setRideState(RideState.TRIP_STARTED);
 
   const resetRide = () =>
-    setRideState(RideState.SELECT_RIDE);
+    setRideState(RideState.TAKE_RIDE);
   
   const handleBackPress = () => {
     navigation.goBack();
@@ -34,11 +25,8 @@ export function useRideViewModel() {
     rideState,
 
     handleBackPress,
-    goToExtraDetails,
-    goToRideConfirmation,
-    goToDriverFound,
-    goToDriverArrived,
     goToTripStarted,
+    goToTripAccepted,
     resetRide,
   };
 }

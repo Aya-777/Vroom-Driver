@@ -2,11 +2,10 @@ import React from 'react';
 import { View, StatusBar} from 'react-native';
 import Header from '../../../shared/components/SubHeader';
 import { useTheme } from '../../../core/theme/useTheme';
-import { createStyles } from '../styles/selectRide.styles';
+import { createStyles } from '../styles/trip.styles';
 import { useTranslation } from 'react-i18next';
 import { MapContainer } from '../components/shared/MapContainer';
 import {useRideViewModel} from '../viewmodels/useRideViewModel'
-import SelectRideSheet from '../components/SelectRideScreen/SelectRideSheet';
 import RideBottomSheet from '../components/RideScreen/RideBottomSheet';
 import { useNavigation } from '@react-navigation/native';
 import { HomeStackScreenProps } from '../../../navigation/main/home/homeTypes';
@@ -26,7 +25,6 @@ export default function RideScreen() {
       navigation.navigate('HomeScreen');
   };
 
-
   console.log(vm.rideState);
 
   return (
@@ -43,11 +41,7 @@ export default function RideScreen() {
 
       <RideBottomSheet
         rideState={vm.rideState}
-        onSelectRideNext={vm.goToExtraDetails}
-        onExtraDetailsNext={vm.goToRideConfirmation}
-        onRideConfirmed={vm.goToDriverFound}
-        onDriverFound={vm.goToDriverArrived}
-        onTripStarted={vm.goToTripStarted}
+        onTakeRide={vm.goToTripAccepted}
         onTripEnded={handleTripEnded}
     />
     </View>

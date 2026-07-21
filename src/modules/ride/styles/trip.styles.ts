@@ -4,7 +4,6 @@ import { Radius, Spacing, Typography } from '../../../core/theme/tokens';
 export const createStyles = (colors: any) => StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.background,
   },
   tripStartedMessage:{
     ...Typography.h3,
@@ -12,38 +11,8 @@ export const createStyles = (colors: any) => StyleSheet.create({
     textAlign: 'center',
     marginBottom: Spacing.mmd,
   },
-  // DriverInfoCard Styles
-  driverCard: {
-    backgroundColor: colors.surface,
-    padding: Spacing.md,
-    borderRadius: Radius.md,
-    borderWidth: 1,
-    borderColor: colors.border,
-    marginBottom: Spacing.mmd,
-  },
-  driverInfoContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
   avatar: {
     borderRadius: Radius.lg,
-  },
-  driverTextContainer: {
-    flex: 1,
-    marginLeft: Spacing.smm,
-  },
-  driverName: {
-    ...Typography.boldBody,
-    color: colors.textPrimary,
-  },
-  driverDetails: {
-    ...Typography.mediumCaption,
-    color: colors.textSecondary,
-  },
-  driverCar: {
-    ...Typography.mediumCaption,
-    color: colors.textSecondary,
-    marginTop: Spacing.xxs,
   },
   callButton: {
     padding: Spacing.smm,
