@@ -20,6 +20,7 @@ import { ServiceStatusBox } from '../components/ServiceStatusBox';
 import { ImprovementBanner } from '../components/ImprovementBanner';
 import { WeeklyTrendsFlowChart } from '../components/WeeklyTrendsFlowChart';
 import { RideWeeklyStatus } from '../components/RideWeeklyStatus';
+import { RideMonthlyStatus } from '../components/RideMonthlyStatus';
 
 export default function HomeScreen() {
   const { colors } = useTheme();
@@ -66,31 +67,7 @@ export default function HomeScreen() {
           <RideWeeklyStatus dashboardData={dashboardData}/>
 
           {/* Ride Monthly Status Section */}
-          <View style={styles.monthlySection}>
-            <Text style={[styles.sectionTitle, { marginBottom: 12 }]}>
-              RIDE MONTHLY STATUS
-            </Text>
-            <View style={styles.monthlyContainer}>
-              <View style={styles.monthlyItem}>
-                <Text style={[styles.cardValue, { fontSize: 16 }]}>
-                  {dashboardData.metrics.monthlyCompleted}%
-                </Text>
-                <Text style={styles.monthlyText}>Completed</Text>
-              </View>
-              <View style={styles.monthlyItem}>
-                <Text style={[styles.cardValue, { fontSize: 16 }]}>
-                  {dashboardData.metrics.monthlyCancelled}%
-                </Text>
-                <Text style={styles.monthlyText}>Cancelled</Text>
-              </View>
-              <View style={styles.monthlyItem}>
-                <Text style={[styles.cardValue, { fontSize: 16 }]}>
-                  {dashboardData.metrics.monthlyCancelledByRider}%
-                </Text>
-                <Text style={styles.monthlyText}>Cancelled By Rider</Text>
-              </View>
-            </View>
-          </View>
+          <RideMonthlyStatus dashboardData={dashboardData}/>
 
           {/* Quick Actions (History & Support) */}
           <View style={styles.actionButtonsRow}>
