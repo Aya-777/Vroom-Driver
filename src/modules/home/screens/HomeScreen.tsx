@@ -19,14 +19,15 @@ import { WeeklyTrendsFlowChart } from '../components/WeeklyTrendsFlowChart';
 import { RideWeeklyStatus } from '../components/RideWeeklyStatus';
 import { RideMonthlyStatus } from '../components/RideMonthlyStatus';
 import { ActionButtons } from '../components/ActionButtons';
+import { DrawerContentComponentProps } from '@react-navigation/drawer';
 
-export default function HomeScreen() {
+export default function HomeScreen({navigation,
+}: DrawerContentComponentProps) {
   const { colors } = useTheme();
   const styles = createStyles(colors);
   const { t } = useTranslation(['home']);
-  const { dashboardData, toggleOnlineStatus } = useHomeViewModel();
+  const { dashboardData, toggleOnlineStatus, openSidebar, onHistoryPress } = useHomeViewModel(navigation);
 
-  const { openSidebar } = useHomeViewModel();
 
   return (
     <LinearBg
@@ -71,7 +72,7 @@ export default function HomeScreen() {
           <RideMonthlyStatus dashboardData={dashboardData} />
 
           {/* Quick Actions (History & Support) */}
-          <ActionButtons onHistoryPress={() => {}} onSupportPress={() => {}} />
+          <ActionButtons onHistoryPress={onHistoryPress} onSupportPress={() => {}} />
         </ScrollView>
       </View>
     </LinearBg>
