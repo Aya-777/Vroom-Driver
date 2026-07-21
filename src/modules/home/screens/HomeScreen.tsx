@@ -16,8 +16,8 @@ import { Text, Switch } from 'react-native';
 import { DashboardStatsGrid } from '../components/DashboardStatsGrid';
 import History from '../../../assets/svg/common/history.svg';
 import Support from '../../../assets/svg/home/ForYouStar.svg';
-import Info from '../../../assets/svg/common/info.svg';
 import { ServiceStatusBox } from '../components/ServiceStatusBox';
+import { ImprovementBanner } from '../components/ImprovementBanner';
 
 export default function HomeScreen() {
   const { colors } = useTheme();
@@ -50,18 +50,13 @@ export default function HomeScreen() {
 
           {/* Service Status Toggle Box */}
           <ServiceStatusBox dashboardData={dashboardData} toggleOnlineStatus={toggleOnlineStatus}/>
-          
+
           {/* Stats Grid */}
           <DashboardStatsGrid stats={dashboardData.stats} />
 
           {/* Improvement Banner */}
-          <View style={styles.bannerCard}>
-            <Info width={20} height={20} fill="#38BDF8" />
-            <Text style={styles.bannerText}>
-              {dashboardData.completionMessage}
-            </Text>
-          </View>
-
+          <ImprovementBanner dashboardData={dashboardData}/>
+          
           {/* Weekly Trends Section */}
           <View style={styles.sectionCard}>
             <View style={styles.sectionHeaderRow}>
