@@ -16,7 +16,6 @@ export default function RideBottomSheet({
 }: Props) {
   const renderSheet = () => {
     switch (rideState) {
-
       case RideState.TAKE_RIDE:
         return <TakeRideSheet onTakeTrip={onTakeRide} />;
 

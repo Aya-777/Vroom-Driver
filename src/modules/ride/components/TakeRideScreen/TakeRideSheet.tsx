@@ -25,7 +25,6 @@ export default function TakeRideSheet({ onTakeTrip }: Props) {
 
   return (
     <BaseBottomSheet isVisible={true} snapPoints={snapPoints} index={1}>
-      <RiderStatus text={t(rider.onTheWayMessage)} styles={styles} />
 
       <RiderAvatar uri={rider.avatar} styles={styles} />
 

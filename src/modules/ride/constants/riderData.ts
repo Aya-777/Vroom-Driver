@@ -1,6 +1,6 @@
 export const riderMock = {
   id: '1',
-  name: 'Alex Driver',
+  name: 'Alex Rider',
   avatar:
     'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
   onTheWayMessage: "driverFound:driverOnHisWay",

@@ -6,21 +6,19 @@ import { HomeStackParamList } from '../../../navigation/main/home/homeTypes';
 
 export function useRideViewModel() {
   const [rideState, setRideState] = useState(RideState.TAKE_RIDE);
-  const navigation = useNavigation<NativeStackNavigationProp<HomeStackParamList>>();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<HomeStackParamList>>();
 
-  const goToTripAccepted = () =>
-    setRideState(RideState.TRIP_STARTED);
+  const goToTripAccepted = () => setRideState(RideState.TRIP_STARTED);
 
-  const goToTripStarted = () =>
-    setRideState(RideState.TRIP_STARTED);
+  const goToTripStarted = () => setRideState(RideState.TRIP_STARTED);
 
-  const resetRide = () =>
-    setRideState(RideState.TAKE_RIDE);
-  
+  const resetRide = () => setRideState(RideState.TAKE_RIDE);
+
   const handleBackPress = () => {
     navigation.goBack();
   };
-  
+
   return {
     rideState,
 
