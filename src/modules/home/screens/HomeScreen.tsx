@@ -8,6 +8,7 @@ import { createStyles } from '../styles/home.styles';
 import { useHomeViewModel } from '../viewmodels/useHomeViewModel';
 
 import Header from '../components/HomeHeader';
+import { WelcomeAndLiveStatus } from '../components/Welcome&LiveStatus';
 import { useHomeActions } from '../hooks/useHomeActions';
 import { useTranslation } from 'react-i18next';
 import { navigate } from '../../../navigation/rootTypes';
@@ -44,17 +45,8 @@ export default function HomeScreen() {
           showsVerticalScrollIndicator={false}
         >
           {/* Welcome & Live Status */}
-          <View style={styles.headerWrapper}>
-            <Text style={styles.greetingText}>
-              Good Evening, {dashboardData.driverName}
-            </Text>
-            <View style={styles.statusIndicatorRow}>
-              <View style={styles.onlineDot} />
-              <Text style={styles.statusText}>
-                Online: {dashboardData.onlineTime}
-              </Text>
-            </View>
-          </View>
+          
+          <WelcomeAndLiveStatus dashboardData={dashboardData} />
 
           {/* Service Status Toggle Box */}
           <View style={styles.statusBox}>

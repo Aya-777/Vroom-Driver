@@ -3,20 +3,10 @@ import { View, Text } from 'react-native';
 import { DriverStats } from '../types/home.types';
 import { useTheme } from '../../../core/theme/useTheme';
 import { createStyles } from '../styles/home.styles';
-// import { 
-//   Car, 
-//   DollarSign, 
-//   Calendar, 
-//   TrendingUp, 
-//   Star, 
-//   Clock 
-// } from 'lucide-react-native'; // Or your custom Svg icons from assets/svg/common
 import Car from '../../../assets/svg/common/ride.svg';
 import Calendar from '../../../assets/svg/common/history.svg';
 import Clock from '../../../assets/svg/common/history.svg';
 import Star from '../../../assets/svg/common/star.svg';
-
-
 
 interface DashboardStatsGridProps {
   stats: DriverStats;
