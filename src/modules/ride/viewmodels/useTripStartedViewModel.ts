@@ -1,11 +1,6 @@
-import { useEffect, useState } from 'react';
-import { useNavigation } from '@react-navigation/native';
-import { HomeStackScreenProps } from '../../../navigation/main/home/homeTypes';
-import { useTranslation } from 'react-i18next';
+import { useState } from 'react';
 
-export function useTakeRideViewModel() {
-  const navigation =
-    useNavigation<HomeStackScreenProps<'SelectRide'>['navigation']>();
+export function useTripStartedViewModel() {
 
   // --- UI State ---
 
@@ -16,16 +11,16 @@ export function useTakeRideViewModel() {
 
   // Actions
   const handleBackPress = () => {
-    navigation.goBack();
   };
 
   const handleSubmit = () => {
-    navigation.navigate('HomeScreen');
+    // navigation.navigate('HomeScreen');
   };
 
   const handleCloseReviewModal = () => {
-    navigation.navigate('HomeScreen');
+    // navigation.navigate('HomeScreen');
   };
+
 
   return {
     // State
@@ -43,6 +38,6 @@ export function useTakeRideViewModel() {
     // Actions
     handleBackPress,
     handleSubmit,
-    handleCloseReviewModal,
+    handleCloseReviewModal
   };
 }

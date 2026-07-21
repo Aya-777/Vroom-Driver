@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useNavigation } from '@react-navigation/native';
 import { HomeStackScreenProps } from '../../../navigation/main/home/homeTypes';
 import { RideValidationErrors } from '../types/ride.types';
 import { validateRideInputs } from '../utils/selectRideValidation';
@@ -7,7 +6,6 @@ import { useRideStore } from '../store/useRideStore';
 import { useTranslation } from 'react-i18next';
 
 export function useSelectRideViewModel(showAlert: (title: string, msg: string) => void) {
-  const navigation = useNavigation<HomeStackScreenProps<'SelectRide'>['navigation']>();
   const { setRideDetails } = useRideStore();
 
   // --- UI State ---
@@ -35,7 +33,7 @@ export function useSelectRideViewModel(showAlert: (title: string, msg: string) =
   };
 
   // Actions
-  const handleNextPress = () => {
+  const saveRideDetails = () => {
     if (!validate()) {
       showAlert('Missing Information', 'Please fill in both pickup and destination locations.');
       return;
@@ -49,11 +47,9 @@ export function useSelectRideViewModel(showAlert: (title: string, msg: string) =
       contactPhone: contactPhone
     });
 
-    navigation.navigate('RideDetails');
   };
 
   const handleBackPress = () => {
-    navigation.goBack();
   };
 
   return {
@@ -78,7 +74,7 @@ export function useSelectRideViewModel(showAlert: (title: string, msg: string) =
     
     // Actions
     validate,
-    handleNextPress,
+    saveRideDetails,
     handleBackPress,
   };
 }

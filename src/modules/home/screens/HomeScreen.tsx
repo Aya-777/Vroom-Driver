@@ -34,11 +34,11 @@ export default function HomeScreen() {
   } = useHomeViewModel();
 
   const {
-    navigateToSelectRide
+    navigateToRide
   } = useHomeActions();
 
   const serviceActions: Record<string, () => void> = {
-    '1': navigateToSelectRide,
+    '1': navigateToRide,
     // '2': navigateToReserve,
   };
 
