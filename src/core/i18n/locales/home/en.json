@@ -18,6 +18,21 @@
   "cancelled": "Cancelled",
   "cancelledByRider": "Cancelled By Rider",
 
+  "improvementBanner": "Your completion rate improved by 3% this week!",
+  "excellent": "Excellent",
+  "good": "Good",
+  "medium": "Medium",
+  "bad": "Bad",
+
+  "active": "Active",
+
+  "mon": "Mon",
+  "tue": "Tue",
+  "wed": "Wed",
+  "thu": "Thu",
+  "fri": "Fri",
+  "sat": "Sat",
+  "sun": "Sun",
 
   "history": "History",
   "support": "Support"

@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { useTheme } from '../../../core/theme/useTheme';
 import { createStyles } from '../styles/home.styles';
+import { useTranslation } from 'react-i18next';
 
 interface DashboardInfo {
   driverName?: string;
@@ -17,16 +18,17 @@ export const WelcomeAndLiveStatus: React.FC<DashboardDataProps> = ({
 }) => {
   const { colors } = useTheme();
   const styles = createStyles(colors);
+  const { t } = useTranslation(['home']);
 
   return (
     <View style={styles.headerWrapper}>
       <Text style={styles.greetingText}>
-        Good Evening, {dashboardData?.driverName}
+        {t('goodEvening')} {dashboardData?.driverName}
       </Text>
       <View style={styles.statusIndicatorRow}>
         <View style={styles.onlineDot} />
         <Text style={styles.statusText}>
-          Online: {dashboardData?.onlineTime}
+          {dashboardData?.onlineTime? t('online') : t('offline')} {dashboardData?.onlineTime}
         </Text>
       </View>
     </View>

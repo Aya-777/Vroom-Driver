@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { useTheme } from '../../../core/theme/useTheme';
 import { createStyles } from '../styles/home.styles';
+import { useTranslation } from 'react-i18next';
 
 interface DashboardInfo {
   metrics?: {
@@ -23,30 +24,31 @@ export const RideMonthlyStatus: React.FC<DashboardDataProps> = ({
 }) => {
   const { colors } = useTheme();
   const styles = createStyles(colors);
+  const { t } = useTranslation(['home']);
 
   return (
     <View style={styles.monthlySection}>
       <Text style={[styles.sectionTitle, { marginBottom: 12 }]}>
-        RIDE MONTHLY STATUS
+        {t('rideMonthlyStatus')}
       </Text>
       <View style={styles.monthlyContainer}>
         <View style={styles.monthlyItem}>
           <Text style={[styles.cardValue, { fontSize: 16 }]}>
             {dashboardData?.metrics?.monthlyCompleted}%
           </Text>
-          <Text style={styles.monthlyText}>Completed</Text>
+          <Text style={styles.monthlyText}>{t('completed')}</Text>
         </View>
         <View style={styles.monthlyItem}>
           <Text style={[styles.cardValue, { fontSize: 16 }]}>
             {dashboardData?.metrics?.monthlyCancelled}%
           </Text>
-          <Text style={styles.monthlyText}>Cancelled</Text>
+          <Text style={styles.monthlyText}>{t('cancelled')}</Text>
         </View>
         <View style={styles.monthlyItem}>
           <Text style={[styles.cardValue, { fontSize: 16 }]}>
             {dashboardData?.metrics?.monthlyCancelledByRider}%
           </Text>
-          <Text style={styles.monthlyText}>Cancelled By Rider</Text>
+          <Text style={styles.monthlyText}>{t('cancelledByRider')}</Text>
         </View>
       </View>
     </View>

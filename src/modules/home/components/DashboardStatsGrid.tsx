@@ -7,6 +7,7 @@ import Car from '../../../assets/svg/common/ride.svg';
 import Calendar from '../../../assets/svg/common/history.svg';
 import Clock from '../../../assets/svg/common/history.svg';
 import Star from '../../../assets/svg/common/star.svg';
+import { useTranslation } from 'react-i18next';
 
 interface DashboardStatsGridProps {
   stats: DriverStats;
@@ -15,6 +16,7 @@ interface DashboardStatsGridProps {
 export const DashboardStatsGrid: React.FC<DashboardStatsGridProps> = ({ stats }) => {
   const { colors } = useTheme();
   const styles = createStyles(colors);
+  const { t } = useTranslation(['home']);
 
   return (
     <>
@@ -26,7 +28,7 @@ export const DashboardStatsGrid: React.FC<DashboardStatsGridProps> = ({ stats })
             <Text style={styles.trendBadge}>{stats.totalTripsTrend}</Text>
           </View>
           <Text style={styles.cardValue}>{stats.totalTrips}</Text>
-          <Text style={styles.cardLabel}>Total Trips</Text>
+          <Text style={styles.cardLabel}>{t('totalTrips')}</Text>
         </View>
 
         <View style={styles.statsCard}>
@@ -34,7 +36,7 @@ export const DashboardStatsGrid: React.FC<DashboardStatsGridProps> = ({ stats })
             <Text style={styles.trendBadge}>{stats.dailyEarningsTrend}</Text>
           </View>
           <Text style={styles.cardValue}>{stats.dailyEarnings}</Text>
-          <Text style={styles.cardLabel}>Daily</Text>
+          <Text style={styles.cardLabel}>{t('daily')}</Text>
         </View>
       </View>
 
@@ -45,14 +47,14 @@ export const DashboardStatsGrid: React.FC<DashboardStatsGridProps> = ({ stats })
             <Calendar width={18} height={18} color={colors.textSecondary} />
           </View>
           <Text style={styles.cardValue}>{stats.weeklyEarnings}</Text>
-          <Text style={styles.cardLabel}>Weekly</Text>
+          <Text style={styles.cardLabel}>{t('weekly')}</Text>
         </View>
 
         <View style={styles.statsCard}>
           <View style={styles.cardHeaderRow}>
           </View>
           <Text style={styles.cardValue}>{stats.monthlyEarnings}</Text>
-          <Text style={styles.cardLabel}>Monthly</Text>
+          <Text style={styles.cardLabel}>{t('monthly')}</Text>
         </View>
       </View>
 
@@ -64,7 +66,7 @@ export const DashboardStatsGrid: React.FC<DashboardStatsGridProps> = ({ stats })
             <Text style={[styles.trendBadge, { color: '#38BDF8' }]}>{stats.ratingStatus}</Text>
           </View>
           <Text style={styles.cardValue}>{stats.avgRating}</Text>
-          <Text style={styles.cardLabel}>Avg. Rating</Text>
+          <Text style={styles.cardLabel}>{t('avgRating')}</Text>
         </View>
 
         <View style={styles.statsCard}>
@@ -73,7 +75,7 @@ export const DashboardStatsGrid: React.FC<DashboardStatsGridProps> = ({ stats })
             <Text style={[styles.trendBadge, { color: '#38BDF8' }]}>{stats.activeStatus}</Text>
           </View>
           <Text style={styles.cardValue}>{stats.todaysActive}</Text>
-          <Text style={styles.cardLabel}>Today's Active</Text>
+          <Text style={styles.cardLabel}>{t('todaysActive')}</Text>
         </View>
       </View>
     </>

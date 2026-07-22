@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { useTheme } from '../../../core/theme/useTheme';
 import { createStyles } from '../styles/home.styles';
+import { useTranslation } from 'react-i18next';
 
 interface DashboardInfo {
   metrics?: {
@@ -21,11 +22,12 @@ export const RideWeeklyStatus: React.FC<DashboardDataProps> = ({
 }) => {
   const { colors } = useTheme();
   const styles = createStyles(colors);
+  const { t } = useTranslation(['home']);
 
   return (
     <View style={styles.sectionCard}>
       <Text style={[styles.sectionTitle, { marginBottom: 16 }]}>
-        RIDE WEEKLY STATUS
+        {t('rideWeeklyStatus')}
       </Text>
       <View style={styles.metricRow}>
         {/* Circular representation can go here */}
@@ -38,7 +40,7 @@ export const RideWeeklyStatus: React.FC<DashboardDataProps> = ({
               <View
                 style={[styles.dotIndicator, { backgroundColor: '#38BDF8' }]}
               />
-              <Text style={styles.legendText}>Completed</Text>
+              <Text style={styles.legendText}>{t('completed')}</Text>
             </View>
             <Text style={styles.legendValue}>
               {dashboardData?.metrics?.completedPercentage}%
@@ -49,7 +51,7 @@ export const RideWeeklyStatus: React.FC<DashboardDataProps> = ({
               <View
                 style={[styles.dotIndicator, { backgroundColor: '#64748B' }]}
               />
-              <Text style={styles.legendText}>Cancelled</Text>
+              <Text style={styles.legendText}>{t('cancelled')}</Text>
             </View>
             <Text style={styles.legendValue}>
               {dashboardData?.metrics?.cancelledPercentage}%
@@ -60,7 +62,7 @@ export const RideWeeklyStatus: React.FC<DashboardDataProps> = ({
               <View
                 style={[styles.dotIndicator, { backgroundColor: '#475569' }]}
               />
-              <Text style={styles.legendText}>Cancelled By Rider</Text>
+              <Text style={styles.legendText}>{t('cancelledByRider')}</Text>
             </View>
             <Text style={styles.legendValue}>
               {dashboardData?.metrics?.cancelledByRiderPercentage}%

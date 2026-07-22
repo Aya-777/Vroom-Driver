@@ -6,6 +6,7 @@ import ActionButton from '../../../shared/components/ActionButton';
 
 import History from '../../../assets/svg/common/history.svg';
 import Support from '../../../assets/svg/home/ForYouStar.svg';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   onHistoryPress: () => void;
@@ -15,11 +16,12 @@ type Props = {
 export const ActionButtons = ({onHistoryPress, onSupportPress} : Props) => {
   const { colors } = useTheme();
   const styles = createStyles(colors);
+  const { t } = useTranslation(['home']);
 
   return (
     <View style={styles.actionButtonsRow}>
       <View style={styles.actionButtonContainer}>
-        <ActionButton title='History' 
+        <ActionButton title={t('history')}
         onPress={onHistoryPress} 
         icon={<History width={18} height={18} fill={colors.backgroundSoft} />}
         />
@@ -27,7 +29,7 @@ export const ActionButtons = ({onHistoryPress, onSupportPress} : Props) => {
 
 
       <View style={styles.actionButtonContainer}>
-        <ActionButton title='Support'
+        <ActionButton title={t('support')}
          onPress={onSupportPress} 
          icon={<Support width={18} height={18} fill={colors.backgroundSoft}/>}
          />
