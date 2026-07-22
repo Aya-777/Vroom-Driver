@@ -9,7 +9,6 @@ import { useHomeViewModel } from '../viewmodels/useHomeViewModel';
 
 import Header from '../components/HomeHeader';
 import { WelcomeAndLiveStatus } from '../components/Welcome&LiveStatus';
-import { useHomeActions } from '../hooks/useHomeActions';
 import { useTranslation } from 'react-i18next';
 import { navigate } from '../../../navigation/rootTypes';
 import { DashboardStatsGrid } from '../components/DashboardStatsGrid';

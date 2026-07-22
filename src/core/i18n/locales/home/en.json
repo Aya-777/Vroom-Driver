@@ -1,15 +1,25 @@
 {
-  "whereTo": "Where to?",
-  "forYou": "For you",
-  "recentDestinations": "Recent Destinations",
-  "seeAll": "See all",
-  
-  "services": {
-    "package": "Package",
-    "rent": "Rent",
-    "reserve": "Reserve"
-  },
-  
-  "office": "Office"
+  "goodEvening": "Good Evening, ",
+  "online": "Online: ",
+  "offline": "Offline: ",
+  "serviceStatus": "Service Status",
+  "readyForTrips": "Ready for Trips",
+  "totalTrips": "Total Trips",
+  "daily": "Daily",
+  "weekly": "Weekly",
+  "monthly": "Monthly",
+  "avgRating": "Avg. Rating",
+  "todaysActive": "Today's Active",
+  "weeklyTrends": "WEEKLY TRENDS",
+  "last7Days": "Last 7 Days",
+  "rideWeeklyStatus": "RIDE WEEKLY STATUS",
+  "rideMonthlyStatus": "RIDE MONTHLY STATUS",
+  "completed": "Completed",
+  "cancelled": "Cancelled",
+  "cancelledByRider": "Cancelled By Rider",
+
+
+  "history": "History",
+  "support": "Support"
   
 }

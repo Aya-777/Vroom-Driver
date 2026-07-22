@@ -1,14 +1,27 @@
 {
-  "whereTo": "إلى أين؟",
-  "forYou": "من أجلك",
-  "recentDestinations": "الوجهات الأخيرة",
-  "seeAll": "عرض الكل",
+  "goodEvening": "مساء الخير، ",
+  "online": "متصل: ",
+  "offline": "مغلق:",
+  "serviceStatus": "حالة الخدمة",
+  "readyForTrips": "جاهز للرحلات",
+ 
+  "totalTrips": "إجمالي الرحلات",
+  "daily": "يومي",
+  "weekly": "أسبوعي",
+  "monthly": "شهري",
+ 
+  "avgRating": "متوسط التقييم",
+  "todaysActive": "نشاط اليوم",
+ 
+  "weeklyTrends": "الاتجاهات الأسبوعية",
+  "last7Days": "آخر 7 أيام",
+ 
+  "rideWeeklyStatus": "حالة الرحلات الأسبوعية",
+  "rideMonthlyStatus": "حالة الرحلات الشهرية",
+  "completed": "مكتملة",
+  "cancelled": "ملغاة",
+  "cancelledByRider": "ملغاة من قبل الراكب",
 
-  "services":{
-    "package": "حزمة",
-    "rent": "استئجار",
-    "reserve": "احجز"
-  },
-
-  "office": "المكتب"  
+  "history": "السجل",
+  "support": "الدعم"
 }
