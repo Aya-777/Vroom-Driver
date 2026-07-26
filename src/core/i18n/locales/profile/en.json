@@ -1,11 +1,9 @@
 {
+  "welcome": "Welcome",
   "rideHistory": "Ride History",
   "notifications": "Notifications",
   "favoriteDrivers": "Favorite Drivers",
   "safety": "Safety",
-  "becomeaDriver": "Become a Driver",
-  "earnOnYourOwnSchedule": "Earn on your own schedule",
-  "learnMore": "Learn more",
   "settings": "Settings",
   "privacyAndSecurity": "Privacy and Security",
   "emergencyContact": "Emergency Contact",
@@ -14,5 +12,26 @@
   "aboutUs": "About Us",
   "contactUs": "Contact Us",
   "logout": "Logout",
-  "welcome": "Wlcome "
+  "carDetails": "Car Details",
+  "vehicleDetails": "Vehicle Details",
+  "vehicleType": "Vehicle Type",
+  "plateNumber": "Plate Number",
+  "color": "Color",
+  "sizeCapacity": "Size/Capacity",
+  "manufactureYear": "Manufacture Year",
+  "seatsCount": "Seats {{count}} People",
+  "frontView": "Front View",
+  "backView": "Back View",
+  "sideView": "Side View",
+  "interiorView": "Interior View",
+  "vehicleTypes": {
+    "ECONOMY": "Economy",
+    "COMFORT": "Comfort",
+    "XL": "XL"
+  },
+  "driverStatuses": {
+    "ONLINE": "Online",
+    "OFFLINE": "Offline",
+    "ON_TRIP": "On Trip"
+  }
 }

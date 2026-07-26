@@ -11,21 +11,25 @@ import InfoIcon from '../../../assets/svg/common/info.svg';
 import MailIcon from '../../../assets/svg/contact/mail.svg';
 import { useTranslation } from 'react-i18next';
 
-const {t} = useTranslation('profile');
+export const useProfileMenuItems = () => {
+  const { t } = useTranslation('profile');
 
-export const profileGridItems = [
-  { id: '1', title: t('rideHistory') , icon: HistoryIcon },
-  { id: '2', title:  t('notifications'), icon: NotificationsIcon },
-  { id: '3', title:  t('favoriteDrivers'), icon: StarIcon },
-  { id: '4', title:  t('safety'), icon: SafetyIcon },
-];
+  const gridItems = [
+    { id: '1', title: t('rideHistory'), icon: HistoryIcon },
+    { id: '2', title: t('notifications'), icon: NotificationsIcon },
+    { id: '3', title: t('favoriteDrivers'), icon: StarIcon },
+    { id: '4', title: t('safety'), icon: SafetyIcon },
+  ];
 
-export const profileListItems = [
-  { id: '1', title:  t('settings'), icon: SettingsIcon },
-  { id: '2', title: t('privacyAndSecurity'), icon: PrivacyIcon },
-  { id: '3', title: t('emergencyContact'), icon: EmergencyContactIcon },
-  { id: '4', title: t('help'), icon: HelpIcon },
-  { id: '5', title: t('savedLocations'), icon: StarIcon },
-  { id: '6', title: t('aboutUs'), icon: InfoIcon },
-  { id: '7', title: t('contactUs'), icon: MailIcon },
-];
+  const listItems = [
+    { id: '1', title: t('settings'), icon: SettingsIcon },
+    { id: '2', title: t('privacyAndSecurity'), icon: PrivacyIcon },
+    { id: '3', title: t('emergencyContact'), icon: EmergencyContactIcon },
+    { id: '4', title: t('help'), icon: HelpIcon },
+    { id: '5', title: t('savedLocations'), icon: StarIcon },
+    { id: '6', title: t('aboutUs'), icon: InfoIcon },
+    { id: '7', title: t('contactUs'), icon: MailIcon },
+  ];
+
+  return { gridItems, listItems };
+};

@@ -1,13 +1,9 @@
 {
+  "welcome": "مرحباً",
   "rideHistory": "سجل الرحلات",
   "notifications": "الإشعارات",
   "favoriteDrivers": "السائقون المفضلون",
   "safety": "الأمان",
-
-  "becomeaDriver": "كن سائقًا",
-  "earnOnYourOwnSchedule": "اكسب وفقاً لجدولك الخاص",
-  "learnMore": "تعرف على المزيد",
-  
   "settings": "الإعدادات",
   "privacyAndSecurity": "الخصوصية والأمان",
   "emergencyContact": "جهات الاتصال الطارئة",
@@ -16,6 +12,26 @@
   "aboutUs": "معلومات عنا",
   "contactUs": "تواصل معنا",
   "logout": "تسجيل الخروج",
-    "welcome": "مرحبا  "
-
+  "carDetails": "تفاصيل السيارة",
+  "vehicleDetails": "تفاصيل المركبة",
+  "vehicleType": "نوع المركبة",
+  "plateNumber": "رقم اللوحة",
+  "color": "اللون",
+  "sizeCapacity": "السعة/عدد المقاعد",
+  "manufactureYear": "سنة الصنع",
+  "seatsCount": "{{count}} مقاعد",
+  "frontView": "الواجهة الأمامية",
+  "backView": "الواجهة الخلفية",
+  "sideView": "المنظر الجانبي",
+  "interiorView": "المقصورة الداخلية",
+  "vehicleTypes": {
+    "ECONOMY": "اقتصادية",
+    "COMFORT": "مريحة",
+    "XL": "كبيرة"
+  },
+  "driverStatuses": {
+    "ONLINE": "متصل",
+    "OFFLINE": "غير متصل",
+    "ON_TRIP": "برحلة"
+  }
 }

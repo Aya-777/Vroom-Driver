@@ -39,3 +39,4 @@ const useAuthStoreInner = create<AuthState>()(
 export const useAuthLoggedIn = () => useAuthStoreInner((state) => state.isLoggedIn);
 export const useAuthToken = () => useAuthStoreInner((state) => state.token);
 export const useAuthActions = () => useAuthStoreInner((state) => state.actions);
+export const getAuthToken = () => useAuthStoreInner.getState().token;

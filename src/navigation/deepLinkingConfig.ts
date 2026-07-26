@@ -30,6 +30,7 @@ export const deepLinkingConfig: LinkingOptions<RootStackParamList> = {
           ProfileTab: {
             screens: {
               ProfileMain: 'profile',
+              VehicleDetails: 'profile/vehicle',
             },
           },
           ActivityTab: {
