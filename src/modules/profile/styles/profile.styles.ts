@@ -8,6 +8,7 @@ import {
 import { ThemeColors } from '../../../core/theme/theme.types';
 
 const { width } = Dimensions.get('window');
+const ICON_SIZE = 70;         
 
 export const createStyles = (colors: ThemeColors) =>
     StyleSheet.create({
@@ -20,6 +21,17 @@ export const createStyles = (colors: ThemeColors) =>
             paddingBottom: 150,
         },
 
+        vehicleCardImage: {
+            width: 90,
+            height: 60,
+            borderRadius: 10,
+        },
+
+        profileTopRow: {
+            flexDirection: 'row',
+            alignItems: 'center',
+        },
+
         profileCard: {
             backgroundColor: colors.primary + '70',
             borderRadius: Radius.md,
@@ -27,18 +39,30 @@ export const createStyles = (colors: ThemeColors) =>
             borderColor: colors.primary,
             padding: Spacing.mmd,
             paddingBottom: Spacing.lg,
-            flexDirection: 'row',
-            alignItems: 'center',
+            flexDirection: 'column',
             position: 'relative',
             margin: Spacing.mmd,
             ...Shadows.medium,
-            width:'90%'
+            width: '90%'
+        },
+
+        expandButton: {
+            position: 'absolute',
+            bottom: Spacing.sm,
+            right: Spacing.smm,
+            zIndex: 2,
+        },
+
+        expandedRow: {
+            flexDirection: 'row',
+            alignItems: 'center',
+            marginTop: Spacing.smm,
         },
 
         editButton: {
             position: 'absolute',
-            top: 8,
-            left: 10,
+            top: Spacing.sm,
+            left: Spacing.smm,
         },
 
         avatarContainer: {
@@ -71,7 +95,7 @@ export const createStyles = (colors: ThemeColors) =>
         },
 
         verticalDivider: {
-            width: 1,
+            width: 2,
             height: '80%',
             backgroundColor: colors.surface,
             marginHorizontal: Spacing.md,
@@ -84,7 +108,7 @@ export const createStyles = (colors: ThemeColors) =>
             width: 8,
             height: 8,
             borderRadius: Radius.full,
-            backgroundColor: colors.background,
+            backgroundColor: colors.primary,
         },
 
         profileInfo: {
@@ -92,7 +116,7 @@ export const createStyles = (colors: ThemeColors) =>
         },
 
         userName: {
-            color: colors.background,
+            color: colors.backgroundSoft,
             ...Typography.h2,
         },
 
@@ -102,10 +126,10 @@ export const createStyles = (colors: ThemeColors) =>
         },
 
         infoText: {
-            color: colors.background,
-            opacity: 0.9,
-            marginLeft: 4,
-            ...Typography.caption,
+            color: colors.backgroundSoft,
+            opacity: 1,
+            marginLeft: 5,
+            ...Typography.body,
         },
 
         gridSection: {
@@ -193,24 +217,6 @@ export const createStyles = (colors: ThemeColors) =>
             alignSelf: 'center',
         },
 
-        carBodyBottom: {
-            width: 74,
-            height: 22,
-            backgroundColor: colors.primary,
-            borderRadius: 6,
-            flexDirection: 'row',
-            justifyContent: 'space-around',
-            alignItems: 'flex-end',
-        },
-
-        carWheel: {
-            width: 10,
-            height: 10,
-            borderRadius: Radius.sm,
-            backgroundColor: colors.primary,
-            marginBottom: -3,
-        },
-
         listContainer: {
             paddingHorizontal: 14,
             marginBottom: 20,
@@ -253,5 +259,21 @@ export const createStyles = (colors: ThemeColors) =>
         logoutText: {
             color: colors.error,
             ...Typography.boldBody,
+        },
+        wrapper: {
+            height: ICON_SIZE,
+            justifyContent: 'center',
+        },
+        line: {
+            height: 1,
+            width: '100%',
+        },
+        iconWrapper: {
+            position: 'absolute',
+            left: 0,
+        },
+        icon: {
+            width: ICON_SIZE,
+            height: ICON_SIZE,
         },
     });

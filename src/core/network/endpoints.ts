@@ -11,4 +11,7 @@ export const ENDPOINTS = {
     ACTIVATE_ACCOUNT_VERIFY_OTP: '/api/v1/drivers/activate-account/verify-otp/',
     ACTIVATE_ACCOUNT_RESEND_OTP: '/api/v1/drivers/activate-account/resend-otp/',
   },
+  USERS: {
+    ME: '/api/v1/users/me/',
+  },
 } as const;
