@@ -1,7 +1,6 @@
 {
   "login": "تسجيل الدخول",
   "register": "إنشاء حساب",
-
   "phoneNumber": "رقم الهاتف",
   "password": "كلمة المرور",
   "firstName": "الاسم الأول",
@@ -9,27 +8,25 @@
   "confirmPassword": "تأكيد كلمة المرور",
   "byContinuing": "بالمتابعة، أنت توافق على",
   "terms": "شروط الاستخدام وسياسة الخصوصية",
-
   "forgotPassword?": "نسيت كلمة المرور؟",
   "dontHaveAccount": "ليس لديك حساب؟",
   "alreadyHaveAccount": "لديك حساب بالفعل؟ ",
   "signup": "تسجيل",
-
   "pleaseEnterPhone": "يرجى إدخال رقم هاتفك لإعادة تعيين كلمة المرور",
   "enterPhoneNumber": "أدخل رقم هاتفك",
   "resetPassword": "إعادة تعيين كلمة المرور",
   "forgotPassword": "نسيت كلمة المرور",
-
   "verifyNumber": "تحقق من الرقم",
   "checkYourMessages": "تحقق من رسائلك",
   "weSentLink": "لقد أرسلنا رابط إعادة التعيين إلى",
   "6Digits": "أدخل رمز التحقق المكون من 6 أرقام الموجود في الرسالة",
   "haventGot": "لم تستلم الرمز بعد؟",
   "resendCode": "إعادة إرسال الرمز",
-
   "setNewPassword": "تعيين كلمة مرور جديدة",
   "setNewPasswordDescription": "قم بإنشاء كلمة مرور جديدة. تأكد من اختلافها عن الكلمات السابقة لضمان الأمان",
   "enterPassword": "أدخل كلمة المرور",
   "enterYourPassword": "أدخل كلمة مرورك",
-  "updatePassword": "تحديث كلمة المرور"
+  "updatePassword": "تحديث كلمة المرور",
+  "passwordMismatch": "كلمتا المرور غير متطابقتين",
+  "invalidCredentials": "بيانات الدخول غير صحيحة"
 }
