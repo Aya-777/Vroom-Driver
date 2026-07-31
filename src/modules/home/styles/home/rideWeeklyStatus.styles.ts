@@ -5,13 +5,13 @@ import { Spacing, Radius, Typography } from '../../../../core/theme/tokens';
 export const createStyles = (colors: ThemeColors) =>
   StyleSheet.create({
     card: {
-      backgroundColor: '#2C3D7E',
+      backgroundColor: colors.surface,
       borderRadius: 18,
       padding: 24,
     },
 
     title: {
-      color: '#DED8FF',
+      color: colors.textPrimary,
       fontSize: 21,
       fontWeight: '500',
       letterSpacing: 0.5,
@@ -43,13 +43,13 @@ export const createStyles = (colors: ThemeColors) =>
 
     label: {
       flex: 1,
-      color: '#E1DAFF',
+      color: colors.textPrimary,
       fontSize: 13,
       marginEnd: 5,
     },
 
     value: {
-      color: '#E1DAFF',
+      color: colors.textPrimary,
       fontSize: 16,
       fontWeight: '400',
     },

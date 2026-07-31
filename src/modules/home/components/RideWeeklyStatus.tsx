@@ -25,6 +25,7 @@ const RideWeeklyStatus = ({ dashboardData }: Props) => {
           size={130}
           strokeWidth={22}
           centerText={`${dashboardData.metrics.weeklyCompletionRate}%`}
+          centerTextColor={colors.textPrimary}
           segments={[
             {
               percentage: dashboardData.metrics.completedPercentage,
@@ -36,7 +37,7 @@ const RideWeeklyStatus = ({ dashboardData }: Props) => {
             },
             {
               percentage: dashboardData.metrics.cancelledByRiderPercentage,
-              color: colors.textMuted,
+              color: colors.neutral,
             },
           ]}
           backgroundColor={colors.surface}
@@ -61,7 +62,7 @@ const RideWeeklyStatus = ({ dashboardData }: Props) => {
           </View>
 
           <View style={styles.legendRow}>
-            <View style={[styles.dot, { backgroundColor: colors.textMuted }]} />
+            <View style={[styles.dot, { backgroundColor: colors.neutral }]} />
 
             <Text style={styles.label} numberOfLines={2} adjustsFontSizeToFit>
               {t('cancelledByRider')}

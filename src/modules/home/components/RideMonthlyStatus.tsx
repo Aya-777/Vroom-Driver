@@ -2,16 +2,24 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import CircularProgress from './CircularProgress';
 import { HomeDashboardData } from '../types/home.types';
+import { useTheme } from '../../../core/theme/useTheme';
+import { createStyles } from '../styles/home/rideMonthlyStatus.styles';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   dashboardData: HomeDashboardData;
 }
 
 const RideMonthlyStatus = ({dashboardData} : Props) => {
+  
+  const { colors } = useTheme();
+  const styles = createStyles(colors);
+  const { t } = useTranslation(['home']);
+  
   return (
     <View style={styles.container}>
       <Text style={styles.title}>
-        RIDE MONTHLY STATUS
+        {t('rideMonthlyStatus')}
       </Text>
 
       <View style={styles.items}>
@@ -22,15 +30,15 @@ const RideMonthlyStatus = ({dashboardData} : Props) => {
             percentage={dashboardData.metrics.monthlyCompleted}
             size={98}
             strokeWidth={8}
-            progressColor="#DED5FF"
-            backgroundColor="#343A49"
-            textColor="#FFFFFF"
+            progressColor={colors.primary}
+            backgroundColor={colors.neutral}
+            textColor={colors.textPrimary}
             textSize={16}
           />
 
 
           <Text style={styles.label} numberOfLines={1} adjustsFontSizeToFit>
-            Completed
+            {t('completed')}
           </Text>
         </View>
 
@@ -40,14 +48,14 @@ const RideMonthlyStatus = ({dashboardData} : Props) => {
             percentage={dashboardData.metrics.monthlyCancelled}
             size={98}
             strokeWidth={8}
-            progressColor="#DED5FF"
-            backgroundColor="#343A49"
-            textColor="#FFFFFF"
+            progressColor={colors.primary}
+            backgroundColor={colors.neutral}
+            textColor={colors.textPrimary}
             textSize={16}
           />
 
           <Text style={styles.label} numberOfLines={1} adjustsFontSizeToFit>
-            Cancelled
+            {t('cancelled')}
           </Text>
         </View>
 
@@ -58,13 +66,13 @@ const RideMonthlyStatus = ({dashboardData} : Props) => {
             size={98}
             strokeWidth={8}
             progressColor="#6E5E5E"
-            backgroundColor="#343A49"
-            textColor="#FFFFFF"
+            backgroundColor={colors.neutral}
+            textColor={colors.textPrimary}
             textSize={16}
           />
 
           <Text style={styles.label} numberOfLines={2} adjustsFontSizeToFit>
-            Cancelled By Rider
+            {t('cancelledByRider')}
           </Text>
         </View>
 

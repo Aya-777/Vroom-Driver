@@ -22,9 +22,9 @@ const SegmentedCircularProgress = ({
   strokeWidth,
   segments,
   centerText,
-  centerTextColor = '#FFFFFF',
+  centerTextColor,
   centerTextSize = 30,
-  backgroundColor = '#1B2B60',
+  backgroundColor,
 }: Props) => {
   const radius = (size - strokeWidth) / 2;
   const circumference = 2 * Math.PI * radius;
