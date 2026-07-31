@@ -1,21 +1,18 @@
 import { useState, useCallback } from 'react';
 import { HomeDashboardData } from '../types/home.types';
-import { useTranslation } from 'react-i18next';
 import { useMainDrawer } from '../../../navigation/hooks/useMainDrawer';
-import { useNavigation } from '@react-navigation/native';
-import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
-import { MainTabsParamList } from '../../../navigation/main/mainTypes';
 import { DrawerContentComponentProps } from '@react-navigation/drawer';
+import { homeApi } from '../services/homeApi';
+import { UpdateDriverStatusRequest } from '../services/dto/home.dto';
+
 type Navigation = DrawerContentComponentProps['navigation'];
 
 export const useHomeViewModel = (navigation: Navigation) => {
-  const { t } = useTranslation(['common', 'home']);
   const { openSidebar } = useMainDrawer();
 
   const [isOnline, setIsOnline] = useState<boolean>(true);
   const [loading, setLoading] = useState<boolean>(false);
 
-  // Mock data representing transformed model-ready data
   const dashboardData: HomeDashboardData = {
     driverName: 'Alex',
     onlineTime: '4h 22m',
@@ -53,9 +50,35 @@ export const useHomeViewModel = (navigation: Navigation) => {
     },
   };
 
-  const toggleOnlineStatus = useCallback(() => {
-    setIsOnline(prev => !prev);
-  }, []);
+  const toggleOnlineStatus = useCallback(async () => {
+    if (loading) {
+      return;
+    }
+
+    const nextStatus = isOnline ? 'OFFLINE' : 'ONLINE';
+
+    try {
+      console.log('loaadingggggg');
+      setLoading(true);
+      const request : UpdateDriverStatusRequest = {
+        status: nextStatus,
+      }
+      
+      await homeApi.updateDriverStatus(request);
+      
+      // Only update UI after backend succeeds
+      setIsOnline(nextStatus === 'ONLINE');
+      console.log(nextStatus);
+      console.log('ISoNLINEEEE' , isOnline);
+    } catch (error: any) {
+      console.log(
+        'Failed to update driver status:',
+        error?.response?.data ?? error,
+      );
+    } finally {
+      setLoading(false);
+    }
+  }, [isOnline, loading]);
 
   const onHistoryPress = () => {
     navigation.navigate('MainTabs', {
