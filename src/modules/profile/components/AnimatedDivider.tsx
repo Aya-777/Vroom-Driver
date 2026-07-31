@@ -47,13 +47,13 @@ export default function AnimatedDivider() {
 
       {lineWidth > 0 && (
         <Animated.View style={[styles.iconWrapper, { transform: [{ translateX }] }]}>
-          <LottieView
+          {/* <LottieView
             ref={lottieRef}
             source={require('../../../assets/animations/Car.json')}
             loop
             autoPlay={false}
             style={styles.icon}
-          />
+          /> */}
         </Animated.View>
       )}
     </View>

@@ -4,7 +4,7 @@ import { getAuthToken, getRefreshToken, setAuthToken, logoutAuth } from '../stor
 import { ENDPOINTS } from './endpoints';
 
 export const apiClient = axios.create({
-  baseURL: 'http://10.116.185.227:8000/',
+  baseURL: 'http://192.168.1.5:8000/',
   timeout: 10000,
   headers: { 'Content-Type': 'application/json' },
 });
