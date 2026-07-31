@@ -1,79 +1,58 @@
 import React from 'react';
-import { Text, View } from 'react-native';
 import LinearBg from '../../../shared/components/LinearBg';
 import Header from '../../../shared/components/SubHeader';
-import Button from '../components/shared/Button';
+import OtpVerifyForm from '../../../shared/components/OtpVerifyForm';
 import { useTheme } from '../../../core/theme/useTheme';
-import { useOtpViewModel } from '../viewmodels/useOtpViewModel';
-import { createStyles } from '../styles/OtpScreen.styles';
+import { createStyles } from '../../../shared/styles/otpVerifyForm.styles';
 import { AuthStackScreenProps } from '../../../navigation/auth/authTypes';
-import OtpInputFields from '../components/OTP/OtpInputFields';
 import { useTranslation } from 'react-i18next';
-import ResendCode from '../components/OTP/ResendCode';
+import { useActivateAccountOtpViewModel } from '../viewmodels/useActivateAccountOtpViewModel';
+import { useForgotPasswordOtpViewModel } from '../viewmodels/useForgotPasswordOtpViewModel';
+
+const LOCAL_ERROR_KEYS = ['tryAgain', 'incompleteCode', 'invalidOtp'];
 
 export default function OtpScreen({ navigation, route }: AuthStackScreenProps<'Otp'>) {
   const { colors } = useTheme();
   const styles = createStyles(colors);
-  const { t } = useTranslation(['auth']);
+  const { t } = useTranslation(['auth', 'common']);
 
-  const {
-    code,
-    activeCodeIndex,
-    isLoading,
-    inputRefs,
-    maskedPhoneNumber,
-    error,
-    handleTextChange,
-    handleKeyPress,
-    handleVerifyCode,
-    handleResendCode,
-    handleBack,
-    setActiveCodeIndex,
-  } = useOtpViewModel(navigation, route);
+  const flowType = route.params?.type || 'activate_account';
+
+  const activateVm = useActivateAccountOtpViewModel(navigation, route);
+  const forgotVm = useForgotPasswordOtpViewModel(navigation, route);
+
+  const vm = flowType === 'forgot_password' ? forgotVm : activateVm;
+
+  const displayError = vm.error
+    ? LOCAL_ERROR_KEYS.includes(vm.error)
+      ? t(vm.error)
+      : vm.error
+    : undefined;
 
   return (
     <LinearBg style={styles.container} colors={[colors.backgroundSoft, colors.background]}>
-      <Header title={t('verifyNumber')} onBackPress={handleBack} />
+      <Header title={t('verifyNumber')} onBackPress={vm.handleBack} />
 
-      <View style={styles.content}>
-        <Text style={styles.title}>{t('checkYourMessages')}</Text>
-
-        <Text style={styles.description}>
-          {t('weSentLink')} <Text style={styles.phoneNumber}>{maskedPhoneNumber}</Text> {t('6Digits')}
-        </Text>
-
-        <OtpInputFields
-          code={code}
-          activeCodeIndex={activeCodeIndex}
-          inputRefs={inputRefs}
-          handleTextChange={handleTextChange}
-          handleKeyPress={handleKeyPress}
-          setActiveCodeIndex={setActiveCodeIndex}
-          styles={styles}
-        />
-
-        <Button
-          title="Verify Code"
-          onPress={handleVerifyCode}
-          isLoading={isLoading}
-          colors={colors}
-        />
-
-        <ResendCode
-          onResend={handleResendCode}
-          styles={styles}
-          t={t}
-        />
-
-        {error && (
-          <Text style={styles.errorText}>
-            {error === 'tryAgain' || error === 'incompleteCode' || error === 'invalidOtp'
-              ? t(error)
-              : error}
-          </Text>
-        )}
-        
-      </View>
+      <OtpVerifyForm
+        titleLabel={t('checkYourMessages')}
+        descriptionLabel={t('weSentLink')}
+        targetLabel={vm.maskedPhoneNumber}
+        descriptionSuffixLabel={t('6Digits')}
+        verifyLabel={t('common:verify')}
+        loadingLabel={t('common:loading')}
+        haventGotLabel={t('haventGot')}
+        resendCodeLabel={t('resendCode')}
+        code={vm.code}
+        activeCodeIndex={vm.activeCodeIndex}
+        inputRefs={vm.inputRefs}
+        handleTextChange={vm.handleTextChange}
+        handleKeyPress={vm.handleKeyPress}
+        setActiveCodeIndex={vm.setActiveCodeIndex}
+        onVerify={vm.handleVerifyCode}
+        onResend={vm.handleResend}
+        isVerifying={vm.isVerifying}
+        error={displayError}
+      />
     </LinearBg>
   );
 }

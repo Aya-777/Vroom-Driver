@@ -9,6 +9,17 @@ export const useActivateAccountViewModel = (onSuccess: (phone: string) => void) 
 
   const activateAccountMutation = useAuthRepository.useActivateAccount();
 
+  const phoneError =
+    phoneNumber.length > 0 && (!phoneNumber.startsWith('09') || phoneNumber.length < 10)
+      ? 'phoneNumberStart'
+      : undefined;
+
+  const passwordError =
+    password.length > 0 && password.length < 8 ? 'passwordLength' : undefined;
+
+  const confirmPasswordError =
+    confirmPassword.length > 0 && confirmPassword !== password ? 'passwordMismatch' : undefined;
+
   const handleActivateAccount = () => {
     setUiError(null);
 
@@ -17,8 +28,7 @@ export const useActivateAccountViewModel = (onSuccess: (phone: string) => void) 
       return;
     }
 
-    if (password !== confirmPassword) {
-      setUiError('The passwords do not match.');
+    if (phoneError || passwordError || confirmPasswordError) {
       return;
     }
 
@@ -44,6 +54,9 @@ export const useActivateAccountViewModel = (onSuccess: (phone: string) => void) 
     password, setPassword,
     confirmPassword, setConfirmPassword,
     error: uiError,
+    phoneError,
+    passwordError,
+    confirmPasswordError,
     isLoading: activateAccountMutation.isPending,
     handleActivateAccount,
   };
