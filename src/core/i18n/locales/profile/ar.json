@@ -33,5 +33,23 @@
     "ONLINE": "متصل",
     "OFFLINE": "غير متصل",
     "ON_TRIP": "برحلة"
-  }
+  },
+  "otpSentTo": "أرسلنا رمز التحقق إلى",
+  "phoneNumber": "رقم الهاتف",
+  "changePhoneNumber": "تغيير رقم الهاتف",
+  "enterNewPhoneDescription": "أدخل رقم هاتفك الجديد. رح نرسلّك رمز تحقق لتأكيده.",
+  "newPhoneNumber": "رقم الهاتف الجديد",
+  "enterPhoneNumber": "أدخل رقم الهاتف",
+  "verifyNewNumber": "تأكيد الرقم الجديد",
+  "checkYourMessages": "تحقق من رسائلك",
+  "haventGot": "لم يصلك الرمز؟",
+  "changePassword": "تغيير كلمة السر",
+  "changePasswordDescription": "أدخل كلمة السر الحالية واختر كلمة سر جديدة.",
+  "oldPassword": "كلمة السر الحالية",
+  "enterOldPassword": "أدخل كلمة السر الحالية",
+  "newPassword": "كلمة السر الجديدة",
+  "enterNewPassword": "أدخل كلمة السر الجديدة",
+  "confirmPassword": "تأكيد كلمة السر",
+  "confirmNewPassword": "أكد كلمة السر الجديدة",
+  "updatePassword": "تحديث كلمة السر"
 }

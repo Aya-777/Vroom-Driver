@@ -18,7 +18,7 @@ import { useTranslation } from 'react-i18next';
 const SignupForm = ({ vm }: any) => {
     const { colors } = useTheme();
     const styles = createStyles(colors);
-    const { t } = useTranslation(['auth']);
+    const { t } = useTranslation(['auth', 'common']);
 
     return (
         <View>
@@ -42,7 +42,7 @@ const SignupForm = ({ vm }: any) => {
                     renderLeftIcon={() => (
                         <PhoneNumberIcon width={20} height={20} fill={colors.primary} />
                     )}
-                    error={vm.phoneError}
+                    error={vm.phoneError ? t(`common:${vm.phoneError}`) : undefined}
                 />
 
                 <Input
@@ -63,7 +63,7 @@ const SignupForm = ({ vm }: any) => {
                             <VisibilityOffIcon width={20} height={20} fill={colors.primary} />
                         )
                     }
-                    error={vm.passwordError}
+                    error={vm.passwordError ? t(`common:${vm.passwordError}`) : undefined}
                 />
 
                 <Input
@@ -84,7 +84,7 @@ const SignupForm = ({ vm }: any) => {
                             <VisibilityOffIcon width={20} height={20} fill={colors.primary} />
                         )
                     }
-                    error={vm.confirmPasswordError}
+                    error={vm.confirmPasswordError ? t(vm.confirmPasswordError) : undefined}
                 />
             </View>
 

@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { navigationRef, RootStackParamList } from './rootTypes';
 
-import { useAuthLoggedIn } from '../core/store/authStore';
+import { useAuthLoggedIn, useAuthHasHydrated } from '../core/store/authStore';
 import MainDrawer from './main/MainDrawer';
 import AuthStack from './auth/AuthStack';
 import SplashScreen from '../modules/auth/screens/SplashScreen';
@@ -15,23 +15,21 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function RootNavigator() {
   const isLoggedIn = useAuthLoggedIn();
+  const hasHydrated = useAuthHasHydrated();
   const [isSplashComplete, setIsSplashComplete] = useState(false);
+
+  const isAppReady = isSplashComplete && hasHydrated;
 
   return (
     <NavigationContainer
       linking={deepLinkingConfig}
       ref={navigationRef}
-      direction = {isRTL() ? 'rtl' : 'ltr'}
+      direction={isRTL() ? 'rtl' : 'ltr'}
     >
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-        {!isSplashComplete ? (
+        {!isAppReady ? (
           <Stack.Screen name="Splash">
-            {(props) => (
-              <SplashScreen
-                {...props}
-                onAnimationEnd={() => setIsSplashComplete(true)}
-              />
-            )}
+            {(props) => <SplashScreen {...props} onAnimationEnd={() => setIsSplashComplete(true)} />}
           </Stack.Screen>
         ) : isLoggedIn ? (
           <Stack.Group>

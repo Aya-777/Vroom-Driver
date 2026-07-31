@@ -1,5 +1,7 @@
 src/
 ├── assets
+│   ├── animations
+│   │   └── Car.json
 │   ├── fonts
 │   │   ├── Lora-Bold.ttf
 │   │   ├── Lora-Regular.ttf
@@ -50,6 +52,7 @@ src/
 │       │   ├── creditcard.svg
 │       │   └── price.svg
 │       ├── profile
+│       │   ├── cake.svg
 │       │   ├── help.svg
 │       │   ├── logout.svg
 │       │   ├── privacy.svg
@@ -121,7 +124,8 @@ src/
 │   │       └── isRTL.ts
 │   ├── network
 │   │   ├── apiClient.ts
-│   │   └── endpoints.ts
+│   │   ├── endpoints.ts
+│   │   └── media.ts
 │   ├── realtime
 │   │   ├── socketClient.ts
 │   │   └── socketManager.ts
@@ -187,9 +191,6 @@ src/
 │   │       └── useActivitiesViewModel.ts
 │   ├── auth
 │   │   ├── components
-│   │   │   ├── OTP
-│   │   │   │   ├── OtpInputFields.tsx
-│   │   │   │   └── ResendCode.tsx
 │   │   │   ├── login
 │   │   │   │   ├── LoginFooter.tsx
 │   │   │   │   ├── LoginForm.tsx
@@ -215,7 +216,6 @@ src/
 │   │   ├── constants
 │   │   ├── hooks
 │   │   │   ├── useAuthActions.ts
-│   │   │   ├── useResendCode.ts
 │   │   │   ├── useSplashAnimation.ts
 │   │   │   └── useSplashLayout.ts
 │   │   ├── repositories
@@ -233,7 +233,6 @@ src/
 │   │   │       └── auth.dto.ts
 │   │   ├── store
 │   │   ├── styles
-│   │   │   ├── OtpScreen.styles.ts
 │   │   │   ├── Splash.styles.ts
 │   │   │   ├── forgotPassword.styles.ts
 │   │   │   ├── login.styles.ts
@@ -243,12 +242,12 @@ src/
 │   │   ├── utils
 │   │   │   └── SplashPathUtils.ts
 │   │   └── viewmodels
+│   │       ├── useActivateAccountOtpViewModel.ts
 │   │       ├── useActivateAccountViewModel.ts
+│   │       ├── useForgotPasswordOtpViewModel.ts
 │   │       ├── useForgotPasswordViewModel.ts
 │   │       ├── useLoginViewModel.ts
-│   │       ├── useOtpViewModel.ts
 │   │       ├── useResetPasswordViewModel.ts
-│   │       ├── useSignupViewModel.ts
 │   │       └── useSplashViewModel.ts
 │   ├── constants
 │   ├── home
@@ -292,12 +291,13 @@ src/
 │   │       └── useNotificationsViewModel.ts
 │   ├── profile
 │   │   ├── components
+│   │   │   ├── AnimatedDivider.tsx
 │   │   │   ├── GridCard.tsx
 │   │   │   ├── GridSection.tsx
 │   │   │   ├── ListItem.tsx
 │   │   │   ├── ListSection.tsx
 │   │   │   ├── ProfileCard.tsx
-│   │   │   └── PromoBanner.tsx
+│   │   │   └── VehicleDetailsCard.tsx
 │   │   ├── constants
 │   │   │   └── profileData.ts
 │   │   ├── hooks
@@ -305,13 +305,20 @@ src/
 │   │   ├── repositories
 │   │   │   └── profileRepository.ts
 │   │   ├── screens
-│   │   │   └── ProfileScreen.tsx
+│   │   │   ├── ChangePasswordScreen.tsx
+│   │   │   ├── ChangePhoneOtpScreen.tsx
+│   │   │   ├── ChangePhoneScreen.tsx
+│   │   │   ├── EditProfileScreen.tsx
+│   │   │   ├── ProfileScreen.tsx
+│   │   │   └── VehicleDetailsScreen.tsx
 │   │   ├── services
 │   │   │   ├── dto
 │   │   │   │   └── profile.dto.ts
 │   │   │   └── profileApi.ts
 │   │   ├── styles
-│   │   │   └── profile.styles.ts
+│   │   │   ├── editProfile.styles.ts
+│   │   │   ├── profile.styles.ts
+│   │   │   └── vehicleDetails.styles.ts
 │   │   ├── types
 │   │   │   └── profile.types.ts
 │   │   └── viewmodels
@@ -442,15 +449,32 @@ src/
 │   ├── components
 │   │   ├── ActionButton.tsx
 │   │   ├── BaseBottomSheet.tsx
+│   │   ├── ChangePasswordForm.tsx
+│   │   ├── ChangePhoneForm.tsx
 │   │   ├── Header.tsx
 │   │   ├── Input.tsx
 │   │   ├── LinearBg.tsx
+│   │   ├── OtpInputFields.tsx
+│   │   ├── OtpVerifyForm.tsx
+│   │   ├── PinFrame.tsx
+│   │   ├── PinShape.tsx
+│   │   ├── ResendCode.tsx
 │   │   ├── SearchBar.tsx
 │   │   ├── SheetBackground.tsx
 │   │   └── SubHeader.tsx
-│   └── styles
-│       ├── SubHeader.styles.ts
-│       ├── input.styles.ts
-│       └── sheet.styles.ts
+│   ├── hooks
+│   │   ├── useChangePasswordViewModel.ts
+│   │   ├── useChangePhoneRequestViewModel.ts
+│   │   ├── useOtpFlow.ts
+│   │   └── useResendCode.ts
+│   ├── styles
+│   │   ├── SubHeader.styles.ts
+│   │   ├── changePasswordForm.styles.ts
+│   │   ├── changePhoneForm.styles.ts
+│   │   ├── input.styles.ts
+│   │   ├── otpVerifyForm.styles.ts
+│   │   └── sheet.styles.ts
+│   └── utils
+│       └── parseWaitSecondsError.ts
 └── types
     └── svg.d.ts

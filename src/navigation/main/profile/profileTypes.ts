@@ -4,7 +4,12 @@ import { Vehicle } from '../../../modules/profile/types/profile.types';
 export type ProfileStackParamList = {
   ProfileHome: undefined;
   VehicleDetails: { vehicle: Vehicle };
-  EditProfile: undefined;
+  EditProfile:
+  | { firstName?: string; lastName?: string; phone?: string; profileImage?: string | null }
+  | undefined;
+  ChangePhone: undefined;
+  ChangePhoneOtp: { newPhone: string };
+  ChangePassword: undefined;
   PaymentMethods: undefined;
 };
 

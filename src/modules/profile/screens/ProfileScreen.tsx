@@ -1,5 +1,8 @@
 import React from 'react';
 import { View, ScrollView, RefreshControl } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+
 import { useTheme } from '../../../core/theme/useTheme';
 import { createStyles } from '../styles/profile.styles';
 import { useProfileViewModel } from '../viewmodels/useProfileViewModel';
@@ -8,15 +11,28 @@ import ProfileCard from '../components/ProfileCard';
 import GridSection from '../components/GridSection';
 import VehicleDetailsCard from '../components/VehicleDetailsCard';
 import ListSection from '../components/ListSection';
-import LogoutIcon from '../../../assets/svg/profile/logout.svg'
+import LogoutIcon from '../../../assets/svg/profile/logout.svg';
 import LinearBg from '../../../shared/components/LinearBg';
 import { useTranslation } from 'react-i18next';
 import ActionButton from '../../../shared/components/ActionButton';
 import Header from '../../../shared/components/Header';
 import { navigate } from '../../../navigation/rootTypes';
+import { ProfileStackParamList } from '../../../navigation/main/profile/profileTypes';
+
+type ProfileNavProp = NativeStackNavigationProp<ProfileStackParamList, 'ProfileHome'>;
 
 export default function ProfileScreen() {
-  const { gridItems, listItems, openSidebar, profile, isLoading, isRefreshing, onRefresh, openVehicleDetails } = useProfileViewModel();
+  const navigation = useNavigation<ProfileNavProp>();
+  const {
+    gridItems,
+    listItems,
+    openSidebar,
+    profile,
+    isLoading,
+    isRefreshing,
+    onRefresh,
+    openVehicleDetails,
+  } = useProfileViewModel();
 
   const { logout } = useProfileActions();
   const { colors } = useTheme();
@@ -45,7 +61,6 @@ export default function ProfileScreen() {
             />
           }
         >
-
           <ProfileCard
             firstName={profile?.firstName}
             lastName={profile?.lastName}
@@ -55,6 +70,14 @@ export default function ProfileScreen() {
             driverStatus={profile?.driverInfo?.driverStatus}
             nationalId={profile?.driverInfo?.nationalId}
             birthdate={profile?.driverInfo?.birthdate}
+            onEditPress={() =>
+              navigation.navigate('EditProfile', {
+                firstName: profile?.firstName,
+                lastName: profile?.lastName,
+                phone: profile?.phone,
+                profileImage: profile?.profileImage,
+              })
+            }
           />
 
           <GridSection items={gridItems} />

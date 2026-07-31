@@ -33,5 +33,23 @@
     "ONLINE": "Online",
     "OFFLINE": "Offline",
     "ON_TRIP": "On Trip"
-  }
+  },
+  "otpSentTo": "We sent a verification code to",
+  "phoneNumber": "Phone Number",
+  "changePhoneNumber": "Change Phone Number",
+  "enterNewPhoneDescription": "Enter your new phone number. We'll send a verification code to confirm it.",
+  "newPhoneNumber": "New Phone Number",
+  "enterPhoneNumber": "Enter phone number",
+  "verifyNewNumber": "Verify New Number",
+  "checkYourMessages": "Check your messages",
+  "haventGot": "Didn't get the code?",
+  "changePassword": "Change Password",
+  "changePasswordDescription": "Enter your current password and choose a new one.",
+  "oldPassword": "Current Password",
+  "enterOldPassword": "Enter current password",
+  "newPassword": "New Password",
+  "enterNewPassword": "Enter new password",
+  "confirmPassword": "Confirm Password",
+  "confirmNewPassword": "Confirm new password",
+  "updatePassword": "Update Password"
 }
