@@ -31,6 +31,7 @@ const HIDE_TAB_ROUTES = [
   'DriverFound',
   'TripStarted',
   'DriverArrived',
+  'VehicleDetails',
 ];
 
 const getTabIconComponent = (

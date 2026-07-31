@@ -1,36 +1,32 @@
 {
   "login": "Login",
   "register": "Register",
-
   "phoneNumber": "Phone Number",
   "password": "Password",
   "firstName": "First Name",
   "lastName": "Last Name",
   "confirmPassword": "Confirm Password",
-  "byContinuing" : "By continuing, you agree to Vroom's",
-  "terms" : "Terms and Privacy Policy",
-  
+  "byContinuing": "By continuing, you agree to Vroom's",
+  "terms": "Terms and Privacy Policy",
   "forgotPassword?": "Forgot Password ?",
   "dontHaveAccount": "Don't have an account?",
   "alreadyHaveAccount": "Already have an account? ",
   "signup": "SignUp",
- 
   "pleaseEnterPhone": "Please enter your phone number to reset your password",
   "enterPhoneNumber": "Enter Your Phone Number",
   "resetPassword": "Reset Password",
   "forgotPassword": "Forgot Password",
-
-  "verifyNumber" :"Verify Number",
-  "checkYourMessages" :"Check Your Messages",
-  "weSentLink" :"We sent a reset link to",
-  "6Digits":"enter 6 digit code that mentioned in the Message",
-  "haventGot" :"Haven't got the code yet?",
-  "resendCode" : "Resend Code",
-
+  "verifyNumber": "Verify Number",
+  "checkYourMessages": "Check Your Messages",
+  "weSentLink": "We sent a reset link to",
+  "6Digits": "enter 6 digit code that mentioned in the Message",
+  "haventGot": "Haven't got the code yet?",
+  "resendCode": "Resend Code",
   "setNewPassword": "Set s new Password",
   "setNewPasswordDescription": "Create a new password. Ensure it differs from previous ones for security",
   "enterPassword": "Enter Password",
   "enterYourPassword": "Enter Your Password",
-  "updatePassword": "Update Password"
-
+  "updatePassword": "Update Password",
+  "passwordMismatch": "Passwords don't match",
+  "invalidCredentials": "Invalid credentials"
 }

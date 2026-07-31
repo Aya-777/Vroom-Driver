@@ -6,12 +6,10 @@ import {
 } from 'react-native';
 import Logo from '../shared/logo';
 import LinearBg from '../../../../shared/components/LinearBg';
-// import Profile from '../../../../assets/svg/profile/profile.svg';
 import PhoneNumberIcon from '../../../../assets/svg/contact/call.svg';
 import PasswordIcon from '../../../../assets/svg/common/password.svg';
 import VisibilityOnIcon from '../../../../assets/svg/common/visibilityOn.svg';
 import VisibilityOffIcon from '../../../../assets/svg/common/visibilityOff.svg';
-import CameraIcon from '../../../../assets/svg/common/camera.svg';
 import { useTheme } from '../../../../core/theme/useTheme';
 import { createStyles } from '../../styles/signup.styles';
 import Input from '../../../../shared/components/Input';
@@ -27,51 +25,11 @@ const SignupForm = ({ vm }: any) => {
 
             <View style={styles.top}>
                 <View style={styles.logoWrapper}>
-                    <Logo type="signup" />
-
-                    <TouchableOpacity style={styles.cameraButton}>
-                        <View style={styles.cameraCircle}>
-                            <CameraIcon
-                                width={16}
-                                height={16}
-                                fill={colors.primary}
-                            />
-                        </View>
-                    </TouchableOpacity>
+                    <Logo type="login" />
                 </View>
             </View>
 
             <View style={styles.middle}>
-
-                {/* <View style={styles.row}>
-                    <Input
-                        type="text"
-                        placeholder={t('firstName')}
-                        placeholderTextColor={colors.textMuted}
-                        value={vm.firstName}
-                        onChangeText={vm.setFirstName}
-                        containerStyle={styles.halfInput}
-                        inputStyle={[styles.halfInputText, { color: colors.textPrimary }]}
-                        renderLeftIcon={() => (
-                            <Profile width={18} height={18} fill={colors.primary} />
-                        )}
-                        error={vm.firstNameError}
-                    />
-
-                    <Input
-                        type="text"
-                        placeholder={t('lastName')}
-                        placeholderTextColor={colors.textMuted}
-                        value={vm.lastName}
-                        onChangeText={vm.setLastName}
-                        containerStyle={styles.halfInput}
-                        inputStyle={[styles.halfInputText, { color: colors.textPrimary }]}
-                        renderLeftIcon={() => (
-                            <Profile width={18} height={18} fill={colors.primary} />
-                        )}
-                        error={vm.lastNameError}
-                    />
-                </View> */}
 
                 <Input
                     type="phone"

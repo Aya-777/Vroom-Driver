@@ -125,6 +125,10 @@ src/
 │   ├── realtime
 │   │   ├── socketClient.ts
 │   │   └── socketManager.ts
+│   ├── services
+│   │   └── location
+│   │       ├── LocationService.ts
+│   │       └── PermissionService.ts
 │   ├── storage
 │   │   ├── asyncStorage.adapter.ts
 │   │   ├── index.ts
@@ -294,8 +298,14 @@ src/
 │   │   │   └── profileData.ts
 │   │   ├── hooks
 │   │   │   └── useProfileActions.ts
+│   │   ├── repositories
+│   │   │   └── profileRepository.ts
 │   │   ├── screens
 │   │   │   └── ProfileScreen.tsx
+│   │   ├── services
+│   │   │   ├── dto
+│   │   │   │   └── profile.dto.ts
+│   │   │   └── profileApi.ts
 │   │   ├── styles
 │   │   │   └── profile.styles.ts
 │   │   ├── types
