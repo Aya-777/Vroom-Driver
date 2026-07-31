@@ -139,11 +139,7 @@ export const createStyles = (colors: ThemeColors) =>
       ...Typography.smallCaption,
       color: colors.textSecondary,
     },
-    chartContainer: {
-      height: 120,
-      justifyContent: 'flex-end',
-      position: 'relative',
-    },
+    
     chartAxisRow: {
       flexDirection: 'row',
       justifyContent: 'space-between',
@@ -220,4 +216,49 @@ export const createStyles = (colors: ThemeColors) =>
       color: colors.textPrimary,
       marginLeft: Spacing.sm,
     },
+
+    card: {
+    width: '100%',
+    backgroundColor: colors.surface,
+    borderRadius: 12,
+    paddingHorizontal: 14,
+    paddingTop: 16,
+    paddingBottom: 12,
+    overflow: 'hidden',
+    marginBottom: 20,
+  },
+
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 12,
+  },
+
+  title: {
+    ...Typography.mediumCaption,
+    color: colors.textSecondary,
+    letterSpacing: 0.5,
+  },
+
+  period: {
+    ...Typography.smallCaption,
+    color: colors.primary,
+  },
+
+  chartContainer: {
+    width: '100%',
+    alignItems: 'center',
+  },
+
+  days: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 2,
+  },
+
+  day: {
+    ...Typography.smallCaption,
+    color: colors.primary,
+  },
   });

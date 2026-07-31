@@ -28,8 +28,8 @@ export const ServiceStatusBox: React.FC<DashboardDataProps> = ({
       <Switch
         value={dashboardData?.isOnline}
         onValueChange={toggleOnlineStatus}
-        trackColor={{ false: '#334155', true: '#38BDF8' }}
-        thumbColor={'#FFFFFF'}
+        trackColor={{ false: colors.textMuted, true: colors.primary }}
+        thumbColor={colors.textSecondary}
       />
     </View>
   );

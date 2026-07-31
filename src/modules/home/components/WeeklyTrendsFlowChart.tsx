@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { View, Text, StyleSheet, Dimensions } from 'react-native';
+import { View, Text, Dimensions } from 'react-native';
 import Svg, {
   Path,
   Defs,
@@ -7,6 +7,9 @@ import Svg, {
   Stop,
   Circle,
 } from 'react-native-svg';
+import { useTheme } from '../../../core/theme/useTheme';
+import { createStyles } from '../styles/home.styles';
+import { useTranslation } from 'react-i18next';
 
 type WeeklyTrend = {
   day: string;
@@ -23,6 +26,11 @@ const CHART_WIDTH = SCREEN_WIDTH - 60;
 const CHART_HEIGHT = 130;
 
 export default function WeeklyTrendsFlowChart({ data }: Props) {
+  
+    const { colors } = useTheme();
+    const styles = createStyles(colors);
+    const { t } = useTranslation(['home']);
+    
   const { linePath, areaPath, peakPoint } = useMemo(() => {
     if (!data.length) {
       return {
@@ -94,7 +102,7 @@ export default function WeeklyTrendsFlowChart({ data }: Props) {
       {/* Header */}
       <View style={styles.header}>
         <Text style={styles.title}>
-          WEEKLY TRENDS
+          {t('weeklyTrends')}
         </Text>
 
         <Text
@@ -102,7 +110,7 @@ export default function WeeklyTrendsFlowChart({ data }: Props) {
           numberOfLines={1}
           adjustsFontSizeToFit
         >
-          Last 7 Days
+          {t('last7Days')}
         </Text>
       </View>
 
@@ -175,58 +183,10 @@ export default function WeeklyTrendsFlowChart({ data }: Props) {
             numberOfLines={1}
             adjustsFontSizeToFit
           >
-            {item.day}
+            {t(item.day)}
           </Text>
         ))}
       </View>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  card: {
-    width: '100%',
-    backgroundColor: '#29386F',
-    borderRadius: 12,
-    paddingHorizontal: 14,
-    paddingTop: 16,
-    paddingBottom: 12,
-    overflow: 'hidden',
-    marginBottom: 20,
-  },
-
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 12,
-  },
-
-  title: {
-    fontSize: 12,
-    fontWeight: '600',
-    color: '#FFFFFF',
-    letterSpacing: 0.5,
-  },
-
-  period: {
-    fontSize: 10,
-    color: '#D5D9F0',
-  },
-
-  chartContainer: {
-    width: '100%',
-    alignItems: 'center',
-  },
-
-  days: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 2,
-  },
-
-  day: {
-    fontSize: 9,
-    color: '#D1D5EA',
-  },
-});
