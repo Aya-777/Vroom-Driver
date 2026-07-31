@@ -103,6 +103,8 @@ export const createStyles = (colors: ThemeColors) =>
       marginBottom: Spacing.md,
       borderWidth: 1,
       borderColor: colors.border,
+      borderLeftColor: colors.primary,
+      borderLeftWidth: 2,
     },
     bannerText: {
       ...Typography.caption,

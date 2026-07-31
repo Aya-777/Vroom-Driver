@@ -4,8 +4,7 @@ import { DriverStats } from '../types/home.types';
 import { useTheme } from '../../../core/theme/useTheme';
 import { createStyles } from '../styles/home.styles';
 import Car from '../../../assets/svg/common/ride.svg';
-import Calendar from '../../../assets/svg/common/history.svg';
-import Clock from '../../../assets/svg/common/history.svg';
+import Clock from '../../../assets/svg/common/schedule.svg';
 import Star from '../../../assets/svg/common/star.svg';
 import { useTranslation } from 'react-i18next';
 
@@ -33,10 +32,10 @@ export const DashboardStatsGrid: React.FC<DashboardStatsGridProps> = ({ stats })
 
         <View style={styles.statsCard}>
           <View style={styles.cardHeaderRow}>
+            <Text style={styles.cardLabel}>{t('daily')}</Text>
             <Text style={styles.trendBadge}>{stats.dailyEarningsTrend}</Text>
           </View>
           <Text style={styles.cardValue}>{stats.dailyEarnings}</Text>
-          <Text style={styles.cardLabel}>{t('daily')}</Text>
         </View>
       </View>
 
@@ -44,17 +43,16 @@ export const DashboardStatsGrid: React.FC<DashboardStatsGridProps> = ({ stats })
       <View style={styles.gridRow}>
         <View style={styles.statsCard}>
           <View style={styles.cardHeaderRow}>
-            <Calendar width={18} height={18} color={colors.textSecondary} />
+            <Text style={styles.cardLabel}>{t('weekly')}</Text>
           </View>
           <Text style={styles.cardValue}>{stats.weeklyEarnings}</Text>
-          <Text style={styles.cardLabel}>{t('weekly')}</Text>
         </View>
 
         <View style={styles.statsCard}>
           <View style={styles.cardHeaderRow}>
+            <Text style={styles.cardLabel}>{t('monthly')}</Text>
           </View>
           <Text style={styles.cardValue}>{stats.monthlyEarnings}</Text>
-          <Text style={styles.cardLabel}>{t('monthly')}</Text>
         </View>
       </View>
 

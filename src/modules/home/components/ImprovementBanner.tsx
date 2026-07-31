@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, Switch } from 'react-native';
 import { useTheme } from '../../../core/theme/useTheme';
 import { createStyles } from '../styles/home.styles';
-import Info from '../../../assets/svg/common/info.svg';
+import ForYouStartIcon from '../../../assets/svg/home/ForYouStar.svg';
 
 interface DashboardDataProps {
   dashboardData?: {
@@ -18,7 +18,7 @@ export const ImprovementBanner: React.FC<DashboardDataProps> = ({
 
   return (
     <View style={styles.bannerCard}>
-      <Info width={20} height={20} fill="#38BDF8" />
+      <ForYouStartIcon width={20} height={20} />
       <Text style={styles.bannerText}>{dashboardData?.completionMessage}</Text>
     </View>
   );

@@ -1,75 +1,152 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-import { useTheme } from '../../../core/theme/useTheme';
-import { createStyles } from '../styles/home.styles';
-import { useTranslation } from 'react-i18next';
+import { View, Text, StyleSheet } from 'react-native';
+import SegmentedCircularProgress from './SegmentedCircularProgress';
+import { HomeDashboardData } from '../types/home.types';
 
-interface DashboardInfo {
-  metrics?: {
-    weeklyCompletionRate?: number;
-    completedPercentage?: number;
-    cancelledPercentage?: number;
-    cancelledByRiderPercentage?: number;
-  };
+type Props = {
+  dashboardData: HomeDashboardData;
 }
 
-interface DashboardDataProps {
-  dashboardData?: DashboardInfo;
-}
-
-export const RideWeeklyStatus: React.FC<DashboardDataProps> = ({
-  dashboardData,
-}) => {
-  const { colors } = useTheme();
-  const styles = createStyles(colors);
-  const { t } = useTranslation(['home']);
-
+const RideWeeklyStatus = ({dashboardData} : Props) => {
   return (
-    <View style={styles.sectionCard}>
-      <Text style={[styles.sectionTitle, { marginBottom: 16 }]}>
-        {t('rideWeeklyStatus')}
+    <View style={styles.card}>
+      <Text style={styles.title}>
+        RIDE WEEKLY STATUS
       </Text>
-      <View style={styles.metricRow}>
-        {/* Circular representation can go here */}
-        <Text style={[styles.cardValue, { fontSize: 28 }]}>
-          {dashboardData?.metrics?.weeklyCompletionRate}%
-        </Text>
-        <View style={styles.metricLegendBox}>
-          <View style={styles.legendItem}>
-            <View style={styles.legendDotText}>
-              <View
-                style={[styles.dotIndicator, { backgroundColor: '#38BDF8' }]}
-              />
-              <Text style={styles.legendText}>{t('completed')}</Text>
-            </View>
-            <Text style={styles.legendValue}>
-              {dashboardData?.metrics?.completedPercentage}%
+
+      <View style={styles.content}>
+
+        {/* Segmented circle */}
+        <SegmentedCircularProgress
+          size={130}
+          strokeWidth={22}
+          centerText={`${dashboardData.metrics.weeklyCompletionRate}%`}
+          segments={[
+            {
+              percentage: dashboardData.metrics.completedPercentage,
+              color: '#DED5FF',
+            },
+            {
+              percentage: dashboardData.metrics.cancelledPercentage,
+              color: '#182A5B',
+            },
+            {
+              percentage: dashboardData.metrics.cancelledByRiderPercentage,
+              color: '#29324B',
+            },
+          ]}
+          backgroundColor="#1B2B60"
+        />
+
+        {/* Legend */}
+        <View style={styles.legend}>
+
+          <View style={styles.legendRow}>
+            <View
+              style={[
+                styles.dot,
+                { backgroundColor: '#DED5FF' },
+              ]}
+            />
+
+            <Text style={styles.label}>
+              Completed
+            </Text>
+
+            <Text style={styles.value}>
+              85%
             </Text>
           </View>
-          <View style={styles.legendItem}>
-            <View style={styles.legendDotText}>
-              <View
-                style={[styles.dotIndicator, { backgroundColor: '#64748B' }]}
-              />
-              <Text style={styles.legendText}>{t('cancelled')}</Text>
-            </View>
-            <Text style={styles.legendValue}>
-              {dashboardData?.metrics?.cancelledPercentage}%
+
+          <View style={styles.legendRow}>
+            <View
+              style={[
+                styles.dot,
+                { backgroundColor: '#182A5B' },
+              ]}
+            />
+
+            <Text style={styles.label}>
+              Cancelled
+            </Text>
+
+            <Text style={styles.value}>
+              10%
             </Text>
           </View>
-          <View style={styles.legendItem}>
-            <View style={styles.legendDotText}>
-              <View
-                style={[styles.dotIndicator, { backgroundColor: '#475569' }]}
-              />
-              <Text style={styles.legendText}>{t('cancelledByRider')}</Text>
-            </View>
-            <Text style={styles.legendValue}>
-              {dashboardData?.metrics?.cancelledByRiderPercentage}%
+
+          <View style={styles.legendRow}>
+            <View
+              style={[
+                styles.dot,
+                { backgroundColor: '#29324B' },
+              ]}
+            />
+
+            <Text style={styles.label}>
+              Cancelled By Rider
+            </Text>
+
+            <Text style={styles.value}>
+              5%
             </Text>
           </View>
+
         </View>
       </View>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  card: {
+    backgroundColor: '#2C3D7E',
+    borderRadius: 18,
+    padding: 24,
+  },
+
+  title: {
+    color: '#DED8FF',
+    fontSize: 21,
+    fontWeight: '500',
+    letterSpacing: 0.5,
+  },
+
+  content: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 18,
+  },
+
+  legend: {
+    flex: 1,
+    marginLeft: 25,
+    gap: 20,
+  },
+
+  legendRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+
+  dot: {
+    width: 13,
+    height: 13,
+    borderRadius: 7,
+    marginRight: 12,
+  },
+
+  label: {
+    flex: 1,
+    color: '#E1DAFF',
+    fontSize: 13,
+  },
+
+  value: {
+    color: '#E1DAFF',
+    fontSize: 16,
+    fontWeight: '400',
+  },
+});
+
+export default RideWeeklyStatus;

@@ -3,7 +3,7 @@ import i18n from 'i18next';
 import { getAuthToken } from '../store/authStore';
 
 export const apiClient = axios.create({
-  baseURL: 'http://192.168.1.100:8000/',
+  baseURL: 'http://192.168.1.5:8000/',
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
