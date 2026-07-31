@@ -41,4 +41,10 @@ export const profileRepository = {
             driverInfo,
         };
     },
+
+    requestPhoneChange: (newPhoneNumber: string) => profileApi.requestPhoneChange(newPhoneNumber),
+    resendPhoneChange: () => profileApi.resendPhoneChange(),
+    verifyPhoneChange: (otp: string) => profileApi.verifyPhoneChange(otp),
+    changePassword: (input: { oldPassword: string; newPassword: string; confirmPassword: string }) =>
+        profileApi.changePassword(input),
 };

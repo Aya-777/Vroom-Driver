@@ -6,7 +6,10 @@ export type AuthStackParamList = {
   Login: undefined;
   Signup: undefined;
   ForgotPassword: undefined;
-  Otp: undefined;
+  Otp: {
+    phoneNumber: string;
+    type?: 'activate_account' | 'forgot_password';
+  };
   ResetPassword: undefined;
 };
 

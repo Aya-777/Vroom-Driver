@@ -32,6 +32,10 @@ const HIDE_TAB_ROUTES = [
   'TripStarted',
   'DriverArrived',
   'VehicleDetails',
+  'EditProfile',
+  'ChangePhone',
+  'ChangePhoneOtp',
+  'ChangePassword',
 ];
 
 const getTabIconComponent = (

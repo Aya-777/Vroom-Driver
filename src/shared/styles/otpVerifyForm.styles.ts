@@ -1,44 +1,23 @@
 import { StyleSheet } from 'react-native';
-import { Spacing, Radius, Typography, Shadows } from '../../../core/theme/tokens';
-import { ThemeColors } from '../../../core/theme/theme.types';
+import { Spacing, Radius, Typography, Shadows } from '../../core/theme/tokens';
+import { ThemeColors } from '../../core/theme/theme.types';
 
 export const createStyles = (colors: ThemeColors) =>
     StyleSheet.create({
         container: {
-            flex: 1,
+            flex: 1
         },
-
-        timerText: {
-            marginTop: 5,
-            marginLeft : 5,
-            textAlign: 'center',
-            fontSize: 13,
-            color: colors.textSecondary,
-        },
-
-        resendLinkDisabled: {
-            marginLeft : 5,
-            opacity: 0.5,
-        },
-
-        errorText: {
-            textAlign: 'center',
-            marginVertical: 8,
-            fontSize: 14,
-            color: 'red'
-        },
-
         content: {
             flex: 1,
             paddingHorizontal: Spacing.xl,
             alignItems: 'center',
-            paddingTop: Spacing.xxl,
+            paddingTop: Spacing.xxl
         },
         title: {
             ...Typography.h3,
             color: colors.primary,
             alignSelf: 'flex-start',
-            marginBottom: Spacing.smm,
+            marginBottom: Spacing.smm
         },
         description: {
             ...Typography.body,
@@ -48,9 +27,9 @@ export const createStyles = (colors: ThemeColors) =>
             lineHeight: 26,
             marginBottom: Spacing.xxl,
         },
-        phoneNumber: {
+        target: {
             fontWeight: 'bold',
-            color: colors.primary,
+            color: colors.primary
         },
         otpContainer: {
             flexDirection: 'row',
@@ -73,25 +52,54 @@ export const createStyles = (colors: ThemeColors) =>
             ...Shadows.medium,
         },
         otpInputActive: {
-            borderColor: colors.primary,
+            borderColor: colors.primary
+        },
+        verifyButtonWrapper: {
+            width: '100%'
+        },
+        verifyButton: {
+            width: '100%',
+            height: 54,
+            borderRadius: Radius.md,
+            justifyContent: 'center',
+            alignItems: 'center',
+        },
+        verifyButtonText: {
+            ...Typography.h3,
+            color: colors.backgroundSoft
         },
         resendContainer: {
             flexDirection: 'row',
             justifyContent: 'center',
             alignItems: 'center',
-            marginTop: Spacing.xl,
+            marginTop: Spacing.xl
         },
         resendText: {
             marginTop: 5,
-
             ...Typography.caption,
-            color: colors.textSecondary,
+            color: colors.textSecondary
         },
         resendLink: {
-
             ...Typography.boldCaption,
             color: colors.primary,
             textAlign: 'center',
-            textDecorationLine: 'underline',
+            textDecorationLine: 'underline'
+        },
+        resendLinkDisabled: {
+            marginLeft: 5,
+            opacity: 0.5
+        },
+        timerText: {
+            marginTop: 5,
+            marginLeft: 5,
+            textAlign: 'center',
+            fontSize: 13,
+            color: colors.textSecondary
+        },
+        errorText: {
+            textAlign: 'center',
+            marginVertical: 8,
+            fontSize: 14,
+            color: 'red'
         },
     });
