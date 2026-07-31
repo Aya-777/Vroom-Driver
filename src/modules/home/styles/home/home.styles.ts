@@ -112,93 +112,6 @@ export const createStyles = (colors: ThemeColors) =>
       marginLeft: Spacing.sm,
       flex: 1,
     },
-    sectionCard: {
-      backgroundColor: colors.surface,
-      borderRadius: Radius.md,
-      padding: Spacing.md,
-      marginBottom: Spacing.md,
-      borderWidth: 1,
-      borderColor: colors.border,
-    },
-    monthlySection: {
-      padding: Spacing.md,
-      marginBottom: Spacing.md,
-    },
-    sectionHeaderRow: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      marginBottom: Spacing.md,
-    },
-    sectionTitle: {
-      ...Typography.boldCaption,
-      color: colors.textSecondary,
-      letterSpacing: 1,
-    },
-    sectionSubtitle: {
-      ...Typography.smallCaption,
-      color: colors.textSecondary,
-    },
-
-    chartAxisRow: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      marginTop: Spacing.sm,
-    },
-    chartDayText: {
-      ...Typography.smallCaption,
-      color: colors.textSecondary,
-      textAlign: 'center',
-      flex: 1,
-    },
-    metricRow: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      marginTop: Spacing.sm,
-    },
-    metricLegendBox: {
-      marginLeft: Spacing.md,
-      flex: 1,
-    },
-    legendItem: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      marginVertical: Spacing.xxs,
-    },
-    legendDotText: {
-      flexDirection: 'row',
-      alignItems: 'center',
-    },
-    dotIndicator: {
-      width: 6,
-      height: 6,
-      borderRadius: Radius.full,
-      marginRight: Spacing.sm,
-    },
-    legendText: {
-      ...Typography.mediumCaption,
-      color: colors.textSecondary,
-    },
-    legendValue: {
-      ...Typography.boldCaption,
-      color: colors.textPrimary,
-    },
-    monthlyContainer: {
-      flexDirection: 'row',
-      justifyContent: 'space-around',
-      alignItems: 'center',
-      marginTop: Spacing.sm,
-    },
-    monthlyItem: {
-      alignItems: 'center',
-    },
-    monthlyText: {
-      ...Typography.smallCaption,
-      color: colors.textSecondary,
-      marginTop: Spacing.xs,
-      textAlign: 'center',
-    },
     actionButtonsRow: {
       flexDirection: 'row',
       justifyContent: 'space-between',
@@ -216,7 +129,6 @@ export const createStyles = (colors: ThemeColors) =>
       color: colors.textPrimary,
       marginLeft: Spacing.sm,
     },
-
     card: {
       width: '100%',
       backgroundColor: colors.surface,
@@ -227,36 +139,30 @@ export const createStyles = (colors: ThemeColors) =>
       overflow: 'hidden',
       marginBottom: 20,
     },
-
     header: {
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
       marginBottom: 12,
     },
-
     title: {
       ...Typography.mediumCaption,
       color: colors.textSecondary,
       letterSpacing: 0.5,
     },
-
     period: {
       ...Typography.smallCaption,
       color: colors.primary,
     },
-
     chartContainer: {
       width: '100%',
       alignItems: 'center',
     },
-
     days: {
       flexDirection: 'row',
       justifyContent: 'space-between',
       marginTop: 2,
     },
-
     day: {
       ...Typography.smallCaption,
       color: colors.primary,
