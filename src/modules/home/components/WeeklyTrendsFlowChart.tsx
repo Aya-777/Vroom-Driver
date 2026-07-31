@@ -8,7 +8,7 @@ import Svg, {
   Circle,
 } from 'react-native-svg';
 import { useTheme } from '../../../core/theme/useTheme';
-import { createStyles } from '../styles/home.styles';
+import { createStyles } from '../styles/home/home.styles';
 import { useTranslation } from 'react-i18next';
 
 type WeeklyTrend = {
@@ -26,11 +26,10 @@ const CHART_WIDTH = SCREEN_WIDTH - 60;
 const CHART_HEIGHT = 130;
 
 export default function WeeklyTrendsFlowChart({ data }: Props) {
-  
-    const { colors } = useTheme();
-    const styles = createStyles(colors);
-    const { t } = useTranslation(['home']);
-    
+  const { colors } = useTheme();
+  const styles = createStyles(colors);
+  const { t } = useTranslation(['home']);
+
   const { linePath, areaPath, peakPoint } = useMemo(() => {
     if (!data.length) {
       return {
@@ -63,11 +62,9 @@ export default function WeeklyTrendsFlowChart({ data }: Props) {
       const current = points[i];
       const next = points[i + 1];
 
-      const controlPoint1X =
-        current.x + (next.x - current.x) / 2;
+      const controlPoint1X = current.x + (next.x - current.x) / 2;
 
-      const controlPoint2X =
-        next.x - (next.x - current.x) / 2;
+      const controlPoint2X = next.x - (next.x - current.x) / 2;
 
       path += `
         C
@@ -85,8 +82,7 @@ export default function WeeklyTrendsFlowChart({ data }: Props) {
     `;
 
     const highestPoint = points.reduce(
-      (highest, point) =>
-        point.y < highest.y ? point : highest,
+      (highest, point) => (point.y < highest.y ? point : highest),
       points[0],
     );
 
@@ -101,15 +97,9 @@ export default function WeeklyTrendsFlowChart({ data }: Props) {
     <View style={styles.card}>
       {/* Header */}
       <View style={styles.header}>
-        <Text style={styles.title}>
-          {t('weeklyTrends')}
-        </Text>
+        <Text style={styles.title}>{t('weeklyTrends')}</Text>
 
-        <Text
-          style={styles.period}
-          numberOfLines={1}
-          adjustsFontSizeToFit
-        >
+        <Text style={styles.period} numberOfLines={1} adjustsFontSizeToFit>
           {t('last7Days')}
         </Text>
       </View>
@@ -122,34 +112,15 @@ export default function WeeklyTrendsFlowChart({ data }: Props) {
           viewBox={`0 0 ${CHART_WIDTH} ${CHART_HEIGHT}`}
         >
           <Defs>
-            <LinearGradient
-              id="areaGradient"
-              x1="0"
-              y1="0"
-              x2="0"
-              y2="1"
-            >
-              <Stop
-                offset="0"
-                stopColor="#B9B5FF"
-                stopOpacity="0.30"
-              />
+            <LinearGradient id="areaGradient" x1="0" y1="0" x2="0" y2="1">
+              <Stop offset="0" stopColor="#B9B5FF" stopOpacity="0.30" />
 
-              <Stop
-                offset="1"
-                stopColor="#B9B5FF"
-                stopOpacity="0"
-              />
+              <Stop offset="1" stopColor="#B9B5FF" stopOpacity="0" />
             </LinearGradient>
           </Defs>
 
           {/* Filled area */}
-          {areaPath && (
-            <Path
-              d={areaPath}
-              fill="url(#areaGradient)"
-            />
-          )}
+          {areaPath && <Path d={areaPath} fill="url(#areaGradient)" />}
 
           {/* Main line */}
           {linePath && (
@@ -164,12 +135,7 @@ export default function WeeklyTrendsFlowChart({ data }: Props) {
 
           {/* Peak point */}
           {peakPoint && (
-            <Circle
-              cx={peakPoint.x}
-              cy={peakPoint.y}
-              r={3}
-              fill="#E2DDFF"
-            />
+            <Circle cx={peakPoint.x} cy={peakPoint.y} r={3} fill="#E2DDFF" />
           )}
         </Svg>
       </View>

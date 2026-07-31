@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import { useTheme } from '../../../core/theme/useTheme';
-import { createStyles } from '../styles/home.styles';
+import { createStyles } from '../styles/home/home.styles';
 import { useTranslation } from 'react-i18next';
 
 interface DashboardInfo {
@@ -28,7 +28,8 @@ export const WelcomeAndLiveStatus: React.FC<DashboardDataProps> = ({
       <View style={styles.statusIndicatorRow}>
         <View style={styles.onlineDot} />
         <Text style={styles.statusText}>
-          {dashboardData?.onlineTime? t('online') : t('offline')} {dashboardData?.onlineTime}
+          {dashboardData?.onlineTime ? t('online') : t('offline')}{' '}
+          {dashboardData?.onlineTime}
         </Text>
       </View>
     </View>

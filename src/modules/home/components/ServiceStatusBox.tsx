@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Switch } from 'react-native';
 import { useTheme } from '../../../core/theme/useTheme';
-import { createStyles } from '../styles/home.styles';
+import { createStyles } from '../styles/home/home.styles';
 import { useTranslation } from 'react-i18next';
 
 interface DashboardDataProps {

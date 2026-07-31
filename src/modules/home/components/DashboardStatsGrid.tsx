@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { DriverStats } from '../types/home.types';
 import { useTheme } from '../../../core/theme/useTheme';
-import { createStyles } from '../styles/home.styles';
+import { createStyles } from '../styles/home/home.styles';
 import Car from '../../../assets/svg/common/ride.svg';
 import Clock from '../../../assets/svg/common/schedule.svg';
 import Star from '../../../assets/svg/common/star.svg';
@@ -12,7 +12,9 @@ interface DashboardStatsGridProps {
   stats: DriverStats;
 }
 
-export const DashboardStatsGrid: React.FC<DashboardStatsGridProps> = ({ stats }) => {
+export const DashboardStatsGrid: React.FC<DashboardStatsGridProps> = ({
+  stats,
+}) => {
   const { colors } = useTheme();
   const styles = createStyles(colors);
   const { t } = useTranslation(['home']);
@@ -61,7 +63,9 @@ export const DashboardStatsGrid: React.FC<DashboardStatsGridProps> = ({ stats })
         <View style={styles.statsCard}>
           <View style={styles.cardHeaderRow}>
             <Star width={18} height={18} color={colors.textSecondary} />
-            <Text style={[styles.trendBadge, { color: '#38BDF8' }]}>{stats.ratingStatus}</Text>
+            <Text style={[styles.trendBadge, { color: '#38BDF8' }]}>
+              {stats.ratingStatus}
+            </Text>
           </View>
           <Text style={styles.cardValue}>{stats.avgRating}</Text>
           <Text style={styles.cardLabel}>{t('avgRating')}</Text>
@@ -70,7 +74,9 @@ export const DashboardStatsGrid: React.FC<DashboardStatsGridProps> = ({ stats })
         <View style={styles.statsCard}>
           <View style={styles.cardHeaderRow}>
             <Clock width={18} height={18} color={colors.textSecondary} />
-            <Text style={[styles.trendBadge, { color: '#38BDF8' }]}>{stats.activeStatus}</Text>
+            <Text style={[styles.trendBadge, { color: '#38BDF8' }]}>
+              {stats.activeStatus}
+            </Text>
           </View>
           <Text style={styles.cardValue}>{stats.todaysActive}</Text>
           <Text style={styles.cardLabel}>{t('todaysActive')}</Text>
