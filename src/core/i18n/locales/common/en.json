@@ -5,48 +5,46 @@
   "back": "Back",
   "confirm": "Confirm",
   "next": "Next",
-  "submit" : "Submit",
+  "submit": "Submit",
   "maybeLater": "Maybe later",
-
   "now": "Now",
   "later": "Later",
   "schedule": "Schedule",
   "date": "Date",
-
   "savedPlaces": "Saved places",
-  
   "trackYourTrip": "Track your trip",
   "ride": "Ride",
-
-  "filters":{
-    "acceptAnimals": "Accept animals", 
+  "filters": {
+    "acceptAnimals": "Accept animals",
     "bigLuggage": "Big luggage",
     "childSeat": "Child seat",
     "airConditioner": "Air conditioner",
     "noSmoking": "No smoking"
   },
-
-  "carType":{
+  "carType": {
     "economy": "Economy",
     "comfort": "Comfort",
     "luxury": "Luxury",
     "xl": "XL"
   },
-
   "estimatedTime": "Estimated",
-  
-  "payment":{
+  "payment": {
     "estimatedPrice": "Estimated price",
     "cash": "Cash",
     "wallet": "Wallet"
   },
-
-  "pickupRequired" : "Pickup location is required",
-  "destinationRequired" : "Destination location is required",
+  "pickupRequired": "Pickup location is required",
+  "destinationRequired": "Destination location is required",
   "sameInputs": "Destination cannot be the same as pickup",
-
   "phoneNumberStart": "Phone number must start with 09",
   "passwordLength": "Password must be at least 8 characters",
-  "usernameLength": "Username must be at least 2 characters"
-
+  "usernameLength": "Username must be at least 2 characters",
+  "verify": "Verify",
+  "resendCode": "Resend Code",
+  "resendIn": "Resend in {{seconds}}s",
+  "incompleteCode": "Please enter the complete code",
+  "invalidOtp": "Invalid code, please try again",
+  "tryAgain": "Something went wrong, please try again",
+  "pleaseFillAllFields": "Please fill in all fields",
+  "passwordsDoNotMatch": "Passwords do not match"
 }

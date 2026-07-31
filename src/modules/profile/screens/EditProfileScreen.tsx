@@ -13,7 +13,6 @@ import { ProfileStackParamList } from '../../../navigation/main/profile/profileT
 import { getMediaUrl } from '../../../core/network/media';
 
 import UserIcon from '../../../assets/svg/profile/profile.svg';
-import ProfileFieldIcon from '../../../assets/svg/profile/profile.svg';
 import PhoneNumberIcon from '../../../assets/svg/contact/call.svg';
 import PasswordIcon from '../../../assets/svg/common/password.svg';
 
@@ -25,7 +24,7 @@ export default function EditProfileScreen() {
     const styles = createStyles(colors);
     const { t } = useTranslation(['profile', 'common']);
 
-    const { firstName, lastName, phone, profileImage } = route.params ?? {};
+    const { phone, profileImage } = route.params ?? {};
     const previewImageUri = getMediaUrl(profileImage);
 
     return (
@@ -55,26 +54,7 @@ export default function EditProfileScreen() {
                 </View>
 
                 <View style={styles.middle}>
-                    {/* الاسم — للعرض فقط، الدرايفر ما بيقدر يعدله */}
-                    <Text style={styles.fieldLabel}>{t('firstName')}</Text>
-                    <Input
-                        value={firstName ?? ''}
-                        editable={false}
-                        containerStyle={styles.inputBox}
-                        inputStyle={styles.input}
-                        renderLeftIcon={() => <ProfileFieldIcon width={18} height={18} fill={colors.primary} />}
-                    />
 
-                    <Text style={styles.fieldLabel}>{t('lastName')}</Text>
-                    <Input
-                        value={lastName ?? ''}
-                        editable={false}
-                        containerStyle={styles.inputBox}
-                        inputStyle={styles.input}
-                        renderLeftIcon={() => <ProfileFieldIcon width={18} height={18} fill={colors.primary} />}
-                    />
-
-                    {/* الهاتف — قابل للتعديل عبر شاشة منفصلة */}
                     <Text style={styles.fieldLabel}>{t('phoneNumber')}</Text>
                     <TouchableOpacity activeOpacity={0.7} onPress={() => navigation.navigate('ChangePhone')}>
                         <Input
@@ -86,7 +66,6 @@ export default function EditProfileScreen() {
                         />
                     </TouchableOpacity>
 
-                    {/* كلمة السر — قابلة للتعديل عبر شاشة منفصلة */}
                     <Text style={styles.fieldLabel}>{t('password')}</Text>
                     <TouchableOpacity activeOpacity={0.7} onPress={() => navigation.navigate('ChangePassword')}>
                         <Input
