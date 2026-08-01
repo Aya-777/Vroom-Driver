@@ -5,13 +5,11 @@ import { ThemeProvider } from './src/core/theme/ThemeProvider';
 import { useTheme } from './src/core/theme/useTheme';
 import { enableScreens, enableFreeze } from 'react-native-screens';
 import RootNavigator from './src/navigation/RootNavigator';
-
 import './src/core/i18n';
 import { LanguageService } from './src/core/i18n/services/LanguageService';
 import { Platform, StatusBar, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-// import NotificationsScreen from './src/modules/notifications/screens/NotificationsScreen';
 
 enableScreens(true);
 enableFreeze(true);
