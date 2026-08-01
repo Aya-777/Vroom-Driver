@@ -1,6 +1,7 @@
 import { useOtpFlow } from '../../../shared/hooks/useOtpFlow';
 import { useAuthRepository } from '../repositories/authRepository';
 import { useAuthActions } from '../../../core/store/authStore';
+import { setCurrentUser } from '../../../core/store/userStore';
 import { parseWaitSecondsError } from '../../../shared/utils/parseWaitSecondsError';
 
 export const useActivateAccountOtpViewModel = (navigation: any, route: any) => {
@@ -16,6 +17,7 @@ export const useActivateAccountOtpViewModel = (navigation: any, route: any) => {
         verifyOtp: async (code) => {
             const response = await verifyMutation.mutateAsync({ phone_number: phoneNumber, otp: code });
             login(response.data.access, response.data.refresh);
+            setCurrentUser(response.data.user);
         },
         onSuccess: () => { },
     });
