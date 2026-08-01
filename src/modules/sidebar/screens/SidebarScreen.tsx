@@ -1,13 +1,13 @@
 import React from 'react';
-import {View} from 'react-native';
-import {DrawerContentComponentProps} from '@react-navigation/drawer';
+import { View } from 'react-native';
+import { DrawerContentComponentProps } from '@react-navigation/drawer';
 
 import SidebarHeader from '../components/SidebarHeader';
 import SidebarItem from '../components/SidebarItem';
 import SidebarFooter from '../components/SidebarFooter';
 
-import {useSidebarViewModel} from '../viewmodels/useSidebarViewModel';
-import {createStyles} from '../styles/sidebar.styles';
+import { useSidebarViewModel } from '../viewmodels/useSidebarViewModel';
+import { createStyles } from '../styles/sidebar.styles';
 import { useTheme } from '../../../core/theme/useTheme';
 import LinearBg from '../../../shared/components/LinearBg';
 
@@ -19,6 +19,8 @@ const SidebarScreen = ({
     items,
     version,
     handleItemPress,
+    mode,
+    toggleTheme,
   } = useSidebarViewModel(navigation);
 
   const { colors } = useTheme();
@@ -32,9 +34,11 @@ const SidebarScreen = ({
         name={user.name}
         rating={user.rating}
         avatar={user.avatar}
+        mode={mode}
+        onToggleTheme={toggleTheme}
       />
 
-      <LinearBg 
+      <LinearBg
         colors={[colors.backgroundSoft, colors.background]}
         start={{ x: 0, y: 0 }}
         end={{ x: 0, y: 1 }}
