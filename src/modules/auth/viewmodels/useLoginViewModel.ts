@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAuthActions } from '../../../core/store/authStore';
+import { setCurrentUser } from '../../../core/store/userStore';
 import { useAuthRepository } from '../repositories/authRepository';
 
 export function useLoginViewModel() {
@@ -28,8 +29,9 @@ export function useLoginViewModel() {
         expected_role: 'driver',
       });
 
-      const { access, refresh } = response.data;
+      const { access, refresh, user } = response.data;
       login(access, refresh);
+      setCurrentUser(user);
     } catch (error: any) {
       if (error.response?.status === 400) {
         setUiError(t('auth:invalidCredentials'));
