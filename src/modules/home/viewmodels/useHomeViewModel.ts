@@ -38,9 +38,11 @@ const fetchTodayStats = useCallback(async () => {
     return `${h}h ${m}m`;
   };
 
+  const onlineTime = todayStats ? formatDuration(todayStats.data.duration_minutes) : '0m';
+
   const dashboardData: HomeDashboardData = {
-    driverName: user?.first_name || 'Back',
-    onlineTime: formatDuration(todayStats?.data.duration_minutes || 0),
+    driverName: user?.first_name || 'Captain',
+    onlineTime: onlineTime,
     status: todayStats?.data.driver_status || 'OFFLINE', 
     completionMessage: 'Your completion rate improved by 3% this week!',
     stats: {
@@ -52,8 +54,8 @@ const fetchTodayStats = useCallback(async () => {
       monthlyEarnings: '$4,290',
       avgRating: '4.98',
       ratingStatus: 'Excellent',
-      todaysActive: '5.4h',
-      activeStatus: 'Active',
+      todaysActive: onlineTime,
+      activeStatus: todayStats?.data.driver_status === 'ONLINE' || 'ON_TRIP' ? 'Active' : 'Inactive',
     },
     weeklyTrends: [
       { day: 'Mon', value: 30 },
@@ -99,7 +101,7 @@ const fetchTodayStats = useCallback(async () => {
         }
         : prev
       );
-      
+
       await homeApi.updateDriverStatus(request);
       
     } catch (error: any) {
