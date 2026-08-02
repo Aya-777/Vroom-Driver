@@ -28,19 +28,32 @@ export default function ActivityDetailsList({ activity, styles }: any) {
 
                 <View style={styles.row}>
                     <Text style={styles.label}>Distance</Text>
-                    <Text style={styles.value}>{activity.distance} km</Text>
+                    <Text style={styles.value}>
+                        {activity.distance !== null ? `${activity.distance} km` : '-'}
+                    </Text>
                 </View>
 
                 <View style={styles.row}>
                     <Text style={styles.label}>Duration</Text>
-                    <Text style={styles.value}>{activity.duration}</Text>
+                    <Text style={styles.value}>
+                        {activity.duration !== null ? `${activity.duration} min` : '-'}
+                    </Text>
                 </View>
 
                 <View style={styles.row}>
                     <Text style={styles.label}>Price</Text>
-                    <Text style={styles.value}>{activity.price} $</Text>
+                    <Text style={styles.value}>
+                        {activity.price !== null ? `${activity.price} $` : '-'}
+                    </Text>
                 </View>
             </View>
+
+            {activity.cancellationReason && (
+                <View style={styles.row}>
+                    <Text style={styles.label}>Cancellation Reason</Text>
+                    <Text style={styles.value}>{activity.cancellationReason}</Text>
+                </View>
+            )}
 
             <Text style={styles.sectionTitle}>Pickup</Text>
             <Text style={styles.location}>{activity.pickupLocation}</Text>
