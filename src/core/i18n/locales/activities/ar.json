@@ -2,10 +2,9 @@
     "noActivities": "لا يوجد نشاطات.",
     "yourActivity": "نشاطاتك ",
     "status": {
-        "ongoing": "الجارية",
-        "pending": "قيد الانتظار",
-        "accepted": "المقبولة",
+        "all": "الكل",
         "completed": "المكتملة",
-        "cancelled": "الملغاة"
+        "cancelled": "الملغية",
+        "rejected": "المرفوضة"
     }
 }

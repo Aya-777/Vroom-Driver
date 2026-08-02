@@ -1,32 +1,27 @@
-import { RideStatus, Activity } from '../types/activities.types';
+import { ActivityFilterTab } from '../types/activities.types';
+import { TerminalTripStatus } from '../services/dto/tripHistory.dto';
 
-export const ACTIVITY_STATUSES: RideStatus[] = [
-    'Ongoing',
-    'Pending',
-    'Accepted',
-    'Completed',
-    'Cancelled',
+export const ACTIVITY_TABS: ActivityFilterTab[] = [
+  'All',
+  'Completed',
+  'Cancelled',
+  'Rejected',
 ];
 
-export const ACTIVITIES: Activity[] = [
-    {
-        id: '1',
-        status: 'Ongoing',
-        pickupLocation: 'Oslo Central Station',
-        dropoffLocation: 'Airport Terminal 2',
-        date: 'Today • 4:30 PM',
-        price: 245,
-        currency: 'SP',
-        vehicleType: 'Economy',
-    },
-    {
-        id: '2',
-        status: 'Completed',
-        pickupLocation: 'National Theatre',
-        dropoffLocation: 'Oslo City',
-        date: 'Yesterday • 8:15 PM',
-        price: 180,
-        currency: 'SP',
-        vehicleType: 'Standard',
-    },
-];
+export const STATUS_PARAM_BY_TAB: Record<
+  ActivityFilterTab,
+  string | undefined
+> = {
+  All: undefined,
+  Completed: 'COMPLETED',
+  Cancelled: 'CANCELLED_BY_DRIVER',
+  Rejected: 'CANCELLED_BY_RIDER',
+};
+
+export const toDisplayStatus = (
+  rawStatus: TerminalTripStatus,
+): 'Completed' | 'Cancelled' | 'Rejected' => {
+  if (rawStatus === 'COMPLETED') return 'Completed';
+  if (rawStatus === 'CANCELLED_BY_DRIVER') return 'Cancelled';
+  return 'Rejected'; // CANCELLED_BY_RIDER
+};

@@ -7,14 +7,14 @@ import {
     Animated,
     LayoutChangeEvent,
 } from 'react-native';
-import { RideStatus } from '../types/activities.types';
+import { ActivityFilterTab } from '../types/activities.types';
 import { useTheme } from '../../../core/theme/useTheme';
 import { useTranslation } from 'react-i18next';
 
 interface Props {
-    statuses: RideStatus[];
-    selectedStatus: RideStatus;
-    onSelect: (status: RideStatus) => void;
+    statuses: ActivityFilterTab[];
+    selectedStatus: ActivityFilterTab;
+    onSelect: (status: ActivityFilterTab) => void;
     styles: any;
 }
 
@@ -31,7 +31,7 @@ export default function StatusTabs({
 
     const { t } = useTranslation(['activities']);
 
-    const handleTabLayout = (status: RideStatus, e: LayoutChangeEvent) => {
+    const handleTabLayout = (status: ActivityFilterTab, e: LayoutChangeEvent) => {
         const { x, width } = e.nativeEvent.layout;
         tabLayouts.current[status] = { x, width };
 
@@ -41,7 +41,7 @@ export default function StatusTabs({
         }
     };
 
-    const handleSelect = (status: RideStatus) => {
+    const handleSelect = (status: ActivityFilterTab) => {
         const layout = tabLayouts.current[status];
         if (layout) {
             Animated.spring(indicatorX, {

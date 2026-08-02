@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, FlatList, Text } from 'react-native';
+import { View, FlatList, Text, ActivityIndicator } from 'react-native';
 import ActivityCard from '../components/ActivityCard';
 
 import LinearBg from '../../../shared/components/LinearBg';
@@ -12,7 +12,7 @@ import Header from '../../../shared/components/Header';
 import { navigate } from '../../../navigation/rootTypes';
 import ActivityDetailsSheet from '../components/ActivityDetailsSheet';
 import { Activity } from '../types/activities.types';
-import ReviewModal from '../../review/components/ReviewModal'
+import ReviewModal from '../../review/components/ReviewModal';
 
 export default function ActivitiesScreen() {
     const { colors } = useTheme();
@@ -34,6 +34,9 @@ export default function ActivitiesScreen() {
         setSelectedStatus,
         activities,
         isLoading,
+        isLoadingMore,
+        loadMore,
+        openSidebar,
     } = useActivitiesViewModel();
 
     return (
@@ -47,6 +50,7 @@ export default function ActivitiesScreen() {
             <Header title={t('yourActivity')}
                 onNotificationPress={() =>
                     navigate('Notifications')}
+                onMenuPress={openSidebar}
             />
 
             <View style={styles.container}>
@@ -62,20 +66,30 @@ export default function ActivitiesScreen() {
                     keyExtractor={(item) => item.id}
                     contentContainerStyle={styles.scrollContent}
                     showsVerticalScrollIndicator={false}
+                    onEndReachedThreshold={0.4}
+                    onEndReached={loadMore}
                     renderItem={({ item }) => (
                         <ActivityCard
                             rideType={item.vehicleType}
                             pickup={item.pickupLocation}
                             destination={item.dropoffLocation}
                             date={item.date}
-                            fare={`${item.price} ${item.currency}`}
-                            distance={`${item.distance} km`}
+                            fare={item.price !== null ? `${item.price} ${item.currency}` : '-'}
+                            distance={item.distance !== null ? `${item.distance} km` : undefined}
                             onPress={() => {
                                 setSelectedActivity(item);
                                 setDetailsVisible(true);
                             }}
                         />
                     )}
+                    ListFooterComponent={
+                        isLoadingMore ? (
+                            <ActivityIndicator
+                                style={styles.loadingMoreIndicator}
+                                color={colors.primary}
+                            />
+                        ) : null
+                    }
                     ListEmptyComponent={
                         !isLoading ? (
                             <View style={styles.emptyContainer}>
@@ -83,7 +97,12 @@ export default function ActivitiesScreen() {
                                     {t('noActivities')}
                                 </Text>
                             </View>
-                        ) : null
+                        ) : (
+                            <ActivityIndicator
+                                style={styles.emptyLoadingIndicator}
+                                color={colors.primary}
+                            />
+                        )
                     }
                 />
                 <ActivityDetailsSheet

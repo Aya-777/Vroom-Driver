@@ -430,7 +430,8 @@ src/
 │       ├── components
 │       │   ├── SidebarFooter.tsx
 │       │   ├── SidebarHeader.tsx
-│       │   └── SidebarItem.tsx
+│       │   ├── SidebarItem.tsx
+│       │   └── ThemeToggleButton.tsx
 │       ├── constants
 │       │   └── sidebarItems.ts
 │       ├── screens
