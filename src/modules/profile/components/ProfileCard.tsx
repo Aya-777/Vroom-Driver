@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import AnimatedDivider from './AnimatedDivider';
 import EditIcon from '../../../assets/svg/common/edit.svg';
 import CallIcon from '../../../assets/svg/contact/call.svg';
+import StarIcon from '../../../assets/svg/common/star.svg';
 import ArrowLeftIcon from '../../../assets/svg/arrows/arrowLeft.svg';
 import RideIcon from '../../../assets/svg/common/ride.svg';
 import PasswordIcon from '../../../assets/svg/common/password.svg';
@@ -16,6 +17,7 @@ type Props = {
   lastName?: string;
   phone?: string;
   profileImage?: string | null;
+  Rating?: number | null;
   isLoading?: boolean;
   onEditPress?: () => void;
   driverStatus?: string;
@@ -28,6 +30,7 @@ export default function ProfileCard({
   lastName,
   phone,
   profileImage,
+  Rating,
   isLoading,
   onEditPress,
   driverStatus,
@@ -99,6 +102,11 @@ export default function ProfileCard({
             <CallIcon width={18} height={18} fill={colors.primary} />
             <Text style={styles.infoText}>{isLoading ? '...' : phone || '—'}</Text>
           </View>
+
+          <View style={styles.iconText}>
+          <StarIcon width={18} height={18} fill={colors.background} />
+          <Text style={styles.infoText}>{isLoading ? '...' : Rating?.toFixed(1) || '—'}</Text>
+        </View>
         </View>
       </View>
 

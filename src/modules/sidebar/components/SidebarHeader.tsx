@@ -48,6 +48,7 @@ const SidebarHeader = ({
           <StarIcon
             width={14}
             height={14}
+            fill={colors.primary}
           />
         </View>
 
