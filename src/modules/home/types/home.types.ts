@@ -1,3 +1,4 @@
+import { DriverStatus } from "../services/dto/home.dto";
 
 export interface DriverStats {
   totalTrips: string;
@@ -30,7 +31,7 @@ export interface RideStatusMetrics {
 export interface HomeDashboardData {
   driverName: string;
   onlineTime: string;
-  isOnline: boolean;
+  status: DriverStatus;
   completionMessage: string;
   stats: DriverStats;
   weeklyTrends: WeeklyTrendPoint[];

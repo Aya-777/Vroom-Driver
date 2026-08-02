@@ -3,20 +3,45 @@ import { HomeDashboardData } from '../types/home.types';
 import { useMainDrawer } from '../../../navigation/hooks/useMainDrawer';
 import { DrawerContentComponentProps } from '@react-navigation/drawer';
 import { homeApi } from '../services/homeApi';
-import { UpdateDriverStatusRequest } from '../services/dto/home.dto';
+import { DriverStatus, TodayStatsResponse, UpdateDriverStatusRequest } from '../services/dto/home.dto';
+import { useCurrentUser } from '../../../core/store/userStore';
+import { useEffect } from 'react';
 
 type Navigation = DrawerContentComponentProps['navigation'];
 
 export const useHomeViewModel = (navigation: Navigation) => {
   const { openSidebar } = useMainDrawer();
 
-  const [isOnline, setIsOnline] = useState<boolean>(true);
+  const [todayStats, setTodayStats] = useState<TodayStatsResponse | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
+  const user = useCurrentUser();
+
+const fetchTodayStats = useCallback(async () => {
+  try {
+    const stats = await homeApi.getTodayStats();
+
+    setTodayStats(stats);
+  } catch (error) {
+    console.log('Failed to fetch today stats', error);
+  }
+}, []);
+
+  useEffect(() => {
+    fetchTodayStats();
+  }, [fetchTodayStats]);
+
+  const formatDuration = (minutes: number) => {
+    const h = Math.floor(minutes / 60);
+    const m = minutes % 60;
+
+    if (h === 0) return `${m}m`;
+    return `${h}h ${m}m`;
+  };
 
   const dashboardData: HomeDashboardData = {
-    driverName: 'Alex',
-    onlineTime: '4h 22m',
-    isOnline,
+    driverName: user?.first_name || 'Back',
+    onlineTime: formatDuration(todayStats?.data.duration_minutes || 0),
+    status: todayStats?.data.driver_status || 'OFFLINE', 
     completionMessage: 'Your completion rate improved by 3% this week!',
     stats: {
       totalTrips: '1,248',
@@ -54,31 +79,38 @@ export const useHomeViewModel = (navigation: Navigation) => {
     if (loading) {
       return;
     }
-
-    const nextStatus = isOnline ? 'OFFLINE' : 'ONLINE';
+    const currentStatus = todayStats?.data.driver_status ?? 'OFFLINE';
+    const nextStatus = currentStatus === 'ONLINE' ? 'OFFLINE' : 'ONLINE';
 
     try {
-      console.log('loaadingggggg');
       setLoading(true);
       const request : UpdateDriverStatusRequest = {
         status: nextStatus,
       }
+            
+      setTodayStats(prev =>
+        prev
+        ? {
+          ...prev,
+          data: {
+            ...prev.data,
+            driver_status: nextStatus,
+          },
+        }
+        : prev
+      );
       
       await homeApi.updateDriverStatus(request);
       
-      // Only update UI after backend succeeds
-      setIsOnline(nextStatus === 'ONLINE');
-      console.log(nextStatus);
-      console.log('ISoNLINEEEE' , isOnline);
     } catch (error: any) {
       console.log(
-        'Failed to update driver status:',
+        'Failed to update driver todayStats:',
         error?.response?.data ?? error,
       );
     } finally {
       setLoading(false);
     }
-  }, [isOnline, loading]);
+}, [todayStats, loading, fetchTodayStats]);
 
   const onHistoryPress = () => {
     navigation.navigate('MainTabs', {

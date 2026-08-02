@@ -52,7 +52,7 @@ export default function HomeScreen({
 
           {/* Service Status Toggle Box */}
           <ServiceStatusBox
-            dashboardData={dashboardData}
+            status={dashboardData.status}
             toggleOnlineStatus={toggleOnlineStatus}
           />
 
