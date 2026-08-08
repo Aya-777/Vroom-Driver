@@ -6,5 +6,16 @@
         "completed": "Completed",
         "cancelled": "Cancelled",
         "rejected": "Rejected"
+    },
+    "activityDetails": {
+        "title": "Trip Details",
+        "driverName": "Driver",
+        "pickupLocation": "Pickup Location",
+        "dropoffLocation": "Dropoff Location",
+        "date": "Date",
+        "price": "Price",
+        "rideType": "Ride Type",
+        "distance": "Distance",
+        "duration": "Duration"
     }
 }

@@ -1,4 +1,4 @@
-import { TerminalTripStatus } from '../services/dto/tripHistory.dto';
+import { TerminalTripStatus } from '../../activities/services/dto/tripHistory.dto';
 
 export type ActivityFilterTab = 'All' | 'Completed' | 'Cancelled' | 'Rejected';
 
@@ -12,12 +12,12 @@ export interface Activity {
   dropoffLocation: string;
   date: string;
   price: number | null;
+  driverName: string;
   currency: string;
-  vehicleType: string;
+  rideType: string;
   distance: number | null;
   duration: number | null;
   cancellationReason: string | null;
-  riderId: number | null; 
 }
 
 export interface ActivityDetailsSheetProps {
