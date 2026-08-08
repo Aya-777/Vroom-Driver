@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { View, FlatList, Text, ActivityIndicator } from 'react-native';
 import ActivityCard from '../components/ActivityCard';
-
 import LinearBg from '../../../shared/components/LinearBg';
 import { useTheme } from '../../../core/theme/useTheme';
 import { createStyles } from '../styles/activities.styles';
@@ -42,8 +41,6 @@ export default function ActivitiesScreen() {
     return (
         <LinearBg
             colors={[colors.backgroundSoft, colors.background]}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 0.8 }}
             style={styles.gradientContainer}
         >
 
@@ -70,7 +67,7 @@ export default function ActivitiesScreen() {
                     onEndReached={loadMore}
                     renderItem={({ item }) => (
                         <ActivityCard
-                            rideType={item.vehicleType}
+                            rideType={item.rideType}
                             pickup={item.pickupLocation}
                             destination={item.dropoffLocation}
                             date={item.date}
@@ -85,7 +82,7 @@ export default function ActivitiesScreen() {
                     ListFooterComponent={
                         isLoadingMore ? (
                             <ActivityIndicator
-                                style={styles.loadingMoreIndicator}
+                                style={{ marginVertical: 16 }}
                                 color={colors.primary}
                             />
                         ) : null
@@ -99,7 +96,7 @@ export default function ActivitiesScreen() {
                             </View>
                         ) : (
                             <ActivityIndicator
-                                style={styles.emptyLoadingIndicator}
+                                style={{ marginTop: 40 }}
                                 color={colors.primary}
                             />
                         )

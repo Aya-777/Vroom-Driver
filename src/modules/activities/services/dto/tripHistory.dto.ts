@@ -12,14 +12,13 @@ export type TerminalTripStatus =
 
 export interface TripHistoryItemDTO {
   id: number;
-  rider: number;
-  driver: number | null;
-  vehicle: number | null;
   status: TerminalTripStatus;
   stops: TripHistoryStopDTO[];
-  actual_distance: number | null;
-  actual_duration: number | null;
-  actual_price: string | null;
+  driver_name: string | null;
+  vehicle_type: string | null;
+  price: string | null;
+  distance: number | null;
+  duration: number | null;
   payment_method: string;
   cancellation_reason: string | null;
   cancelled_at: string | null;

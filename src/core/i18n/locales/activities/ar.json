@@ -6,5 +6,16 @@
         "completed": "المكتملة",
         "cancelled": "الملغية",
         "rejected": "المرفوضة"
+    },
+    "activityDetails": {
+        "title": "تفاصيل الرحلة",
+        "driverName": "السائق",
+        "pickupLocation": "موقع الالتقاط",
+        "dropoffLocation": "موقع التسليم",
+        "date": "التاريخ",
+        "price": "السعر",
+        "rideType": "نوع الرحلة",
+        "distance": "المسافة",
+        "duration": "المدة الزمنية"
     }
 }
