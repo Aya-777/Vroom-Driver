@@ -1,134 +1,133 @@
 import { StyleSheet } from 'react-native';
 
 import { ThemeColors } from '../../../core/theme/theme.types';
-import {
-    Spacing,
-    Typography,
-    Radius,
-} from '../../../core/theme/tokens';
+import { Spacing, Typography, Radius } from '../../../core/theme/tokens';
 
 export const createStyles = (colors: ThemeColors) =>
-    StyleSheet.create({
-        gradientContainer: {
-            flex: 1,
-        },
+  StyleSheet.create({
+    gradientContainer: {
+      flex: 1,
+    },
 
-        scrollContent: {
-            flexGrow: 1,
-            paddingBottom: Spacing.xl,
-        },
+    scrollContent: {
+      flexGrow: 1,
+      paddingBottom: Spacing.xl,
+    },
 
-        emptyContainer: {
-            flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
-            paddingTop: Spacing.xxl,
-            gap: Spacing.md,
-        },
+    emptyContainer: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      paddingTop: Spacing.xxl,
+      gap: Spacing.md,
+    },
 
-        emptyText: {
-            ...Typography.body,
-            color: colors.primary,
-            textAlign: 'center',
-        },
+    emptyText: {
+      ...Typography.body,
+      color: colors.primary,
+      textAlign: 'center',
+    },
 
-        container: {
-            borderRadius: Radius.lg,
-            padding: 18,
-            marginBottom: 16,
-            overflow: 'hidden',
-        },
+    container: {
+      borderRadius: Radius.lg,
+      padding: 18,
+      marginBottom: 16,
+      overflow: 'hidden',
+    },
 
-        iconWrapper: {
-            width: 42,
-            height: 42,
-            borderRadius: Radius.full,
-            justifyContent: 'center',
-            alignItems: 'center',
-            marginRight: Spacing.md,
-            position: 'relative',
-        },
+    iconWrapper: {
+      width: 42,
+      height: 42,
+      borderRadius: Radius.full,
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginRight: Spacing.md,
+      position: 'relative',
+    },
 
-        unreadDot: {
-            position: 'absolute',
-            top: 0,
-            right: 0,
-            width: 10,
-            height: 10,
-            borderRadius: Radius.full,
-            backgroundColor: colors.primary,
-            borderWidth: 2,
-            borderColor: colors.background,
-        },
+    unreadDot: {
+      position: 'absolute',
+      top: 0,
+      right: 0,
+      width: 10,
+      height: 10,
+      borderRadius: Radius.full,
+      backgroundColor: colors.primary,
+      borderWidth: 2,
+      borderColor: colors.background,
+    },
 
-        title: {
-            flex: 1,
-            ...Typography.boldBody,
-            color: colors.primary,
-            marginRight: Spacing.sm,
-        },
+    title: {
+      flex: 1,
+      ...Typography.boldBody,
+      color: colors.primary,
+      marginRight: Spacing.sm,
+    },
 
-        titleRow: {
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-        },
+    titleRow: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+    },
 
-        body: {
-            ...Typography.caption,
-            color: colors.textSecondary,
-            lineHeight: 22,
-            marginTop: Spacing.sm,
-        },
+    body: {
+      ...Typography.body,
+      color: colors.textSecondary,
+      lineHeight: 22,
+      marginTop: Spacing.smm,
+      marginBottom: Spacing.sm,
+    },
 
-        time: {
-            ...Typography.smallCaption,
-            color: colors.textMuted,
-        },
+    dateTimeRow: {
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
 
-        divider: {
-            height: 1.2,
-            backgroundColor: colors.surface,
-            marginTop: Spacing.lg,
-            marginBottom: Spacing.md,
-        },
+    time: {
+      ...Typography.smallCaption,
+      color: colors.textMuted,
+      marginLeft: Spacing.sm,
+    },
 
-        actionsRow: {
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            paddingVertical: Spacing.xs,
+    divider: {
+      height: 1.2,
+      backgroundColor: colors.surface,
+      marginBottom: Spacing.md,
+    },
 
-        },
+    actionsRow: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+    },
 
-        actionsRowRead: {
-            justifyContent: 'flex-end',
-        },
+    actionsRowRead: {
+      justifyContent: 'flex-end',
+    },
 
-        actionButton: {
-            flexDirection: 'row',
-            alignItems: 'center',
-        },
+    actionButton: {
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
 
-        actionText: {
-            ...Typography.caption,
-            marginLeft: Spacing.xs,
-        },
+    actionText: {
+      ...Typography.caption,
+      marginLeft: Spacing.xs,
+    },
 
-        markReadText: {
-            color: colors.success,
-        },
+    markReadText: {
+      color: colors.success,
+    },
 
-        deleteText: {
-            color: colors.error,
-        },
-        header: {
-            flexDirection: 'row',
-            alignItems: 'flex-start',
-            marginBottom: Spacing.md,
-        },
-        headerContent: {
-            flex: 1,
-        },
-
-    });
+    deleteText: {
+      color: colors.error,
+    },
+    header: {
+      flexDirection: 'row',
+      alignItems: 'flex-start',
+      marginBottom: Spacing.md,
+    },
+    headerContent: {
+      flex: 1,
+    },
+  });
