@@ -186,6 +186,10 @@ src/
 │   │   │   └── useActivitiesActions.tsx
 │   │   ├── screens
 │   │   │   └── ActivitiesScreen.tsx
+│   │   ├── services
+│   │   │   ├── dto
+│   │   │   │   └── tripHistory.dto.ts
+│   │   │   └── historyApi.ts
 │   │   ├── styles
 │   │   │   ├── activities.styles.ts
 │   │   │   └── activityDetails.styles.ts

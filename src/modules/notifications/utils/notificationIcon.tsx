@@ -1,8 +1,5 @@
 import RideIcon from '../../../assets/svg/common/ride.svg';
-import PaymentIcon from '../../../assets/svg/payment/price.svg';
 import SystemIcon from '../../../assets/svg/common/notifications.svg';
-import PromotionIcon from '../../../assets/svg/common/star.svg';
-import { NotificationType } from '../types/notifications.types';
 import { ThemeColors } from '../../../core/theme/theme.types';
 
 type NotificationAppearance = {
@@ -12,40 +9,27 @@ type NotificationAppearance = {
 };
 
 export const getNotificationIcon = (
-    type: NotificationType,
+    type: string,
     colors: ThemeColors,
-
 ): NotificationAppearance => {
-
-    switch (type) {
-
-        case 'payment':
-            return {
-                Icon: PaymentIcon,
-                color: colors.success,
-                backgroundColor: colors.success + '15',
-            };
-
-        case 'system':
-            return {
-                Icon: SystemIcon,
-                color: '#D4AF37',
-                backgroundColor: '#d4af37b3',
-            };
-
-        case 'ride':
+    switch (type.toUpperCase()) {
+        case 'TRIP_REQUEST':
+        case 'TRIP_ACCEPTED':
+        case 'TRIP_STARTED':
+        case 'TRIP_COMPLETED':
             return {
                 Icon: RideIcon,
                 color: colors.textSecondary,
                 backgroundColor: colors.primary + '15',
             };
 
-        case 'promotion':
+        case 'TRIP_CANCELLED':
+        case 'TRIP_NO_DRIVER_FOUND':
         default:
             return {
-                Icon: PromotionIcon,
-                color: colors.textSecondary,
-                backgroundColor: colors.primary + '15',
+                Icon: SystemIcon,
+                color: '#D4AF37',
+                backgroundColor: '#d4af37b3',
             };
     }
 };
