@@ -13,7 +13,6 @@
   "date": "التاريخ",
   "savedPlaces": "الأماكن المحفوظة",
   "trackYourTrip": "تتبع رحلتك",
-  "ride": "رحلة",
   "filters": {
     "acceptAnimals": "قبول الحيوانات الأليفة",
     "bigLuggage": "أمتعة كبيرة",
@@ -45,5 +44,6 @@
   "invalidOtp": "رمز غير صحيح، حاول مرة ثانية",
   "tryAgain": "صار في خطأ، حاول مرة ثانية",
   "pleaseFillAllFields": "الرجاء تعبئة جميع الحقول",
-  "passwordsDoNotMatch": "كلمتا السر غير متطابقتين"
+  "passwordsDoNotMatch": "كلمتا السر غير متطابقتين",
+  "trip": "الرحلة"
 }

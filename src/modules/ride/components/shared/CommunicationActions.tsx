@@ -1,14 +1,18 @@
 import React from 'react';
-import { TouchableOpacity, View } from 'react-native';
+import { TouchableOpacity, View, ViewStyle } from 'react-native';
 import type { ThemeColors } from '../../../../core/theme/theme.types';
-import type { createStyles } from '../../styles/driver.styles';
 
 import PhoneNumberIcon from '../../../../assets/svg/contact/call.svg';
 import MessageIcon from '../../../../assets/svg/contact/chat.svg';
 import WhatsAppIcon from '../../../../assets/svg/contact/whatsapp.svg';
 
+type CommunicationActionsStyles = {
+  communicationRow: ViewStyle;
+  iconButton: ViewStyle;
+};
+
 type CommunicationActionsProps = {
-  styles: ReturnType<typeof createStyles>;
+  styles: CommunicationActionsStyles;
   colors: ThemeColors;
 };
 
@@ -23,12 +27,8 @@ export default function CommunicationActions({ styles, colors }: CommunicationAc
         <MessageIcon fill={colors.textPrimary} />
       </TouchableOpacity>
 
-      <TouchableOpacity style={[styles.iconButton, {
-          backgroundColor: colors.primary,
-          height:35,
-          width:35
-        }]}>
-        <WhatsAppIcon fill={colors.textPrimary} height={24} width={24}/>
+      <TouchableOpacity style={styles.iconButton}>
+        <WhatsAppIcon fill={colors.textPrimary} height={26} width={26} />
       </TouchableOpacity>
     </View>
   );
