@@ -7,6 +7,7 @@ import { useTheme } from '../../../core/theme/useTheme';
 import { createStyles } from '../styles/notifications.styles';
 import { NotificationCardProps } from '../types/notifications.types';
 import { getNotificationIcon } from '../utils/notificationIcon';
+import { formatNotificationDateTime } from '../utils/formateDate';
 import CheckIcon from '../../../assets/svg/common/check.svg';
 import TrashIcon from '../../../assets/svg/common/trash.svg';
 
@@ -20,6 +21,7 @@ const NotificationCard = ({
     const styles = createStyles(colors);
 
     const { Icon, color, backgroundColor } = getNotificationIcon(notification.type, colors);
+    const { date, time } = formatNotificationDateTime(notification.created_at);
 
     return (
         <TouchableOpacity
@@ -37,40 +39,28 @@ const NotificationCard = ({
                     <View
                         style={[
                             styles.iconWrapper,
-                            {
-                                backgroundColor,
-                            },
+                            { backgroundColor },
                         ]}
                     >
-                        <Icon
-                            width={22}
-                            height={22}
-                            fill={color}
-                        />
-                        {!notification.isRead && (
+                        <Icon width={22} height={22} fill={color} />
+                        {!notification.is_read && (
                             <View style={styles.unreadDot} />
                         )}
                     </View>
 
                     <View style={styles.headerContent}>
+                        <Text style={styles.title} numberOfLines={2}>
+                            {notification.title}
+                        </Text>
 
-                        <View style={styles.titleRow}>
-                            <Text
-                                style={styles.title}
-                                numberOfLines={1}
-                            >
-                                {notification.title}
-                            </Text>
-
-                            <Text style={styles.time}>
-                                {notification.created_at}
-                            </Text>
-                        </View>
-
-                        <Text style={styles.body}>
+                        <Text style={styles.body} numberOfLines={3}>
                             {notification.body}
                         </Text>
 
+                        <View style={styles.dateTimeRow}>
+                            <Text style={styles.time}>{date}</Text>
+                            <Text style={styles.time}>{time}</Text>
+                        </View>
                     </View>
 
                 </View>
@@ -80,51 +70,27 @@ const NotificationCard = ({
                 <View
                     style={[
                         styles.actionsRow,
-                        notification.isRead && styles.actionsRowRead,
+                        notification.is_read && styles.actionsRowRead,
                     ]}
                 >
-                    {!notification.isRead && (
+                    {!notification.is_read && (
                         <TouchableOpacity
                             style={styles.actionButton}
                             onPress={onMarkAsRead}
                         >
-                            <CheckIcon
-                                width={18}
-                                height={18}
-                                fill={colors.success}
-                            />
-
-                            <Text
-                                style={[
-                                    styles.actionText,
-                                    styles.markReadText,
-                                ]}
-                            >
+                            <CheckIcon width={18} height={18} fill={colors.success} />
+                            <Text style={[styles.actionText, styles.markReadText]}>
                                 Mark as read
                             </Text>
                         </TouchableOpacity>
                     )}
 
-                    <TouchableOpacity
-                        style={styles.actionButton}
-                        onPress={onDelete}
-                    >
-                        <TrashIcon
-                            width={18}
-                            height={18}
-                            fill={colors.error}
-                        />
-
-                        <Text
-                            style={[
-                                styles.actionText,
-                                styles.deleteText,
-                            ]}
-                        >
+                    <TouchableOpacity style={styles.actionButton} onPress={onDelete}>
+                        <TrashIcon width={18} height={18} fill={colors.error} />
+                        <Text style={[styles.actionText, styles.deleteText]}>
                             Delete
                         </Text>
                     </TouchableOpacity>
-
                 </View>
             </LinearBg>
         </TouchableOpacity>

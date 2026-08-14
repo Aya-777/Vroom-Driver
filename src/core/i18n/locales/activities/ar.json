@@ -2,10 +2,20 @@
     "noActivities": "لا يوجد نشاطات.",
     "yourActivity": "نشاطاتك ",
     "status": {
-        "ongoing": "الجارية",
-        "pending": "قيد الانتظار",
-        "accepted": "المقبولة",
+        "all": "الكل",
         "completed": "المكتملة",
-        "cancelled": "الملغاة"
+        "cancelled": "الملغية",
+        "rejected": "المرفوضة"
+    },
+    "activityDetails": {
+        "title": "تفاصيل الرحلة",
+        "driverName": "السائق",
+        "pickupLocation": "موقع الالتقاط",
+        "dropoffLocation": "موقع التسليم",
+        "date": "التاريخ",
+        "price": "السعر",
+        "rideType": "نوع الرحلة",
+        "distance": "المسافة",
+        "duration": "المدة الزمنية"
     }
 }

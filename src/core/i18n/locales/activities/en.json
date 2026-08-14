@@ -2,10 +2,20 @@
     "noActivities": "No activities found.",
     "yourActivity": "Your Activity ",
     "status": {
-        "ongoing": "Ongoing",
-        "pending": "Pending",
-        "accepted": "Accepted",
+        "all": "All",
         "completed": "Completed",
-        "cancelled": "Cancelled"
+        "cancelled": "Cancelled",
+        "rejected": "Rejected"
+    },
+    "activityDetails": {
+        "title": "Trip Details",
+        "driverName": "Driver",
+        "pickupLocation": "Pickup Location",
+        "dropoffLocation": "Dropoff Location",
+        "date": "Date",
+        "price": "Price",
+        "rideType": "Ride Type",
+        "distance": "Distance",
+        "duration": "Duration"
     }
 }

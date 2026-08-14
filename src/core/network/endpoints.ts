@@ -6,6 +6,7 @@ export const ENDPOINTS = {
     FORGOT_PASSWORD_VERIFY_OTP: '/api/v1/auth/forgot-password/verify-otp/',
     FORGOT_PASSWORD_RESEND_OTP: '/api/v1/auth/forgot-password/resend-otp/',
     RESET_PASSWORD: '/api/v1/auth/forgot-password/reset-password/',
+    LOGOUT: '/api/v1/auth/logout/',
   },
   DRIVER: {
     ACTIVATE_ACCOUNT: '/api/v1/drivers/activate-account/',
@@ -20,5 +21,17 @@ export const ENDPOINTS = {
     CHANGE_PHONE_RESEND: '/api/v1/users/me/change-phone/resend-otp/',
     CHANGE_PHONE_VERIFY: '/api/v1/users/me/change-phone/verify-otp/',
     CHANGE_PASSWORD: '/api/v1/users/me/change-password/',
+  },
+  TRIPS: {
+    HISTORY: '/trips/history/',
+  },
+  NOTIFICATIONS: {
+    LIST: '/api/v1/notifications/',
+    TYPES: '/api/v1/notifications/types/',
+    DEVICE_TOKENS: '/api/v1/notifications/device-tokens/',
+    DEACTIVATE: (id: number) =>
+      `/api/v1/notifications/device-tokens/${id}/deactivate/`,
+    MARK_READ: (id: number) => `/api/v1/notifications/${id}/read/`,
+    DELETE: (id: number) => `/api/v1/notifications/${id}/`,
   },
 } as const;
