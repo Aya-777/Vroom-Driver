@@ -1,41 +1,22 @@
-import { LinkingOptions } from '@react-navigation/native';
+﻿import { LinkingOptions } from '@react-navigation/native';
 import { RootStackParamList } from './rootTypes';
 
 export const deepLinkingConfig: LinkingOptions<RootStackParamList> = {
-  prefixes: [
-    'vroomrider://',
-    'https://vroomrider.com',
-  ],
-
-  // 2. Map URL paths to your specific screens
+  prefixes: ['vroomrider://', 'https://vroomrider.com'],
   config: {
     screens: {
-      // If a user is not logged in, React Navigation will fall back gracefully or you can route them
-      AuthStack: {
-        screens: {
-          Login: 'login',
-        },
-      },
-      // Protected Routes layout
+      Splash: 'splash',
+      Notifications: 'notifications',
       Main: {
         screens: {
-          HomeTab: {
+          MainTabs: {
             screens: {
-              HomeMain: 'home',
-              RideDetails: 'ride/:rideId',    // like: vroomrider://ride/123-abc
-              DriverFound: 'tracking/:rideId/:driverId',
-              DriverArrived: 'tracking/:rideId/:driverId/arrived',
-            },
-          },
-          ProfileTab: {
-            screens: {
-              ProfileMain: 'profile',
-              VehicleDetails: 'profile/vehicle',
-            },
-          },
-          ActivityTab: {
-            screens: {
-              Activities: 'activity',
+              HomeTab: {
+                screens: {
+                  HomeScreen: 'home',
+                  Trip: 'trip/:tripId',
+                },
+              },
             },
           },
         },

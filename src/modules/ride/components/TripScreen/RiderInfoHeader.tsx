@@ -1,7 +1,8 @@
-import React from 'react';
+﻿import React from 'react';
 import { View, Image, Text } from 'react-native';
 import { TripStage } from '../../types/trip.types';
 import PinBoxes from './PinBoxes';
+import Input from '../../../../shared/components/Input';
 import CommunicationActions from '../shared/CommunicationActions';
 import DotDivider from '../../../../shared/components/DotDivider';
 import { useTheme } from '../../../../core/theme/useTheme';
@@ -9,7 +10,7 @@ import { createStyles } from '../../styles/trip.styles';
 import { useTranslation } from 'react-i18next';
 
 type Props = {
-    stage: TripStage;
+    stage: TripStage | null;
     riderName: string;
     riderAvatar?: string;
     pin: string;
@@ -52,7 +53,7 @@ export default function RiderInfoHeader({
             ) : stage === TripStage.PIN_ENTRY ? (
                 <>
                     <Text style={styles.pinHint}>{t('enterPin')}</Text>
-                    <PinBoxes length={4} value={pin} editable error={pinError} onChangeValue={onChangePin} />
+                    <Input value={pin} onChangeText={onChangePin} keyboardType="number-pad" maxLength={4} placeholder={t('enterPin')} error={pinError ? 'invalidOtp' : undefined} autoFocus autoComplete="sms-otp" textContentType="oneTimeCode" />
                 </>
             ) : (
                 <PinBoxes length={4} value={timerText} editable={false} />

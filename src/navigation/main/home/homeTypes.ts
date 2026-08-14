@@ -1,9 +1,9 @@
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
+﻿import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 export type HomeStackParamList = {
   HomeScreen: undefined;
-  Ride: undefined;    
+  Trip: { tripId: number };
 };
 
-export type HomeStackScreenProps<T extends keyof HomeStackParamList> = 
+export type HomeStackScreenProps<T extends keyof HomeStackParamList> =
   NativeStackScreenProps<HomeStackParamList, T>;

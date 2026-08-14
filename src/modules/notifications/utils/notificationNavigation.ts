@@ -1,3 +1,5 @@
+﻿import { navigate } from '../../../navigation/rootTypes';
+
 export type NotificationType =
   | 'TRIP_REQUEST'
   | 'TRIP_ACCEPTED'
@@ -7,40 +9,28 @@ export type NotificationType =
   | 'TRIP_NO_DRIVER_FOUND'
   | 'TRIP_CANCELLED';
 
-type NotificationData = {
+export type NotificationData = {
   type?: string;
-  trip_id?: string;
+  trip_id?: string | number;
 };
 
-type NavigateFn = (screen: string, params?: object) => void;
-
-const DRIVER_NAVIGATION_MAP: Partial<
-  Record<
-    NotificationType,
-    (data: NotificationData) => { screen: string; params?: object }
-  >
-> = {
-  TRIP_REQUEST: data => ({
-    screen: 'RideScreen',
-    params: { tripId: data.trip_id },
-  }),
-  TRIP_CANCELLED: () => ({
-    screen: 'RideScreen',
-  }),
-};
-
-export function handleNotificationNavigation(
-  data: NotificationData,
-  navigate: NavigateFn,
-) {
+export function handleNotificationNavigation(data: NotificationData) {
   const type = (data.type ?? '').toUpperCase() as NotificationType;
-  const entry = DRIVER_NAVIGATION_MAP[type];
+  const tripId = Number(data.trip_id);
 
-  if (!entry) {
-    console.warn('Unhandled notification type:', type);
+  if (type !== 'TRIP_REQUEST' || !Number.isInteger(tripId) || tripId <= 0) {
+    console.warn('Unhandled notification or invalid trip ID:', data);
     return;
   }
 
-  const { screen, params } = entry(data);
-  navigate(screen, params);
+  navigate('Main', {
+    screen: 'MainTabs',
+    params: {
+      screen: 'HomeTab',
+      params: {
+        screen: 'Trip',
+        params: { tripId },
+      },
+    },
+  });
 }

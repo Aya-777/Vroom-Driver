@@ -1,13 +1,12 @@
-import { useState, useCallback } from 'react';
+﻿import { useState, useCallback } from 'react';
 import { HomeDashboardData } from '../types/home.types';
 import { useMainDrawer } from '../../../navigation/hooks/useMainDrawer';
-import { DrawerContentComponentProps } from '@react-navigation/drawer';
+import { navigate } from '../../../navigation/rootTypes';
 import { homeApi } from '../services/homeApi';
 import { UpdateDriverStatusRequest } from '../services/dto/home.dto';
 
-type Navigation = DrawerContentComponentProps['navigation'];
 
-export const useHomeViewModel = (navigation: Navigation) => {
+export const useHomeViewModel = () => {
   const { openSidebar } = useMainDrawer();
 
   const [isOnline, setIsOnline] = useState<boolean>(true);
@@ -81,8 +80,12 @@ export const useHomeViewModel = (navigation: Navigation) => {
   }, [isOnline, loading]);
 
   const onHistoryPress = () => {
-    navigation.navigate('MainTabs', {
-      screen: 'ActivityTab',
+    navigate('Main', {
+      screen: 'MainTabs',
+      params: {
+        screen: 'ActivityTab',
+        params: { screen: 'ActivitiesMain' },
+      },
     });
   };
 

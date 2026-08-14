@@ -1,48 +1,88 @@
-import { useState, useCallback } from 'react';
+﻿import { useCallback, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import { tripApi } from '../services/tripApi';
 import { TripStage } from '../types/trip.types';
 import { useTripTimer } from '../hooks/useTripTimer';
+import { TripId } from '../services/dto/trip.dto';
 
-// TODO: هاد الـ PIN لازم ييجي من الباك اند (الـ PIN المرسل لرقم الراكب)، مش hardcoded
-const EXPECTED_PIN = '1234';
+type TripAction = (tripId: TripId) => Promise<void>;
 
-export function useTripViewModel(onTripCompleted: () => void) {
-  const [stage, setStage] = useState<TripStage>(TripStage.DETAILS);
+export function useTripViewModel(
+  onTripCompleted: () => void,
+  tripId?: TripId,
+) {
   const [pin, setPin] = useState('');
   const [pinError, setPinError] = useState(false);
 
-  const { formatted: timerText } = useTripTimer(
-    stage === TripStage.IN_PROGRESS,
+  const {
+    data: trip,
+    isLoading,
+    refetch,
+  } = useQuery({
+    queryKey: ['trip', tripId ?? 'current'],
+    queryFn: () =>
+      tripId ? tripApi.getTripById(tripId) : tripApi.getCurrentTrip(),
+    refetchInterval: 5000,
+  });
+
+  const stage: TripStage | null = trip?.status ?? null;
+  const { formatted: timerText } = useTripTimer(stage === 'ON_TRIP');
+
+  const runTripAction = useCallback(
+    async (action: TripAction): Promise<boolean> => {
+      if (!trip?.id) return false;
+
+      try {
+        await action(trip.id);
+        await refetch();
+        return true;
+      } catch {
+        return false;
+      }
+    },
+    [refetch, trip?.id],
   );
 
-  const takeTrip = useCallback(() => setStage(TripStage.EN_ROUTE), []);
+  const takeTrip = useCallback(async () => {
+    await runTripAction(tripApi.acceptTrip);
+  }, [runTripAction]);
 
-  const cancelTrip = useCallback(() => {
-    // TODO: نداء API لإلغاء الرحلة
-    setStage(TripStage.DETAILS);
-  }, []);
+  const cancelTrip = useCallback(async () => {
+    await runTripAction(tripApi.cancelTrip);
+  }, [runTripAction]);
 
-  const markArrived = useCallback(() => setStage(TripStage.PIN_ENTRY), []);
+  const markArrived = useCallback(async () => {
+    await runTripAction(tripApi.markArrived);
+  }, [runTripAction]);
 
-  const onChangePin = useCallback((value: string) => {
-    setPin(value);
-    setPinError(false);
+  const resendPin = useCallback(async () => {
+    await runTripAction(tripApi.resendTripPin);
+  }, [runTripAction]);
 
-    if (value.length === 4) {
-      if (value === EXPECTED_PIN) {
-        setStage(TripStage.IN_PROGRESS);
-      } else {
-        setPinError(true);
-        setTimeout(() => setPin(''), 500); // فيدباك بصري بسيط ثم تصفير
+  const onChangePin = useCallback(
+    async (value: string) => {
+      const digitsOnly = value.replace(/[^0-9]/g, '');
+      setPin(digitsOnly);
+      setPinError(false);
+
+      if (digitsOnly.length === 4) {
+        const didVerify = await runTripAction(tripIdentifier =>
+          tripApi.verifyTripPin(tripIdentifier, digitsOnly),
+        );
+        setPinError(!didVerify);
       }
-    }
-  }, []);
+    },
+    [runTripAction],
+  );
 
-  const completeTrip = useCallback(() => {
-    // TODO: نداء API لإنهاء الرحلة قبل الانتقال
-    onTripCompleted();
-  }, [onTripCompleted]);
+  const completeTrip = useCallback(async () => {
+    const didComplete = await runTripAction(tripApi.completeTrip);
+    if (didComplete) onTripCompleted();
+  }, [onTripCompleted, runTripAction]);
 
   return {
+    trip,
+    isLoading,
     stage,
     pin,
     pinError,
@@ -50,7 +90,9 @@ export function useTripViewModel(onTripCompleted: () => void) {
     takeTrip,
     cancelTrip,
     markArrived,
+    resendPin,
     onChangePin,
     completeTrip,
+    refetch,
   };
 }

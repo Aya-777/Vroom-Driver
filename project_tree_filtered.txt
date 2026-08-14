@@ -91,28 +91,10 @@ src/
 │   │   │   │   ├── ar.json
 │   │   │   │   └── en.json
 │   │   │   ├── ride
-│   │   │   │   ├── TripEnded
-│   │   │   │   │   ├── ar.json
-│   │   │   │   │   └── en.json
-│   │   │   │   ├── confirmRide
-│   │   │   │   │   ├── ar.json
-│   │   │   │   │   └── en.json
-│   │   │   │   ├── driverArrived
-│   │   │   │   │   ├── ar.json
-│   │   │   │   │   └── en.json
-│   │   │   │   ├── driverFound
-│   │   │   │   │   ├── ar.json
-│   │   │   │   │   └── en.json
 │   │   │   │   ├── review
 │   │   │   │   │   ├── ar.json
 │   │   │   │   │   └── en.json
-│   │   │   │   ├── rideDetails
-│   │   │   │   │   ├── ar.json
-│   │   │   │   │   └── en.json
-│   │   │   │   ├── selectRide
-│   │   │   │   │   ├── ar.json
-│   │   │   │   │   └── en.json
-│   │   │   │   └── takeRide
+│   │   │   │   └── trip
 │   │   │   │       ├── ar.json
 │   │   │   │       └── en.json
 │   │   │   └── sidebar
@@ -369,6 +351,7 @@ src/
 │   ├── ride
 │   │   ├── components
 │   │   │   ├── TripScreen
+│   │   │   │   ├── DetailBox.tsx
 │   │   │   │   ├── PinBoxes.tsx
 │   │   │   │   ├── RiderInfoHeader.tsx
 │   │   │   │   └── TripDetailsGrid.tsx
@@ -384,6 +367,10 @@ src/
 │   │   │   └── useTripTimer.ts
 │   │   ├── screens
 │   │   │   └── TripScreen.tsx
+│   │   ├── services
+│   │   │   ├── dto
+│   │   │   │   └── trip.dto.ts
+│   │   │   └── tripApi.ts
 │   │   ├── store
 │   │   │   └── useRideStore.ts
 │   │   ├── styles
@@ -440,6 +427,7 @@ src/
 │   │   ├── BaseBottomSheet.tsx
 │   │   ├── ChangePasswordForm.tsx
 │   │   ├── ChangePhoneForm.tsx
+│   │   ├── DotDivider.tsx
 │   │   ├── Header.tsx
 │   │   ├── Input.tsx
 │   │   ├── LinearBg.tsx

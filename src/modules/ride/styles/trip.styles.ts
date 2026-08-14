@@ -105,35 +105,55 @@ export const createStyles = (colors: ThemeColors) =>
       height: 1,
     },
 
-    detailsGrid: {
+    grid: {
       flexDirection: 'row',
       flexWrap: 'wrap',
       justifyContent: 'space-between',
       marginBottom: Spacing.lg,
     },
 
-    detailsBox: {
+    box: {
       width: '48%',
       borderRadius: 12,
-      padding: 12,
-      marginBottom: Spacing.sm,
+      paddingTop: 12,
+      paddingHorizontal: 14,
+      paddingBottom: 6,
+      marginBottom: 15,
       backgroundColor: colors.surface,
-      ...Shadows.small,
+      ...Shadows.medium,
     },
 
-    detailsBoxHeader: {
+    boxHeader: {
       flexDirection: 'row',
       alignItems: 'center',
       marginBottom: Spacing.xs,
     },
-    detailsBoxTitle: {
+
+    boxTitle: {
       marginStart: Spacing.xs,
       color: colors.textPrimary,
       ...Typography.boldCaption,
     },
-    detailsBoxValue: {
+
+    boxTitle2: {
+      marginTop: 5,
+      marginStart: Spacing.xs,
       color: colors.textPrimary,
+      ...Typography.caption,
+    },
+
+    boxValue: {
+      color: colors.textPrimary,
+      textAlign: 'center',
+      marginVertical: Spacing.xs,
       ...Typography.semiBoldCaption,
+    },
+
+    line: {
+      height: 1,
+      width: '100%',
+      marginTop: -4,
+      backgroundColor: colors.border,
     },
 
     primaryButton: {
@@ -153,10 +173,10 @@ export const createStyles = (colors: ThemeColors) =>
       marginBottom: Spacing.md,
     },
 
-    secondaryButtonText: { color: colors.primary },
+    secondaryButtonText: { color: colors.surface },
 
     dangerButton: {
-      backgroundColor: colors.error,
+      backgroundColor: colors.primary,
       borderRadius: Radius.full,
       paddingVertical: 14,
       alignItems: 'center',

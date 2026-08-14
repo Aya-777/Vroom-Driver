@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { View, FlatList, Text } from 'react-native';
 
 import LinearBg from '../../../shared/components/LinearBg';
@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next';
 
 import { createStyles } from '../styles/notifications.styles';
 import { useNotificationsViewModel } from '../viewmodels/useNotificationsViewModel';
+import { handleNotificationNavigation } from '../utils/notificationNavigation';
 import NotificationCard from '../components/NotificationCard';
 
 export default function NotificationsScreen() {
@@ -44,7 +45,11 @@ export default function NotificationsScreen() {
                         <NotificationCard
                             notification={item}
                             onPress={(tripId) => {
-                                console.log('Trip Id:', tripId);
+                                markAsRead(item.id);
+                                handleNotificationNavigation({
+                                    type: item.type,
+                                    trip_id: tripId ?? undefined,
+                                });
                             }}
                             onMarkAsRead={() => markAsRead(item.id)}
                             onDelete={() => deleteNotification(item.id)}
