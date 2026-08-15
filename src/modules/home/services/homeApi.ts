@@ -2,6 +2,7 @@ import { apiClient } from '../../../core/network/apiClient';
 import { ENDPOINTS } from '../../../core/network/endpoints';
 import {
   DriverStatus,
+  StatisticsResponseDTO,
   UpdateDriverStatusRequest,
   UpdateDriverStatusResponse,
 } from './dto/home.dto';
@@ -23,4 +24,9 @@ export const homeApi = {
     const response = await apiClient.get<TodayStatsResponse>(ENDPOINTS.DRIVER.TODAY_STATS);
     return response.data;
   },
+
+  getStatistics: async ()=>{
+    const response = await apiClient.get<StatisticsResponseDTO>(ENDPOINTS.DRIVER.STATISTICS);
+    return response.data;
+  }
 };

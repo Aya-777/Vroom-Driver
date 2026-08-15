@@ -17,7 +17,7 @@ export const ServiceStatusBox: React.FC<DashboardDataProps> = ({
   const { colors } = useTheme();
   const styles = createStyles(colors);
   const { t } = useTranslation(['home']);
-  const isOnline = status === 'ONLINE';
+  const isOnline = status === 'ONLINE' || status === 'ONTRIP';
 
   return (
     <View style={styles.statusBox}>

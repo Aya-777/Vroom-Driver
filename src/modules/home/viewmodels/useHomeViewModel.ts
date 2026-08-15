@@ -3,7 +3,12 @@ import { HomeDashboardData } from '../types/home.types';
 import { useMainDrawer } from '../../../navigation/hooks/useMainDrawer';
 import { DrawerContentComponentProps } from '@react-navigation/drawer';
 import { homeApi } from '../services/homeApi';
-import { DriverStatus, TodayStatsResponse, UpdateDriverStatusRequest } from '../services/dto/home.dto';
+import {
+  DriverStatus,
+  StatisticsResponseDTO,
+  TodayStatsResponse,
+  UpdateDriverStatusRequest,
+} from '../services/dto/home.dto';
 import { useCurrentUser } from '../../../core/store/userStore';
 import { useEffect } from 'react';
 
@@ -13,22 +18,38 @@ export const useHomeViewModel = (navigation: Navigation) => {
   const { openSidebar } = useMainDrawer();
 
   const [todayStats, setTodayStats] = useState<TodayStatsResponse | null>(null);
+  const [statistics, setStatistics] = useState<StatisticsResponseDTO | null>(
+    null,
+  );
   const [loading, setLoading] = useState<boolean>(false);
   const user = useCurrentUser();
 
-const fetchTodayStats = useCallback(async () => {
-  try {
-    const stats = await homeApi.getTodayStats();
+  const fetchTodayStats = useCallback(async () => {
+    try {
+      const stats = await homeApi.getTodayStats();
 
-    setTodayStats(stats);
-  } catch (error) {
-    console.log('Failed to fetch today stats', error);
-  }
-}, []);
+      setTodayStats(stats);
+    } catch (error) {
+      console.log('Failed to fetch today stats', error);
+    }
+  }, []);
 
   useEffect(() => {
     fetchTodayStats();
   }, [fetchTodayStats]);
+
+  const fetchStatistics = useCallback(async () => {
+    try {
+      const stats = await homeApi.getStatistics();
+      setStatistics(stats);
+    } catch (error) {
+      console.log('Failed to fetch statistics', error);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchStatistics();
+  }, [fetchStatistics]);
 
   const formatDuration = (minutes: number) => {
     const h = Math.floor(minutes / 60);
@@ -38,42 +59,78 @@ const fetchTodayStats = useCallback(async () => {
     return `${h}h ${m}m`;
   };
 
-  const onlineTime = todayStats ? formatDuration(todayStats.data.duration_minutes) : '0m';
+  const onlineTime = todayStats
+    ? formatDuration(todayStats.data.duration_minutes)
+    : '0m';
+
+    const LinkRatingToString = (rating?: number) => {
+      if(!rating){
+        return '';
+      }
+      if(rating > 4){
+        return 'Excellent';
+      }else if(rating > 3){
+        return 'Good';
+      }else{
+        return 'Bad'
+      }
+    }
+    const LinkCompletionMessageToRating = (rating?: number) =>{
+      if(!rating){
+        return "You're online again! Good job Captain.";
+      }
+      if(rating > 4){
+        return 'Rating is SUPER, Keep it up!';
+      }else if(rating > 3){
+        return 'Most things are best when average, not rating though...';
+      }else{
+        return "Maybe it's time to work harder inn'it?"
+      }
+
+    }
+    console.log('dashboard data: ' , statistics);
+    console.log('user ' , user);
 
   const dashboardData: HomeDashboardData = {
     driverName: user?.first_name || 'Captain',
     onlineTime: onlineTime,
-    status: todayStats?.data.driver_status || 'OFFLINE', 
-    completionMessage: 'Your completion rate improved by 3% this week!',
+    status: todayStats?.data.driver_status || 'OFFLINE',
+    completionMessage: LinkCompletionMessageToRating(user?.rating),
     stats: {
-      totalTrips: '1,248',
-      totalTripsTrend: '+12%',
-      dailyEarnings: '$142.50',
-      dailyEarningsTrend: '+18%',
-      weeklyEarnings: '$984.20',
-      monthlyEarnings: '$4,290',
-      avgRating: '4.98',
-      ratingStatus: 'Excellent',
+      totalTrips: statistics?.data.total_completed_trips.toString() ?? '0',
+      dailyEarnings: statistics?.data.today_income.toString() ?? '0',
+      weeklyEarnings: statistics?.data.weekly_income.toString() ?? '0',
+      monthlyEarnings: statistics?.data.monthly_income.toString() ?? '0',
+      avgRating: user?.rating?.toString() ?? '0',
+      ratingStatus: LinkRatingToString(user?.rating),
       todaysActive: onlineTime,
-      activeStatus: todayStats?.data.driver_status === 'ONLINE' || 'ON_TRIP' ? 'Active' : 'Inactive',
+      activeStatus:
+        todayStats?.data.driver_status === 'ONLINE' || 'ON_TRIP'
+          ? 'Active'
+          : 'Inactive',
     },
     weeklyTrends: [
-      { day: 'Mon', value: 30 },
-      { day: 'Tue', value: 45 },
-      { day: 'Wed', value: 38 },
-      { day: 'Thu', value: 70 },
-      { day: 'Fri', value: 50 },
-      { day: 'Sat', value: 40 },
-      { day: 'Sun', value: 65 },
+      { day: 'Mon', value: statistics?.data.trips_this_week.Monday ?? 0 },
+      { day: 'Tue', value: statistics?.data.trips_this_week.Tuesday ?? 0 },
+      { day: 'Wed', value: statistics?.data.trips_this_week.Wednesday ?? 0 },
+      { day: 'Thu', value: statistics?.data.trips_this_week.Thursday ?? 0 },
+      { day: 'Fri', value: statistics?.data.trips_this_week.Friday ?? 0 },
+      { day: 'Sat', value: statistics?.data.trips_this_week.Saturday ?? 0 },
+      { day: 'Sun', value: statistics?.data.trips_this_week.Sunday ?? 0 },
     ],
     metrics: {
-      weeklyCompletionRate: 95,
-      completedPercentage: 85,
-      cancelledPercentage: 10,
-      cancelledByRiderPercentage: 5,
-      monthlyCompleted: 88,
-      monthlyCancelled: 9.8,
-      monthlyCancelledByRider: 2.2,
+      weeklyCompletionRate:
+        statistics?.data.completion_stats.this_week.completed.count ?? 0,
+      completedPercentage:
+        statistics?.data.completion_stats.this_week.completed.percentage ?? 0,
+      cancelledPercentage:
+        statistics?.data.completion_stats.this_week.cancelled_by_driver.percentage ?? 0,
+      cancelledByRiderPercentage:
+        statistics?.data.completion_stats.this_week.cancelled_by_rider.percentage ?? 0,
+
+      dailyCompleted: statistics?.data.completion_stats.today.completed.percentage ?? 0,
+      dailyCancelled: statistics?.data.completion_stats.today.cancelled_by_driver.percentage ?? 0,
+      dailyCancelledByRider: statistics?.data.completion_stats.today.cancelled_by_rider.percentage ?? 0,
     },
   };
 
@@ -86,24 +143,23 @@ const fetchTodayStats = useCallback(async () => {
 
     try {
       setLoading(true);
-      const request : UpdateDriverStatusRequest = {
+      const request: UpdateDriverStatusRequest = {
         status: nextStatus,
-      }
-            
+      };
+
       setTodayStats(prev =>
         prev
-        ? {
-          ...prev,
-          data: {
-            ...prev.data,
-            driver_status: nextStatus,
-          },
-        }
-        : prev
+          ? {
+              ...prev,
+              data: {
+                ...prev.data,
+                driver_status: nextStatus,
+              },
+            }
+          : prev,
       );
 
       await homeApi.updateDriverStatus(request);
-      
     } catch (error: any) {
       console.log(
         'Failed to update driver todayStats:',
@@ -112,7 +168,7 @@ const fetchTodayStats = useCallback(async () => {
     } finally {
       setLoading(false);
     }
-}, [todayStats, loading, fetchTodayStats]);
+  }, [todayStats, loading, fetchTodayStats]);
 
   const onHistoryPress = () => {
     navigation.navigate('MainTabs', {

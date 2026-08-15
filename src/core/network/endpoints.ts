@@ -14,6 +14,7 @@ export const ENDPOINTS = {
     ACTIVATE_ACCOUNT_RESEND_OTP: '/api/v1/drivers/activate-account/resend-otp/',
     STATUS : '/api/v1/drivers/me/status/',
     TODAY_STATS : '/api/v1/drivers/me/today-stats/',
+    STATISTICS: '/trips/statistics/driver/',
   },
   USERS: {
     ME: '/api/v1/users/me/',

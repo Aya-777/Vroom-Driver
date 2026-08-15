@@ -16,7 +16,7 @@ import { ServiceStatusBox } from '../components/ServiceStatusBox';
 import { ImprovementBanner } from '../components/ImprovementBanner';
 import WeeklyTrendsFlowChart from '../components/WeeklyTrendsFlowChart';
 import RideWeeklyStatus from '../components/RideWeeklyStatus';
-import RideMonthlyStatus from '../components/RideMonthlyStatus';
+import RideDailyStatus from '../components/RideDailyStatus';
 import { ActionButtons } from '../components/ActionButtons';
 import { DrawerContentComponentProps } from '@react-navigation/drawer';
 
@@ -69,7 +69,7 @@ export default function HomeScreen({
           <RideWeeklyStatus dashboardData={dashboardData} />
 
           {/* Ride Monthly Status Section */}
-          <RideMonthlyStatus dashboardData={dashboardData} />
+          <RideDailyStatus dashboardData={dashboardData} />
 
           {/* Quick Actions (History & Support) */}
           <ActionButtons
