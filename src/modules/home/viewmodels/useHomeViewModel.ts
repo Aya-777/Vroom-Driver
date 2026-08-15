@@ -4,13 +4,14 @@ import { useMainDrawer } from '../../../navigation/hooks/useMainDrawer';
 import { DrawerContentComponentProps } from '@react-navigation/drawer';
 import { homeApi } from '../services/homeApi';
 import {
-  DriverStatus,
   StatisticsResponseDTO,
   TodayStatsResponse,
   UpdateDriverStatusRequest,
 } from '../services/dto/home.dto';
 import { useCurrentUser } from '../../../core/store/userStore';
 import { useEffect } from 'react';
+import { refreshProfile } from '../../profile/utils/ProfileUtils';
+import { useProfileStore } from '../../profile/store/useProfileStore';
 
 type Navigation = DrawerContentComponentProps['navigation'];
 
@@ -23,6 +24,7 @@ export const useHomeViewModel = (navigation: Navigation) => {
   );
   const [loading, setLoading] = useState<boolean>(false);
   const user = useCurrentUser();
+  const {userProfile} = useProfileStore();
 
   const fetchTodayStats = useCallback(async () => {
     try {
@@ -50,6 +52,12 @@ export const useHomeViewModel = (navigation: Navigation) => {
   useEffect(() => {
     fetchStatistics();
   }, [fetchStatistics]);
+
+  useEffect(() => {
+    refreshProfile().catch(error => {
+      console.log('Failed to fetch profile', error);
+    });
+  }, []);
 
   const formatDuration = (minutes: number) => {
     const h = Math.floor(minutes / 60);
@@ -90,19 +98,20 @@ export const useHomeViewModel = (navigation: Navigation) => {
     }
     console.log('dashboard data: ' , statistics);
     console.log('user ' , user);
+    console.log('profile ', userProfile);
 
   const dashboardData: HomeDashboardData = {
     driverName: user?.first_name || 'Captain',
     onlineTime: onlineTime,
     status: todayStats?.data.driver_status || 'OFFLINE',
-    completionMessage: LinkCompletionMessageToRating(user?.rating),
+    completionMessage: LinkCompletionMessageToRating(user?.rating ?? userProfile.ratingAvg),
     stats: {
       totalTrips: statistics?.data.total_completed_trips.toString() ?? '0',
       dailyEarnings: statistics?.data.today_income.toString() ?? '0',
       weeklyEarnings: statistics?.data.weekly_income.toString() ?? '0',
       monthlyEarnings: statistics?.data.monthly_income.toString() ?? '0',
       avgRating: user?.rating?.toString() ?? '0',
-      ratingStatus: LinkRatingToString(user?.rating),
+      ratingStatus: LinkRatingToString(user?.rating ?? userProfile.ratingAvg),
       todaysActive: onlineTime,
       activeStatus:
         todayStats?.data.driver_status === 'ONLINE' || 'ON_TRIP'
