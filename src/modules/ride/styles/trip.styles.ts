@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+﻿import { StyleSheet } from 'react-native';
 import {
   Typography,
   Spacing,
@@ -41,6 +41,21 @@ export const createStyles = (colors: ThemeColors) =>
       ...Typography.caption,
       color: colors.textSecondary,
       marginBottom: Spacing.xs,
+    },
+    pinInputBox: {
+      height: 54,
+      backgroundColor: colors.backgroundSoft,
+      borderRadius: Radius.md,
+      borderWidth: 2,
+      borderColor: colors.surface,
+      ...Shadows.medium,
+    },
+    pinInput: {
+      textAlign: 'center',
+      fontSize: 20,
+      fontWeight: 'bold',
+      color: colors.primary,
+      paddingVertical: 0,
     },
 
     avatarPlaceholder: {

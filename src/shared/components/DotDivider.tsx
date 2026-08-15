@@ -7,9 +7,9 @@ export default function DotDivider() {
 
     return (
         <View style={styles.container}>
-            <View style={[styles.line, { backgroundColor: colors.surface }]} />
-            <View style={[styles.dot, { backgroundColor: colors.surface }]} />
-            <View style={[styles.line, { backgroundColor: colors.surface }]} />
+            <View style={[styles.line, { backgroundColor: colors.primary }]} />
+            <View style={[styles.dot, { backgroundColor: colors.primary }]} />
+            <View style={[styles.line, { backgroundColor: colors.primary }]} />
         </View>
     );
 }

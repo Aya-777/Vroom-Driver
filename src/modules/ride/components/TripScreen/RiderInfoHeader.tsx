@@ -53,7 +53,19 @@ export default function RiderInfoHeader({
             ) : stage === TripStage.PIN_ENTRY ? (
                 <>
                     <Text style={styles.pinHint}>{t('enterPin')}</Text>
-                    <Input value={pin} onChangeText={onChangePin} keyboardType="number-pad" maxLength={4} placeholder={t('enterPin')} error={pinError ? 'invalidOtp' : undefined} autoFocus autoComplete="sms-otp" textContentType="oneTimeCode" />
+                                        <Input
+                      value={pin}
+                      onChangeText={value => onChangePin(value.replace(/[^0-9]/g, ''))}
+                      keyboardType="number-pad"
+                      maxLength={4}
+                      placeholder={t('enterPin')}
+                      error={pinError ? 'invalidOtp' : undefined}
+                      autoFocus
+                      autoComplete="sms-otp"
+                      textContentType="oneTimeCode"
+                      inputBoxStyle={styles.pinInputBox}
+                      inputStyle={styles.pinInput}
+                    />
                 </>
             ) : (
                 <PinBoxes length={4} value={timerText} editable={false} />
