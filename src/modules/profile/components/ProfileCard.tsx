@@ -109,6 +109,7 @@ export default function ProfileCard({
             {driverStatus && (
               <View style={styles.expandedRow}>
                 <RideIcon width={18} height={18} fill={colors.primary} />
+                <Text style={styles.infoText}> Status :</Text>
                 <Text style={styles.infoText}>
                   {t(`driverStatuses.${driverStatus}`, { defaultValue: driverStatus })}
                 </Text>
@@ -118,6 +119,7 @@ export default function ProfileCard({
             {nationalId && (
               <View style={styles.expandedRow}>
                 <PasswordIcon width={18} height={18} fill={colors.primary} />
+                <Text style={styles.infoText}> National ID :</Text>
                 <Text style={styles.infoText}>{nationalId}</Text>
               </View>
             )}
@@ -125,6 +127,7 @@ export default function ProfileCard({
             {birthdate && (
               <View style={styles.expandedRow}>
                 <BirthDate width={18} height={18} fill={colors.primary} />
+                <Text style={styles.infoText}> Birth Date :</Text>
                 <Text style={styles.infoText}>{birthdate}</Text>
               </View>
             )}

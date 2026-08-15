@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { ScrollView, View } from 'react-native';
 
 import LinearBg from '../../../shared/components/LinearBg';
@@ -9,7 +9,6 @@ import { useHomeViewModel } from '../viewmodels/useHomeViewModel';
 
 import Header from '../components/HomeHeader';
 import { WelcomeAndLiveStatus } from '../components/Welcome&LiveStatus';
-import { useTranslation } from 'react-i18next';
 import { navigate } from '../../../navigation/rootTypes';
 import { DashboardStatsGrid } from '../components/DashboardStatsGrid';
 import { ServiceStatusBox } from '../components/ServiceStatusBox';
@@ -18,16 +17,12 @@ import WeeklyTrendsFlowChart from '../components/WeeklyTrendsFlowChart';
 import RideWeeklyStatus from '../components/RideWeeklyStatus';
 import RideMonthlyStatus from '../components/RideMonthlyStatus';
 import { ActionButtons } from '../components/ActionButtons';
-import { DrawerContentComponentProps } from '@react-navigation/drawer';
 
-export default function HomeScreen({
-  navigation,
-}: DrawerContentComponentProps) {
+export default function HomeScreen() {
   const { colors } = useTheme();
   const styles = createStyles(colors);
-  const { t } = useTranslation(['home']);
   const { dashboardData, toggleOnlineStatus, openSidebar, onHistoryPress } =
-    useHomeViewModel(navigation);
+    useHomeViewModel();
 
   return (
     <LinearBg

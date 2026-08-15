@@ -1,4 +1,4 @@
-import { getApp } from '@react-native-firebase/app';
+﻿import { getApp } from '@react-native-firebase/app';
 import notifee, { AndroidImportance, EventType } from '@notifee/react-native';
 import {
   getMessaging,
@@ -77,6 +77,17 @@ export async function displayForegroundNotification(remoteMessage: any) {
       channelId,
       pressAction: { id: 'default' },
     },
+  });
+}
+
+
+export function onForegroundNotificationPress(
+  callback: (data: Record<string, string>) => void,
+) {
+  return notifee.onForegroundEvent(({ type, detail }) => {
+    if (type === EventType.PRESS && detail.notification?.data) {
+      callback(detail.notification.data as Record<string, string>);
+    }
   });
 }
 

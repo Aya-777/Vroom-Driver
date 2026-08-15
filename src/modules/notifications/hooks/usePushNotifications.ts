@@ -1,10 +1,11 @@
-import { useEffect, useRef } from 'react';
+﻿import { useEffect, useRef } from 'react';
 import { Platform } from 'react-native';
 import {
   requestNotificationPermission,
   getFcmToken,
   onTokenRefresh,
   onForegroundMessage,
+  onForegroundNotificationPress,
   onNotificationOpenedApp,
   getInitialNotification,
   displayForegroundNotification,
@@ -15,6 +16,7 @@ import { setDeviceTokenId } from '../../../core/store/authStore';
 type NotificationData = {
   type?: string;
   trip_id?: string;
+  notification_id?: string;
 };
 
 export function usePushNotifications(
@@ -55,6 +57,10 @@ export function usePushNotifications(
       await displayForegroundNotification(remoteMessage);
     });
 
+    const unsubscribeNotificationPress = onForegroundNotificationPress(data => {
+      callbackRef.current(data as NotificationData);
+    });
+
     const unsubscribeOpened = onNotificationOpenedApp(remoteMessage => {
       if (remoteMessage?.data) {
         callbackRef.current(remoteMessage.data as NotificationData);
@@ -70,6 +76,7 @@ export function usePushNotifications(
     return () => {
       unsubscribeRefresh();
       unsubscribeForeground();
+      unsubscribeNotificationPress();
       unsubscribeOpened();
     };
   }, [isAuthenticated]);

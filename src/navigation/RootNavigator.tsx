@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { NavigationContainer, useNavigation } from '@react-navigation/native';
+﻿import React, { useState } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { navigationRef, RootStackParamList } from './rootTypes';
 
@@ -16,17 +16,7 @@ import { handleNotificationNavigation } from '../modules/notifications/utils/not
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function PushNotificationsHandler({ isLoggedIn }: { isLoggedIn: boolean }) {
-  const navigation = useNavigation();
-
-  usePushNotifications(isLoggedIn, data => {
-    handleNotificationNavigation(data, (screen, params) => {
-      (navigation.navigate as (screen: string, params?: object) => void)(
-        screen,
-        params,
-      );
-    });
-  });
-
+  usePushNotifications(isLoggedIn, handleNotificationNavigation);
   return null;
 }
 

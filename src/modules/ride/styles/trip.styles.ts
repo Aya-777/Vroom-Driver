@@ -1,166 +1,200 @@
-import { StyleSheet } from 'react-native';
-import { Radius, Spacing, Typography } from '../../../core/theme/tokens';
+﻿import { StyleSheet } from 'react-native';
+import {
+  Typography,
+  Spacing,
+  Shadows,
+  Radius,
+} from '../../../core/theme/tokens';
+import { ThemeColors } from '../../../core/theme/theme.types';
 
-export const createStyles = (colors: any) => StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.background,
-  },
-  tripStartedMessage:{
-    ...Typography.h3,
-    color: colors.textPrimary,
-    textAlign: 'center',
-    marginBottom: Spacing.mmd,
-  },
-  // DriverInfoCard Styles
-  driverCard: {
-    backgroundColor: colors.surface,
-    padding: Spacing.md,
-    borderRadius: Radius.md,
-    borderWidth: 1,
-    borderColor: colors.border,
-    marginBottom: Spacing.mmd,
-  },
-  driverInfoContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  avatar: {
-    borderRadius: Radius.lg,
-  },
-  driverTextContainer: {
-    flex: 1,
-    marginLeft: Spacing.smm,
-  },
-  driverName: {
-    ...Typography.boldBody,
-    color: colors.textPrimary,
-  },
-  driverDetails: {
-    ...Typography.mediumCaption,
-    color: colors.textSecondary,
-  },
-  driverCar: {
-    ...Typography.mediumCaption,
-    color: colors.textSecondary,
-    marginTop: Spacing.xxs,
-  },
-  callButton: {
-    padding: Spacing.smm,
-    backgroundColor: colors.surface,
-    borderRadius: Radius.lg,
-  },
+export const createStyles = (colors: ThemeColors) =>
+  StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: colors.background,
+    },
 
-  // TripSummaryGrid Styles
-  summaryTitle: {
-    ...Typography.h3,
-    color: colors.textPrimary,
-    textAlign: 'center',
-    marginBottom: Spacing.sm,
-  },
-  gridContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: Spacing.md,
-  },
-  column: {
-    width: '48%',
-  },
-  metricCard: {
-    backgroundColor: colors.surface,
-    padding: Spacing.smm,
-    borderRadius: Radius.md,
-    marginBottom: Spacing.sm,
-    borderWidth: 1,
-    borderColor: colors.border,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  metricLabel: {
-    ...Typography.mediumCaption,
-    color: colors.textSecondary,
-    marginBottom: Spacing.xs,
+    riderHeader: {
+      alignItems: 'center',
+      marginBottom: Spacing.md,
+    },
 
-  },
-  metricValue: {
-    ...Typography.caption,
-    color: colors.textPrimary,
-  },
-  tipLabel: {
-    ...Typography.mediumCaption,
-    color: colors.textSecondary,
-    marginBottom: Spacing.xs,
-  },
-  tipInput: {
-    backgroundColor: colors.surface,
-    borderRadius: Radius.md,
-    alignItems: 'center',
-    height: 45,
-  },
-  tipValue: {
-    ...Typography.semiBoldCaption,
-    color: colors.textPrimary,
-  },
-  delayLabel: {
-    ...Typography.mediumCaption,
-    color: colors.textSecondary,
-    marginBottom: Spacing.xs,
-  },
-  delayBox: {
-    backgroundColor: colors.surface,
-    padding: Spacing.smm,
-    borderRadius: Radius.md,
-  },
-  delayValue: {
-    ...Typography.semiBoldCaption,
-    color: colors.note,
-  },
+    avatarCircle: {
+      width: 84,
+      height: 84,
+      borderRadius: 42,
+      overflow: 'hidden',
+      backgroundColor: colors.primary,
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginBottom: Spacing.sm,
+      ...Shadows.small,
+    },
 
-verticalDivider: {
-  width: 1,
-  backgroundColor: colors.border,
-  marginHorizontal: Spacing.md,
-},
+    avatarImage: {
+      width: '95%',
+      height: '95%',
+      resizeMode: 'cover',
+    },
 
-  // Footer Styles
-  footerRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginTop: Spacing.smm,
-    borderTopWidth: 1,
-    borderTopColor: colors.border,
-    paddingTop: Spacing.smd,
-  },
-  subtotalLabel: {
-    ...Typography.semiBoldBody,
-    color: colors.textSecondary,
-  },
-  subtotalValue: {
-    ...Typography.h1,
-    color: colors.textPrimary,
-  },
-  paymentMethod: {
-    backgroundColor: colors.surface,
-    paddingHorizontal: Spacing.smd,
-    paddingVertical: Spacing.smm,
-    borderRadius: Radius.sm,
-  },
-  paymentText:{
-    color: colors.textPrimary,
-    ...Typography.caption
-  },
-  disclaimerContainer:{
-    flex:1,
-    justifyContent:'center',
-    alignItems:'center',
-    marginTop: Spacing.md,
-  },
-  disclaimerText: {
-    textAlign: 'center',
-    color: colors.textMuted,
-    ...Typography.smallCaption,
-    marginBottom: Spacing.smm,
-  },
-});
+    pinHint: {
+      ...Typography.caption,
+      color: colors.textSecondary,
+      marginBottom: Spacing.xs,
+    },
+    pinInputBox: {
+      height: 54,
+      backgroundColor: colors.backgroundSoft,
+      borderRadius: Radius.md,
+      borderWidth: 2,
+      borderColor: colors.surface,
+      ...Shadows.medium,
+    },
+    pinInput: {
+      textAlign: 'center',
+      fontSize: 20,
+      fontWeight: 'bold',
+      color: colors.primary,
+      paddingVertical: 0,
+    },
+
+    avatarPlaceholder: {
+      width: '80%',
+      height: '80%',
+      borderRadius: 100,
+      backgroundColor: colors.surface,
+    },
+
+    riderName: {
+      ...Typography.h3,
+      color: colors.textPrimary,
+      marginBottom: Spacing.xs,
+    },
+
+    pinBoxError: {
+      borderWidth: 1.5,
+      borderColor: colors.error,
+    },
+
+    communicationRow: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+      gap: 28,
+      marginBottom: Spacing.md,
+    },
+
+    iconButton: {
+      width: 44,
+      height: 44,
+      borderRadius: 22,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+
+    pinBoxesRow: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+      gap: Spacing.sm,
+      marginBottom: Spacing.md,
+    },
+
+    pinBox: {
+      width: 40,
+      height: 48,
+      borderRadius: Radius.md,
+      backgroundColor: colors.surface,
+      alignItems: 'center',
+      justifyContent: 'center',
+      ...Shadows.small,
+    },
+
+    pinBoxText: {
+      ...Typography.semiBoldBody,
+      color: colors.textPrimary,
+    },
+
+    hiddenInput: {
+      position: 'absolute',
+      opacity: 0,
+      width: 1,
+      height: 1,
+    },
+
+    grid: {
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      justifyContent: 'space-between',
+      marginBottom: Spacing.lg,
+    },
+
+    box: {
+      width: '48%',
+      borderRadius: 12,
+      paddingTop: 12,
+      paddingHorizontal: 14,
+      paddingBottom: 6,
+      marginBottom: 15,
+      backgroundColor: colors.surface,
+      ...Shadows.medium,
+    },
+
+    boxHeader: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginBottom: Spacing.xs,
+    },
+
+    boxTitle: {
+      marginStart: Spacing.xs,
+      color: colors.textPrimary,
+      ...Typography.boldCaption,
+    },
+
+    boxTitle2: {
+      marginTop: 5,
+      marginStart: Spacing.xs,
+      color: colors.textPrimary,
+      ...Typography.caption,
+    },
+
+    boxValue: {
+      color: colors.textPrimary,
+      textAlign: 'center',
+      marginVertical: Spacing.xs,
+      ...Typography.semiBoldCaption,
+    },
+
+    line: {
+      height: 1,
+      width: '100%',
+      marginTop: -4,
+      backgroundColor: colors.border,
+    },
+
+    primaryButton: {
+      backgroundColor: colors.primary,
+      borderRadius: Radius.full,
+      paddingVertical: 14,
+      alignItems: 'center',
+      marginTop: Spacing.md,
+    },
+
+    secondaryButton: {
+      borderWidth: 1.5,
+      borderColor: colors.primary,
+      borderRadius: Radius.full,
+      paddingVertical: 10,
+      alignItems: 'center',
+      marginBottom: Spacing.md,
+    },
+
+    secondaryButtonText: { color: colors.surface },
+
+    dangerButton: {
+      backgroundColor: colors.primary,
+      borderRadius: Radius.full,
+      paddingVertical: 14,
+      alignItems: 'center',
+      marginTop: Spacing.md,
+    },
+  });

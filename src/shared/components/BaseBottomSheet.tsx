@@ -4,6 +4,7 @@ import React, { useCallback, useMemo } from 'react';
 import BottomSheet, {
   BottomSheetView,
   BottomSheetProps,
+  BottomSheetBackgroundProps,
 } from '@gorhom/bottom-sheet';
 import { StyleSheet, ViewStyle } from 'react-native';
 import SheetBackground from './SheetBackground';
@@ -27,10 +28,10 @@ export const BaseBottomSheet: React.FC<BaseBottomSheetProps> = ({
   const styles = createStyles(colors);
 
   const renderBackground = useCallback(
-    () => <SheetBackground colors={colors} />,
+    (props: BottomSheetBackgroundProps) => <SheetBackground {...props} colors={colors} />,
     [colors],
   );
-  // Use StyleSheet.flatten to safely merge the passed style with the global padding
+
   const containerStyle = useMemo(
     () =>
       StyleSheet.flatten([
@@ -46,6 +47,7 @@ export const BaseBottomSheet: React.FC<BaseBottomSheetProps> = ({
       snapPoints={snapPoints}
       onClose={onClose}
       handleIndicatorStyle={styles.handleIndicatorStyle}
+      backgroundStyle={{ backgroundColor: 'transparent' }}
       backgroundComponent={renderBackground}
       {...rest}
     >

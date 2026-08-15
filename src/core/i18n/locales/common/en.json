@@ -13,7 +13,6 @@
   "date": "Date",
   "savedPlaces": "Saved places",
   "trackYourTrip": "Track your trip",
-  "ride": "Ride",
   "filters": {
     "acceptAnimals": "Accept animals",
     "bigLuggage": "Big luggage",
@@ -46,5 +45,6 @@
   "invalidOtp": "Invalid code, please try again",
   "tryAgain": "Something went wrong, please try again",
   "pleaseFillAllFields": "Please fill in all fields",
-  "passwordsDoNotMatch": "Passwords do not match"
+  "passwordsDoNotMatch": "Passwords do not match",
+  "trip": "Trip"
 }

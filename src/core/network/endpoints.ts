@@ -1,4 +1,4 @@
-export const ENDPOINTS = {
+﻿export const ENDPOINTS = {
   AUTH: {
     LOGIN: '/api/v1/auth/login/',
     REFRESH_TOKEN: '/api/v1/auth/token/refresh/',
@@ -21,8 +21,22 @@ export const ENDPOINTS = {
     CHANGE_PHONE_VERIFY: '/api/v1/users/me/change-phone/verify-otp/',
     CHANGE_PASSWORD: '/api/v1/users/me/change-password/',
   },
+  VEHICLES: {
+    TIERS: '/api/v1/vehicles/vehicle-tiers/',
+  },
   TRIPS: {
     HISTORY: '/trips/history/',
+    CURRENT: '/trips/current/',
+    BY_ID: (tripId: number) => `/trips/${tripId}/`,
+    LOCATION: (tripId: number) => `/trips/${tripId}/location/`,
+    STATUS_CHOICES: '/trips/status-choices/',
+    ROUTE: (tripId: number) => `/trips/trips/${tripId}/route/`,
+    ACCEPT: (tripId: number) => `/trips/${tripId}/accept/`,
+    CANCEL: (tripId: number) => `/trips/trips/${tripId}/cancel/`,
+    COMPLETE: (tripId: number) => `/trips/${tripId}/complete/`,
+    I_AM_HERE: (tripId: number) => `/trips/${tripId}/i-am-here/`,
+    RESEND_PIN: (tripId: number) => `/trips/${tripId}/resend-pin/`,
+    VERIFY_PIN: (tripId: number) => `/trips/${tripId}/verify-pin/`,
   },
   NOTIFICATIONS: {
     LIST: '/api/v1/notifications/',

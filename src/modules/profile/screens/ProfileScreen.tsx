@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { View, ScrollView, RefreshControl } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -38,6 +38,23 @@ export default function ProfileScreen() {
   const { colors } = useTheme();
   const styles = createStyles(colors);
   const { t } = useTranslation(['profile', 'common']);
+
+  const handleGridItemPress = (itemId: string) => {
+    if (itemId === '1') {
+      navigate('Main', {
+        screen: 'MainTabs',
+        params: {
+          screen: 'ActivityTab',
+          params: { screen: 'ActivitiesMain' },
+        },
+      });
+      return;
+    }
+
+    if (itemId === '2') {
+      navigate('Notifications');
+    }
+  };
 
   return (
     <LinearBg
@@ -80,7 +97,7 @@ export default function ProfileScreen() {
             }
           />
 
-          <GridSection items={gridItems} />
+          <GridSection items={gridItems} onItemPress={handleGridItemPress} />
 
           {profile?.driverInfo?.vehicle && (
             <VehicleDetailsCard vehicle={profile.driverInfo.vehicle} onPress={openVehicleDetails} />

@@ -91,28 +91,10 @@ src/
 │   │   │   │   ├── ar.json
 │   │   │   │   └── en.json
 │   │   │   ├── ride
-│   │   │   │   ├── TripEnded
-│   │   │   │   │   ├── ar.json
-│   │   │   │   │   └── en.json
-│   │   │   │   ├── confirmRide
-│   │   │   │   │   ├── ar.json
-│   │   │   │   │   └── en.json
-│   │   │   │   ├── driverArrived
-│   │   │   │   │   ├── ar.json
-│   │   │   │   │   └── en.json
-│   │   │   │   ├── driverFound
-│   │   │   │   │   ├── ar.json
-│   │   │   │   │   └── en.json
 │   │   │   │   ├── review
 │   │   │   │   │   ├── ar.json
 │   │   │   │   │   └── en.json
-│   │   │   │   ├── rideDetails
-│   │   │   │   │   ├── ar.json
-│   │   │   │   │   └── en.json
-│   │   │   │   ├── selectRide
-│   │   │   │   │   ├── ar.json
-│   │   │   │   │   └── en.json
-│   │   │   │   └── takeRide
+│   │   │   │   └── trip
 │   │   │   │       ├── ar.json
 │   │   │   │       └── en.json
 │   │   │   └── sidebar
@@ -295,6 +277,8 @@ src/
 │   │   │   └── NotificationCard.tsx
 │   │   ├── constants
 │   │   │   └── notificationsData.ts
+│   │   ├── hooks
+│   │   │   └── usePushNotifications.ts
 │   │   ├── repositories
 │   │   │   └── notificationRepository.ts
 │   │   ├── screens
@@ -302,13 +286,16 @@ src/
 │   │   ├── services
 │   │   │   ├── dto
 │   │   │   │   └── notification.dto.ts
+│   │   │   ├── fcmService.ts
 │   │   │   └── notificationApi.ts
 │   │   ├── styles
 │   │   │   └── notifications.styles.ts
 │   │   ├── types
 │   │   │   └── notifications.types.ts
 │   │   ├── utils
-│   │   │   └── notificationIcon.tsx
+│   │   │   ├── formateDate.ts
+│   │   │   ├── notificationIcon.tsx
+│   │   │   └── notificationNavigation.ts
 │   │   └── viewmodels
 │   │       └── useNotificationsViewModel.ts
 │   ├── profile
@@ -363,73 +350,39 @@ src/
 │   │       └── review.types.ts
 │   ├── ride
 │   │   ├── components
-│   │   │   ├── DriverArrivedScreen
-│   │   │   │   ├── DriverArrivedSheet.tsx
-│   │   │   │   └── DriverPinEntry.tsx
-│   │   │   ├── DriverFoundScreen
-│   │   │   │   ├── CarDetailsCard.tsx
-│   │   │   │   ├── CommunicationActions.tsx
-│   │   │   │   ├── DriverAvatar.tsx
-│   │   │   │   ├── DriverFoundSheet.tsx
-│   │   │   │   ├── DriverStatus.tsx
-│   │   │   │   └── ProgressBar.tsx
-│   │   │   ├── ExtraDetailsScreen
-│   │   │   │   ├── ExtraDetailsSheet.tsx
-│   │   │   │   ├── RideActionFilters.tsx
-│   │   │   │   ├── TimePriceBox.tsx
-│   │   │   │   └── VehicleSelector.tsx
-│   │   │   ├── RideConfirmationScreen
-│   │   │   │   ├── InfoBox.tsx
-│   │   │   │   └── RideConfirmationSheet.tsx
-│   │   │   ├── RideScreen
-│   │   │   │   └── RideBottomSheet.tsx
-│   │   │   ├── SelectRideScreen
-│   │   │   │   ├── RideLocationInputs.tsx
-│   │   │   │   └── SelectRideSheet.tsx
-│   │   │   ├── TripEndedModal
-│   │   │   │   ├── PaymentSummary.tsx
-│   │   │   │   ├── TripEndedModal.tsx
-│   │   │   │   └── TripMetrics.tsx
-│   │   │   ├── TripStartedScreen
-│   │   │   │   ├── DriverInfoCard.tsx
-│   │   │   │   ├── TripStartedSheet.tsx
-│   │   │   │   ├── TripSummaryGrid.tsx
-│   │   │   │   └── VerticalDivider.tsx
+│   │   │   ├── TripScreen
+│   │   │   │   ├── DetailBox.tsx
+│   │   │   │   ├── PinBoxes.tsx
+│   │   │   │   ├── RiderInfoHeader.tsx
+│   │   │   │   └── TripDetailsGrid.tsx
 │   │   │   └── shared
-│   │   │       ├── MapContainer.tsx
-│   │   │       └── RideDropdown.tsx
+│   │   │       ├── CommunicationActions.tsx
+│   │   │       └── MapContainer.tsx
 │   │   ├── constants
 │   │   │   ├── driverData.ts
 │   │   │   ├── vehicleData.ts
 │   │   │   └── vehicleImages.ts
 │   │   ├── hooks
-│   │   │   └── useLocationPermission.ts
+│   │   │   ├── useLocationPermission.ts
+│   │   │   └── useTripTimer.ts
 │   │   ├── screens
-│   │   │   └── RideScreen.tsx
+│   │   │   └── TripScreen.tsx
+│   │   ├── services
+│   │   │   ├── dto
+│   │   │   │   └── trip.dto.ts
+│   │   │   └── tripApi.ts
 │   │   ├── store
 │   │   │   └── useRideStore.ts
 │   │   ├── styles
-│   │   │   ├── confirmRide.styles.ts
-│   │   │   ├── driver.styles.ts
-│   │   │   ├── extraDetails.styles.ts
-│   │   │   ├── selectRide.styles.ts
 │   │   │   ├── shared.styles.ts
-│   │   │   ├── trip.styles.ts
-│   │   │   └── tripEndedModal.styles.ts
+│   │   │   └── trip.styles.ts
 │   │   ├── types
-│   │   │   ├── RideState.ts
-│   │   │   └── ride.types.ts
+│   │   │   ├── ride.types.ts
+│   │   │   └── trip.types.ts
 │   │   ├── utils
-│   │   │   └── selectRideValidation.ts
 │   │   └── viewmodels
-│   │       ├── useConfirmRideViewModel.ts
-│   │       ├── useDriverArrivedViewModel.ts
-│   │       ├── useDriverFoundViewModel.ts
 │   │       ├── useMapViewModel.ts
-│   │       ├── useRideDetailsViewModel.ts
-│   │       ├── useRideViewModel.ts
-│   │       ├── useSelectRideViewModel.ts
-│   │       └── useTripStartedViewModel.ts
+│   │       └── useTripViewModel.ts
 │   └── sidebar
 │       ├── components
 │       │   ├── SidebarFooter.tsx
@@ -474,6 +427,7 @@ src/
 │   │   ├── BaseBottomSheet.tsx
 │   │   ├── ChangePasswordForm.tsx
 │   │   ├── ChangePhoneForm.tsx
+│   │   ├── DotDivider.tsx
 │   │   ├── Header.tsx
 │   │   ├── Input.tsx
 │   │   ├── LinearBg.tsx

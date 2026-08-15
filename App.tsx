@@ -10,6 +10,7 @@ import { LanguageService } from './src/core/i18n/services/LanguageService';
 import { Platform, StatusBar, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+// import TripScreen from './src/modules/ride/screens/TripScreen';
 
 enableScreens(true);
 enableFreeze(true);
@@ -35,7 +36,16 @@ function AppContent() {
   return (
     <View style={{ flex: 1, backgroundColor: colors.background }}>
       <StatusBar hidden={true} animated={true} />
+
       <RootNavigator />
+      {/* <TripScreen
+        onBackPress={() => {
+          // مؤقتًا
+        }}
+        onTripCompleted={() => {
+          // مؤقتًا
+        }}
+      /> */}
     </View>
   );
 }
