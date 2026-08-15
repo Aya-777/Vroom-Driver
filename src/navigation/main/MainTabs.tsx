@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { View, StyleSheet, ViewStyle } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
@@ -25,6 +25,7 @@ import i18n from '../../core/i18n';
 const Tab = createBottomTabNavigator<MainTabsParamList>();
 
 const HIDE_TAB_ROUTES = [
+  'Trip',
   'SelectRide',
   'RideDetails',
   'ConfirmRide',
