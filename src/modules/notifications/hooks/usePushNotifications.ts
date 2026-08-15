@@ -16,6 +16,7 @@ import { setDeviceTokenId } from '../../../core/store/authStore';
 type NotificationData = {
   type?: string;
   trip_id?: string;
+  notification_id?: string;
 };
 
 export function usePushNotifications(

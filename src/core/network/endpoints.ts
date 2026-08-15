@@ -21,6 +21,9 @@
     CHANGE_PHONE_VERIFY: '/api/v1/users/me/change-phone/verify-otp/',
     CHANGE_PASSWORD: '/api/v1/users/me/change-password/',
   },
+  VEHICLES: {
+    TIERS: '/api/v1/vehicles/vehicle-tiers/',
+  },
   TRIPS: {
     HISTORY: '/trips/history/',
     CURRENT: '/trips/current/',

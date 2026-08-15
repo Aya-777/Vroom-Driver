@@ -1,4 +1,4 @@
-import { apiClient } from '../../../core/network/apiClient';
+﻿import { apiClient } from '../../../core/network/apiClient';
 import { ENDPOINTS } from '../../../core/network/endpoints';
 import {
   NotificationDTO,
@@ -10,6 +10,13 @@ export async function fetchNotifications(): Promise<NotificationDTO[]> {
     ENDPOINTS.NOTIFICATIONS.LIST,
   );
   return response.data.data;
+}
+
+export async function findNotificationById(
+  notificationId: number,
+): Promise<NotificationDTO | null> {
+  const notifications = await fetchNotifications();
+  return notifications.find(notification => notification.id === notificationId) ?? null;
 }
 
 export async function markNotificationAsRead(id: number): Promise<void> {

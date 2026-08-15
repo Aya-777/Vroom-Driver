@@ -4,12 +4,14 @@ import { tripApi } from '../services/tripApi';
 import { TripStage } from '../types/trip.types';
 import { useTripTimer } from '../hooks/useTripTimer';
 import { TripId } from '../services/dto/trip.dto';
+import { vehicleApi } from '../services/vehicleApi';
 
 type TripAction = (tripId: TripId) => Promise<void>;
 
 export function useTripViewModel(
   onTripCompleted: () => void,
   tripId?: TripId,
+  onTripCancelled?: () => void,
 ) {
   const [pin, setPin] = useState('');
   const [pinError, setPinError] = useState(false);
@@ -48,8 +50,9 @@ export function useTripViewModel(
   }, [runTripAction]);
 
   const cancelTrip = useCallback(async () => {
-    await runTripAction(tripApi.cancelTrip);
-  }, [runTripAction]);
+    const didCancel = await runTripAction(tripApi.cancelTrip);
+    if (didCancel) onTripCancelled?.();
+  }, [runTripAction, onTripCancelled]);
 
   const markArrived = useCallback(async () => {
     await runTripAction(tripApi.markArrived);
@@ -80,6 +83,15 @@ export function useTripViewModel(
     if (didComplete) onTripCompleted();
   }, [onTripCompleted, runTripAction]);
 
+  const { data: vehicleTiers } = useQuery({
+    queryKey: ['vehicle-tiers'],
+    queryFn: vehicleApi.getVehicleTiers,
+    staleTime: 1000 * 60 * 60,
+  });
+
+  const vehicleTierInfo =
+    vehicleTiers?.find(t => t.id === trip?.vehicle_type) ?? null;
+
   return {
     trip,
     isLoading,
@@ -94,5 +106,6 @@ export function useTripViewModel(
     onChangePin,
     completeTrip,
     refetch,
+    vehicleTierInfo,
   };
 }

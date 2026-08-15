@@ -53,6 +53,7 @@ export interface TripDto {
   is_for_someone_else: boolean;
   passenger_contact_phone: string | null;
   stops: TripStopDto[];
+  vehicle_type: number; 
   rider: TripUserDto | null;
   driver: TripUserDto | null;
   vehicle: TripVehicleDto | null;

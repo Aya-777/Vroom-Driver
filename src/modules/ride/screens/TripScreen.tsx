@@ -27,7 +27,7 @@ export default function TripScreen({
   const { colors, mode } = useTheme();
   const styles = createStyles(colors);
   const { t } = useTranslation(['trip', 'common']);
-  const vm = useTripViewModel(() => onTripCompleted?.(), tripId);
+  const vm = useTripViewModel(() => onTripCompleted?.(), tripId, () => onBackPress?.());
   const snapPoints = useMemo(() => ['30%', '70%'], []);
   const riderName =
     [vm.trip?.rider?.first_name, vm.trip?.rider?.last_name]
@@ -72,7 +72,7 @@ export default function TripScreen({
           />
         )}
 
-        <TripDetailsGrid trip={vm.trip} />
+        <TripDetailsGrid trip={vm.trip} vehicleTierInfo={vm.vehicleTierInfo} />
 
         {vm.stage === TripStage.DETAILS && (
           <ActionButton
@@ -82,7 +82,7 @@ export default function TripScreen({
           />
         )}
 
-        {vm.stage === TripStage.EN_ROUTE && (
+        {(vm.stage === TripStage.EN_ROUTE || vm.stage === TripStage.PIN_ENTRY) && (
           <ActionButton
             onPress={vm.cancelTrip}
             title={t('cancelTheTrip')}
