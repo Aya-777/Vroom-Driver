@@ -191,10 +191,20 @@ export const createStyles = (colors: ThemeColors) =>
     secondaryButtonText: { color: colors.surface },
 
     dangerButton: {
-      backgroundColor: colors.primary,
-      borderRadius: Radius.full,
+      backgroundColor: colors.error + '90',
+      borderWidth: 1,
+      borderColor: colors.error,
+      borderRadius: 12,
       paddingVertical: 14,
+      justifyContent: 'center',
       alignItems: 'center',
+      flexDirection: 'row',
+      width: '90%',
+      alignSelf: 'center',
       marginTop: Spacing.md,
+    },
+    dangerButtonText: {
+      color: colors.error,
+      ...Typography.boldBody,
     },
   });
