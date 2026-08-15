@@ -15,8 +15,27 @@ export const useProfileStore = create<ProfileState>((set) => ({
     role: 'driver',
     accountStatus: '',
     ratingAvg: 0,
-    profileImage: '',
+    profileImage: null,
     isActive: true,
+    driverInfo: {
+      driverStatus: 'ONLINE',
+      nationalId: "",
+      birthdate: "",
+      vehicle: {
+        brand: "",
+        color: "",
+        customBrandName: "",
+        customColorName: "",
+        customModelName: "",
+        images: [],
+        manufactureYear: 0,
+        model: "",
+        plateNumber: "",
+        seatsNum: 0,
+        status: '',
+        vehicleType: ''
+      }
+    },
   },
 
   setUserProfile: (userProfile) =>

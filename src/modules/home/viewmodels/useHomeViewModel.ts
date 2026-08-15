@@ -96,9 +96,6 @@ export const useHomeViewModel = (navigation: Navigation) => {
       }
 
     }
-    console.log('dashboard data: ' , statistics);
-    console.log('user ' , user);
-    console.log('profile ', userProfile);
 
   const dashboardData: HomeDashboardData = {
     driverName: user?.first_name || 'Captain',
