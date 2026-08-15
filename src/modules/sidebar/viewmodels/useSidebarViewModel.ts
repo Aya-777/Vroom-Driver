@@ -1,9 +1,10 @@
-import { DrawerContentComponentProps } from '@react-navigation/drawer';
+﻿import { DrawerContentComponentProps } from '@react-navigation/drawer';
 
 import { SIDEBAR_ITEMS } from '../constants/sidebarItems';
 import { SidebarItem } from '../types/sidebar.types';
 import { useCurrentUser } from '../../../core/store/userStore';
 import { useThemeMode, useThemeActions } from '../../../core/store/themeStore';
+import { useProfileActions } from '../../profile/hooks/useProfileActions';
 import { getMediaUrl } from '../../../core/network/media';
 
 type Navigation = DrawerContentComponentProps['navigation'];
@@ -14,6 +15,7 @@ export const useSidebarViewModel = (
   const cachedUser = useCurrentUser();
   const mode = useThemeMode();
   const { toggleMode } = useThemeActions();
+  const { logout } = useProfileActions();
 
   const user = {
     name: cachedUser
@@ -45,5 +47,6 @@ export const useSidebarViewModel = (
     handleItemPress,
     mode,
     toggleTheme: toggleMode,
+    logout,
   };
 };

@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { View } from 'react-native';
 import { DrawerContentComponentProps } from '@react-navigation/drawer';
 
@@ -21,6 +21,7 @@ const SidebarScreen = ({
     handleItemPress,
     mode,
     toggleTheme,
+    logout,
   } = useSidebarViewModel(navigation);
 
   const { colors } = useTheme();
@@ -53,7 +54,7 @@ const SidebarScreen = ({
           ))}
         </View>
 
-        <SidebarFooter version={version} />
+        <SidebarFooter version={version} onLogout={logout} />
       </LinearBg>
     </View>
   );

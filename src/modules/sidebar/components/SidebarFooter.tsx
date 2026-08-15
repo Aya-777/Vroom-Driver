@@ -1,23 +1,31 @@
-import React from 'react';
-import {Text, View} from 'react-native';
-
-import {createStyles} from '../styles/sidebar.styles';
+﻿import React from 'react';
+import { Text, View } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { useTheme } from '../../../core/theme/useTheme';
+import { createStyles } from '../styles/sidebar.styles';
+import ActionButton from '../../../shared/components/ActionButton';
+import LogoutIcon from '../../../assets/svg/profile/logout.svg';
 
 type Props = {
   version: string;
+  onLogout: () => void;
 };
 
-const SidebarFooter = ({version}: Props) => {
+const SidebarFooter = ({ version, onLogout }: Props) => {
+  const { colors } = useTheme();
+  const styles = createStyles(colors);
+  const { t } = useTranslation(['profile', 'common']);
 
-    const { colors } = useTheme();
-    const styles = createStyles(colors);
-    
   return (
     <View style={styles.footer}>
-      <Text style={styles.version}>
-        VROOM v{version}
-      </Text>
+      <ActionButton
+        onPress={onLogout}
+        title={t('logout')}
+        icon={<LogoutIcon fill={colors.error} />}
+        style={styles.logoutButton}
+        textStyle={styles.logoutText}
+      />
+      <Text style={styles.version}>VROOM v{version}</Text>
     </View>
   );
 };
