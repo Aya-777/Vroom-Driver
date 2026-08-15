@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+﻿import { StyleSheet } from 'react-native';
 import { ThemeColors } from '../../../core/theme/theme.types';
 import { Typography, Spacing, Radius } from '../../../core/theme/tokens';
 
@@ -102,6 +102,25 @@ export const createStyles = (colors: ThemeColors) =>
       marginTop: 'auto',
       paddingHorizontal: Spacing.mmd,
       paddingBottom: Spacing.mmd,
+    },
+
+    logoutButton: {
+      backgroundColor: colors.error + '90',
+      borderWidth: 1,
+      borderColor: colors.error,
+      borderRadius: 12,
+      paddingVertical: 14,
+      justifyContent: 'center',
+      alignItems: 'center',
+      flexDirection: 'row',
+      width: '90%',
+      alignSelf: 'center',
+      marginBottom: Spacing.smd,
+    },
+
+    logoutText: {
+      color: colors.error,
+      ...Typography.boldBody,
     },
 
     version: {

@@ -87,6 +87,7 @@ export default function TripScreen({
             onPress={vm.cancelTrip}
             title={t('cancelTheTrip')}
             style={styles.dangerButton}
+            textStyle={styles.dangerButtonText}
           />
         )}
       </BaseBottomSheet>

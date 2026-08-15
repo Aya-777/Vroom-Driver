@@ -5,7 +5,7 @@ import { performLogout } from '../store/session';
 import { ENDPOINTS } from './endpoints';
 
 export const apiClient = axios.create({
-  baseURL: 'http://10.60.233.227:8000/',
+  baseURL: 'http://192.168.1.111:8000/',
   timeout: 10000,
   headers: { 'Content-Type': 'application/json' },
 });
