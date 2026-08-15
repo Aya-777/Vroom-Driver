@@ -1,9 +1,8 @@
+import { DriverStatus } from "../services/dto/home.dto";
 
 export interface DriverStats {
   totalTrips: string;
-  totalTripsTrend: string;
   dailyEarnings: string;
-  dailyEarningsTrend: string;
   weeklyEarnings: string;
   monthlyEarnings: string;
   avgRating: string;
@@ -22,15 +21,15 @@ export interface RideStatusMetrics {
   completedPercentage: number;
   cancelledPercentage: number;
   cancelledByRiderPercentage: number;
-  monthlyCompleted: number;
-  monthlyCancelled: number;
-  monthlyCancelledByRider: number;
+  dailyCompleted: number;
+  dailyCancelled: number;
+  dailyCancelledByRider: number;
 }
 
 export interface HomeDashboardData {
   driverName: string;
   onlineTime: string;
-  isOnline: boolean;
+  status: DriverStatus;
   completionMessage: string;
   stats: DriverStats;
   weeklyTrends: WeeklyTrendPoint[];

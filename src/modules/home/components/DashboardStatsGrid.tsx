@@ -6,6 +6,7 @@ import { createStyles } from '../styles/home/home.styles';
 import Car from '../../../assets/svg/common/ride.svg';
 import Clock from '../../../assets/svg/common/schedule.svg';
 import Star from '../../../assets/svg/common/star.svg';
+import PriceIcon from '../../../assets/svg/payment/price.svg'
 import { useTranslation } from 'react-i18next';
 
 interface DashboardStatsGridProps {
@@ -26,7 +27,6 @@ export const DashboardStatsGrid: React.FC<DashboardStatsGridProps> = ({
         <View style={styles.statsCard}>
           <View style={styles.cardHeaderRow}>
             <Car width={18} height={18} color={colors.textSecondary} />
-            <Text style={styles.trendBadge}>{stats.totalTripsTrend}</Text>
           </View>
           <Text style={styles.cardValue}>{stats.totalTrips}</Text>
           <Text style={styles.cardLabel}>{t('totalTrips')}</Text>
@@ -34,10 +34,10 @@ export const DashboardStatsGrid: React.FC<DashboardStatsGridProps> = ({
 
         <View style={styles.statsCard}>
           <View style={styles.cardHeaderRow}>
-            <Text style={styles.cardLabel}>{t('daily')}</Text>
-            <Text style={styles.trendBadge}>{stats.dailyEarningsTrend}</Text>
+            <PriceIcon width={18} height={18} fill={colors.textSecondary}/>
           </View>
           <Text style={styles.cardValue}>{stats.dailyEarnings}</Text>
+          <Text style={styles.cardLabel}>{t('daily')}</Text>
         </View>
       </View>
 
@@ -45,16 +45,18 @@ export const DashboardStatsGrid: React.FC<DashboardStatsGridProps> = ({
       <View style={styles.gridRow}>
         <View style={styles.statsCard}>
           <View style={styles.cardHeaderRow}>
-            <Text style={styles.cardLabel}>{t('weekly')}</Text>
+            <PriceIcon width={18} height={18} fill={colors.textSecondary}/>
           </View>
           <Text style={styles.cardValue}>{stats.weeklyEarnings}</Text>
+          <Text style={styles.cardLabel}>{t('weekly')}</Text>
         </View>
 
         <View style={styles.statsCard}>
           <View style={styles.cardHeaderRow}>
-            <Text style={styles.cardLabel}>{t('monthly')}</Text>
+            <PriceIcon width={18} height={18} fill={colors.textSecondary}/>
           </View>
           <Text style={styles.cardValue}>{stats.monthlyEarnings}</Text>
+          <Text style={styles.cardLabel}>{t('monthly')}</Text>
         </View>
       </View>
 

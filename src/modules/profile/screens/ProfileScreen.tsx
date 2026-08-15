@@ -83,6 +83,7 @@ export default function ProfileScreen() {
             lastName={profile?.lastName}
             phone={profile?.phone}
             profileImage={profile?.profileImage}
+            Rating={profile?.ratingAvg}
             isLoading={isLoading}
             driverStatus={profile?.driverInfo?.driverStatus}
             nationalId={profile?.driverInfo?.nationalId}

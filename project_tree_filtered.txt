@@ -247,7 +247,7 @@ src/
 │   │   │   ├── DashboardStatsGrid.tsx
 │   │   │   ├── HomeHeader.tsx
 │   │   │   ├── ImprovementBanner.tsx
-│   │   │   ├── RideMonthlyStatus.tsx
+│   │   │   ├── RideDailyStatus.tsx
 │   │   │   ├── RideWeeklyStatus.tsx
 │   │   │   ├── SegmentedCircularProgress.tsx
 │   │   │   ├── ServiceStatusBox.tsx
@@ -266,7 +266,7 @@ src/
 │   │   ├── styles
 │   │   │   └── home
 │   │   │       ├── home.styles.ts
-│   │   │       ├── rideMonthlyStatus.styles.ts
+│   │   │       ├── RideDailyStatus.styles.ts
 │   │   │       └── rideWeeklyStatus.styles.ts
 │   │   ├── types
 │   │   │   └── home.types.ts
