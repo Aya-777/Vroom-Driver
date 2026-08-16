@@ -16,7 +16,7 @@ export function useTripViewModel(
 ) {
   const [pin, setPin] = useState('');
   const [pinError, setPinError] = useState(false);
-  const {setRideDetails} = useRideStore();
+  const { setActiveRide } = useRideStore();
 
   const {
     data: trip,
@@ -53,9 +53,9 @@ export function useTripViewModel(
     const acceptedTrip = await runTripAction(tripApi.acceptTrip);
 
     if (acceptedTrip) {
-      setRideDetails(acceptedTrip);
+      setActiveRide(acceptedTrip);
     }
-  }, [runTripAction, setRideDetails]);
+  }, [runTripAction, setActiveRide]);
 
   const cancelTrip = useCallback(async () => {
     const didCancel = await runTripAction(tripApi.cancelTrip);
