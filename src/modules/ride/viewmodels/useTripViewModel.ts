@@ -5,6 +5,7 @@ import { TripStage } from '../types/trip.types';
 import { useTripTimer } from '../hooks/useTripTimer';
 import { TripId } from '../services/dto/trip.dto';
 import { vehicleApi } from '../services/vehicleApi';
+import { useRideStore } from '../store/useRideStore';
 
 type TripAction = (tripId: TripId) => Promise<void>;
 
@@ -15,6 +16,7 @@ export function useTripViewModel(
 ) {
   const [pin, setPin] = useState('');
   const [pinError, setPinError] = useState(false);
+  const {setRideDetails} = useRideStore();
 
   const {
     data: trip,
@@ -31,23 +33,29 @@ export function useTripViewModel(
   const { formatted: timerText } = useTripTimer(stage === 'ON_TRIP');
 
   const runTripAction = useCallback(
-    async (action: TripAction): Promise<boolean> => {
-      if (!trip?.id) return false;
+    async (action: TripAction) => {
+      if (!trip?.id) return null;
 
       try {
         await action(trip.id);
-        await refetch();
-        return true;
+
+        const result = await refetch();
+
+        return result.data ?? null;
       } catch {
-        return false;
+        return null;
       }
     },
     [refetch, trip?.id],
   );
 
   const takeTrip = useCallback(async () => {
-    await runTripAction(tripApi.acceptTrip);
-  }, [runTripAction]);
+    const acceptedTrip = await runTripAction(tripApi.acceptTrip);
+
+    if (acceptedTrip) {
+      setRideDetails(acceptedTrip);
+    }
+  }, [runTripAction, setRideDetails]);
 
   const cancelTrip = useCallback(async () => {
     const didCancel = await runTripAction(tripApi.cancelTrip);

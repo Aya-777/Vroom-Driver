@@ -12,6 +12,7 @@ import NotificationsScreen from '../modules/notifications/screens/NotificationsS
 import { isRTL } from '../core/i18n/utils/isRTL';
 import { usePushNotifications } from '../modules/notifications/hooks/usePushNotifications';
 import { handleNotificationNavigation } from '../modules/notifications/utils/notificationNavigation';
+import { DriverLocationProvider } from '../core/providers/DriverLocationProvider';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -19,7 +20,6 @@ function PushNotificationsHandler({ isLoggedIn }: { isLoggedIn: boolean }) {
   usePushNotifications(isLoggedIn, handleNotificationNavigation);
   return null;
 }
-
 export default function RootNavigator() {
   const isLoggedIn = useAuthLoggedIn();
   const hasHydrated = useAuthHasHydrated();
@@ -34,22 +34,37 @@ export default function RootNavigator() {
       direction={isRTL() ? 'rtl' : 'ltr'}
     >
       <PushNotificationsHandler isLoggedIn={isLoggedIn} />
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        {!isAppReady ? (
-          <Stack.Screen name="Splash">
-            {(props) => <SplashScreen {...props} onAnimationEnd={() => setIsSplashComplete(true)} />}
-          </Stack.Screen>
-        ) : isLoggedIn ? (
-          <Stack.Group>
-            <Stack.Screen name="Main" component={MainDrawer} />
-            <Stack.Screen name="Notifications" component={NotificationsScreen} />
-          </Stack.Group>
-        ) : (
-          <Stack.Group>
-            <Stack.Screen name="AuthStack" component={AuthStack} />
-          </Stack.Group>
-        )}
-      </Stack.Navigator>
+
+      {isAppReady && isLoggedIn ? (
+        <DriverLocationProvider>
+          <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Group>
+              <Stack.Screen name="Main" component={MainDrawer} />
+              <Stack.Screen
+                name="Notifications"
+                component={NotificationsScreen}
+              />
+            </Stack.Group>
+          </Stack.Navigator>
+        </DriverLocationProvider>
+      ) : (
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          {!isAppReady ? (
+            <Stack.Screen name="Splash">
+              {props => (
+                <SplashScreen
+                  {...props}
+                  onAnimationEnd={() => setIsSplashComplete(true)}
+                />
+              )}
+            </Stack.Screen>
+          ) : (
+            <Stack.Group>
+              <Stack.Screen name="AuthStack" component={AuthStack} />
+            </Stack.Group>
+          )}
+        </Stack.Navigator>
+      )}
     </NavigationContainer>
   );
 }

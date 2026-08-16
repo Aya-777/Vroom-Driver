@@ -12,24 +12,25 @@ import { useCurrentUser } from '../../../core/store/userStore';
 import { useEffect } from 'react';
 import { refreshProfile } from '../../profile/utils/ProfileUtils';
 import { useProfileStore } from '../../profile/store/useProfileStore';
-
+import { useDriverStore } from '../../../core/store/useDriverStore';
 
 export const useHomeViewModel = () => {
   const { openSidebar } = useMainDrawer();
-
   const [todayStats, setTodayStats] = useState<TodayStatsResponse | null>(null);
   const [statistics, setStatistics] = useState<StatisticsResponseDTO | null>(
     null,
   );
   const [loading, setLoading] = useState<boolean>(false);
   const user = useCurrentUser();
-  const {userProfile} = useProfileStore();
+  const { userProfile } = useProfileStore();
+  const setDriverStatus = useDriverStore(state => state.setStatus);
 
   const fetchTodayStats = useCallback(async () => {
     try {
       const stats = await homeApi.getTodayStats();
 
       setTodayStats(stats);
+      setDriverStatus(stats.data.driver_status);
     } catch (error) {
       console.log('Failed to fetch today stats', error);
     }
@@ -70,37 +71,38 @@ export const useHomeViewModel = () => {
     ? formatDuration(todayStats.data.duration_minutes)
     : '0m';
 
-    const LinkRatingToString = (rating?: number) => {
-      if(!rating){
-        return '';
-      }
-      if(rating > 4){
-        return 'Excellent';
-      }else if(rating > 3){
-        return 'Good';
-      }else{
-        return 'Bad'
-      }
+  const LinkRatingToString = (rating?: number) => {
+    if (!rating) {
+      return '';
     }
-    const LinkCompletionMessageToRating = (rating?: number) =>{
-      if(!rating){
-        return "You're online again! Good job Captain.";
-      }
-      if(rating > 4){
-        return 'Rating is SUPER, Keep it up!';
-      }else if(rating > 3){
-        return 'Most things are best when average, not rating though...';
-      }else{
-        return "Maybe it's time to work harder inn'it?"
-      }
-
+    if (rating > 4) {
+      return 'Excellent';
+    } else if (rating > 3) {
+      return 'Good';
+    } else {
+      return 'Bad';
     }
+  };
+  const LinkCompletionMessageToRating = (rating?: number) => {
+    if (!rating) {
+      return "You're online again! Good job Captain.";
+    }
+    if (rating > 4) {
+      return 'Rating is SUPER, Keep it up!';
+    } else if (rating > 3) {
+      return 'Most things are best when average, not rating though...';
+    } else {
+      return "Maybe it's time to work harder inn'it?";
+    }
+  };
 
   const dashboardData: HomeDashboardData = {
     driverName: user?.first_name || 'Captain',
     onlineTime: onlineTime,
     status: todayStats?.data.driver_status || 'OFFLINE',
-    completionMessage: LinkCompletionMessageToRating(user?.rating ?? userProfile.ratingAvg),
+    completionMessage: LinkCompletionMessageToRating(
+      user?.rating ?? userProfile.ratingAvg,
+    ),
     stats: {
       totalTrips: statistics?.data.total_completed_trips.toString() ?? '0',
       dailyEarnings: statistics?.data.today_income.toString() ?? '0',
@@ -129,13 +131,20 @@ export const useHomeViewModel = () => {
       completedPercentage:
         statistics?.data.completion_stats.this_week.completed.percentage ?? 0,
       cancelledPercentage:
-        statistics?.data.completion_stats.this_week.cancelled_by_driver.percentage ?? 0,
+        statistics?.data.completion_stats.this_week.cancelled_by_driver
+          .percentage ?? 0,
       cancelledByRiderPercentage:
-        statistics?.data.completion_stats.this_week.cancelled_by_rider.percentage ?? 0,
+        statistics?.data.completion_stats.this_week.cancelled_by_rider
+          .percentage ?? 0,
 
-      dailyCompleted: statistics?.data.completion_stats.today.completed.percentage ?? 0,
-      dailyCancelled: statistics?.data.completion_stats.today.cancelled_by_driver.percentage ?? 0,
-      dailyCancelledByRider: statistics?.data.completion_stats.today.cancelled_by_rider.percentage ?? 0,
+      dailyCompleted:
+        statistics?.data.completion_stats.today.completed.percentage ?? 0,
+      dailyCancelled:
+        statistics?.data.completion_stats.today.cancelled_by_driver
+          .percentage ?? 0,
+      dailyCancelledByRider:
+        statistics?.data.completion_stats.today.cancelled_by_rider.percentage ??
+        0,
     },
   };
 
@@ -143,7 +152,9 @@ export const useHomeViewModel = () => {
     if (loading) {
       return;
     }
+
     const currentStatus = todayStats?.data.driver_status ?? 'OFFLINE';
+
     const nextStatus = currentStatus === 'ONLINE' ? 'OFFLINE' : 'ONLINE';
 
     try {
@@ -165,15 +176,16 @@ export const useHomeViewModel = () => {
       );
 
       await homeApi.updateDriverStatus(request);
+      setDriverStatus(nextStatus);
     } catch (error: any) {
       console.log(
-        'Failed to update driver todayStats:',
+        'Failed to update driver status:',
         error?.response?.data ?? error,
       );
     } finally {
       setLoading(false);
     }
-  }, [todayStats, loading, fetchTodayStats]);
+  }, [todayStats, loading, setDriverStatus]);
 
   const onHistoryPress = () => {
     navigate('Main', {
