@@ -28,29 +28,39 @@ class LocationService {
   }
 
   watchLocation(
-    onLocationChanged: (location: Location) => void,
-    intervalSeconds: number,
-    onError?: (error: any) => void,
-  ) {
-    const interval = intervalSeconds * 1000;
+  onLocationChanged: (location: Location) => void,
+  intervalSeconds: number,
+  onError?: (error: any) => void,
+) {
+  const interval = intervalSeconds * 1000;
 
-    return Geolocation.watchPosition(
-      position => {
-        onLocationChanged({
-          longitude: position.coords.longitude,
-          latitude: position.coords.latitude,
-        });
-      },
-      error => {
-        onError?.(error);
-      },
-      {
-        enableHighAccuracy: true,
-        interval,
-        fastestInterval: interval,
-      },
-    );
-  }
+  const watchId = Geolocation.watchPosition(
+    position => {
+      
+      onLocationChanged({
+        longitude: position.coords.longitude,
+        latitude: position.coords.latitude,
+      });
+    },
+    error => {
+      console.log(
+        '[LocationService] GPS ERROR',
+        error,
+      );
+
+      onError?.(error);
+    },
+    {
+      enableHighAccuracy: true,
+      interval,
+      fastestInterval: interval,
+      distanceFilter: 0,
+    },
+  );
+
+  
+  return watchId;
+}
 
   stopWatching(watchId: number) {
     Geolocation.clearWatch(watchId);

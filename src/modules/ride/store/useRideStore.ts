@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { CurrentRide } from '../types/trip.types';
 
 interface RideState {
-  activeRide: Partial<CurrentRide>;
+  activeRide: Partial<CurrentRide> | null;
   setRideDetails: (details: Partial<CurrentRide>) => void;
   clearRide: () => void;
 
@@ -12,7 +12,7 @@ interface RideState {
 }
 
 export const useRideStore = create<RideState>((set) => ({
-  activeRide: {},
+  activeRide: null,
 
   setRideDetails: (details) =>
     set((state) => ({
@@ -24,7 +24,7 @@ export const useRideStore = create<RideState>((set) => ({
 
   clearRide: () =>
     set({
-      activeRide: {},
+      activeRide: null,
     }),
 
   location: null,

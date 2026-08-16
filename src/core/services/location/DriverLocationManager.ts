@@ -2,6 +2,7 @@ import LocationService, {
   Location,
 } from './LocationService';
 import PermissionService from './PermissionService';
+import { locationApi } from './locationApi';
 import { useRideStore } from '../../../modules/ride/store/useRideStore';
 
 export type DriverLocationMode =
@@ -15,25 +16,29 @@ class DriverLocationManager {
   private watchId: number | null = null;
   private currentMode: DriverLocationMode = 'OFFLINE';
   private isStarting = false;
+  private isUploading = false;
 
   async setMode(mode: DriverLocationMode) {
-    if (this.currentMode === mode) {
-      return;
-    }
-
+  if (this.currentMode === mode) {
     console.log(
-      `[DriverLocationManager] Mode: ${this.currentMode} → ${mode}`,
+      `[DriverLocationManager] Already in mode ${mode}, ignoring`,
     );
-
-    this.currentMode = mode;
-
-    if (mode === 'OFFLINE') {
-      this.stop();
-      return;
-    }
-
-    await this.restartWatching();
+    return;
   }
+
+  console.log(
+    `[DriverLocationManager] Mode: ${this.currentMode} → ${mode}`,
+  );
+
+  this.currentMode = mode;
+
+  if (mode === 'OFFLINE') {
+    this.stop();
+    return;
+  }
+
+  await this.restartWatching();
+}
 
   private async restartWatching() {
     if (this.isStarting) {
@@ -58,14 +63,17 @@ class DriverLocationManager {
       const currentLocation =
         await LocationService.getCurrentLocation();
 
-      this.updateLocation(currentLocation);
+      await this.updateLocation(currentLocation);
 
-      const isOnTrip = this.currentMode === 'ACCEPTED' || this.currentMode === 'PICKUP' || this.currentMode === 'ON_TRIP';
+      const isOnTrip =
+        this.currentMode === 'ACCEPTED' ||
+        this.currentMode === 'PICKUP' ||
+        this.currentMode === 'ON_TRIP';
 
       const interval = isOnTrip ? 2 : 15;
 
       console.log(
-        `[DriverLocationManager] Starting watcher: ${interval}s `,
+        `[DriverLocationManager] Starting watcher: ${interval}s`,
       );
 
       this.watchId = LocationService.watchLocation(
@@ -90,22 +98,42 @@ class DriverLocationManager {
     }
   }
 
-  private updateLocation(location: Location) {
+  private async updateLocation(location: Location) {
     const setLocation =
       useRideStore.getState().setLocation;
 
+    // Update Zustand immediately
     setLocation([
       location.longitude,
       location.latitude,
     ]);
 
-    console.log(
-      '[DriverLocationManager] Location:',
-      location,
-    );
+    // Don't upload if driver is offline
+    if (this.currentMode === 'OFFLINE') {
+      return;
+    }
 
-    // Later:
-    // this.sendLocationToBackend(location);
+
+    // Don't overlap location requests
+    if (this.isUploading) {
+      return;
+    }
+
+    this.isUploading = true;
+
+    try {
+      await locationApi.updateLocation({
+        latitude: location.latitude,
+        longitude: location.longitude,
+      });
+    } catch (error) {
+      console.log(
+        '[DriverLocationManager] Failed to upload location:',
+        error,
+      );
+    } finally {
+      this.isUploading = false;
+    }
   }
 
   private stopWatcherOnly() {

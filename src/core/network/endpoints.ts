@@ -53,5 +53,10 @@
   PUSHER:{
     AUTH: 'trips/pusher-auth/',
     CHANNELS: '/realtime/channels/',
+  },
+
+  LOCATION:{
+    UPDATE: '/api/v1/users/location/',
   }
+
 } as const;

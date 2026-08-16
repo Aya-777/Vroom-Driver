@@ -8,25 +8,24 @@ export function DriverLocationProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const driverStatus = useDriverStore(
-    state => state.status,
-  );
+  const driverStatus = useDriverStore(state => state.status);
+  const activeRide = useRideStore(state => state.activeRide);
 
-  const activeRide = useRideStore(
-    state => state.activeRide,
-  );
-  console.log('provider ', driverStatus);
 
   useEffect(() => {
+    let mode: Parameters<
+      typeof DriverLocationManager.setMode
+    >[0];
+
     if (driverStatus === 'OFFLINE') {
-      DriverLocationManager.setMode('OFFLINE');
-      return;
-    }else if(driverStatus === 'ONLINE'){
-      DriverLocationManager.setMode('ONLINE');
-    }else{
-      DriverLocationManager.setMode('ON_TRIP')
+      mode = 'OFFLINE';
+    } else if (activeRide) {
+      mode = 'ON_TRIP';
+    } else {
+      mode = 'ONLINE';
     }
 
+    DriverLocationManager.setMode(mode);
   }, [driverStatus, activeRide]);
 
   return <>{children}</>;
