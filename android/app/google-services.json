@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "749448382827",
-    "project_id": "vroomdriver-1e075",
-    "storage_bucket": "vroomdriver-1e075.firebasestorage.app"
+    "project_number": "112001640602",
+    "project_id": "vroom-18be6",
+    "storage_bucket": "vroom-18be6.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:749448382827:android:c4aa50274feb2cff4f642e",
+        "mobilesdk_app_id": "1:112001640602:android:39ac4d67c31d8d85cdd723",
         "android_client_info": {
           "package_name": "com.vroom"
         }
@@ -15,7 +15,26 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAcpk_NlXCpAE9NcbXgyKGh6VCMXHqm1Eg"
+          "current_key": "AIzaSyBG3hZwIdB5qal51YlJUTYwZGdYX6xDXQs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:112001640602:android:20a792a13e0cf441cdd723",
+        "android_client_info": {
+          "package_name": "com.vroomrider"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBG3hZwIdB5qal51YlJUTYwZGdYX6xDXQs"
         }
       ],
       "services": {

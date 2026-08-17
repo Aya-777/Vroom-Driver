@@ -120,6 +120,7 @@ class DriverLocationManager {
     }
 
     this.isUploading = true;
+    console.log(location);
 
     try {
       await locationApi.updateLocation({
