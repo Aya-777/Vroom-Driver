@@ -207,4 +207,24 @@ export const createStyles = (colors: ThemeColors) =>
       color: colors.error,
       ...Typography.boldBody,
     },
+    
+    sosButton: {
+    position: 'absolute',
+    right: 20,
+    bottom: -62,
+    width: 52,
+    height: 52,
+    borderRadius: 26,
+    backgroundColor: '#D32F2F',
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 10,
+    elevation: 6,
+  },
+
+  sosText: {
+    color: '#FFFFFF',
+    fontSize: 15,
+    fontWeight: '800',
+  },
   });

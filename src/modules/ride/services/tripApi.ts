@@ -78,4 +78,21 @@ export const tripApi = {
   verifyTripPin: async (tripId: TripId, pin: string): Promise<void> => {
     await apiClient.post(ENDPOINTS.TRIPS.VERIFY_PIN(tripId), { pin });
   },
+
+  
+  // SOS
+    sosPress: async (id: number) => {
+      await apiClient.post(
+        ENDPOINTS.TRIPS.SOS(id)
+      );
+      return;
+    },
+
+    areYouSafePress: async (id: number, is_safe: boolean) => {
+      await apiClient.post(
+        ENDPOINTS.TRIPS.AREUSAFE(id),
+        { is_safe: is_safe }
+      );
+      return;
+    }
 };

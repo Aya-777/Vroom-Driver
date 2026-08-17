@@ -1,0 +1,19 @@
+{
+  "modals": {
+    "cancelRide": {
+      "title": "Cancel Ride?",
+      "message": "Are you sure you want to cancel this ride?",
+      "inputPlaceholder": "Why are you cancelling?",
+      "actionCancel": "Cancel Ride",
+      "actionKeep": "Keep Ride"
+    },
+    "sos": {
+      "sentTitle": "SOS Sent",
+      "sentMessage": "Sos message sent, Help will be there soon!",
+      "questionTitle": "Are you Safe?",
+      "questionMessage": "Do you want to send an emergency request?",
+      "sending": "SENDING...",
+      "sendSos": "SEND SOS"
+    }
+  }
+}

@@ -21,6 +21,8 @@ import {
   sideBarAr,
   safetyAr,
   safetyEn,
+  modalsAr,
+  modalsEn,
 } from './locales/index';
 
 export const resources = {
@@ -36,6 +38,7 @@ export const resources = {
     notifications: notificationsEn,
     sidebar: sideBarEn,
     safety: safetyEn,
+    modals: modalsEn,
   },
 
   ar: {
@@ -50,5 +53,6 @@ export const resources = {
     notifications: notificationsAr,
     sidebar: sideBarAr,
     safety: safetyAr,
+    modals: modalsAr,
   },
 };

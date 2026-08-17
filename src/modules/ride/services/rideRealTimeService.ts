@@ -16,7 +16,7 @@ class RideRealtimeService {
           break;
         
         case 'safety.alert.created':
-          // to be handled
+          this.handleSOSVisible(data);
           break;
 
         default:
@@ -40,6 +40,14 @@ class RideRealtimeService {
 
     clearRide();
     setActiveRide(null);
+  }
+  
+  private async handleSOSVisible(data: {
+    alert_id: number, trip_id: number, alert_type: string
+  }){
+    const {setSOSVisible, setSOSAlertId} = useRideStore.getState();
+    setSOSVisible(true);
+    setSOSAlertId(data.alert_id);
   }
 }
 

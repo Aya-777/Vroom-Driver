@@ -71,6 +71,8 @@ src/
 │       └── ride
 │           └── filters.svg
 ├── core
+│   ├── config
+│   │   └── realtime.config.ts
 │   ├── i18n
 │   │   ├── constants.ts
 │   │   ├── index.ts
@@ -120,13 +122,21 @@ src/
 │   │   ├── apiClient.ts
 │   │   ├── endpoints.ts
 │   │   └── media.ts
+│   ├── providers
+│   │   └── DriverLocationProvider.tsx
 │   ├── realtime
+│   │   ├── pusher
+│   │   │   ├── PusherProvider.tsx
+│   │   │   ├── PusherService.ts
+│   │   │   └── pusher.types.ts
 │   │   ├── socketClient.ts
 │   │   └── socketManager.ts
 │   ├── services
 │   │   └── location
+│   │       ├── DriverLocationManager.ts
 │   │       ├── LocationService.ts
-│   │       └── PermissionService.ts
+│   │       ├── PermissionService.ts
+│   │       └── locationApi.ts
 │   ├── storage
 │   │   ├── asyncStorage.adapter.ts
 │   │   ├── index.ts
@@ -141,6 +151,7 @@ src/
 │   │   ├── languageStore.ts
 │   │   ├── session.ts
 │   │   ├── themeStore.ts
+│   │   ├── useDriverStore.ts
 │   │   └── userStore.ts
 │   └── theme
 │       ├── ThemeProvider.tsx
@@ -213,7 +224,6 @@ src/
 │   │   │       ├── SplashLogo.tsx
 │   │   │       ├── SplashRoad.tsx
 │   │   │       └── SplashText.tsx
-│   │   ├── constants
 │   │   ├── hooks
 │   │   │   ├── useAuthActions.ts
 │   │   │   ├── useSplashAnimation.ts
@@ -231,14 +241,12 @@ src/
 │   │   │   ├── authApi.ts
 │   │   │   └── dto
 │   │   │       └── auth.dto.ts
-│   │   ├── store
 │   │   ├── styles
 │   │   │   ├── Splash.styles.ts
 │   │   │   ├── forgotPassword.styles.ts
 │   │   │   ├── login.styles.ts
 │   │   │   ├── resetPassword.styles.ts
 │   │   │   └── signup.styles.ts
-│   │   ├── types
 │   │   ├── utils
 │   │   │   └── SplashPathUtils.ts
 │   │   └── viewmodels
@@ -249,7 +257,6 @@ src/
 │   │       ├── useLoginViewModel.ts
 │   │       ├── useResetPasswordViewModel.ts
 │   │       └── useSplashViewModel.ts
-│   ├── constants
 │   ├── home
 │   │   ├── components
 │   │   │   ├── ActionButtons.tsx
@@ -401,6 +408,7 @@ src/
 │   │   ├── services
 │   │   │   ├── dto
 │   │   │   │   └── trip.dto.ts
+│   │   │   ├── rideRealTimeService.ts
 │   │   │   ├── tripApi.ts
 │   │   │   └── vehicleApi.ts
 │   │   ├── store
@@ -409,7 +417,6 @@ src/
 │   │   │   ├── shared.styles.ts
 │   │   │   └── trip.styles.ts
 │   │   ├── types
-│   │   │   ├── ride.types.ts
 │   │   │   └── trip.types.ts
 │   │   └── viewmodels
 │   │       ├── useMapViewModel.ts

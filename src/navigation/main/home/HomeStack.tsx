@@ -9,7 +9,7 @@ const Stack = createNativeStackNavigator<HomeStackParamList>();
 function TripRoute({ navigation, route }: HomeStackScreenProps<'Trip'>) {
   return (
     <TripScreen
-      tripId={route.params.tripId}
+      // tripId={route.params.tripId}
       onBackPress={() => navigation.goBack()}
       onTripCompleted={() => navigation.goBack()}
     />
@@ -19,8 +19,8 @@ function TripRoute({ navigation, route }: HomeStackScreenProps<'Trip'>) {
 export default function HomeStack() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="HomeScreen" component={HomeScreen} />
       <Stack.Screen name="Trip" component={TripRoute} />
+      <Stack.Screen name="HomeScreen" component={HomeScreen} />
     </Stack.Navigator>
   );
 }
