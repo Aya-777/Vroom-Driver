@@ -52,13 +52,20 @@ src/
 │       ├── payment
 │       │   ├── cash.svg
 │       │   ├── creditcard.svg
-│       │   └── price.svg
+│       │   ├── price.svg
+│       │   └── wallet.svg
 │       ├── profile
+│       │   ├── accessibility.svg
+│       │   ├── appearance.svg
 │       │   ├── cake.svg
+│       │   ├── facebook.svg
 │       │   ├── help.svg
+│       │   ├── instagram.svg
 │       │   ├── logout.svg
+│       │   ├── manage.svg
 │       │   ├── privacy.svg
 │       │   ├── profile.svg
+│       │   ├── rideCheck.svg
 │       │   ├── safety.svg
 │       │   └── settings.svg
 │       └── ride
@@ -97,6 +104,9 @@ src/
 │   │   │   │   └── trip
 │   │   │   │       ├── ar.json
 │   │   │   │       └── en.json
+│   │   │   ├── safety
+│   │   │   │   ├── ar.json
+│   │   │   │   └── en.json
 │   │   │   └── sidebar
 │   │   │       ├── ar.json
 │   │   │       └── en.json
@@ -266,7 +276,7 @@ src/
 │   │   ├── styles
 │   │   │   └── home
 │   │   │       ├── home.styles.ts
-│   │   │       ├── RideDailyStatus.styles.ts
+│   │   │       ├── rideDailyStatus.styles.ts
 │   │   │       └── rideWeeklyStatus.styles.ts
 │   │   ├── types
 │   │   │   └── home.types.ts
@@ -306,9 +316,20 @@ src/
 │   │   │   ├── ListItem.tsx
 │   │   │   ├── ListSection.tsx
 │   │   │   ├── ProfileCard.tsx
-│   │   │   └── VehicleDetailsCard.tsx
+│   │   │   ├── VehicleDetailsCard.tsx
+│   │   │   ├── safety
+│   │   │   │   ├── SafetyIntro.tsx
+│   │   │   │   ├── SafetyRow.tsx
+│   │   │   │   ├── SafetySectionBlock.tsx
+│   │   │   │   └── SafetyTipsCard.tsx
+│   │   │   └── setting
+│   │   │       ├── AccountCard.tsx
+│   │   │       ├── DeleteAccountButton.tsx
+│   │   │       ├── LanguageSelector.tsx
+│   │   │       └── SettingsRow.tsx
 │   │   ├── constants
-│   │   │   └── profileData.ts
+│   │   │   ├── profileData.ts
+│   │   │   └── safetyData.ts
 │   │   ├── hooks
 │   │   │   └── useProfileActions.ts
 │   │   ├── repositories
@@ -319,19 +340,29 @@ src/
 │   │   │   ├── ChangePhoneScreen.tsx
 │   │   │   ├── EditProfileScreen.tsx
 │   │   │   ├── ProfileScreen.tsx
+│   │   │   ├── SafetyScreen.tsx
+│   │   │   ├── SettingsScreen.tsx
 │   │   │   └── VehicleDetailsScreen.tsx
 │   │   ├── services
 │   │   │   ├── dto
 │   │   │   │   └── profile.dto.ts
 │   │   │   └── profileApi.ts
+│   │   ├── store
+│   │   │   └── useProfileStore.ts
 │   │   ├── styles
 │   │   │   ├── editProfile.styles.ts
 │   │   │   ├── profile.styles.ts
+│   │   │   ├── safety.styles.ts
+│   │   │   ├── settings.styles.ts
 │   │   │   └── vehicleDetails.styles.ts
 │   │   ├── types
-│   │   │   └── profile.types.ts
+│   │   │   ├── profile.types.ts
+│   │   │   └── safety.types.ts
+│   │   ├── utils
+│   │   │   └── ProfileUtils.ts
 │   │   └── viewmodels
-│   │       └── useProfileViewModel.ts
+│   │       ├── useProfileViewModel.ts
+│   │       └── useSettingsViewModel.ts
 │   ├── review
 │   │   ├── components
 │   │   │   ├── RatingStars.tsx
@@ -370,7 +401,8 @@ src/
 │   │   ├── services
 │   │   │   ├── dto
 │   │   │   │   └── trip.dto.ts
-│   │   │   └── tripApi.ts
+│   │   │   ├── tripApi.ts
+│   │   │   └── vehicleApi.ts
 │   │   ├── store
 │   │   │   └── useRideStore.ts
 │   │   ├── styles
@@ -379,7 +411,6 @@ src/
 │   │   ├── types
 │   │   │   ├── ride.types.ts
 │   │   │   └── trip.types.ts
-│   │   ├── utils
 │   │   └── viewmodels
 │   │       ├── useMapViewModel.ts
 │   │       └── useTripViewModel.ts

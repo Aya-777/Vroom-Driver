@@ -1,4 +1,4 @@
-import HistoryIcon from '../../../assets/svg/common/history.svg';
+﻿import HistoryIcon from '../../../assets/svg/common/history.svg';
 import SavedIcon from '../../../assets/svg/common/star.svg';
 import WalletIcon from '../../../assets/svg/payment/creditcard.svg';
 import SettingsIcon from '../../../assets/svg/profile/settings.svg';
@@ -30,7 +30,7 @@ export const SIDEBAR_ITEMS: SidebarItem[] = [
     id: 'settings',
     label: 'settings',
     icon: SettingsIcon,
-    // route: 'Settings',
+    route: 'ProfileTab',
   },
   {
     id: 'help',

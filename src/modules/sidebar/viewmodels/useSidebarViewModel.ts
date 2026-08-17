@@ -26,6 +26,11 @@ export const useSidebarViewModel = (
   };
 
   const handleItemPress = (item: SidebarItem) => {
+    if (item.id === 'settings') {
+      navigation.navigate('MainTabs', { screen: 'ProfileTab', params: { screen: 'Settings' } } as never);
+      navigation.closeDrawer();
+      return;
+    }
     if (!item.route) {
       return;
     }
@@ -50,3 +55,5 @@ export const useSidebarViewModel = (
     logout,
   };
 };
+
+
