@@ -1,7 +1,9 @@
-import React from 'react';
+﻿import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import ProfileScreen from '../../../modules/profile/screens/ProfileScreen';
+import SettingsScreen from '../../../modules/profile/screens/SettingsScreen';
+import SafetyScreen from '../../../modules/profile/screens/SafetyScreen';
 import VehicleDetailsScreen from '../../../modules/profile/screens/VehicleDetailsScreen';
 import EditProfileScreen from '../../../modules/profile/screens/EditProfileScreen';
 import ChangePhoneScreen from '../../../modules/profile/screens/ChangePhoneScreen';
@@ -15,6 +17,8 @@ export default function ProfileStack() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="ProfileHome" component={ProfileScreen} />
+      <Stack.Screen name="Settings" component={SettingsScreen} />
+      <Stack.Screen name="Safety" component={SafetyScreen} />
       <Stack.Screen name="VehicleDetails" component={VehicleDetailsScreen} />
       <Stack.Screen name="EditProfile" component={EditProfileScreen} />
       <Stack.Screen name="ChangePhone" component={ChangePhoneScreen} />

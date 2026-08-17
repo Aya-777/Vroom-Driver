@@ -37,6 +37,8 @@ const HIDE_TAB_ROUTES = [
   'ChangePhone',
   'ChangePhoneOtp',
   'ChangePassword',
+  'Settings',
+  'Safety',
 ];
 
 const getTabIconComponent = (
@@ -167,3 +169,4 @@ const styles = StyleSheet.create({
 
   tabIcon: {},
 });
+

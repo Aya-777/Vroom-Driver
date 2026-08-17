@@ -7,6 +7,7 @@
     FORGOT_PASSWORD_RESEND_OTP: '/api/v1/auth/forgot-password/resend-otp/',
     RESET_PASSWORD: '/api/v1/auth/forgot-password/reset-password/',
     LOGOUT: '/api/v1/auth/logout/',
+    DELETE_ACCOUNT: '/api/v1/auth/delete-account/',
   },
   DRIVER: {
     ACTIVATE_ACCOUNT: '/api/v1/drivers/activate-account/',
@@ -50,3 +51,5 @@
     DELETE: (id: number) => `/api/v1/notifications/${id}/`,
   },
 } as const;
+
+

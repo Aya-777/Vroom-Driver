@@ -40,20 +40,9 @@ export default function ProfileScreen() {
   const { t } = useTranslation(['profile', 'common']);
 
   const handleGridItemPress = (itemId: string) => {
-    if (itemId === '1') {
-      navigate('Main', {
-        screen: 'MainTabs',
-        params: {
-          screen: 'ActivityTab',
-          params: { screen: 'ActivitiesMain' },
-        },
-      });
-      return;
-    }
-
-    if (itemId === '2') {
-      navigate('Notifications');
-    }
+    if (itemId === '1') { navigation.navigate('Safety'); return; }
+    if (itemId === '2') { navigation.navigate('PaymentMethods'); return; }
+    if (itemId === '4') { navigation.navigate('Settings'); }
   };
 
   return (
@@ -118,3 +107,4 @@ export default function ProfileScreen() {
     </LinearBg>
   );
 }
+

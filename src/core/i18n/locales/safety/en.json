@@ -1,0 +1,30 @@
+{
+    "screenTitle": "Safety",
+    "introTitle": "Your Safety",
+    "introSubtitle": "Vroom is committed to your safety. Learn about the tools and features designed to protect you before, during, and after every trip.",
+    "beforeTrip": "Before your trip",
+    "duringTrip": "During your trip",
+    "afterTrip": "After your trip",
+    "driverVerification": "Driver Verification",
+    "driverVerificationDesc": "All drivers go through background checks and document verification before they can drive with Vroom.",
+    "vehicleVerification": "Vehicle Verification",
+    "vehicleVerificationDesc": "Every vehicle is inspected and matched to the driver's registered documents.",
+    "shareMyTrip": "Share My Trip",
+    "shareMyTripDesc": "Share your live trip status and location with a trusted contact in real time.",
+    "emergencyButton": "Emergency Button (SOS)",
+    "emergencyButtonDesc": "Quickly contact emergency services or Vroom support directly from the app.",
+    "rideCheckTitle": "RideCheck",
+    "rideCheckDesc": "We automatically detect unusual trip activity, like unexpected stops or route changes, and check in with you.",
+    "inAppReporting": "In-app Reporting",
+    "inAppReportingDesc": "Report any safety concern directly through the app during or after your trip.",
+    "rateAndReview": "Rate & Review",
+    "rateAndReviewDesc": "Your feedback helps us maintain safety standards for every driver.",
+    "support247": "24/7 Support",
+    "support247Desc": "Our safety team is available around the clock to respond to any incident.",
+    "safetyTips": "Safety Tips",
+    "tips": [
+        "Always check the driver's name, photo, and license plate match the app before getting in.",
+        "Sit in the back seat when riding alone.",
+        "Share your trip details with someone you trust."
+    ]
+}

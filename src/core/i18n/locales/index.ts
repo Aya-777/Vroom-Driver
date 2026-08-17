@@ -18,6 +18,8 @@ import notificationsEn from './notifications/en.json';
 import notificationsAr from './notifications/ar.json';
 import sideBarEn from './sidebar/en.json';
 import sideBarAr from './sidebar/ar.json';
+import safetyEn from './safety/en.json';
+import safetyAr from './safety/ar.json';
 
 export {
   authEn,
@@ -40,4 +42,6 @@ export {
   notificationsAr,
   sideBarEn,
   sideBarAr,
+  safetyEn,
+  safetyAr
 };
