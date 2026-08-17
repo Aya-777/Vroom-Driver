@@ -1,15 +1,41 @@
 import { create } from 'zustand';
-import { RideParams } from '../types/ride.types';
+import { CurrentRide } from '../types/trip.types';
 
 interface RideState {
-  activeRide: Partial<RideParams>;
-  setRideDetails: (details: Partial<RideParams>) => void;
+  activeRide: Partial<CurrentRide> | null;
+  setActiveRide: (ride: CurrentRide | null) => void;
   clearRide: () => void;
+
+  location: [number, number] | null;
+  setLocation: (location: [number, number]) => void;
+  clearLocation: () => void;
 }
 
 export const useRideStore = create<RideState>((set) => ({
-  activeRide: {},
-  setRideDetails: (details) => 
-    set((state) => ({ activeRide: { ...state.activeRide, ...details } })),
-  clearRide: () => set({ activeRide: {} }),
+  activeRide: null,
+
+  setActiveRide: (details) =>
+    set((state) => ({
+      activeRide: {
+        ...state.activeRide,
+        ...details,
+      },
+    })),
+
+  clearRide: () =>
+    set({
+      activeRide: null,
+    }),
+
+  location: null,
+
+  setLocation: (location) =>
+    set({
+      location,
+    }),
+
+  clearLocation: () =>
+    set({
+      location: null,
+    }),
 }));

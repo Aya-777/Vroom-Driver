@@ -50,6 +50,16 @@
     MARK_READ: (id: number) => `/api/v1/notifications/${id}/read/`,
     DELETE: (id: number) => `/api/v1/notifications/${id}/`,
   },
+  
+  PUSHER:{
+    AUTH: 'trips/pusher-auth/',
+    CHANNELS: '/realtime/channels/',
+  },
+
+  LOCATION:{
+    UPDATE: '/api/v1/users/location/',
+  }
+
 } as const;
 
 
