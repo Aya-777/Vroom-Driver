@@ -40,6 +40,8 @@
     I_AM_HERE: (tripId: number) => `/trips/${tripId}/i-am-here/`,
     RESEND_PIN: (tripId: number) => `/trips/${tripId}/resend-pin/`,
     VERIFY_PIN: (tripId: number) => `/trips/${tripId}/verify-pin/`,
+    SOS: (id: number) => `/trips/trips/${id}/sos/`,
+    AREUSAFE: (id: number) => `/trips/safety-alerts/${id}/respond/`
   },
   NOTIFICATIONS: {
     LIST: '/api/v1/notifications/',

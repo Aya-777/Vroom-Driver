@@ -16,7 +16,15 @@ export function useTripViewModel(
 ) {
   const [pin, setPin] = useState('');
   const [pinError, setPinError] = useState(false);
-  const { setActiveRide } = useRideStore();
+  const [isSOSVisible, setSOSVisible] = useState(false);
+  const {
+    activeRide, 
+    setActiveRide, 
+    sosVisible: storeSosVisible, 
+    sosAlertId, 
+    setSOSVisible: setStoreSosVisible, 
+    setSOSAlertId 
+  } = useRideStore();
 
   const {
     data: trip,
@@ -100,6 +108,26 @@ export function useTripViewModel(
   const vehicleTierInfo =
     vehicleTiers?.find(t => t.id === trip?.vehicle_type) ?? null;
 
+  const handleSosPress = async () => {
+    if(!activeRide){
+      console.log('There is no current ride');
+      return false;
+    }
+    try{
+      if(storeSosVisible && sosAlertId){
+        await tripApi.areYouSafePress(sosAlertId, false);
+      }else{
+        await tripApi.sosPress(activeRide.id)
+      }
+      console.log('Sos sent successfully.');
+      return true;
+    }catch{
+      console.log('failed to send sos, try again.');
+      return false;
+    }
+  }
+
+
   return {
     trip,
     isLoading,
@@ -115,5 +143,12 @@ export function useTripViewModel(
     completeTrip,
     refetch,
     vehicleTierInfo,
+    isSOSVisible,
+    storeSosVisible,
+    setSOSVisible,
+    setStoreSosVisible,
+    sosAlertId,
+    setSOSAlertId,
+    handleSosPress
   };
 }

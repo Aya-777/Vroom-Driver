@@ -20,6 +20,8 @@ import sideBarEn from './sidebar/en.json';
 import sideBarAr from './sidebar/ar.json';
 import safetyEn from './safety/en.json';
 import safetyAr from './safety/ar.json';
+import modalsAr from './modals/ar.json'
+import modalsEn from './modals/en.json'
 
 export {
   authEn,
@@ -43,5 +45,7 @@ export {
   sideBarEn,
   sideBarAr,
   safetyEn,
-  safetyAr
+  safetyAr,
+  modalsAr,
+  modalsEn,
 };
