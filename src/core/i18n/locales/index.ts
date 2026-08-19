@@ -1,4 +1,4 @@
-import authEn from './auth/en.json';
+﻿import authEn from './auth/en.json';
 import authAr from './auth/ar.json';
 import homeEn from './home/en.json';
 import homeAr from './home/ar.json';
@@ -20,9 +20,10 @@ import sideBarEn from './sidebar/en.json';
 import sideBarAr from './sidebar/ar.json';
 import safetyEn from './safety/en.json';
 import safetyAr from './safety/ar.json';
-import modalsAr from './modals/ar.json'
-import modalsEn from './modals/en.json'
-
+import modalsEn from './modals/en.json';
+import modalsAr from './modals/ar.json';
+import walletEn from './wallet/en.json';
+import walletAr from './wallet/ar.json';
 export {
   authEn,
   authAr,
@@ -39,13 +40,15 @@ export {
   commonEn,
   commonAr,
   activitiesEn,
-  activitiesAr, 
+  activitiesAr,
   notificationsEn,
   notificationsAr,
   sideBarEn,
   sideBarAr,
   safetyEn,
   safetyAr,
-  modalsAr,
   modalsEn,
+  modalsAr,
+  walletEn,
+  walletAr,
 };

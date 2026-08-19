@@ -1,5 +1,5 @@
 ﻿import os
-root = r'C:\Vroom Driver\Vroom\src'
+root = r'C:\Users\Massa\Project 1\Vroom-Driver\src'
 no_recurse = {'node_modules', '.git', 'android/.gradle', 'android/app/.cxx', 'android/app/build', 'android/build', 'ios/Pods', 'ios/build'}
 lines = []
 

@@ -90,6 +90,9 @@ src/
 │   │   │   │   ├── ar.json
 │   │   │   │   └── en.json
 │   │   │   ├── index.ts
+│   │   │   ├── modals
+│   │   │   │   ├── ar.json
+│   │   │   │   └── en.json
 │   │   │   ├── navigation
 │   │   │   │   ├── ar.json
 │   │   │   │   └── en.json
@@ -109,7 +112,10 @@ src/
 │   │   │   ├── safety
 │   │   │   │   ├── ar.json
 │   │   │   │   └── en.json
-│   │   │   └── sidebar
+│   │   │   ├── sidebar
+│   │   │   │   ├── ar.json
+│   │   │   │   └── en.json
+│   │   │   └── wallet
 │   │   │       ├── ar.json
 │   │   │       └── en.json
 │   │   ├── resources.ts
@@ -224,6 +230,7 @@ src/
 │   │   │       ├── SplashLogo.tsx
 │   │   │       ├── SplashRoad.tsx
 │   │   │       └── SplashText.tsx
+│   │   ├── constants
 │   │   ├── hooks
 │   │   │   ├── useAuthActions.ts
 │   │   │   ├── useSplashAnimation.ts
@@ -241,12 +248,14 @@ src/
 │   │   │   ├── authApi.ts
 │   │   │   └── dto
 │   │   │       └── auth.dto.ts
+│   │   ├── store
 │   │   ├── styles
 │   │   │   ├── Splash.styles.ts
 │   │   │   ├── forgotPassword.styles.ts
 │   │   │   ├── login.styles.ts
 │   │   │   ├── resetPassword.styles.ts
 │   │   │   └── signup.styles.ts
+│   │   ├── types
 │   │   ├── utils
 │   │   │   └── SplashPathUtils.ts
 │   │   └── viewmodels
@@ -257,6 +266,7 @@ src/
 │   │       ├── useLoginViewModel.ts
 │   │       ├── useResetPasswordViewModel.ts
 │   │       └── useSplashViewModel.ts
+│   ├── constants
 │   ├── home
 │   │   ├── components
 │   │   │   ├── ActionButtons.tsx
@@ -388,6 +398,8 @@ src/
 │   │       └── review.types.ts
 │   ├── ride
 │   │   ├── components
+│   │   │   ├── Sos
+│   │   │   │   └── SOSModal.tsx
 │   │   │   ├── TripScreen
 │   │   │   │   ├── DetailBox.tsx
 │   │   │   │   ├── PinBoxes.tsx
@@ -414,6 +426,7 @@ src/
 │   │   ├── store
 │   │   │   └── useRideStore.ts
 │   │   ├── styles
+│   │   │   ├── SOSModal.styles.ts
 │   │   │   ├── shared.styles.ts
 │   │   │   └── trip.styles.ts
 │   │   ├── types
@@ -421,22 +434,35 @@ src/
 │   │   └── viewmodels
 │   │       ├── useMapViewModel.ts
 │   │       └── useTripViewModel.ts
-│   └── sidebar
+│   ├── sidebar
+│   │   ├── components
+│   │   │   ├── SidebarFooter.tsx
+│   │   │   ├── SidebarHeader.tsx
+│   │   │   ├── SidebarItem.tsx
+│   │   │   └── ThemeToggleButton.tsx
+│   │   ├── constants
+│   │   │   └── sidebarItems.ts
+│   │   ├── screens
+│   │   │   └── SidebarScreen.tsx
+│   │   ├── styles
+│   │   │   └── sidebar.styles.ts
+│   │   ├── types
+│   │   │   └── sidebar.types.ts
+│   │   └── viewmodels
+│   │       └── useSidebarViewModel.ts
+│   └── wallet
 │       ├── components
-│       │   ├── SidebarFooter.tsx
-│       │   ├── SidebarHeader.tsx
-│       │   ├── SidebarItem.tsx
-│       │   └── ThemeToggleButton.tsx
-│       ├── constants
-│       │   └── sidebarItems.ts
+│       │   └── DriverTransactionWheel.tsx
 │       ├── screens
-│       │   └── SidebarScreen.tsx
+│       │   └── DriverWalletScreen.tsx
+│       ├── services
+│       │   └── walletApi.ts
 │       ├── styles
-│       │   └── sidebar.styles.ts
+│       │   └── wallet.styles.ts
 │       ├── types
-│       │   └── sidebar.types.ts
+│       │   └── wallet.types.ts
 │       └── viewmodels
-│           └── useSidebarViewModel.ts
+│           └── useDriverWalletViewModel.ts
 ├── navigation
 │   ├── RootNavigator.tsx
 │   ├── auth

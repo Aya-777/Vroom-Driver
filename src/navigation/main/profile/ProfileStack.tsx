@@ -1,4 +1,5 @@
-﻿import React from 'react';
+import DriverWalletScreen from '../../../modules/wallet/screens/DriverWalletScreen';
+import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import ProfileScreen from '../../../modules/profile/screens/ProfileScreen';
@@ -17,6 +18,7 @@ export default function ProfileStack() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="ProfileHome" component={ProfileScreen} />
+      <Stack.Screen name="Wallet" component={DriverWalletScreen} />
       <Stack.Screen name="Settings" component={SettingsScreen} />
       <Stack.Screen name="Safety" component={SafetyScreen} />
       <Stack.Screen name="VehicleDetails" component={VehicleDetailsScreen} />
