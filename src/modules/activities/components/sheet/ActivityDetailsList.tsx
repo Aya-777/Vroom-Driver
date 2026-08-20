@@ -60,7 +60,7 @@ export default function ActivityDetailsList({ activity, styles }: any) {
         <View style={styles.row}>
           <Text style={styles.label}>{t('activityDetails.duration')}</Text>
           <Text style={styles.value}>
-            {activity.duration !== null ? `${activity.duration} min` : '-'}
+            {activity.duration !== null ? `${Number(activity.duration).toFixed(3)} min` : '-'}
           </Text>
         </View>
 

@@ -1,5 +1,0 @@
-src/core/realtime/pusher/pusher.types.ts(1,28): error TS2307: Cannot find module '../../../modules/ride/types/RideState' or its corresponding type declarations.
-src/modules/profile/repositories/profileRepository.ts(41,13): error TS2322: Type '{ driverStatus: string; nationalId: string; birthdate: string; vehicle: { brand: string; model: string; customBrandName: string | null; customModelName: string | null; color: string; customColorName: string | null; ... 5 more ...; images: VehicleImageDto[]; }; } | undefined' is not assignable to type 'DriverInfo | undefined'.
-  Type '{ driverStatus: string; nationalId: string; birthdate: string; vehicle: { brand: string; model: string; customBrandName: string | null; customModelName: string | null; color: string; customColorName: string | null; ... 5 more ...; images: VehicleImageDto[]; }; }' is not assignable to type 'DriverInfo'.
-    Types of property 'driverStatus' are incompatible.
-      Type 'string' is not assignable to type 'DriverStatus'.
