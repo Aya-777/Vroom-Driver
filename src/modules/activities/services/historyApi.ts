@@ -1,4 +1,4 @@
-import { apiClient } from '../../../core/network/apiClient';
+﻿import { apiClient } from '../../../core/network/apiClient';
 import { ENDPOINTS } from '../../../core/network/endpoints';
 import {
   TripHistoryItemDTO,
@@ -8,6 +8,7 @@ import {
 
 export const getTripHistory = async (params?: {
   status?: string;
+  scheduled?: boolean;
 }): Promise<PaginatedResult<TripHistoryItemDTO>> => {
   const response = await apiClient.get<
     ApiEnvelope<PaginatedResult<TripHistoryItemDTO>>
@@ -23,3 +24,5 @@ export const getTripHistoryByUrl = async (
   >(url);
   return response.data.data;
 };
+
+

@@ -1,7 +1,8 @@
-import { createStyles } from './ActivityCard.styles';
+﻿import { createStyles } from './ActivityCard.styles';
 
 export interface ActivityCardProps {
     rideType: string;
+    status: string;
     pickup: string;
     destination: string;
     date: string;
@@ -17,3 +18,4 @@ export interface LocationRowProps {
     styles: ReturnType<typeof createStyles>;
 
 }
+

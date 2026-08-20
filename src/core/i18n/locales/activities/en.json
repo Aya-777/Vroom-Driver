@@ -1,21 +1,26 @@
-{
-    "noActivities": "No activities found.",
-    "yourActivity": "Your Activity ",
-    "status": {
-        "all": "All",
-        "completed": "Completed",
-        "cancelled": "Cancelled",
-        "rejected": "Rejected"
-    },
-    "activityDetails": {
-        "title": "Trip Details",
-        "driverName": "Driver",
-        "pickupLocation": "Pickup Location",
-        "dropoffLocation": "Dropoff Location",
-        "date": "Date",
-        "price": "Price",
-        "rideType": "Ride Type",
-        "distance": "Distance",
-        "duration": "Duration"
-    }
+﻿{
+    "noActivities":  "No activities found.",
+    "yourActivity":  "Your Activity ",
+    "status":  {
+                   "all":  "All",
+                   "completed":  "Completed",
+                   "cancelled":  "Cancelled",
+                   "rejected":  "Rejected",
+                   "pending":  "Pending",
+                   "scheduled":  "Scheduled"
+               },
+    "activityDetails":  {
+                            "title":  "Trip Details",
+                            "driverName":  "Driver",
+                            "pickupLocation":  "Pickup Location",
+                            "dropoffLocation":  "Dropoff Location",
+                            "date":  "Date",
+                            "price":  "Price",
+                            "rideType":  "Ride Type",
+                            "distance":  "Distance",
+                            "duration":  "Duration",
+                            "riderName":  "Rider",
+                            "status":  "Status",
+                            "stop":  "Stop"
+                        }
 }

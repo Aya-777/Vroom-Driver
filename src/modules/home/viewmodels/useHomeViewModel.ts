@@ -34,7 +34,7 @@ export const useHomeViewModel = () => {
     } catch (error) {
       console.log('Failed to fetch today stats', error);
     }
-  }, []);
+  }, [setDriverStatus]);
 
   useEffect(() => {
     fetchTodayStats();
@@ -57,7 +57,7 @@ export const useHomeViewModel = () => {
     refreshProfile().catch(error => {
       console.log('Failed to fetch profile', error);
     });
-  }, []);
+  }, [setDriverStatus]);
 
   const formatDuration = (minutes: number) => {
     const h = Math.floor(minutes / 60);
@@ -175,8 +175,10 @@ export const useHomeViewModel = () => {
           : prev,
       );
 
-      await homeApi.updateDriverStatus(request);
-      setDriverStatus(nextStatus);
+      const response = await homeApi.updateDriverStatus(request);
+      const confirmedStatus = response?.data?.driver_status ?? nextStatus;
+      setTodayStats(prev => prev ? { ...prev, data: { ...prev.data, driver_status: confirmedStatus } } : prev);
+      setDriverStatus(confirmedStatus);
     } catch (error: any) {
       console.log(
         'Failed to update driver status:',
@@ -207,3 +209,8 @@ export const useHomeViewModel = () => {
 };
 
 export type HomeViewModelReturn = ReturnType<typeof useHomeViewModel>;
+
+
+
+
+
