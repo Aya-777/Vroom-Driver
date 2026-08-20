@@ -1,10 +1,14 @@
-import { useEffect, useRef, useState } from 'react';
+﻿import { useCallback, useEffect, useRef, useState } from 'react';
 import { useProfileMenuItems } from '../constants/profileData';
 import { useMainDrawer } from '../../../navigation/hooks/useMainDrawer';
 import { profileRepository } from '../repositories/profileRepository';
 import { UserProfile } from '../types/profile.types';
 import { useNavigation } from '@react-navigation/native';
-import { useCurrentUser, updateCurrentUser } from '../../../core/store/userStore';
+import {
+  useCurrentUser,
+  updateCurrentUser,
+} from '../../../core/store/userStore';
+import { useDriverStore } from '../../../core/store/useDriverStore';
 
 export const useProfileViewModel = () => {
   const { openSidebar } = useMainDrawer();
@@ -12,6 +16,7 @@ export const useProfileViewModel = () => {
   const navigation = useNavigation<any>();
 
   const cachedUser = useCurrentUser();
+  const setDriverStatus = useDriverStore(state => state.setStatus);
 
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -20,7 +25,7 @@ export const useProfileViewModel = () => {
 
   const isMounted = useRef(true);
 
-  const fetchProfile = async (mode: 'initial' | 'refresh') => {
+  const fetchProfile = useCallback(async (mode: 'initial' | 'refresh') => {
     try {
       if (mode === 'initial') setIsLoading(true);
       else setIsRefreshing(true);
@@ -29,6 +34,9 @@ export const useProfileViewModel = () => {
       const data = await profileRepository.getMyProfile();
       if (isMounted.current) {
         setProfile(data);
+        if (data.driverInfo?.driverStatus) {
+          setDriverStatus(data.driverInfo.driverStatus);
+        }
 
         updateCurrentUser({
           first_name: data.firstName,
@@ -42,7 +50,8 @@ export const useProfileViewModel = () => {
       }
     } catch (err) {
       if (isMounted.current) {
-        const message = err instanceof Error ? err.message : 'FETCH_PROFILE_FAILED';
+        const message =
+          err instanceof Error ? err.message : 'FETCH_PROFILE_FAILED';
         setError(message);
       }
     } finally {
@@ -51,7 +60,7 @@ export const useProfileViewModel = () => {
         else setIsRefreshing(false);
       }
     }
-  };
+  }, [setDriverStatus]);
 
   useEffect(() => {
     isMounted.current = true;
@@ -59,30 +68,33 @@ export const useProfileViewModel = () => {
     return () => {
       isMounted.current = false;
     };
-  }, []);
+  }, [fetchProfile]);
 
   const onRefresh = () => fetchProfile('refresh');
 
   const openVehicleDetails = () => {
     if (profile?.driverInfo?.vehicle) {
-      navigation.navigate('VehicleDetails', { vehicle: profile.driverInfo.vehicle });
+      navigation.navigate('VehicleDetails', {
+        vehicle: profile.driverInfo.vehicle,
+      });
     }
   };
 
-  const fallbackProfile: UserProfile | null = !profile && cachedUser
-    ? {
-      id: cachedUser.id,
-      firstName: cachedUser.first_name,
-      lastName: cachedUser.last_name,
-      phone: cachedUser.phone_number,
-      role: cachedUser.role,
-      accountStatus: cachedUser.account_status ?? '',
-      profileImage: cachedUser.profile_image,
-      ratingAvg: cachedUser.rating ?? 5.0,
-      isActive: true,
-      driverInfo: cachedUser.driverInfo,
-    }
-    : null;
+  const fallbackProfile: UserProfile | null =
+    !profile && cachedUser
+      ? {
+          id: cachedUser.id,
+          firstName: cachedUser.first_name,
+          lastName: cachedUser.last_name,
+          phone: cachedUser.phone_number,
+          role: cachedUser.role,
+          accountStatus: cachedUser.account_status ?? '',
+          profileImage: cachedUser.profile_image,
+          ratingAvg: cachedUser.rating ?? 5.0,
+          isActive: true,
+          driverInfo: cachedUser.driverInfo,
+        }
+      : null;
 
   return {
     openSidebar,
@@ -96,3 +108,8 @@ export const useProfileViewModel = () => {
     openVehicleDetails,
   };
 };
+
+
+
+
+
