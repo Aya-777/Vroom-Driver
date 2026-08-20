@@ -66,12 +66,7 @@ export default function HomeScreen() {
           {/* Ride Monthly Status Section */}
           <RideDailyStatus dashboardData={dashboardData} />
 
-          {/* Quick Actions (History & Support) */}
-          <ActionButtons
-            onHistoryPress={onHistoryPress}
-            onSupportPress={() => {}}
-          />
-        </ScrollView>
+         </ScrollView>
       </View>
     </LinearBg>
   );
