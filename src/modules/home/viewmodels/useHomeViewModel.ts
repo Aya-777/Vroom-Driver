@@ -53,6 +53,10 @@ export const useHomeViewModel = () => {
     fetchStatistics();
   }, [fetchStatistics]);
 
+  const refreshHomeData = useCallback(async () => {
+    await Promise.all([fetchTodayStats(), fetchStatistics()]);
+  }, [fetchTodayStats, fetchStatistics]);
+
   useEffect(() => {
     refreshProfile().catch(error => {
       console.log('Failed to fetch profile', error);
@@ -203,12 +207,14 @@ export const useHomeViewModel = () => {
     dashboardData,
     loading,
     toggleOnlineStatus,
+    refreshHomeData,
     openSidebar,
     onHistoryPress,
   };
 };
 
 export type HomeViewModelReturn = ReturnType<typeof useHomeViewModel>;
+
 
 
 

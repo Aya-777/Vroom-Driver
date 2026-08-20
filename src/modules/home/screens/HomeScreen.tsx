@@ -1,4 +1,5 @@
-﻿import React from 'react';
+﻿import { useFocusEffect } from '@react-navigation/native';
+import React from 'react';
 import { ScrollView, View } from 'react-native';
 
 import LinearBg from '../../../shared/components/LinearBg';
@@ -21,8 +22,14 @@ import { ActionButtons } from '../components/ActionButtons';
 export default function HomeScreen() {
   const { colors } = useTheme();
   const styles = createStyles(colors);
-  const { dashboardData, toggleOnlineStatus, openSidebar, onHistoryPress } =
+  const { dashboardData, toggleOnlineStatus, refreshHomeData, openSidebar, onHistoryPress } =
     useHomeViewModel();
+
+  useFocusEffect(
+    React.useCallback(() => {
+      refreshHomeData();
+    }, [refreshHomeData]),
+  );
 
   return (
     <LinearBg
@@ -76,3 +83,5 @@ export default function HomeScreen() {
     </LinearBg>
   );
 }
+
+
