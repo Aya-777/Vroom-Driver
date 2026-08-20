@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { Modal, View, Text, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import { useTheme } from '../../../core/theme/useTheme';
 import { createStyles } from '../styles/review.styles';
@@ -22,11 +22,18 @@ export default function ReviewModal({
     const styles = createStyles(colors);
     const [rating, setRating] = useState(0);
     const [review, setReview] = useState('');
-    const handleSubmit = () => {
-        onSubmit(rating, review);
-        setRating(0);
-        setReview('');
-        onClose();
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const handleSubmit = async () => {
+        if (isSubmitting) return;
+        setIsSubmitting(true);
+        try {
+            await onSubmit(rating, review);
+            setRating(0);
+            setReview('');
+            onClose();
+        } finally {
+            setIsSubmitting(false);
+        }
     };
     const handleCancel = () => {
         setRating(0);
@@ -83,6 +90,7 @@ export default function ReviewModal({
                         <ReviewActions
                             onCancel={handleCancel}
                             onSubmit={handleSubmit}
+                            loading={isSubmitting}
                         />
                     </LinearBg>
                 </View>
@@ -90,3 +98,4 @@ export default function ReviewModal({
         </Modal>
     );
 }
+

@@ -13,8 +13,8 @@
     ACTIVATE_ACCOUNT: '/api/v1/drivers/activate-account/',
     ACTIVATE_ACCOUNT_VERIFY_OTP: '/api/v1/drivers/activate-account/verify-otp/',
     ACTIVATE_ACCOUNT_RESEND_OTP: '/api/v1/drivers/activate-account/resend-otp/',
-    STATUS : '/api/v1/drivers/me/status/',
-    TODAY_STATS : '/api/v1/drivers/me/today-stats/',
+    STATUS: '/api/v1/drivers/me/status/',
+    TODAY_STATS: '/api/v1/drivers/me/today-stats/',
     STATISTICS: '/trips/statistics/driver/',
   },
   USERS: {
@@ -37,6 +37,7 @@
     ACCEPT: (tripId: number) => `/trips/${tripId}/accept/`,
     CANCEL: (tripId: number) => `/trips/trips/${tripId}/cancel/`,
     COMPLETE: (tripId: number) => `/trips/${tripId}/complete/`,
+    SUBMIT_REVIEW: (tripId: number) => `/trips/${tripId}/reviews/`,
     I_AM_HERE: (tripId: number) => `/trips/${tripId}/i-am-here/`,
     RESEND_PIN: (tripId: number) => `/trips/${tripId}/resend-pin/`,
     VERIFY_PIN: (tripId: number) => `/trips/${tripId}/verify-pin/`,
@@ -52,16 +53,14 @@
     MARK_READ: (id: number) => `/api/v1/notifications/${id}/read/`,
     DELETE: (id: number) => `/api/v1/notifications/${id}/`,
   },
-  
-  PUSHER:{
+
+  PUSHER: {
     AUTH: 'trips/pusher-auth/',
     CHANNELS: '/realtime/channels/',
   },
 
-  LOCATION:{
+  LOCATION: {
     UPDATE: '/api/v1/users/location/',
   }
 
 } as const;
-
-
