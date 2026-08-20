@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import {
     TouchableOpacity,
     View,
@@ -39,6 +39,7 @@ const LocationRow = ({
 
 const ActivityCard = ({
     rideType,
+    status,
     pickup,
     destination,
     date,
@@ -110,3 +111,4 @@ const ActivityCard = ({
 };
 
 export default ActivityCard;
+

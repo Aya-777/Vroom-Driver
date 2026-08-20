@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { View, FlatList, Text, ActivityIndicator } from 'react-native';
 import ActivityCard from '../components/ActivityCard';
 import LinearBg from '../../../shared/components/LinearBg';
@@ -34,6 +34,7 @@ export default function ActivitiesScreen() {
         activities,
         isLoading,
         isLoadingMore,
+    refresh,
         loadMore,
         openSidebar,
     } = useActivitiesViewModel();
@@ -54,7 +55,7 @@ export default function ActivitiesScreen() {
                 <StatusTabs
                     statuses={statuses}
                     selectedStatus={selectedStatus}
-                    onSelect={setSelectedStatus}
+                    onSelect={(status) => { setSelectedStatus(status); if (status === selectedStatus) refresh(); }}
                     styles={styles}
                 />
 
@@ -67,6 +68,7 @@ export default function ActivitiesScreen() {
                     onEndReached={loadMore}
                     renderItem={({ item }) => (
                         <ActivityCard
+                            status={item.displayStatus}
                             rideType={item.rideType}
                             pickup={item.pickupLocation}
                             destination={item.dropoffLocation}
@@ -126,3 +128,4 @@ export default function ActivitiesScreen() {
         </LinearBg>
     );
 }
+

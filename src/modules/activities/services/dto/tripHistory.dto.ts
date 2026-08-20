@@ -1,4 +1,4 @@
-export interface TripHistoryStopDTO {
+﻿export interface TripHistoryStopDTO {
   id: number;
   address: string;
   order: number;
@@ -6,6 +6,8 @@ export interface TripHistoryStopDTO {
 }
 
 export type TerminalTripStatus =
+  | 'PENDING'
+  | 'ACCEPTED'
   | 'COMPLETED'
   | 'CANCELLED_BY_RIDER'
   | 'CANCELLED_BY_DRIVER';
@@ -14,7 +16,11 @@ export interface TripHistoryItemDTO {
   id: number;
   status: TerminalTripStatus;
   stops: TripHistoryStopDTO[];
+  rider_id: number | null;
+  rider_name: string | null;
   driver_name: string | null;
+  is_scheduled: boolean;
+  scheduled_at: string | null;
   vehicle_type: string | null;
   price: string | null;
   distance: number | null;
@@ -38,3 +44,5 @@ export interface ApiEnvelope<T> {
   message: string;
   data: T;
 }
+
+
