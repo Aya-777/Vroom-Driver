@@ -6,10 +6,10 @@ import { HomeStackParamList, HomeStackScreenProps } from './homeTypes';
 
 const Stack = createNativeStackNavigator<HomeStackParamList>();
 
-function TripRoute({ navigation }: HomeStackScreenProps<'Trip'>) {
+function TripRoute({ navigation, route }: HomeStackScreenProps<'Trip'>) {
   return (
     <TripScreen
-      // tripId={route.params.tripId}
+      tripId={route.params.tripId}
       onBackPress={() => navigation.goBack()}
       onTripCompleted={() => navigation.goBack()}
     />
