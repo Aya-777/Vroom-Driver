@@ -15,7 +15,7 @@ import { TripId } from '../services/dto/trip.dto';
 import SOSModal from '../components/Sos/SOSModal';
 
 type Props = {
-  tripId?: TripId;
+  tripId: TripId;
   onBackPress?: () => void;
   onTripCompleted?: () => void;
 };
@@ -125,3 +125,4 @@ export default function TripScreen({
     </>
   );
 }
+

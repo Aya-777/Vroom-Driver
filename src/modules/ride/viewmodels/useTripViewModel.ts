@@ -11,7 +11,7 @@ type TripAction = (tripId: TripId) => Promise<void>;
 
 export function useTripViewModel(
   onTripCompleted: () => void,
-  tripId?: TripId,
+  tripId: TripId,
   onTripCancelled?: () => void,
 ) {
   const [pin, setPin] = useState('');
@@ -31,9 +31,9 @@ export function useTripViewModel(
     isLoading,
     refetch,
   } = useQuery({
-    queryKey: ['trip', tripId ?? 'current'],
+    queryKey: ['trip', tripId],
     queryFn: () =>
-      tripId ? tripApi.getTripById(tripId) : tripApi.getCurrentTrip(),
+      tripApi.getTripById(tripId),
     refetchInterval: 5000,
   });
 
@@ -152,3 +152,4 @@ export function useTripViewModel(
     handleSosPress
   };
 }
+
