@@ -1,0 +1,15 @@
+﻿{
+  "title": "Wallet",
+  "balance": "Current balance",
+  "cardHolder": "Card holder",
+  "recentTransactions": "Recent transactions",
+  "loading": "Loading wallet...",
+  "loadError": "Unable to load wallet",
+  "emptyTitle": "No transfers yet",
+  "emptyMessage": "You do not have any wallet transfers yet.",
+  "types": {
+    "topup": "Transfer in",
+    "trip_payment": "Trip earnings",
+    "refund": "Refund"
+  }
+}

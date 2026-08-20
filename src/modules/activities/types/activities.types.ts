@@ -1,8 +1,7 @@
-import { TerminalTripStatus } from '../../activities/services/dto/tripHistory.dto';
+﻿import { TerminalTripStatus, TripHistoryStopDTO } from '../../activities/services/dto/tripHistory.dto';
 
-export type ActivityFilterTab = 'All' | 'Completed' | 'Cancelled' | 'Rejected';
-
-export type DisplayStatus = 'Completed' | 'Cancelled' | 'Rejected';
+export type ActivityFilterTab = 'All' | 'Completed' | 'Cancelled' | 'Rejected' | 'Pending' | 'Scheduled';
+export type DisplayStatus = 'Completed' | 'Cancelled' | 'Rejected' | 'Pending' | 'Scheduled';
 
 export interface Activity {
   id: string;
@@ -12,12 +11,15 @@ export interface Activity {
   dropoffLocation: string;
   date: string;
   price: number | null;
-  driverName: string;
+  riderName: string;
   currency: string;
   rideType: string;
   distance: number | null;
   duration: number | null;
   cancellationReason: string | null;
+  stops: TripHistoryStopDTO[];
+  isScheduled: boolean;
+  scheduledAt: string | null;
 }
 
 export interface ActivityDetailsSheetProps {
@@ -27,3 +29,4 @@ export interface ActivityDetailsSheetProps {
   onReview: () => void;
   onReride: () => void;
 }
+

@@ -6,7 +6,7 @@ import { HomeStackParamList, HomeStackScreenProps } from './homeTypes';
 
 const Stack = createNativeStackNavigator<HomeStackParamList>();
 
-function TripRoute({ navigation, route }: HomeStackScreenProps<'Trip'>) {
+function TripRoute({ navigation }: HomeStackScreenProps<'Trip'>) {
   return (
     <TripScreen
       // tripId={route.params.tripId}
@@ -18,9 +18,11 @@ function TripRoute({ navigation, route }: HomeStackScreenProps<'Trip'>) {
 
 export default function HomeStack() {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Stack.Navigator initialRouteName="HomeScreen" screenOptions={{ headerShown: false }}>
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
       <Stack.Screen name="Trip" component={TripRoute} />
     </Stack.Navigator>
   );
 }
+
+

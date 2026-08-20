@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+﻿import React, { useRef, useState } from 'react';
 import { View, Text, TouchableOpacity, Image, Animated } from 'react-native';
 import { useTheme } from '../../../core/theme/useTheme';
 import { createStyles } from '../styles/profile.styles';
@@ -11,6 +11,7 @@ import ArrowLeftIcon from '../../../assets/svg/arrows/arrowLeft.svg';
 import RideIcon from '../../../assets/svg/common/ride.svg';
 import PasswordIcon from '../../../assets/svg/common/password.svg';
 import BirthDate from '../../../assets/svg/profile/cake.svg';
+import { useDriverStore } from '../../../core/store/useDriverStore';
 
 type Props = {
   firstName?: string;
@@ -44,7 +45,9 @@ export default function ProfileCard({
   const [expanded, setExpanded] = useState(false);
   const rotateAnim = useRef(new Animated.Value(0)).current;
 
-  const hasDriverInfo = Boolean(driverStatus || nationalId || birthdate);
+  const liveDriverStatus = useDriverStore(state => state.status);
+  const displayedDriverStatus = liveDriverStatus || driverStatus;
+  const hasDriverInfo = Boolean(displayedDriverStatus || nationalId || birthdate);
 
   const toggleExpanded = () => {
     const next = !expanded;
@@ -63,7 +66,7 @@ export default function ProfileCard({
 
   const fullName = isLoading
     ? '...'
-    : [firstName, lastName].filter(Boolean).join(' ') || '—';
+    : [firstName, lastName].filter(Boolean).join(' ') || 'â€”';
 
   return (
     <View style={styles.profileCard}>
@@ -100,13 +103,13 @@ export default function ProfileCard({
 
           <View style={styles.iconText}>
             <CallIcon width={18} height={18} fill={colors.primary} />
-            <Text style={styles.infoText}>{isLoading ? '...' : phone || '—'}</Text>
+            <Text style={styles.infoText}>{isLoading ? '...' : phone || 'â€”'}</Text>
           </View>
 
           <View style={styles.iconText}>
-          <StarIcon width={18} height={18} fill={colors.background} />
-          <Text style={styles.infoText}>{isLoading ? '...' : Rating?.toFixed(1) || '—'}</Text>
-        </View>
+            <StarIcon width={18} height={18} fill={colors.background} />
+            <Text style={styles.infoText}>{isLoading ? '...' : Rating?.toFixed(1) || 'â€”'}</Text>
+          </View>
         </View>
       </View>
 
@@ -114,12 +117,12 @@ export default function ProfileCard({
         <>
           <AnimatedDivider />
           <View >
-            {driverStatus && (
+            {displayedDriverStatus && (
               <View style={styles.expandedRow}>
                 <RideIcon width={18} height={18} fill={colors.primary} />
                 <Text style={styles.infoText}> Status :</Text>
                 <Text style={styles.infoText}>
-                  {t(`driverStatuses.${driverStatus}`, { defaultValue: driverStatus })}
+                  {t(`driverStatuses.${displayedDriverStatus}`, { defaultValue: displayedDriverStatus })}
                 </Text>
               </View>
             )}
@@ -145,3 +148,4 @@ export default function ProfileCard({
     </View>
   );
 }
+

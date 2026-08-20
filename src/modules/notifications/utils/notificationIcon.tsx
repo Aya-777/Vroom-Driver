@@ -1,4 +1,4 @@
-import RideIcon from '../../../assets/svg/common/ride.svg';
+﻿import RideIcon from '../../../assets/svg/common/ride.svg';
 import SystemIcon from '../../../assets/svg/common/notifications.svg';
 import { ThemeColors } from '../../../core/theme/theme.types';
 
@@ -15,8 +15,12 @@ export const getNotificationIcon = (
     switch (type.toUpperCase()) {
         case 'TRIP_REQUEST':
         case 'TRIP_ACCEPTED':
+        case 'DRIVER_ARRIVED':
         case 'TRIP_STARTED':
         case 'TRIP_COMPLETED':
+        case 'PAYMENT_CONFIRMED':
+        case 'SCHEDULED_TRIP_REMINDER':
+        case 'SCHEDULED_TRIP_ACCEPTED':
             return {
                 Icon: RideIcon,
                 color: colors.textSecondary,
@@ -25,6 +29,9 @@ export const getNotificationIcon = (
 
         case 'TRIP_CANCELLED':
         case 'TRIP_NO_DRIVER_FOUND':
+        case 'COMPLAINT_RECEIVED':
+        case 'CONTACT_US_RECEIVED':
+        case 'SAFETY_ALERT':
         default:
             return {
                 Icon: SystemIcon,

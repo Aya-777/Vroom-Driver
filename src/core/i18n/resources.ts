@@ -1,4 +1,4 @@
-import {
+﻿import {
   authEn,
   authAr,
   homeEn,
@@ -19,12 +19,13 @@ import {
   notificationsAr,
   sideBarEn,
   sideBarAr,
-  safetyAr,
   safetyEn,
-  modalsAr,
+  safetyAr,
   modalsEn,
+  modalsAr,
+  walletEn,
+  walletAr,
 } from './locales/index';
-
 export const resources = {
   en: {
     auth: authEn,
@@ -39,8 +40,8 @@ export const resources = {
     sidebar: sideBarEn,
     safety: safetyEn,
     modals: modalsEn,
+    wallet: walletEn,
   },
-
   ar: {
     auth: authAr,
     home: homeAr,
@@ -54,5 +55,6 @@ export const resources = {
     sidebar: sideBarAr,
     safety: safetyAr,
     modals: modalsAr,
+    wallet: walletAr,
   },
 };

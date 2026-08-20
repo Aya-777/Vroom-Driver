@@ -1,4 +1,4 @@
-﻿import { DrawerContentComponentProps } from '@react-navigation/drawer';
+import { DrawerContentComponentProps } from '@react-navigation/drawer';
 
 import { SIDEBAR_ITEMS } from '../constants/sidebarItems';
 import { SidebarItem } from '../types/sidebar.types';
@@ -29,6 +29,10 @@ export const useSidebarViewModel = (
     if (item.id === 'settings') {
       navigation.navigate('MainTabs', { screen: 'ProfileTab', params: { screen: 'Settings' } } as never);
       navigation.closeDrawer();
+      return;
+    }
+    if (item.id === 'wallet') {
+      navigation.navigate('MainTabs', { screen: 'ProfileTab', params: { screen: 'Wallet' } } as never);
       return;
     }
     if (!item.route) {
