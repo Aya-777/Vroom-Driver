@@ -16,7 +16,7 @@ const mapTripToActivity = (trip: TripHistoryItemDTO): Activity => {
   const dateSource = trip.ended_at ?? trip.cancelled_at ?? trip.scheduled_at ?? trip.requested_at;
 
   return {
-    id: String(trip.id),
+id: String(trip.id),
     rawStatus: trip.status,
     displayStatus: toDisplayStatus(trip.status, trip.is_scheduled),
     pickupLocation: pickup?.address ?? '',
@@ -97,6 +97,7 @@ export const useActivitiesViewModel = () => {
   }, [isLoadingMore, isLoading]);
 
   return {
+    refresh,
     statuses: ACTIVITY_TABS,
     selectedStatus,
     setSelectedStatus,
@@ -108,5 +109,7 @@ export const useActivitiesViewModel = () => {
     openSidebar,
   };
 };
+
+
 
 
