@@ -25,6 +25,8 @@
   modalsAr,
   walletEn,
   walletAr,
+  contactUsEn,
+  contactUsAr,
 } from './locales/index';
 export const resources = {
   en: {
@@ -41,6 +43,7 @@ export const resources = {
     safety: safetyEn,
     modals: modalsEn,
     wallet: walletEn,
+    contactUs: contactUsEn
   },
   ar: {
     auth: authAr,
@@ -56,5 +59,6 @@ export const resources = {
     safety: safetyAr,
     modals: modalsAr,
     wallet: walletAr,
+    contactUs: contactUsAr
   },
 };

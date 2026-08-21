@@ -94,5 +94,11 @@ export const tripApi = {
         { is_safe: is_safe }
       );
       return;
-    }
+    },
+
+  contactUS : async (message: string) => {
+    await apiClient.post(ENDPOINTS.CONTACTUS.send, { message });
+    return;
+  }
+    
 };

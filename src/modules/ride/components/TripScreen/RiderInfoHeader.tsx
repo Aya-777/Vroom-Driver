@@ -13,6 +13,7 @@ type Props = {
     stage: TripStage | null;
     riderName: string;
     riderAvatar?: string;
+    riderNumber: string | undefined;
     pin: string;
     pinError: boolean;
     onChangePin: (v: string) => void;
@@ -23,6 +24,7 @@ export default function RiderInfoHeader({
     stage,
     riderName,
     riderAvatar,
+    riderNumber,
     pin,
     pinError,
     onChangePin,
@@ -48,7 +50,7 @@ export default function RiderInfoHeader({
 
                     <Text style={styles.riderName}>{riderName}</Text>
 
-                    <CommunicationActions styles={styles} colors={colors} />
+                    <CommunicationActions styles={styles} colors={colors} driver_number={riderNumber ?? undefined} />
                 </>
             ) : stage === TripStage.PIN_ENTRY ? (
                 <>

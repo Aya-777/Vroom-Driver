@@ -24,6 +24,9 @@ import modalsEn from './modals/en.json';
 import modalsAr from './modals/ar.json';
 import walletEn from './wallet/en.json';
 import walletAr from './wallet/ar.json';
+import contactUsEn from './contactUs/en.json'
+import contactUsAr from './contactUs/ar.json'
+
 export {
   authEn,
   authAr,
@@ -51,4 +54,6 @@ export {
   modalsAr,
   walletEn,
   walletAr,
+  contactUsEn,
+  contactUsAr,
 };

@@ -3,7 +3,6 @@ import SavedIcon from '../../../assets/svg/common/star.svg';
 import WalletIcon from '../../../assets/svg/payment/creditcard.svg';
 import SettingsIcon from '../../../assets/svg/profile/settings.svg';
 import HelpIcon from '../../../assets/svg/profile/help.svg';
-import InfoIcon from '../../../assets/svg/common/info.svg';
 
 import {SidebarItem} from '../types/sidebar.types';
 
@@ -33,15 +32,10 @@ export const SIDEBAR_ITEMS: SidebarItem[] = [
     route: 'ProfileTab',
   },
   {
-    id: 'help',
-    label: 'help',
+    id: 'contactUs',
+    label: 'contactUs',
     icon: HelpIcon,
-    // route: 'Help',
+    // route: 'contactUs',
   },
-  {
-    id: 'about',
-    label: 'about',
-    icon: InfoIcon,
-    // route: 'About',
-  },
+  
 ];

@@ -1,0 +1,12 @@
+{
+  "contactUs": {
+    "title" :"Contact Us",
+    "subTitle":"Get in Touch",
+    "message":"We'd love to hear from you. Please fill out the form below or reach out via our alternative contact methods.",
+    "inputTitle": "Message",
+    "inputholder":"How can we help you?",
+    "sendButton":"Send Message",
+    "footer":"Professional Corp. All rights reserved.",
+    "userNotfound":"User doesn't have a phone number."
+  }
+}
