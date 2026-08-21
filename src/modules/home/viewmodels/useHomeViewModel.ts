@@ -80,23 +80,23 @@ export const useHomeViewModel = () => {
       return '';
     }
     if (rating > 4) {
-      return 'Excellent';
+      return 'excellent';
     } else if (rating > 3) {
-      return 'Good';
+      return 'good';
     } else {
-      return 'Bad';
+      return 'bad';
     }
   };
   const LinkCompletionMessageToRating = (rating?: number) => {
     if (!rating) {
-      return "You're online again! Good job Captain.";
+      return "noRating";
     }
     if (rating > 4) {
-      return 'Rating is SUPER, Keep it up!';
+      return 'ratingAbove4';
     } else if (rating > 3) {
-      return 'Most things are best when average, not rating though...';
+      return 'ratingUnder4';
     } else {
-      return "Maybe it's time to work harder inn'it?";
+      return "ratingUnder3";
     }
   };
 
@@ -117,8 +117,8 @@ export const useHomeViewModel = () => {
       todaysActive: onlineTime,
       activeStatus:
         todayStats?.data.driver_status === 'ONLINE' || 'ON_TRIP'
-          ? 'Active'
-          : 'Inactive',
+          ? 'active'
+          : 'inactive',
     },
     weeklyTrends: [
       { day: 'Mon', value: statistics?.data.trips_this_week.Monday ?? 0 },
