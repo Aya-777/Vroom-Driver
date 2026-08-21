@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useState } from 'react';
+﻿import React, { useState } from 'react';
 import { View, FlatList, Text, ActivityIndicator } from 'react-native';
 import ActivityCard from '../components/ActivityCard';
 import LinearBg from '../../../shared/components/LinearBg';
@@ -7,7 +7,6 @@ import { createStyles } from '../styles/activities.styles';
 import { useActivitiesViewModel } from '../viewmodels/useActivitiesViewModel';
 import StatusTabs from '../components/StatusTabs';
 import { useTranslation } from 'react-i18next';
-import { useNavigation } from '@react-navigation/native';
 import Header from '../../../shared/components/Header';
 import { navigate } from '../../../navigation/rootTypes';
 import ActivityDetailsSheet from '../components/ActivityDetailsSheet';
@@ -18,7 +17,6 @@ export default function ActivitiesScreen() {
     const { colors } = useTheme();
     const styles = createStyles(colors);
     const { t } = useTranslation(['activities']);
-    const navigation = useNavigation();
 
     const [selectedActivity, setSelectedActivity] =
         useState<Activity | null>(null);
@@ -28,15 +26,6 @@ export default function ActivitiesScreen() {
 
     const [reviewVisible, setReviewVisible] =
         useState(false);
-    useEffect(() => {
-        const parent = navigation.getParent();
-        parent?.setOptions({
-            tabBarStyle: detailsVisible ? { display: 'none' } : undefined,
-        });
-        return () => {
-            parent?.setOptions({ tabBarStyle: undefined });
-        };
-    }, [detailsVisible, navigation]);
 
     const {
         statuses,
@@ -139,6 +128,8 @@ export default function ActivitiesScreen() {
         </LinearBg>
     );
 }
+
+
 
 
 

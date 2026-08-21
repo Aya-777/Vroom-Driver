@@ -1,4 +1,4 @@
-import { useTheme } from '../../core/theme/useTheme';
+﻿import { useTheme } from '../../core/theme/useTheme';
 import { createStyles } from '../styles/sheet.styles';
 import React, { useCallback, useMemo } from 'react';
 import BottomSheet, {
@@ -44,6 +44,7 @@ export const BaseBottomSheet: React.FC<BaseBottomSheetProps> = ({
   return (
     <BottomSheet
       index={isVisible ? 0 : -1}
+      style={styles.bottomSheet}
       snapPoints={snapPoints}
       onClose={onClose}
       handleIndicatorStyle={styles.handleIndicatorStyle}
@@ -55,3 +56,5 @@ export const BaseBottomSheet: React.FC<BaseBottomSheetProps> = ({
     </BottomSheet>
   );
 };
+
+
