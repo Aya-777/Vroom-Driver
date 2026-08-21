@@ -19,8 +19,8 @@ function TripRoute({ navigation, route }: HomeStackScreenProps<'Trip'>) {
 export default function HomeStack() {
   return (
     <Stack.Navigator initialRouteName="HomeScreen" screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Trip" component={TripRoute} />
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
+      <Stack.Screen name="Trip" component={TripRoute} />
     </Stack.Navigator>
   );
 }
