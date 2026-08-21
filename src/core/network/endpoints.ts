@@ -61,6 +61,10 @@
 
   LOCATION: {
     UPDATE: '/api/v1/users/location/',
+  },
+  
+  CONTACTUS:{
+    send: '/api/v1/users/contact-us/',
   }
 
 } as const;
