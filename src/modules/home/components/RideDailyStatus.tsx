@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text} from 'react-native';
 import CircularProgress from './CircularProgress';
 import { HomeDashboardData } from '../types/home.types';
 import { useTheme } from '../../../core/theme/useTheme';

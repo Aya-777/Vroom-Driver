@@ -6,7 +6,7 @@ import { ENDPOINTS } from './endpoints';
 
 export const apiClient = axios.create({
   // baseURL: 'http://10.49.70.227:8000/',
-  baseURL: 'https://hckc44f9-8000.eun1.devtunnels.ms',
+  baseURL: 'https://251hn5sh-8000.eun1.devtunnels.ms',
   timeout: 10000,
   headers: { 'Content-Type': 'application/json' },
 });

@@ -9,7 +9,6 @@ export interface ActivityCardProps {
     fare: string;
     distance?: string;
     onPress?: () => void;
-    onDelete?: () => void;
 }
 
 export interface LocationRowProps {

@@ -10,7 +10,6 @@ import { useTheme } from '../../../../core/theme/useTheme';
 import { createStyles } from './ActivityCard.styles';
 import PickupIcon from '../../../../assets/svg/common/myLocation.svg';
 import DropoffIcon from '../../../../assets/svg/common/pin.svg';
-import TrashIcon from '../../../../assets/svg/common/trash.svg';
 import LinearBg from '../../../../shared/components/LinearBg';
 
 
@@ -39,14 +38,13 @@ const LocationRow = ({
 
 const ActivityCard = ({
     rideType,
-    status,
+    // status,
     pickup,
     destination,
     date,
     fare,
     distance,
     onPress,
-    onDelete,
 }: ActivityCardProps) => {
 
     const { colors } = useTheme();
@@ -92,18 +90,10 @@ const ActivityCard = ({
                     <View style={styles.footerLeft}>
                         <Text style={styles.date}>{date}</Text>
 
-                        {distance && (
-                            <Text style={styles.distance}>{distance}</Text>
-                        )}
                     </View>
-
-                    <TouchableOpacity
-                        onPress={onDelete}
-                        activeOpacity={0.7}
-                        style={styles.deleteButton}
-                    >
-                        <TrashIcon fill={colors.error} />
-                    </TouchableOpacity>
+                    {distance && (
+                        <Text style={styles.distance}>{distance}</Text>
+                    )}
                 </View>
             </LinearBg>
         </TouchableOpacity >

@@ -17,12 +17,13 @@ import { ImprovementBanner } from '../components/ImprovementBanner';
 import WeeklyTrendsFlowChart from '../components/WeeklyTrendsFlowChart';
 import RideWeeklyStatus from '../components/RideWeeklyStatus';
 import RideDailyStatus from '../components/RideDailyStatus';
-import { ActionButtons } from '../components/ActionButtons';
 
 export default function HomeScreen() {
   const { colors } = useTheme();
   const styles = createStyles(colors);
-  const { dashboardData, toggleOnlineStatus, refreshHomeData, openSidebar, onHistoryPress } =
+  const { dashboardData, toggleOnlineStatus, refreshHomeData, openSidebar,
+    //  onHistoryPress 
+    } =
     useHomeViewModel();
 
   useFocusEffect(

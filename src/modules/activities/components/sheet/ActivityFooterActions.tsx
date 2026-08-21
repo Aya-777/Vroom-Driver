@@ -4,7 +4,7 @@ import { View, Text, TouchableOpacity } from 'react-native';
 export default function ActivityFooterActions({
     styles,
     onReview,
-    onReride,
+    // onReride,
 }: any) {
     return (
         <View style={styles.footer}>
@@ -16,12 +16,12 @@ export default function ActivityFooterActions({
                 <Text style={styles.reviewText}>Leave Review</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity
+            {/* <TouchableOpacity
                 style={styles.rerideButton}
                 onPress={onReride}
             >
                 <Text style={styles.rerideText}>Re-Ride</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
 
         </View>
     );
