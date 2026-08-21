@@ -34,7 +34,7 @@ export default function ActivitiesScreen() {
         activities,
         isLoading,
         isLoadingMore,
-    refresh,
+        refresh,
         loadMore,
         openSidebar,
     } = useActivitiesViewModel();
@@ -74,7 +74,7 @@ export default function ActivitiesScreen() {
                             destination={item.dropoffLocation}
                             date={item.date}
                             fare={item.price !== null ? `${item.price} ${item.currency}` : '-'}
-                            distance={item.distance !== null ? `${item.distance} km` : undefined}
+                            distance={item.distance !== null ? `${Number(item.distance).toFixed(3)} km` : undefined}
                             onPress={() => {
                                 setSelectedActivity(item);
                                 setDetailsVisible(true);
@@ -84,7 +84,7 @@ export default function ActivitiesScreen() {
                     ListFooterComponent={
                         isLoadingMore ? (
                             <ActivityIndicator
-                                style={{ marginVertical: 16 }}
+                                style={styles.loadingMoreIndicator}
                                 color={colors.primary}
                             />
                         ) : null
@@ -98,7 +98,7 @@ export default function ActivitiesScreen() {
                             </View>
                         ) : (
                             <ActivityIndicator
-                                style={{ marginTop: 40 }}
+                                style={styles.emptyLoadingIndicator}
                                 color={colors.primary}
                             />
                         )
@@ -128,4 +128,9 @@ export default function ActivitiesScreen() {
         </LinearBg>
     );
 }
+
+
+
+
+
 
