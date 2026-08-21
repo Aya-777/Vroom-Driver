@@ -66,7 +66,7 @@ export const DashboardStatsGrid: React.FC<DashboardStatsGridProps> = ({
           <View style={styles.cardHeaderRow}>
             <Star width={18} height={18} color={colors.textSecondary} />
             <Text style={[styles.trendBadge, { color: '#38BDF8' }]}>
-              {stats.ratingStatus}
+              {t(stats.ratingStatus)}
             </Text>
           </View>
           <Text style={styles.cardValue}>{stats.avgRating}</Text>
@@ -77,7 +77,7 @@ export const DashboardStatsGrid: React.FC<DashboardStatsGridProps> = ({
           <View style={styles.cardHeaderRow}>
             <Clock width={18} height={18} color={colors.textSecondary} />
             <Text style={[styles.trendBadge, { color: '#38BDF8' }]}>
-              {stats.activeStatus}
+              {t(stats.activeStatus)}
             </Text>
           </View>
           <Text style={styles.cardValue}>{stats.todaysActive}</Text>

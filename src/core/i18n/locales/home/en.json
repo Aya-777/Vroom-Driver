@@ -18,13 +18,19 @@
   "cancelled": "Cancelled",
   "cancelledByRider": "Cancelled By Rider",
 
-  "improvementBanner": "Your completion rate improved by 3% this week!",
+  "improvementBanner": {
+    "ratingAbove4" : "Rating is SUPER, Keep it up!",
+    "ratingUnder4":"Most things are best when average, not rating though...",
+    "ratingUnder3":"Maybe it's time to work harder inn'it?",
+    "noRating" : "You're online again! Good job Captain."
+  },
   "excellent": "Excellent",
   "good": "Good",
   "medium": "Medium",
   "bad": "Bad",
 
   "active": "Active",
+  "inactive":"Inactive",
 
   "mon": "Mon",
   "tue": "Tue",
@@ -32,9 +38,6 @@
   "thu": "Thu",
   "fri": "Fri",
   "sat": "Sat",
-  "sun": "Sun",
+  "sun": "Sun"
 
-  "history": "History",
-  "support": "Support"
-  
 }
