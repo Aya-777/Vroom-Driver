@@ -9,32 +9,45 @@ import { getMediaUrl } from '../../../core/network/media';
 
 type Navigation = DrawerContentComponentProps['navigation'];
 
-export const useSidebarViewModel = (
-  navigation: Navigation,
-) => {
+export const useSidebarViewModel = (navigation: Navigation) => {
   const cachedUser = useCurrentUser();
   const mode = useThemeMode();
   const { toggleMode } = useThemeActions();
   const { logout } = useProfileActions();
 
   const user = {
-    name: cachedUser
-      ? `${cachedUser.first_name} ${cachedUser.last_name}`
-      : '',
+    name: cachedUser ? `${cachedUser.first_name} ${cachedUser.last_name}` : '',
     rating: cachedUser?.rating ?? 5.0,
     avatar: getMediaUrl(cachedUser?.profile_image),
   };
 
   const handleItemPress = (item: SidebarItem) => {
     if (item.id === 'settings') {
-      navigation.navigate('MainTabs', { screen: 'ProfileTab', params: { screen: 'Settings' } } as never);
+      navigation.navigate('MainTabs', {
+        screen: 'ProfileTab',
+        params: { screen: 'Settings' },
+      } as never);
       navigation.closeDrawer();
       return;
     }
     if (item.id === 'wallet') {
-      navigation.navigate('MainTabs', { screen: 'ProfileTab', params: { screen: 'Wallet' } } as never);
+      navigation.navigate('MainTabs', {
+        screen: 'ProfileTab',
+        params: { screen: 'Wallet' },
+      } as never);
       return;
     }
+    if (item.id === 'contactUs') {
+      navigation.navigate('MainTabs', {
+        screen: 'HomeTab',
+        params: {
+          screen: 'ContactUs',
+        },
+      });
+      navigation.closeDrawer();
+      return;
+    }
+
     if (!item.route) {
       return;
     }
@@ -59,5 +72,3 @@ export const useSidebarViewModel = (
     logout,
   };
 };
-
-
