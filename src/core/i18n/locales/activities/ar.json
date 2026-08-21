@@ -1,26 +1,26 @@
 ﻿{
-    "noActivities":  "Ù„Ø§ ÙŠÙˆØ¬Ø¯ Ù†Ø´Ø§Ø·Ø§Øª.",
-    "yourActivity":  "Ù†Ø´Ø§Ø·Ø§ØªÙƒ ",
-    "status":  {
-                   "all":  "Ø§Ù„ÙƒÙ„",
-                   "completed":  "Ø§Ù„Ù…ÙƒØªÙ…Ù„Ø©",
-                   "cancelled":  "Ø§Ù„Ù…Ù„ØºÙŠØ©",
-                   "rejected":  "Ø§Ù„Ù…Ø±ÙÙˆØ¶Ø©",
-                   "pending":  "Pending",
-                   "scheduled":  "Scheduled"
-               },
-    "activityDetails":  {
-                            "title":  "ØªÙØ§ØµÙŠÙ„ Ø§Ù„Ø±Ø­Ù„Ø©",
-                            "driverName":  "Ø§Ù„Ø³Ø§Ø¦Ù‚",
-                            "pickupLocation":  "Ù…ÙˆÙ‚Ø¹ Ø§Ù„Ø§Ù„ØªÙ‚Ø§Ø·",
-                            "dropoffLocation":  "Ù…ÙˆÙ‚Ø¹ Ø§Ù„ØªØ³Ù„ÙŠÙ…",
-                            "date":  "Ø§Ù„ØªØ§Ø±ÙŠØ®",
-                            "price":  "Ø§Ù„Ø³Ø¹Ø±",
-                            "rideType":  "Ù†ÙˆØ¹ Ø§Ù„Ø±Ø­Ù„Ø©",
-                            "distance":  "Ø§Ù„Ù…Ø³Ø§ÙØ©",
-                            "duration":  "Ø§Ù„Ù…Ø¯Ø© Ø§Ù„Ø²Ù…Ù†ÙŠØ©",
-                            "riderName":  "Rider",
-                            "status":  "Status",
-                            "stop":  "Stop"
-                        }
+    "noActivities": "لا يوجد نشاطات.",
+    "yourActivity": "نشاطاتك",
+    "status": {
+        "all": "الكل",
+        "completed": "المكتملة",
+        "cancelled": "الملغية",
+        "rejected": "المرفوضة",
+        "pending": "قيد الانتظار",
+        "scheduled": "مجدولة"
+    },
+    "activityDetails": {
+        "title": "تفاصيل الرحلة",
+        "driverName": "السائق",
+        "pickupLocation": "موقع الالتقاط",
+        "dropoffLocation": "موقع التسليم",
+        "date": "التاريخ",
+        "price": "السعر",
+        "rideType": "نوع الرحلة",
+        "distance": "المسافة",
+        "duration": "المدة الزمنية",
+        "riderName": "الراكب",
+        "status": "الحالة",
+        "stop": "توقف"
+    }
 }
