@@ -1,5 +1,5 @@
 ﻿import React, { useMemo } from 'react';
-import { StatusBar, Text, TouchableOpacity, View } from 'react-native';
+import { Alert, StatusBar, Text, TouchableOpacity, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import Header from '../../../shared/components/SubHeader';
 import { BaseBottomSheet } from '../../../shared/components/BaseBottomSheet';
@@ -64,6 +64,7 @@ export default function TripScreen({
             stage={vm.stage}
             riderName={riderName}
             riderAvatar={vm.trip?.rider?.profile_image ?? undefined}
+            riderNumber={vm.trip?.rider?.phone_number ?? undefined}
             pin={vm.pin}
             pinError={vm.pinError}
             onChangePin={vm.onChangePin}
