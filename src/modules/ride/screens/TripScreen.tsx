@@ -13,9 +13,11 @@ import { useTripViewModel } from '../viewmodels/useTripViewModel';
 import { TripStage } from '../types/trip.types';
 import { TripId } from '../services/dto/trip.dto';
 import SOSModal from '../components/Sos/SOSModal';
+import ReviewModal from '../../review/components/ReviewModal';
+import { useReview } from '../../review/hooks/useReview';
 
 type Props = {
-  tripId?: TripId;
+  tripId: TripId;
   onBackPress?: () => void;
   onTripCompleted?: () => void;
 };
@@ -28,8 +30,10 @@ export default function TripScreen({
   const { colors, mode } = useTheme();
   const styles = createStyles(colors);
   const { t } = useTranslation(['trip', 'common']);
+  const [reviewVisible, setReviewVisible] = React.useState(false);
+  const { submitReview } = useReview(Number(tripId));
   const vm = useTripViewModel(
-    () => onTripCompleted?.(),
+    () => setReviewVisible(true),
     tripId,
     () => onBackPress?.(),
   );
@@ -113,6 +117,20 @@ export default function TripScreen({
           )}
         </BaseBottomSheet>
       </View>
+      <ReviewModal
+        visible={reviewVisible}
+        onClose={() => {
+          setReviewVisible(false);
+          onTripCompleted?.();
+        }}
+        onSubmit={async (rating, review) => {
+          const submitted = await submitReview({ rating, comment: review });
+          if (submitted) {
+            setReviewVisible(false);
+            onTripCompleted?.();
+          }
+        }}
+      />
       {(vm.isSOSVisible || vm.storeSosVisible) && (
         <SOSModal
           visible={vm.isSOSVisible || vm.storeSosVisible}
@@ -126,3 +144,4 @@ export default function TripScreen({
     </>
   );
 }
+

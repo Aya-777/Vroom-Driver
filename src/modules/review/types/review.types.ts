@@ -1,7 +1,7 @@
-export interface ReviewModalProps {
+﻿export interface ReviewModalProps {
   visible: boolean;
   onClose: () => void;
-  onSubmit: (rating: number, review: string) => void;
+  onSubmit: (rating: number, review: string) => void | Promise<void>;
 }
 
 export interface RatingStarsProps {

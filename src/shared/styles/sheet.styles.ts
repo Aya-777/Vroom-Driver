@@ -1,8 +1,12 @@
-import { StyleSheet } from 'react-native';
+﻿import { StyleSheet } from 'react-native';
 import { ThemeColors } from '../../core/theme/theme.types';
 
 export const createStyles = (colors: ThemeColors) =>
   StyleSheet.create({
+    bottomSheet: {
+      zIndex: 1000,
+      elevation: 1000,
+    },
     handleIndicatorStyle: {
       backgroundColor: colors.textSecondary,
       width: 50,
@@ -18,3 +22,5 @@ export const createStyles = (colors: ThemeColors) =>
       borderTopRightRadius: 28,
     },
   });
+
+
