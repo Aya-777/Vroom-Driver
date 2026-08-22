@@ -21,7 +21,7 @@ export const ImprovementBanner: React.FC<DashboardDataProps> = ({
   return (
     <View style={styles.bannerCard}>
       <ForYouStartIcon width={20} height={20} />
-      <Text style={styles.bannerText}>{t(dashboardData.completionMessage)}</Text>
+      <Text style={styles.bannerText}>{t(`improvementBanner.${dashboardData.completionMessage}`)}</Text>
     </View>
   );
 };

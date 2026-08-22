@@ -14,6 +14,22 @@
       "questionMessage": "Do you want to send an emergency request?",
       "sending": "SENDING...",
       "sendSos": "SEND SOS"
+    },
+    "noDriverFound": {
+      "title": "Search Failed",
+      "message": "We couldn't find a driver for your trip, do you want to retry?",
+      "actionRetry": "Retry"
+    },
+    "savedPlaces": {
+      "title": "Saved Places",
+      "addNew": "Add New Place"
+    },
+    "review":{
+      "leaveReview": "Leave a Review",
+      "rateYourTrip":"Rate your trip",
+      "writeYourReview":"Write your review",
+      "complaint":"Complaint",
+      "maybeLater":"Maybe Later"
     }
   }
 }

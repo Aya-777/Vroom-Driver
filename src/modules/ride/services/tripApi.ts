@@ -9,6 +9,34 @@ import {
   TripStatusChoiceDto,
 } from './dto/trip.dto';
 
+
+export interface ReviewRequestDTO {
+  rating: number,
+  comment: string,
+  is_complaint: boolean
+}
+
+export interface ReviewResponseDTO {
+  id: number,
+  trip_id: number,
+  reviewer_type: string,
+  rating: number,
+  comment: string,
+  is_complaint: boolean,
+  created_at: string,
+  rider: {
+    "additionalProp1": string,
+    "additionalProp2": string,
+    "additionalProp3": string
+  },
+  driver: {
+    "additionalProp1": string,
+    "additionalProp2": string,
+    "additionalProp3": string
+  }
+
+}
+
 export const tripApi = {
   getCurrentTrip: async (): Promise<TripDto | null> => {
     try {
@@ -95,6 +123,15 @@ export const tripApi = {
       );
       return;
     },
+
+    submitReview: async (data: ReviewRequestDTO, id: number) => {
+    const response = await apiClient.post<ReviewResponseDTO>(
+      ENDPOINTS.TRIPS.SUBMIT_REVIEW(id),
+      data,
+    );
+
+    return response;
+  },
 
   contactUS : async (message: string) => {
     await apiClient.post(ENDPOINTS.CONTACTUS.send, { message });

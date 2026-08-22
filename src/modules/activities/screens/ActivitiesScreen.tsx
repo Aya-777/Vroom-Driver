@@ -115,14 +115,9 @@ export default function ActivitiesScreen() {
                     onReride={() => { }}
                 />
                 <ReviewModal
-                    visible={reviewVisible}
-                    onClose={() => setReviewVisible(false)}
-                    onSubmit={(rating, review) => {
-                        console.log(rating);
-                        console.log(review);
-
-                        setReviewVisible(false);
-                    }}
+                  isVisible={reviewVisible}
+                  setIsVisible={setReviewVisible}
+                  rideId={Number(selectedActivity?.id)}
                 />
             </View>
         </LinearBg>

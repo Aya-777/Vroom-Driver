@@ -14,6 +14,22 @@
       "questionMessage": "هل تريد إرسال طلب طوارئ؟",
       "sending": "جاري الإرسال...",
       "sendSos": "إرسال الطوارئ"
+    },
+    "noDriverFound": {
+      "title": "فشل البحث",
+      "message": "لم نتمكن من العثور على سائق لرحلتك، هل تريد إعادة المحاولة؟",
+      "actionRetry": "إعادة المحاولة"
+    },
+    "savedPlaces": {
+      "title": "الأماكن المحفوظة",
+      "addNew": "إضافة مكان جديد"
+    },
+    "review":{
+      "leaveReview": "اترك تقييما",
+      "rateYourTrip":"قيم رحلتك",
+      "writeYourReview":"اكتب تعليقا",
+      "complaint":"شكوى",
+      "maybeLater":"ربما لاحقا"
     }
   }
 }
