@@ -1,5 +1,5 @@
 ﻿import React, { useMemo } from 'react';
-import { Alert, StatusBar, Text, TouchableOpacity, View } from 'react-native';
+import { StatusBar, Text, TouchableOpacity, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import Header from '../../../shared/components/SubHeader';
 import { BaseBottomSheet } from '../../../shared/components/BaseBottomSheet';
@@ -14,7 +14,7 @@ import { TripStage } from '../types/trip.types';
 import { TripId } from '../services/dto/trip.dto';
 import SOSModal from '../components/Sos/SOSModal';
 import ReviewModal from '../../review/components/ReviewModal';
-import { useReview } from '../../review/hooks/useReview';
+// import { useReview } from '../../review/hooks/useReview';
 
 type Props = {
   tripId: TripId;
@@ -25,13 +25,13 @@ type Props = {
 export default function TripScreen({
   tripId,
   onBackPress,
-  onTripCompleted,
+  // onTripCompleted,
 }: Props) {
   const { colors, mode } = useTheme();
   const styles = createStyles(colors);
   const { t } = useTranslation(['trip', 'common']);
   const [reviewVisible, setReviewVisible] = React.useState(false);
-  const { submitReview } = useReview(Number(tripId));
+  // const { submitReview } = useReview(Number(tripId));
   const vm = useTripViewModel(
     () => setReviewVisible(true),
     tripId,
@@ -108,29 +108,19 @@ export default function TripScreen({
 
           {(vm.stage === TripStage.EN_ROUTE ||
             vm.stage === TripStage.PIN_ENTRY) && (
-            <ActionButton
-              onPress={vm.cancelTrip}
-              title={t('cancelTheTrip')}
-              style={styles.dangerButton}
-              textStyle={styles.dangerButtonText}
-            />
-          )}
+              <ActionButton
+                onPress={vm.cancelTrip}
+                title={t('cancelTheTrip')}
+                style={styles.dangerButton}
+                textStyle={styles.dangerButtonText}
+              />
+            )}
         </BaseBottomSheet>
       </View>
       <ReviewModal
-        visible={reviewVisible}
-        onClose={() => {
-          setReviewVisible(false);
-          onTripCompleted?.();
-        }}
-        onSubmit={async (rating, review) => {
-          const submitted = await submitReview({ rating, comment: review });
-          if (submitted) {
-            setReviewVisible(false);
-            onTripCompleted?.();
-          }
-        }}
-      />
+        isVisible={reviewVisible}
+        setIsVisible={setReviewVisible}
+      />\
       {(vm.isSOSVisible || vm.storeSosVisible) && (
         <SOSModal
           visible={vm.isSOSVisible || vm.storeSosVisible}

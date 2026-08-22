@@ -3,7 +3,6 @@
   "savedPlaces": "الأماكن المحفوظة",
   "wallet": "المحفظة",
   "settings": "الإعدادات",
-  "help": "المساعدة",
-  "about": "حول التطبيق",
+  "contactUs":"تواصل معنا",
   "version": "VROOM v{{version}}"
 }

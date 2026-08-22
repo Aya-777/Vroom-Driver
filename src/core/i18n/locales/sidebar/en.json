@@ -3,7 +3,6 @@
   "savedPlaces": "Saved Places",
   "wallet": "Wallet",
   "settings": "Settings",
-  "help": "Help",
-  "about": "About",
+  "contactUs":"Contact us",
   "version": "VROOM v{{version}}"
 }
